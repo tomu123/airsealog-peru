@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="PeriodCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PeriodCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PeriodCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Transaction_CUOCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Transaction_CUOCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Transaction_CUOCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Correlative_cuoCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Correlative_cuoCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Correlative_cuoCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Operation_DateCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Operation_DateCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Operation_DateCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Gloss_and_descriptionCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Gloss_and_descriptionCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Gloss_and_descriptionCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Book_Code_RefCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Book_Code_RefCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Book_Code_RefCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Document_No_Caption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Document_No_Caption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Document_No_Caption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="G_L_Account_No_Caption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>G_L_Account_No_Caption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>G_L_Account_No_Caption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="G_L_Account_NameCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>G_L_Account_NameCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>G_L_Account_NameCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Debit_AmountCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Debit_AmountCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Debit_AmountCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Credit_AmountCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Credit_AmountCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Credit_AmountCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CompanyVATRegNoCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CompanyVATRegNoCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CompanyVATRegNoCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CompanyVATRegNameCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CompanyVATRegNameCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CompanyVATRegNameCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Period">
+          <DataField>Period</DataField>
+        </Field>
+        <Field Name="Transaction_CUO">
+          <DataField>Transaction_CUO</DataField>
+        </Field>
+        <Field Name="Correlative_cuo">
+          <DataField>Correlative_cuo</DataField>
+        </Field>
+        <Field Name="Operation_Date">
+          <DataField>Operation_Date</DataField>
+        </Field>
+        <Field Name="Gloss_and_description">
+          <DataField>Gloss_and_description</DataField>
+        </Field>
+        <Field Name="Book_Code_Ref">
+          <DataField>Book_Code_Ref</DataField>
+        </Field>
+        <Field Name="Document_No_">
+          <DataField>Document_No_</DataField>
+        </Field>
+        <Field Name="G_L_Account_No_">
+          <DataField>G_L_Account_No_</DataField>
+        </Field>
+        <Field Name="G_L_Account_Name">
+          <DataField>G_L_Account_Name</DataField>
+        </Field>
+        <Field Name="Debit_Amount">
+          <DataField>Debit_Amount</DataField>
+        </Field>
+        <Field Name="Debit_AmountFormat">
+          <DataField>Debit_AmountFormat</DataField>
+        </Field>
+        <Field Name="Credit_Amount">
+          <DataField>Credit_Amount</DataField>
+        </Field>
+        <Field Name="Credit_AmountFormat">
+          <DataField>Credit_AmountFormat</DataField>
+        </Field>
+        <Field Name="PeriodDescription">
+          <DataField>PeriodDescription</DataField>
+        </Field>
+        <Field Name="StartDate">
+          <DataField>StartDate</DataField>
+        </Field>
+        <Field Name="EndDate">
+          <DataField>EndDate</DataField>
+        </Field>
+        <Field Name="CompanyVATRegNo">
+          <DataField>CompanyVATRegNo</DataField>
+        </Field>
+        <Field Name="CompanyVATRegName">
+          <DataField>CompanyVATRegName</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

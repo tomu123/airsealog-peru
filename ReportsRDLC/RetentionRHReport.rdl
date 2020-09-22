@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="VATRegNo_CICaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>VATRegNo_CICaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>VATRegNo_CICaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Name_CICaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Name_CICaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Name_CICaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="VendInvNoCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>VendInvNoCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>VendInvNoCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Document_DateCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Document_DateCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Document_DateCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="VATRegTypeCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>VATRegTypeCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>VATRegTypeCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="VATRegNoCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>VATRegNoCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>VATRegNoCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Pay_to_NameCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Pay_to_NameCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Pay_to_NameCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="GrossAmtCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>GrossAmtCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>GrossAmtCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FourthAmtCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>FourthAmtCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>FourthAmtCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="StartDate">
+          <DataField>StartDate</DataField>
+        </Field>
+        <Field Name="EndDate">
+          <DataField>EndDate</DataField>
+        </Field>
+        <Field Name="VATRegNo_CI">
+          <DataField>VATRegNo_CI</DataField>
+        </Field>
+        <Field Name="Name_CI">
+          <DataField>Name_CI</DataField>
+        </Field>
+        <Field Name="VendInvNo">
+          <DataField>VendInvNo</DataField>
+        </Field>
+        <Field Name="Document_Date">
+          <DataField>Document_Date</DataField>
+        </Field>
+        <Field Name="PaymentDate">
+          <DataField>PaymentDate</DataField>
+        </Field>
+        <Field Name="VATRegType">
+          <DataField>VATRegType</DataField>
+        </Field>
+        <Field Name="SerieNo">
+          <DataField>SerieNo</DataField>
+        </Field>
+        <Field Name="NumberNo">
+          <DataField>NumberNo</DataField>
+        </Field>
+        <Field Name="IdentityNo">
+          <DataField>IdentityNo</DataField>
+        </Field>
+        <Field Name="VATRegNo">
+          <DataField>VATRegNo</DataField>
+        </Field>
+        <Field Name="Pay_to_Name">
+          <DataField>Pay_to_Name</DataField>
+        </Field>
+        <Field Name="GrossAmt">
+          <DataField>GrossAmt</DataField>
+        </Field>
+        <Field Name="GrossAmtFormat">
+          <DataField>GrossAmtFormat</DataField>
+        </Field>
+        <Field Name="FourthAmt">
+          <DataField>FourthAmt</DataField>
+        </Field>
+        <Field Name="FourthAmtFormat">
+          <DataField>FourthAmtFormat</DataField>
+        </Field>
+        <Field Name="NetAmount">
+          <DataField>NetAmount</DataField>
+        </Field>
+        <Field Name="NetAmountFormat">
+          <DataField>NetAmountFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

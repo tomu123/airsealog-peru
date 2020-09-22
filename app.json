@@ -1,0 +1,35 @@
+{
+    "id": "c9d0daa8-6866-41ce-ba8e-c1ef86fa587f",
+    "name": "Peruvian-Localization-ULN",
+    "publisher": "Union-Label-Net",
+    "version": "1.0.0.0",
+    "brief": "Peruvian location",
+    "description": "Peruvian location for compliance with taxes and obligations before SUNAT",
+    "privacyStatement": "",
+    "EULA": "",
+    "help": "",
+    "url": "",
+    "logo": "./Resources/LogoULN.png",
+    "dependencies": [{
+            "id": "63ca2fa4-4f03-4f2b-a480-172fef340d3f",
+            "publisher": "Microsoft",
+            "name": "System Application",
+            "version": "16.0.0.0"
+        },
+        {
+            "id": "437dbf0e-84ff-417a-965d-ed2bb9650972",
+            "publisher": "Microsoft",
+            "name": "Base Application",
+            "version": "16.0.0.0"
+        }
+    ],
+    "screenshots": [],
+    "platform": "16.0.0.0",
+    "idRanges": [{
+        "from": 51000,
+        "to": 59999
+    }],
+    "contextSensitiveHelpUrl": "https://Peruvian-Localization-ULN.com/help/",
+    "showMyCode": false,
+    "runtime": "5.0"
+}
