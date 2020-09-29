@@ -6,19 +6,19 @@ tableextension 51052 "Setup Employee Posting Group" extends "Employee Posting Gr
         field(51010; "Description"; Text[100])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Description';
+            Caption = 'Description', Comment = 'ESM="Descripción"';
         }
         field(51011; "Currency Exch. Type"; Option)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Currency Exch. Type';
+            Caption = 'Currency Exch. Type', Comment = 'ESM="Tipo Cambio Ajuste"';
             OptionMembers = Active,Passive;
             OptionCaption = 'Active,Pasive';
         }
         field(51012; "Currency Code"; Code[10])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Currency Code';
+            Caption = 'Currency Code', Comment = 'ESM="Cód. Divisa"';
             TableRelation = Currency;
         }
 

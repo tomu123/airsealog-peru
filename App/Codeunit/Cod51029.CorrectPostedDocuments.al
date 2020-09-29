@@ -592,7 +592,10 @@ codeunit 51029 "LD Correct Posted Documents"
         PurchHeader.Validate("Legal Status", LegalStatus);
         PurchHeader.Validate("Legal Document", '07');
         PurchHeader.Validate(PurchHeader."Applies-to Doc. Type", PurchHeader."Applies-to Doc. Type"::Invoice);
+        PurchHeader.SetHideValidation(true);
         PurchHeader.Validate("Applies-to Doc. No.", pPurchInvHeader."No.");
+        PurchHeader."Applies-to Entry No." := 0;
+        PurchHeader."Exclude Validation" := true;
         case LegalStatus of
             LegalStatus::Anulled:
                 PurchHeader."Posting Description" := StrSubstNo('Nota de Crédito de anulación a Factura: %1', Format(pPurchInvHeader."No."));

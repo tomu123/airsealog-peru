@@ -1,6 +1,6 @@
 report 51010 "Setup Notification Email"
 {
-    WordLayout = './WordLayout/NotificationEmail.docx';
+    WordLayout = './App/Report/WordLayout/NotificationEmail.docx';
     Caption = 'Notification Email', Comment = 'ESM="Notificación Email"';
     DefaultLayout = Word;
 

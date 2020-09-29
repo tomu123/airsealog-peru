@@ -7,46 +7,46 @@ pageextension 51086 "Detrac. Sales Invoice" extends "Sales Invoice"
         {
             group(Detraction)
             {
-                Caption = 'Detraction';
+                Caption = 'Detraction', comment = 'ESM="Detracción"';
                 field("Sales Detraction"; "Sales Detraction")
                 {
                     ApplicationArea = All;
-                    Caption = 'Detraction';
+                    Caption = 'Detraction', comment = 'ESM="Detracción"';
                 }
                 field("Operation Type Detrac"; "Operation Type Detrac")
                 {
                     ApplicationArea = All;
-                    Caption = 'Operation Type';
+                    Caption = 'Operation Type', comment = 'ESM="Tipo de Operación"';
                     Editable = "Sales Detraction";
                 }
                 field("Service Type Detrac"; "Service Type Detrac")
                 {
                     ApplicationArea = All;
-                    Caption = 'Service Type';
+                    Caption = 'Service Type', comment = 'ESM="Tipo de Servicio"';
                     Editable = "Sales Detraction";
                 }
                 field("Payment Method Code Detrac"; "Payment Method Code Detrac")
                 {
                     ApplicationArea = All;
-                    Caption = 'Payment Method Detrac';
+                    Caption = 'Payment Method Detrac', comment = 'ESM="Cód. Forma de Pago Detracción"';
                     Editable = "Sales Detraction";
                 }
                 field("Sales % Detraction"; "Sales % Detraction")
                 {
                     ApplicationArea = All;
-                    Caption = '% Detraction';
+                    Caption = '% Detraction', comment = 'ESM="% Detracción"';
                     Editable = "Sales Detraction";
                 }
                 field("Sales Amt Detraction"; "Sales Amt Detraction")
                 {
                     ApplicationArea = All;
-                    Caption = 'Amount Detraction';
+                    Caption = 'Amount Detraction', comment = 'ESM="Importe Detracción"';
                     Editable = "Sales Detraction";
                 }
                 field("Sales Amt Detraction (LCY)"; "Sales Amt Detraction (LCY)")
                 {
                     ApplicationArea = All;
-                    Caption = 'Amount Detraction (LCY)';
+                    Caption = 'Amount Detraction (LCY)', comment = 'ESM="Importe Detracción ($)"';
                     Editable = "Sales Detraction";
                 }
             }

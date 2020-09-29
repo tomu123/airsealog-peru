@@ -81,6 +81,47 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
         {
             Visible = false;
         }
+        //Add Pc 27.09.20
+        addafter("Account No.")
+        {
+            field("Check Name15467"; "Check Name")
+            {
+                ApplicationArea = All;
+            }
+        }
+        addafter("Document Type")
+        {
+            field("Document Date24911"; "Document Date")
+            {
+                ApplicationArea = All;
+            }
+            field("Due Date45223"; "Due Date")
+            {
+                ApplicationArea = All;
+            }
+        }
+        modify("Applied (Yes/No)")
+        {
+            Visible = false;
+        }
+        addafter("Job Queue Status")
+        {
+            field("Check Printed54770"; "Check Printed")
+            {
+                ApplicationArea = All;
+            }
+        }
+        addafter("Recipient Bank Account")
+        {
+            field("gAccountBankNation"; "gAccountBankNation")
+            {
+                Caption = 'Cód. Cuenta Banco de la Nación', Comment = 'ESM="Cód. Cuenta Banco de la Nación"';
+                ApplicationArea = All;
+                Editable = false;
+
+            }
+        }
+        //End PC 27.09.20
     }
     actions
     {
@@ -355,6 +396,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
     trigger OnAfterGetRecord()
     begin
         SetViewButtons;
+        fnGetVendorInfo;
     end;
 
     trigger OnAfterGetCurrRecord()
@@ -369,20 +411,22 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
             ShowRetention := SetupLoc."Retention Agent Option" <> SetupLoc."Retention Agent Option"::Disable;
     end;
 
-    var
-        SLSetupMgt: Codeunit "Setup Localization";
-        DetracCalculation: Codeunit "DetrAction Calculation";
-        MassiveBankPayments: Codeunit "Massive Banks Payments";
-        ViewPaymentsBCP: Boolean;
-        ViewPaymentsBBVA: Boolean;
-        ViewPaymentsIBK: Boolean;
-        ViewPaymentsSBP: Boolean;
-        ViewPaymentsCITI: Boolean;
-        IsManual: Boolean;
-        ShowRetention: Boolean;
-        RetentionMgt: Codeunit "Retention Management";
-        SetupLoc: Record "Setup Localization";//Dimensions
 
+    procedure fnGetVendorInfo()
+    var
+        lcvendor: Record vendor;
+    begin
+        gAccountBankNation := '';
+
+        if "Account Type" <> "Account Type"::Vendor then
+            exit;
+
+        lcvendor.Reset();
+        lcvendor.SetRange("No.", "Account No.");
+        if lcvendor.FindFirst() then
+            gAccountBankNation := lcvendor."Currenct Account BNAC";
+
+    end;
 
     local procedure SetViewButtons()
     var
@@ -405,4 +449,20 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
         ViewPaymentsIBK := CopyStr(BankAccNoFICO, 1, 5) = 'IBK-R';
         ViewPaymentsSBP := CopyStr(BankAccNoFICO, 1, 5) = 'SBP-R';
     end;
+
+    var
+        SLSetupMgt: Codeunit "Setup Localization";
+        DetracCalculation: Codeunit "DetrAction Calculation";
+        MassiveBankPayments: Codeunit "Massive Banks Payments";
+        ViewPaymentsBCP: Boolean;
+        ViewPaymentsBBVA: Boolean;
+        ViewPaymentsIBK: Boolean;
+        ViewPaymentsSBP: Boolean;
+        ViewPaymentsCITI: Boolean;
+        IsManual: Boolean;
+        ShowRetention: Boolean;
+        RetentionMgt: Codeunit "Retention Management";
+        SetupLoc: Record "Setup Localization";//Dimensions
+
+        gAccountBankNation: Text;
 }

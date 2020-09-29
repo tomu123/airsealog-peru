@@ -27,6 +27,7 @@ page 51024 "Payment Schedule"
                 }
                 field("Document Date"; "Document Date")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     Enabled = false;
                 }
@@ -158,7 +159,13 @@ page 51024 "Payment Schedule"
                     Enabled = false;
 
                 }
+                field("gAccountBankNation"; "gAccountBankNation")
+                {
+                    Caption = 'Cód. Cuenta Banco de la Nación', Comment = 'ESM="Cód. Cuenta Banco de la Nación"';
+                    ApplicationArea = All;
+                    Editable = false;
 
+                }
                 field("Payment Method Code"; "Payment Method Code")
                 {
                     ApplicationArea = All;
@@ -251,16 +258,13 @@ page 51024 "Payment Schedule"
                     ApplicationArea = All;
                     Editable = false;
                     Enabled = false;
-
                 }
                 field("Process Date"; "Process Date")
                 {
                     ApplicationArea = All;
                     Editable = false;
                     Enabled = false;
-
                 }
-
             }
         }
         area(FactBoxes)
@@ -282,7 +286,7 @@ page 51024 "Payment Schedule"
                 action(SuggestVendorPayments)
                 {
                     ApplicationArea = All;
-                    Caption = 'Prepayment vendors', Comment = 'ESM="Proponer pago Proveedores"';
+                    Caption = 'Prepayment vendors', Comment = 'ESM="Proponer Pagos"';
                     Visible = not NowShowActions;
                     Enabled = not NowShowActions;
                     Image = SuggestVendorPayments;
@@ -311,6 +315,7 @@ page 51024 "Payment Schedule"
                 action(ReversalProcess)
                 {
                     ApplicationArea = All;
+                    Caption = 'Reversal Process', Comment = 'ESM="Revertir Proceso"';
                     Visible = not NowShowActions;
                     Enabled = not NowShowActions;
                     Image = ReverseRegister;
@@ -343,14 +348,49 @@ page 51024 "Payment Schedule"
                         SetStatusEntry;
                     end;
                 }
+                action(Card)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Ficha', Comment = 'ESM="Ficha"';
+                    Visible = not NowShowActions;
+                    Enabled = not NowShowActions;
+                    Image = Card;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    trigger OnAction()
+                    begin
+                        cuUtilities.fnShowCard(Rec);
+                        ;
+                    end;
 
+                }
+                action(Navigate)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Navegar', Comment = 'ESM="Navegar"';
+                    Visible = not NowShowActions;
+                    Enabled = not NowShowActions;
+                    Image = Navigate;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    trigger OnAction()
+                    begin
+                        cuUtilities.fnNavigate(Rec);
+
+                    end;
+
+                }
             }
             group(Actions2)
             {
-                Caption = 'Actions';
+                Caption = 'Actions', Comment = 'ESM="Acciones"';
                 action(DeleteModify)
                 {
                     ApplicationArea = All;
+                    Caption = 'Delete entries', Comment = 'ESM="Eliminar mov."';
+                    PromotedCategory = Process;
                     Visible = not NowShowActions;
                     Enabled = not NowShowActions;
                     Image = Reject;
@@ -373,7 +413,8 @@ page 51024 "Payment Schedule"
                 action(CallModifyRecipientsBankAccount)
                 {
                     ApplicationArea = All;
-                    Visible = NowShowActions;
+                    Caption = 'Modify recipients', Comment = 'ESM="Actualizar BancosNo definido"';
+                    Visible = false;
                     Image = ChangeBatch;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -414,6 +455,7 @@ page 51024 "Payment Schedule"
                 action(UpdateBanks)
                 {
                     ApplicationArea = All;
+                    Caption = 'Update Banks', Comment = 'ESM="Actualizar bancos"';
                     Visible = not NowShowActions;
                     Image = RefreshLines;
                     Promoted = true;
@@ -444,6 +486,24 @@ page 51024 "Payment Schedule"
     trigger OnAfterGetCurrRecord()
     begin
         SetStatusEntry;
+
+    end;
+
+    trigger OnAfterGetRecord()
+    begin
+        fnGetVendorInfo;
+    end;
+
+    procedure fnGetVendorInfo()
+    var
+        lcvendor: Record vendor;
+    begin
+        gAccountBankNation := '';
+        lcvendor.Reset();
+        lcvendor.SetRange("VAT Registration No.", "VAT Registration No.");
+        if lcvendor.FindFirst() then
+            gAccountBankNation := lcvendor."Currenct Account BNAC";
+
     end;
 
     procedure SetStatusEntry()
@@ -538,11 +598,20 @@ page 51024 "Payment Schedule"
         lcCuMPWUtilities: Codeunit "Payment Schedule Utility";
         lcText0001: label 'Existen lineas del cronograma de pago con banco proveedor vacio, estas lineas no serán procesadas.';
         lcText0002: label '¿Desea enviar %1 registro(s) a "Procesar" para Pago?';
+        lcText0003: label 'Existen lineas del cronograma de pago con N° Banco Ref vacio, estas lineas no pueden ser procesadas.';
     begin
         CLEAR(lcRecPaymentSchedule);
         CLEAR(lcCuMPWUtilities);
 
         CurrPage.SETSELECTIONFILTER(lcRecPaymentSchedule);
+
+        lcRecPaymentSchedule.SETFILTER("Reference Bank Acc. No.", '%1|%2', '', '-');
+        if lcRecPaymentSchedule.Count > 0 then begin
+            lcCuMPWUtilities.fnMessagenotification(lcText0003);
+            exit;
+        end;
+
+        CLEAR(lcRecPaymentSchedule);
         lcRecPaymentSchedule.SETFILTER("Preferred Bank Account Code", '%1', '');
         if lcRecPaymentSchedule.Count > 0 then
             lcCuMPWUtilities.fnMessagenotification(lcText0001);
@@ -585,4 +654,5 @@ page 51024 "Payment Schedule"
         EnableTotalPay: Boolean;
         NowShowActions: Boolean;
         Table81: Record 81;
+        gAccountBankNation: Text;
 }

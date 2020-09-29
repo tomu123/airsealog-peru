@@ -29,6 +29,7 @@
         "from": 51000,
         "to": 59999
     }],
+    "features": ["TranslationFile"],
     "contextSensitiveHelpUrl": "https://Peruvian-Localization-ULN.com/help/",
     "showMyCode": false,
     "runtime": "5.0"

@@ -333,6 +333,65 @@ codeunit 51020 "Payment Schedule Utility"
     end;
 
     //******************************** End Suscriptions *************************************
+    [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterValidateEvent', 'Account No.', true, true)]
+    procedure OnAfterValidateEventAccountNo(var Rec: Record "Gen. Journal Line")
+    var
+        lcRecCustomer: Record Customer;
+        lcRecVendor: Record Vendor;
+        lcRecEmployee: Record Employee;
+    begin
+        case Rec."Account Type" of
+            Rec."Account Type"::Vendor:
+                begin
+                    if lcRecVendor.get(rec."Account No.") then
+                        Rec."Check Name" := lcRecVendor.Name;
+                end;
+            Rec."Account Type"::Customer:
+                begin
+                    if lcRecCustomer.get(rec."Account No.") then
+                        Rec."Check Name" := lcRecCustomer.Name;
+                end;
+            Rec."Account Type"::Employee:
+                begin
+                    if lcRecEmployee.get(rec."Account No.") then
+                        Rec."Check Name" := lcRecEmployee.FullName();
+                end;
+        end;
+    end;
+
+    procedure fnShowCard(var Rec: Record "Payment Schedule")
+    var
+        Vend: Record Vendor;
+        Cust: Record Customer;
+        Emplo: Record Employee;
+    begin
+        CASE Rec."Type Source" OF
+            Rec."Type Source"::"Employee Entries":
+                BEGIN
+                    Emplo."No." := Rec."VAT Registration No.";
+                    PAGE.RUN(PAGE::"Employee Card", Emplo);
+                END;
+            Rec."Type Source"::"Customer Entries":
+                BEGIN
+                    Cust."No." := Rec."VAT Registration No.";
+                    PAGE.RUN(PAGE::"Customer Card", Cust);
+                END;
+            Rec."Type Source"::"Vendor Entries":
+                BEGIN
+                    Vend."No." := Rec."VAT Registration No.";
+                    PAGE.RUN(PAGE::"Vendor Card", Vend);
+                END;
+        END;
+
+    end;
+
+    procedure fnNavigate(var Rec: Record "Payment Schedule")
+    var
+        Navigate: Page Navigate;
+    begin
+        Navigate.SetDoc(Rec."Posting Date", Rec."Document No.");
+        Navigate.RUN;
+    end;
 
     var
         Error001: Label 'El campo de correo electronico debe cumplir con el formato.';

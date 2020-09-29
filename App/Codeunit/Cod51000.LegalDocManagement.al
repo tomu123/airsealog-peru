@@ -1,7 +1,7 @@
 codeunit 51000 "Legal Document Management"
 {
     var
-        Codeunit12: Codeunit 90;
+        /*Codeunit12: Codeunit 90;
         Page256: Page 39;
         CancellingOnly: Boolean;
         IsOutFlowLegelDocument: Boolean;
@@ -24,7 +24,7 @@ codeunit 51000 "Legal Document Management"
 
         CancelPostedPurchCrMemoQst: Label 'The posted purchase credit memo will be canceled, and a purchase invoice will be created and posted, which reverses the posted purchase credit memo. Do you want to continue?';
 
-        OpenPostedPurchInvQst: Label 'The invoice was successfully created. Do you want to open the posted invoice?';
+        OpenPostedPurchInvQst: Label 'The invoice was successfully created. Do you want to open the posted invoice?';*/
         ErrorVatRegistrationNo: Label 'The length of the document does not meet the required length and format.';
 
     trigger OnRun()

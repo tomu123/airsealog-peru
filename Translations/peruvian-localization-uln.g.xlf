@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" target-language="en-US" original="peruvian-localization-uln">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="Peruvian-Localization-ULN">
     <body>
       <group id="body">
         <trans-unit id="Table 3008140192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1570,52 +1570,52 @@
         </trans-unit>
         <trans-unit id="Table 897583593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Schedule</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Cronograma de pagos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Movimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Entry No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 617267791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Registration No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="N° RUC/DNI"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field VAT Registration No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 1527563463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>External Document No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Documento Externo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field External Document No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 358029708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Receipt Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha recepción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Receipt Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 4085727052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Due Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Vencimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Due Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3212203982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delay Days</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Diferencia en días"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Delay Days - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Currency Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 688027766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount LCY</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe (DL)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Amount LCY - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 2160957034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1625,152 +1625,152 @@
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 1634172321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Preferred Bank Account Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Banco Preferido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Preferred Bank Account Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Estado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Status - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 2145969380 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Calculate Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de corte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Calculate Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Document No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 4248640148 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bank Account No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Cuenta Bancaria"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Bank Account No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 649368511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reference Bank</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Banco Ref."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Reference Bank Acc. No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 250955764 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No. Post</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Documento Registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Document No. Post - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3627141058 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Entry No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Mov. Origen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Source Entry No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 1604373863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type Source</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de Origen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Type Source - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 1915851633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Group</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Grupo Registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Posting Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 2008024249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Procesamiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Process Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3724343034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Payment Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 966740350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Terms Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Término de pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Payment Terms Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3966536939 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vend./Cust. Account No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Empleado/Proveedor N°"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Vend./Cust. Account No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Emisión"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Document Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 2182977751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process Date 2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Procesamiento 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Process Date 2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 2118104395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Business Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Nombre/Razón Social"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Business Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 1077555671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Original Amount</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Original"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Original Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 1896974463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Service Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Service Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 2808907485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description Service</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Descripción de servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Description Service - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 1419448224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>% Detraction</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="% Detracción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field % Detraction - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3156524383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Operation Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de Operación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Operation Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3291616481 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description OP.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Descripción de operación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Description OP. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assigned User ID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Id. Usuario Asignado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field User ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3702116889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Code ULN</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Origen ULN"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Setup Source Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 125214089 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source User Id.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Id. Usuario Origen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Source User Id. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 3855271124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Method Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Forma de pago"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Payment Method Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Field 2912153426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Is Payment Check</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Pago con cheque"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Schedule - Field Is Payment Check - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 897583593 - Method 3827180406 - NamedType 4140651540" size-unit="char" translate="yes" xml:space="preserve">
@@ -1798,6 +1798,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Cronograma de Pagos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 897583593 - Control 4294075981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cód. Cuenta Banco de la Nación</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Cuenta Banco de la Nación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Control gAccountBankNation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 897583593 - Action 289712091 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
           <note from="Developer" annotates="general" priority="2">ESM="Procesar"</note>
@@ -1805,7 +1810,7 @@
         </trans-unit>
         <trans-unit id="Page 897583593 - Action 3356747371 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prepayment vendors</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Proponer pago Proveedores"</note>
+          <note from="Developer" annotates="general" priority="2">ESM="Proponer Pagos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Action SuggestVendorPayments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 897583593 - Action 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1813,10 +1818,40 @@
           <note from="Developer" annotates="general" priority="2">ESM="Procesar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Action Process - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 897583593 - Action 2816353965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reversal Process</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Revertir Proceso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Action ReversalProcess - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 897583593 - Action 4125097576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ficha</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ficha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Action Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 897583593 - Action 3538210097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Navegar</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Navegar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Action Navigate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 897583593 - Action 716991321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Actions</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Acciones"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Action Actions2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 897583593 - Action 1508444907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete entries</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Eliminar mov."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Action DeleteModify - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 897583593 - Action 2691385319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modify recipients</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Actualizar BancosNo definido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Action CallModifyRecipientsBankAccount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 897583593 - Action 3497028712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Banks</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Actualizar bancos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Action UpdateBanks - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 897583593 - Action 3497028712 - Method 1377591017 - NamedType 483380861" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Desea actualizar el banco preferido para las lineas seleccionadas?</source>
@@ -1832,6 +1867,11 @@
           <source>¿Desea enviar %1 registro(s) a "Procesar" para Pago?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Method fnProcessAction - NamedType lcText0002</note>
+        </trans-unit>
+        <trans-unit id="Page 897583593 - Method 699640103 - NamedType 3502954923" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Existen lineas del cronograma de pago con N° Banco Ref vacio, estas lineas no pueden ser procesadas.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Schedule - Method fnProcessAction - NamedType lcText0003</note>
         </trans-unit>
         <trans-unit id="Table 992531903 - Field 2660538195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No. 2</source>
@@ -2733,71 +2773,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table PS Vendor Document Buffer - Field Status - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 1554664300" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The posted sales invoice will be canceled, and a new version of the sales invoice will be created so that you can make the correction.\ \Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType CorrectPostedInvoiceQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 3759751467" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Canceling the invoice failed because of the following Error: \\%1\\A credit memo is posted. Do you want to open the posted credit memo?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType PostingCreditMemoFailedOpenPostedCMQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 3174646068" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Canceling the invoice failed because of the following Error: \\%1\\A credit memo is created but not posted. Do you want to open the credit memo?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType PostingCreditMemoFailedOpenCMQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 2071915759" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Canceling the invoice failed because of the following Error: \\%1.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType CreatingCreditMemoFailedNothingCreatedErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 3281052964" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You cannot correct or cancel this type of document.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType WrongDocumentTypeForCopyDocumentErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 2184442260" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The posted sales invoice will be canceled, and a sales credit memo will be created and posted, which reverses the posted sales invoice.\ \Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType CancelPostedSalesInvoiceQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 275685848" size-unit="char" translate="yes" xml:space="preserve">
-          <source>A credit memo was successfully created. Do you want to open the posted credit memo?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType OpenPostedSalesCreditMemoQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 2109152096" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The posted purchase invoice will be canceled, and a purchase credit memo will be created and posted, which reverses the posted purchase invoice.\ \Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType CancelPostedPurchInvoiceQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 1077843724" size-unit="char" translate="yes" xml:space="preserve">
-          <source>A credit memo was successfully created. Do you want to open the posted credit memo?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType OpenPostedPurchCreditMemoQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 804794406" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The posted sales credit memo will be canceled, and a sales invoice will be created and posted, which reverses the posted sales credit memo. Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType CancelPostedSalesCrMemoQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 1002983078" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The invoice was successfully created. Do you want to open the posted invoice?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType OpenPostedSalesInvQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 3672174930" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The posted purchase credit memo will be canceled, and a purchase invoice will be created and posted, which reverses the posted purchase credit memo. Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType CancelPostedPurchCrMemoQst</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 186425721 - NamedType 707897298" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The invoice was successfully created. Do you want to open the posted invoice?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Legal Document Management - NamedType OpenPostedPurchInvQst</note>
-        </trans-unit>
         <trans-unit id="Codeunit 186425721 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve">
           <source>The length of the document does not meet the required length and format.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2945,18 +2920,33 @@
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 3872185934 - NamedType 2338463752" size-unit="char" translate="yes" xml:space="preserve">
           <source>There are lines with a limited withholding amount or with a marked withholding check.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Existen lineas que no superan el importe limite o la retención ya fué calculada."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckCalculate - NamedType ErrorRetention</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 3872185934 - NamedType 1853498531" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Does not have lines marked for retention.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No tiene ninguna linea marcada para retención."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method CheckCalculate - NamedType EmptyRetentionLinesMark</note>
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 1316510755 - NamedType 369828050" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to download the following file?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method PostFileToControlFileRecord - NamedType ConfirmDownload</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 3140856375 - NamedType 3907543976" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line %1 has the retention check marked, please calculate withholding for the line.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="La linea %1 tiene marcado el check de retención, favor de calcular retención para la linea."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method OnBeforeCode - NamedType EmptyLineForRetention</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1991812473 - Method 290746390 - NamedType 1106567674" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No %1 is detraction.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El documento N° %1 tiene detracción."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method ValidateRetention - NamedType ErrorDocumentDetraction</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1991812473 - Method 3503533304 - NamedType 1106567674" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No %1 is detraction.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="El documento N° %1 tiene detracción."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Retention Management - Method ValidateStatusVendorAndDocumentNoForRetention - NamedType ErrorDocumentDetraction</note>
         </trans-unit>
         <trans-unit id="Codeunit 1991812473 - NamedType 579227027" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enter Start Date and End Date to continue.</source>
@@ -6978,16 +6968,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page SUNAT Vendor Register List - Action Upload Good Contributor - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 272528996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Retention RH Report</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Retention RH Report - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 272528996 - Control 4105281732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Parameter</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Retention RH Report - Control GroupName - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Report 306568866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Record</source>
           <note from="Developer" annotates="general" priority="2">ESM="Registro de compras"</note>
@@ -7037,6 +7017,16 @@
           <source>Posting date undefined.</source>
           <note from="Developer" annotates="general" priority="2">ESM="Fecha de tipo de cambio no definido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AER Update Curr. Exch. Rate - Method OnPostReport - NamedType UnExistsDate</note>
+        </trans-unit>
+        <trans-unit id="Report 272528996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Retention RH Report</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Retention RH Report - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 272528996 - Control 4105281732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parameter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Retention RH Report - Control GroupName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2230568679 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General Ledger Report</source>
@@ -7180,7 +7170,7 @@
         </trans-unit>
         <trans-unit id="Report 2509445696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generate Payment Schedule</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Generar Pagos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Generate Payment Schedule - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2509445696 - Control 4105281732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -7888,6 +7878,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup Payment Journal - Control IsManual - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2990270960 - Control 4294075981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Cód. Cuenta Banco de la Nación</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Cuenta Banco de la Nación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup Payment Journal - Control gAccountBankNation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2990270960 - Action 160553826 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
           <source>Telecredit Vendor &amp; </source>
           <note from="Developer" annotates="general" priority="2">ESM="Telecrédito Prov. &amp; Haberes"</note>
@@ -8060,42 +8055,42 @@
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 2614479299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Detraction</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Detracción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Detraction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 903500139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Detraction</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Detracción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Sales Detraction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 3796322276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Operation Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de Operación"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Operation Type Detrac - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 4145097476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Service Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de Servicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Service Type Detrac - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 2132268135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Payment Method Detrac</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Forma de Pago Detracción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Payment Method Code Detrac - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 4149145576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>% Detraction</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="% Detracción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Sales % Detraction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 1786891467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Amount Detraction</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Detracción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Sales Amt Detraction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 1160757562 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Amount Detraction (LCY)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Detracción ($)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Sales Amt Detraction (LCY) - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 4068444749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
@@ -8392,16 +8387,6 @@
           <source>Vendor Ledger Entry No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - Control VendLedgEntryNo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3911728218 - Action 3076061736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3254215531">
-          <source>&amp;Unapply Unique</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - Action UnapplyUnique - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3911728218 - Action 3076061736 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3254215531">
-          <source>Unselect unique one or more ledger entries that you want to unapply this record.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - Action UnapplyUnique - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3911728218 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3254215531">
           <source>The entries were successfully unapplied.</source>
@@ -9858,6 +9843,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Liq. Fec. Emisión Ref."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Purchase Header - Field Applies-to Document Date Ref. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4014451445 - Field 1296262074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>MyField</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Purchase Header - Field MyField - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4014451445 - Field 3702116889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Source Code ULN</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10013,6 +10003,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Forma de envío"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Purchase Header - Field Shipping Method - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4014451445 - Field 3107093495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Exclude Validation</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Excluir validación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Purchase Header - Field Exclude Validation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4014451445 - Field 2085426436 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Purchase Request</source>
           <note from="Developer" annotates="general" priority="2">ESM="Compra genérica"</note>
@@ -10075,12 +10070,12 @@
         </trans-unit>
         <trans-unit id="TableExtension 2070577398 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2743298303">
           <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Employee Posting Group - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2070577398 - Field 3355221553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2743298303">
           <source>Currency Exch. Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo Cambio Ajuste"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Employee Posting Group - Field Currency Exch. Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2070577398 - Field 3355221553 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2743298303">
@@ -10090,7 +10085,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 2070577398 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2743298303">
           <source>Currency Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Cód. Divisa"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Employee Posting Group - Field Currency Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2070577398 - Field 538972439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2743298303">
@@ -10407,6 +10402,16 @@
           <source>Reference to apply No.</source>
           <note from="Developer" annotates="general" priority="2">ESM="N° de aplicación referencia retención"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Gen. Journal Line - Field Reference to apply No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3074488742 - Field 3005722376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Source Entry No. apply to ret.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Linea Origen retención en diario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Gen. Journal Line - Field Source Entry No. apply to ret. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3074488742 - Field 1135837450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Internal Control Bool</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Gen. Journal Line - Field Internal Control Bool - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3074488742 - Field 2612802121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Importation No.</source>

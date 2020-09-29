@@ -401,6 +401,24 @@ codeunit 51008 "Setup Localization"
             until DimSetEntry.Next() = 0;
     end;
 
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnPostEmplOnAfterCopyCVLedgEntryBuf', '', false, false)]
+    // local procedure SetOnPostEmplOnAfterCopyCVLedgEntryBuf(var CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer"; GenJournalLine: Record "Gen. Journal Line")
+    // begin
+    //     if GenJournalLine."Currency Code" <> '' then begin
+    //         GenJournalLine.TestField("Currency Factor");
+    //         CVLedgerEntryBuffer."Adjusted Currency Factor" := GenJournalLine."Currency Factor"
+    //     end else
+    //         CVLedgerEntryBuffer."Adjusted Currency Factor" := 1;
+    //     CVLedgerEntryBuffer."Original Currency Factor" := CVLedgerEntryBuffer."Adjusted Currency Factor";
+    // end;
+
+    [EventSubscriber(ObjectType::Table, Database::"CV Ledger Entry Buffer", 'OnAfterCopyFromEmplLedgerEntry', '', false, false)]
+    local procedure SetOnAfterCopyFromEmplLedgerEntry(var CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer"; EmployeeLedgerEntry: Record "Employee Ledger Entry")
+    begin
+        CVLedgerEntryBuffer."Adjusted Currency Factor" := EmployeeLedgerEntry."Adjusted Currency Factor";
+        CVLedgerEntryBuffer."Original Currency Factor" := EmployeeLedgerEntry."Original Currency Factor";
+    end;
+
     procedure GetDimensionNo(DimensionCode: Code[20]; DimValueCode: Code[20]): Integer
     var
         DimValue: Record "Dimension Value";
@@ -607,4 +625,3 @@ codeunit 51008 "Setup Localization"
         GLSetupShortcutDimCode: array[10] of code[20];
         Notification: Notification;
 }
-

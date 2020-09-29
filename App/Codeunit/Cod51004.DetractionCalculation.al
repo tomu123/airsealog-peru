@@ -852,7 +852,7 @@ codeunit 51004 "DetrAction Calculation"
         GLEntry: Record "G/L Entry";
         TransactionNo: integer;
     begin
-        if PurchaseHeader."Purch. Detraction" then begin
+        if (PurchaseHeader."Purch. Detraction") and (not PurchaseHeader."Exclude Validation") then begin
             PurchaseHeader.TestField("Applies-to Doc. No.", '');
             PurchaseHeader.TestField("Applies-to Entry No.", 0);
         end;

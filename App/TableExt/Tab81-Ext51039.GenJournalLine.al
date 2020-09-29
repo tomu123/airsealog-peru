@@ -2,7 +2,7 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
 {
     fields
     {
-        //Fields ids permission 51004..51005,51030..51039,,51045..51049
+        //Fields ids permission 51004..51005,51030..51039,,51045..51049,51050..51060
         //Legal Document Begin
         field(51000; "Legal Document"; Code[10])
         {
@@ -241,19 +241,19 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
             Caption = 'Applied Retention', Comment = 'ESM="Aplicar retención"';
             trigger OnValidate()
             begin
-                if not "Applied Retention" then
+                if not "Applied Retention" then begin
+                    DeleteLineForRetention();
+                    "Retention Amount" := 0;
+                    "Retention Amount LCY" := 0;
+                    "Retention Applies-to Entry No." := 0;
+                    "Apply Retention To Line" := false;
                     exit;
+                end;
                 TestField("Account Type", "Account Type"::Vendor);
                 TestField("Posting Date");
                 TestField("Applies-to Entry No.");
                 TestField("Applies-to Doc. No.");
                 RetentionMgt.ValidateRetention("Applied Retention", "Account No.", "Applies-to Doc. No.", "Posting Date");
-                if not "Applied Retention" then begin
-                    "Retention Amount" := 0;
-                    "Retention Amount LCY" := 0;
-                    "Retention Applies-to Entry No." := 0;
-                    "Apply Retention To Line" := false;
-                end;
             end;
         }
         field(51014; "Apply Retention To Line"; Boolean)
@@ -275,6 +275,15 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
             Caption = 'Reference to apply No.', Comment = 'ESM="N° de aplicación referencia retención"';
+        }
+        field(51050; "Source Entry No. apply to ret."; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Source Entry No. apply to ret.', Comment = 'ESM="N° Linea Origen retención en diario"';
+        }
+        field(51051; "Internal Control Bool"; Boolean)
+        {
+            DataClassification = ToBeClassified;
         }
         modify(Amount)
         {
@@ -329,5 +338,29 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
         if ("Account Type" = "Account Type"::Vendor) and ("Account No." <> '') and
             ("Posting Date" <> 0D) and ("Applies-to Doc. No." <> '') and ("Amount (LCY)" <> 0) then
             RetentionMgt.SetAutomateRetentionCheck("Applied Retention", "Account No.", "Posting Date", "Applies-to Doc. No.", "Amount (LCY)");
+    end;
+
+    local procedure DeleteLineForRetention()
+    var
+        DelGenJnlLine: Record "Gen. Journal Line";
+        UpdateGenJnlLine: Record "Gen. Journal Line";
+    begin
+        if IsEmpty then
+            exit;
+        DelGenJnlLine.Reset();
+        DelGenJnlLine.SetRange("Journal Template Name", "Journal Template Name");
+        DelGenJnlLine.SetRange("Journal Batch Name", "Journal Batch Name");
+        DelGenJnlLine.SetRange("Source Entry No. apply to ret.", "Line No.");
+        if DelGenJnlLine.FindFirst() then begin
+            UpdateGenJnlLine.Reset();
+            UpdateGenJnlLine.SetRange("Journal Template Name", "Journal Template Name");
+            UpdateGenJnlLine.SetRange("Journal Batch Name", "Journal Batch Name");
+            UpdateGenJnlLine.SetRange("Account Type", "Account Type"::"Bank Account");
+            if UpdateGenJnlLine.FindFirst() then begin
+                UpdateGenJnlLine.Validate("Amount (LCY)", UpdateGenJnlLine."Amount (LCY)" + "Retention Amount LCY");
+                UpdateGenJnlLine.Modify();
+            end;
+            DelGenJnlLine.Delete();
+        end;
     end;
 }

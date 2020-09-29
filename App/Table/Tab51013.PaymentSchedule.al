@@ -1,73 +1,65 @@
 table 51013 "Payment Schedule"
 {
     DataClassification = ToBeClassified;
-    Caption = 'Payment Schedule';
+    Caption = 'Payment Schedule', Comment = 'ESM="Cronograma de pagos"';
 
     fields
     {
         field(51001; "Entry No."; Integer)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Entry No.';
+            Caption = 'Entry No.', Comment = 'ESM="No. Movimiento"';
         }
         field(51002; "VAT Registration No."; code[12])
         {
             DataClassification = ToBeClassified;
-            Caption = 'VAT Registration No.';
+            Caption = 'VAT Registration No.', Comment = 'ESM="N° RUC/DNI"';
         }
         field(51003; "External Document No."; code[35])
         {
             DataClassification = ToBeClassified;
-            Caption = 'External Document No.';
+            Caption = 'External Document No.', Comment = 'ESM="N° Documento Externo"';
         }
         field(51004; "Receipt Date"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Receipt Date';
+            Caption = 'Receipt Date', Comment = 'ESM="Fecha recepción"';
         }
 
         field(51005; "Due Date"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Due Date';
+            Caption = 'Due Date', Comment = 'ESM="Fecha Vencimiento"';
         }
         field(51006; "Delay Days"; Integer)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Delay Days';
+            Caption = 'Delay Days', Comment = 'ESM="Diferencia en días"';
         }
         field(51007; "Currency Code"; Code[10])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Currency Code';
+            Caption = 'Currency Code', Comment = 'ESM="Cód. Divisa"';
         }
         field(51008; Amount; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Amount';
+            Caption = 'Amount', Comment = 'ESM="Importe"';
         }
         field(51009; "Amount LCY"; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Amount LCY';
+            Caption = 'Amount LCY', Comment = 'ESM="Importe (DL)"';
         }
         field(51010; "Total a Pagar"; Decimal)
         {
             DataClassification = ToBeClassified;
             Caption = 'Total a Pagar';
-            trigger OnValidate();
-            begin
-                if ABS("Total a Pagar") > ABS(Amount) THEN
-                    Error('El Monto a Pagar no puede exceder al "Importe", ¡Revisar!');
-
-                if "Total a Pagar" > 0 THEN
-                    "Total a Pagar" := ("Total a Pagar" * -1);
-            end;
         }
         field(51011; "Preferred Bank Account Code"; code[45])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Preferred Bank Account Code';
+            Caption = 'Preferred Bank Account Code', Comment = 'ESM="Cód. Banco Preferido"';
             trigger OnValidate();
             begin
                 CASE "Type Source" OF
@@ -119,34 +111,34 @@ table 51013 "Payment Schedule"
         field(51012; "Status"; Option)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Status';
+            Caption = 'Status', Comment = 'ESM="Estado"';
             OptionMembers = Pendiente,Procesado,"Por Pagar",Pagado;
 
         }
         field(51013; "Calculate Date"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Calculate Date';
+            Caption = 'Calculate Date', Comment = 'ESM="Fecha de corte"';
         }
         field(51014; "Document No."; Code[90])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Document No.';
+            Caption = 'Document No.', Comment = 'ESM="N° Documento"';
         }
         field(51015; "Posting Date"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Posting Date';
+            Caption = 'Posting Date', Comment = 'ESM="Fecha Registro"';
         }
         field(51016; "Bank Account No."; Code[80])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Bank Account No.';
+            Caption = 'Bank Account No.', Comment = 'ESM="N° Cuenta Bancaria"';
         }
         field(51017; "Reference Bank Acc. No."; Code[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Reference Bank';
+            Caption = 'Reference Bank', Comment = 'ESM="N° Banco Ref."';
             trigger OnValidate()
             begin
                 CheckPermissionReferenceBankNo();
@@ -178,122 +170,122 @@ table 51013 "Payment Schedule"
         field(51018; "Document No. Post"; Code[35])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Document No. Post';
+            Caption = 'Document No. Post', Comment = 'ESM="N° Documento Registro"';
         }
         field(51019; "Source Entry No."; Integer)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Source Entry No.';
+            Caption = 'Source Entry No.', Comment = 'ESM="N° Mov. Origen"';
         }
         field(51020; "Type Source"; Option)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Type Source';
+            Caption = 'Type Source', Comment = 'ESM="Tipo de Origen"';
             OptionMembers = "Vendor Entries","Customer Entries","Employee Entries";
         }
         field(51021; "Posting Group"; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Posting Group';
+            Caption = 'Posting Group', Comment = 'ESM="Grupo Registro"';
         }
         field(51022; "Process Date"; DateTime)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Process Date';
+            Caption = 'Process Date', Comment = 'ESM="Fecha Procesamiento"';
         }
         field(51023; "Payment Date"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Payment Date';
+            Caption = 'Payment Date', Comment = 'ESM="Fecha Pago"';
         }
         field(51024; "Payment Terms Code"; Code[10])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Payment Terms Code';
+            Caption = 'Payment Terms Code', Comment = 'ESM="Cód. Término de pago"';
             TableRelation = "Payment Terms";
         }
         field(51025; "Vend./Cust. Account No."; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Vend./Cust. Account No.';
+            Caption = 'Vend./Cust. Account No.', Comment = 'ESM="Empleado/Proveedor N°"';
         }
         field(51026; "Document Date"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Document Date';
+            Caption = 'Document Date', Comment = 'ESM="Fecha Emisión"';
         }
         field(51027; "Process Date 2"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Process Date 2';
+            Caption = 'Process Date 2', Comment = 'ESM="Fecha Procesamiento 2"';
         }
         field(51028; "Business Name"; Text[250])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Business Name';
+            Caption = 'Business Name', Comment = 'ESM="Nombre/Razón Social"';
         }
         field(51029; "Description"; Text[250])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Description';
+            Caption = 'Description', Comment = 'ESM="Descripción"';
         }
         field(51030; "Original Amount"; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Original Amount';
+            Caption = 'Original Amount', Comment = 'ESM="Importe Original"';
         }
         field(51031; "Service Type"; Code[10])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Service Type';
+            Caption = 'Service Type', Comment = 'ESM="Tipo de servicio"';
         }
         field(51032; "Description Service"; Text[90])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Description Service';
+            Caption = 'Description Service', Comment = 'ESM="Descripción de servicio"';
         }
         field(51033; "% Detraction"; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = '% Detraction';
+            Caption = '% Detraction', Comment = 'ESM="% Detracción"';
         }
         field(51034; "Operation Type"; Code[10])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Operation Type';
+            Caption = 'Operation Type', Comment = 'ESM="Tipo de Operación"';
         }
         field(51035; "Description OP."; Text[90])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Description OP.';
+            Caption = 'Description OP.', Comment = 'ESM="Descripción de operación"';
         }
         field(51036; "User ID"; Code[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Assigned User ID';
+            Caption = 'Assigned User ID', Comment = 'ESM="Id. Usuario Asignado"';
             TableRelation = User;
         }
         field(51037; "Setup Source Code"; Enum "ST Source Code Type")
         {
             DataClassification = ToBeClassified;
-            Caption = 'Source Code ULN';
+            Caption = 'Source Code ULN', Comment = 'ESM="Cód. Origen ULN"';
         }
         field(51038; "Source User Id."; Code[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Source User Id.';
+            Caption = 'Source User Id.', Comment = 'ESM="Id. Usuario Origen"';
 
         }
         field(51039; "Payment Method Code"; Code[10])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Payment Method Code';
+            Caption = 'Payment Method Code', Comment = 'ESM="Cód. Forma de pago"';
             TableRelation = "Payment Method";
         }
         field(51040; "Is Payment Check"; Boolean)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Is Payment Check';
+            Caption = 'Is Payment Check', Comment = 'ESM="Pago con cheque"';
             //TableRelation = "Payment Method";
         }
     }
@@ -306,14 +298,29 @@ table 51013 "Payment Schedule"
     }
 
     var
+        SLSetup: Record "Setup Localization";
+        Currency: Record Currency;
         CustBankAccount: Record "Customer Bank Account";
         VendBankAccount: Record "Vendor Bank Account";
         EmplBankAccount: Record "ST Employee Bank Account";
+        RetentionMgt: Codeunit "Retention Management";
     //Msg: TextConst ENU = 'Hello from my method';
 
     trigger OnInsert();
     begin
 
+    end;
+
+    local procedure GetCurrency();
+    begin
+        if "Currency Code" = '' then begin
+            CLEAR(Currency);
+            Currency.InitRoundingPrecision
+        end else
+            if "Currency Code" <> Currency.Code then begin
+                Currency.Get("Currency Code");
+                Currency.TestField("Amount Rounding Precision");
+            end;
     end;
 
     local procedure CheckPermissionReferenceBankNo()
@@ -761,9 +768,77 @@ table 51013 "Payment Schedule"
 
         end;
 
+        AutoMarkEntriesForRetention(pJournalTemplateName, pJournalBatchName);
 
         if lcLineNo <> 0 THEN
             lcCuGenJnlManagement.TemplateSelectionFromBatch(lcRecGenJnlBatch);
+    end;
+
+    local procedure AutoMarkEntriesForRetention(GenJnlTemplateName: Code[10]; GenJnlBatchName: Code[10])
+    var
+        GenJnlLineMarkRet: Record "Gen. Journal Line";
+        GenJnlLineTemp: Record "Gen. Journal Line" temporary;
+    begin
+        GenJnlLineMarkRet.Reset();
+        GenJnlLineMarkRet.SetRange("Journal Template Name", GenJnlTemplateName);
+        GenJnlLineMarkRet.SetRange("Journal Batch Name", GenJnlBatchName);
+        GenJnlLineMarkRet.SetRange("Account Type", GenJnlLineMarkRet."Account Type"::Vendor);
+        if GenJnlLineMarkRet.FindFirst() then
+            repeat
+                GenJnlLineMarkRet."Internal Control Bool" :=
+                    RetentionMgt.ValidateStatusVendorAndDocumentNoForRetention(GenJnlLineMarkRet."Account No.",
+                                                                                GenJnlLineMarkRet."Applies-to Doc. No.",
+                                                                                GenJnlLineMarkRet."Posting Date");
+                GenJnlLineMarkRet.Modify();
+            until GenJnlLineMarkRet.Next() = 0;
+
+        GenJnlLineMarkRet.Reset();
+        GenJnlLineMarkRet.SetRange("Journal Template Name", GenJnlTemplateName);
+        GenJnlLineMarkRet.SetRange("Journal Batch Name", GenJnlBatchName);
+        GenJnlLineMarkRet.SetRange("Internal Control Bool", true);
+        if GenJnlLineMarkRet.FindFirst() then
+            repeat
+                GenJnlLineTemp.Reset();
+                GenJnlLineTemp.SetRange("Journal Template Name", GenJnlTemplateName);
+                GenJnlLineTemp.SetRange("Journal Batch Name", GenJnlBatchName);
+                GenJnlLineTemp.SetRange("Account Type", GenJnlLineMarkRet."Account Type");
+                GenJnlLineTemp.SetRange("Account No.", GenJnlLineMarkRet."Account No.");
+                if GenJnlLineTemp.FindFirst() then begin
+                    GenJnlLineTemp.Validate("Amount (LCY)", GenJnlLineTemp."Amount (LCY)" + GenJnlLineMarkRet."Amount (LCY)");
+                    GenJnlLineTemp.Modify();
+                end else begin
+                    GenJnlLineTemp.Init();
+                    GenJnlLineTemp."Journal Template Name" := GenJnlLineMarkRet."Journal Template Name";
+                    GenJnlLineTemp."Journal Batch Name" := GenJnlLineMarkRet."Journal Batch Name";
+                    GenJnlLineTemp."Account Type" := GenJnlLineMarkRet."Account Type";
+                    GenJnlLineTemp."Account No." := GenJnlLineMarkRet."Account No.";
+                    GenJnlLineTemp."Line No." := GenJnlLineMarkRet."Line No.";
+                    GenJnlLineTemp.Insert();
+                    GenJnlLineTemp.Validate("Amount (LCY)", GenJnlLineMarkRet."Amount (LCY)");
+                    GenJnlLineTemp.Modify();
+                end;
+            until GenJnlLineMarkRet.Next() = 0;
+
+        GenJnlLineTemp.Reset();
+        if GenJnlLineTemp.FindFirst() then
+            repeat
+                if not RetentionMgt.ValidateStatusForAmountRetention(GenJnlLineTemp."Amount (LCY)") then
+                    GenJnlLineTemp.Delete();
+            until GenJnlLineTemp.Next() = 0;
+
+        GenJnlLineTemp.Reset();
+        if GenJnlLineTemp.FindFirst() then
+            repeat
+                GenJnlLineMarkRet.Reset();
+                GenJnlLineMarkRet.SetRange("Journal Template Name", GenJnlLineTemp."Journal Template Name");
+                GenJnlLineMarkRet.SetRange("Journal Batch Name", GenJnlLineTemp."Journal Batch Name");
+                GenJnlLineMarkRet.SetRange("Account Type", GenJnlLineTemp."Account Type");
+                GenJnlLineMarkRet.SetRange("Account No.", GenJnlLineTemp."Account No.");
+                GenJnlLineMarkRet.ModifyAll("Applied Retention", true);
+            until GenJnlLineTemp.Next() = 0;
+
+        GenJnlLineTemp.Reset();
+        GenJnlLineTemp.DeleteAll();
     end;
 
     local procedure CheckIfExistsGenJnlLine(JournalTemplateName: Code[10]; JournalBatchName: Code[10]): Boolean
@@ -965,7 +1040,6 @@ table 51013 "Payment Schedule"
         VendLedgEntry: Record "Vendor Ledger Entry";
         CustLedgerEntry: Record "Cust. Ledger Entry";
         CustLEdgerEntry2: Record "Cust. Ledger Entry";
-
         EmplLedgerEntry: Record "Employee Ledger Entry";
         EmplLedgerEntry2: Record "Employee Ledger Entry";
         ApplyVendorEntries: Page "Apply Vendor Entries";

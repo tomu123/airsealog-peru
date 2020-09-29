@@ -1,6 +1,6 @@
 report 51011 "Generate Payment Schedule"
 {
-    Caption = 'Generate Payment Schedule';
+    Caption = 'Generate Payment Schedule', Comment = 'ESM="Generar Pagos"';
     ProcessingOnly = true;
 
     dataset
@@ -115,6 +115,9 @@ report 51011 "Generate Payment Schedule"
         ReturnCrMemo: Boolean;
 
     local procedure CreateLinesFromVendorLedgerEntries()
+    var
+        RetentionMgt: Codeunit "Retention Management";
+        IsInvoice: Boolean;
     begin
         if not ReturnCrMemo then begin
             if DueDate <> 0D then
@@ -154,6 +157,7 @@ report 51011 "Generate Payment Schedule"
                     PaymentSchedule2.SetRange("Source Entry No.", VendorLedgerEntry."Entry No.");
                     PaymentSchedule2.SetFilter(Status, '<>%1', PaymentSchedule2.Status::Pagado);
                     if not PaymentSchedule2.FindSet() then begin
+                        IsInvoice := false;
                         VendorLedgerEntry.CalcFields(VendorLedgerEntry.Amount);
                         VendorLedgerEntry.CalcFields(VendorLedgerEntry."Remaining Amount");
                         VendorLedgerEntry.CalcFields(VendorLedgerEntry."Remaining Amt. (LCY)");
@@ -179,6 +183,7 @@ report 51011 "Generate Payment Schedule"
                         if VendLedgEntry2.FindFirst() then begin
                             VendLedgEntry2.CalcFields(Amount);
                             PaymentSchedule."Original Amount" := VendLedgEntry2.Amount;
+                            IsInvoice := true;
                         end;
 
                         //---
@@ -236,6 +241,7 @@ report 51011 "Generate Payment Schedule"
                         end;
                         PaymentSchedule."User ID" := UserId;
                         PaymentSchedule."Source User Id." := VendorLedgerEntry."User ID";
+                        //RetentionMgt.SetAutomateRetentionCheck(PaymentSchedule.Retention, PaymentSchedule."VAT Registration No.", PaymentSchedule."Document Date", '', ABS(PaymentSchedule."Total a Pagar"));
                         PaymentSchedule.Insert();
                     end;
                 end;

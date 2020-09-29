@@ -29,12 +29,4 @@ pageextension 51050 "Setup Employee Posting Groups" extends "Employee Posting Gr
             }
         }
     }
-
-    actions
-    {
-        // Add changes to page actions here
-    }
-
-    var
-        myInt: Integer;
 }

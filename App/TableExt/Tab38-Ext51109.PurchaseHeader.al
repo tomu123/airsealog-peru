@@ -166,6 +166,10 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
                     FactorByApplicationPurchases("Manual Document Ref.");
             end;
         }
+        field(51036; MyField; Blob)
+        {
+            DataClassification = ToBeClassified;
+        }
 
         modify("Vendor Invoice No.")
         {
@@ -362,8 +366,9 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
         {
             trigger OnBeforeValidate()
             begin
-                if "Purch. Detraction" then
-                    TestField("Purch. Detraction", false);
+                if not HideValidation then
+                    if "Purch. Detraction" then
+                        TestField("Purch. Detraction", false);
                 if "Applies-to Doc. No." = '' then
                     "Applies-to Entry No." := 0;
             end;
@@ -515,6 +520,11 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
             TableRelation = "Master Data".Code WHERE("Type Table" = filter('COM-EXT-SHIPMET'));
             ValidateTableRelation = false;
         }
+        field(51074; "Exclude Validation"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Exclude Validation', Comment = 'ESM="Excluir validación"';
+        }
         //Import End
 
         //Request Purchase
@@ -550,6 +560,7 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
         LegalDocMgt: Codeunit "Legal Document Management";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         ImportCalculation: Codeunit "Importation Calculation";
+        HideValidation: Boolean;
 
     local procedure SetPostingSerieNo()
     begin
@@ -630,6 +641,11 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
                 exit;
             end;
         end;
+    end;
+
+    procedure SetHideValidation(pHideValidation: Boolean)
+    begin
+        HideValidation := pHideValidation;
     end;
 
 }

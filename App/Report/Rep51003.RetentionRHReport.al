@@ -5,7 +5,7 @@ report 51003 "Retention RH Report"
     Caption = 'Retention RH Report';
     PreviewMode = PrintLayout;
     DefaultLayout = RDLC;
-    RDLCLayout = './ReportsRDLC/RetentionRHReport.rdl';
+    RDLCLayout = './App/Report/RDLC/RetentionRHReport.rdl';
 
     dataset
     {

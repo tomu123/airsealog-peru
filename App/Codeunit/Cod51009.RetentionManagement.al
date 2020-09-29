@@ -143,7 +143,8 @@ codeunit 51009 "Retention Management"
 
     local procedure CheckCalculate(pGenJnlLiene: Record "Gen. Journal Line")
     var
-        ErrorRetention: Label 'There are lines with a limited withholding amount or with a marked withholding check.';
+        ErrorRetention: Label 'There are lines with a limited withholding amount or with a marked withholding check.', Comment = 'ESM="Existen lineas que no superan el importe limite o la retención ya fué calculada."';
+        EmptyRetentionLinesMark: Label 'Does not have lines marked for retention.', Comment = 'ESM="No tiene ninguna linea marcada para retención."';
     begin
         with GenJnlLine do begin
             Reset();
@@ -151,6 +152,10 @@ codeunit 51009 "Retention Management"
             SetRange("Document No.", pGenJnlLiene."Document No.");
             SetRange("Journal Template Name", pGenJnlLiene."Journal Template Name");
             SetRange("Journal Batch Name", pGenJnlLiene."Journal Batch Name");
+            SetRange("Applied Retention", true);
+            if Count = 0 then
+                Error(EmptyRetentionLinesMark);
+            SetRange("Applied Retention");
             SetFilter("Retention Amount", '<>%1', 0);
             if FindFirst() then
                 Error(ErrorRetention);
@@ -277,17 +282,17 @@ codeunit 51009 "Retention Management"
             SetCurrentKey("Document No.", "Account No.");
             SetRange("Journal Batch Name", pGenJnlLine."Journal Template Name");
             SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
-            SetFilter("Account Type", '%1', "Account Type"::"Bank Account");
+            SetFilter("Account Type", '<>%1', "Account Type"::"Bank Account");
             if IsEmpty then
                 SetRange("Account Type");
             SetFilter("Retention Amount", '<>%1', 0);
             if FindSet() then
                 repeat
-                    LineNo += 1;
+                    //LineNo += 1;
                     NewGenJnlLine.Init();
                     NewGenJnlLine."Journal Template Name" := "Journal Template Name";
                     NewGenJnlLine."Journal Batch Name" := "Journal Batch Name";
-                    NewGenJnlLine."Line No." := LineNo;
+                    NewGenJnlLine."Line No." := "Line No." + 100;
                     NewGenJnlLine."Document No." := "Document No.";
                     NewGenJnlLine."Posting Date" := "Posting Date";
                     NewGenJnlLine."Account Type" := "Account Type"::"G/L Account";
@@ -302,6 +307,7 @@ codeunit 51009 "Retention Management"
                     NewGenJnlLine."Setup Source Code" := pGenJnlLine."Setup Source Code";
                     NewGenJnlLine.Validate("Shortcut Dimension 1 Code", "Shortcut Dimension 1 Code");
                     NewGenJnlLine.Validate("Shortcut Dimension 2 Code", "Shortcut Dimension 2 Code");
+                    NewGenJnlLine."Source Entry No. apply to ret." := "Line No.";
                     if GenJnlBatch."Posting No. Series" <> '' then
                         NewGenJnlLine."Posting No. Series" := GenJnlBatch."Posting No. Series";
                     NewGenJnlLine.Validate(Amount, "Retention Amount LCY");
@@ -366,8 +372,7 @@ codeunit 51009 "Retention Management"
             if GenJnlBatch."Posting No. Series" <> '' then
                 NewGenJnlLine."Posting No. Series" := GenJnlBatch."Posting No. Series";
             NewGenJnlLine.Insert();
-            NewGenJnlLine.CheckIfPrivacyBlocked;
-
+            //NewGenJnlLine.CheckIfPrivacyBlocked;
         end;
     end;
 
@@ -428,6 +433,7 @@ codeunit 51009 "Retention Management"
                     NewGenJnlLine.Validate("Shortcut Dimension 1 Code", "Shortcut Dimension 1 Code");
                     NewGenJnlLine.Validate("Shortcut Dimension 2 Code", "Shortcut Dimension 2 Code");
                     NewGenJnlLine."Reference to apply No." := pGenJnlLine."Reference to apply No.";
+                    NewGenJnlLine."Source Entry No. apply to ret." := "Line No.";
                     if GenJnlBatch."Posting No. Series" <> '' then
                         NewGenJnlLine."Posting No. Series" := GenJnlBatch."Posting No. Series";
                     NewGenJnlLine.Validate(Amount, "Retention Amount LCY");
@@ -729,6 +735,29 @@ codeunit 51009 "Retention Management"
     //***  End PDT 626 ***
 
     //Integration proccess
+    //OnBeforeCode(var GenJnlLine: Record "Gen. Journal Line"; CheckLine: Boolean; var IsPosted: Boolean; var GLReg: Record "G/L Register")
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeCode', '', false, false)]
+    local procedure OnBeforeCode(var GenJnlLine: Record "Gen. Journal Line"; CheckLine: Boolean; var IsPosted: Boolean; var GLReg: Record "G/L Register")
+    var
+        GenJnlLineForCheck: Record "Gen. Journal Line";
+        GenJnlLineForCheck2: Record "Gen. Journal Line";
+        EmptyLineForRetention: Label 'Line %1 has the retention check marked, please calculate withholding for the line.', Comment = 'ESM="La linea %1 tiene marcado el check de retención, favor de calcular retención para la linea."';
+    begin
+        GenJnlLineForCheck.Reset();
+        GenJnlLineForCheck.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
+        GenJnlLineForCheck.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
+        GenJnlLineForCheck.SetRange("Applied Retention", true);
+        if GenJnlLineForCheck.FindFirst() then
+            repeat
+                GenJnlLineForCheck2.Reset();
+                GenJnlLineForCheck2.SetRange("Journal Template Name", GenJnlLineForCheck."Journal Template Name");
+                GenJnlLineForCheck2.SetRange("Journal Batch Name", GenJnlLineForCheck."Journal Batch Name");
+                GenJnlLineForCheck2.SetRange("Source Entry No. apply to ret.", GenJnlLineForCheck."Line No.");
+                if GenJnlLineForCheck2.IsEmpty then
+                    Error(EmptyLineForRetention, GenJnlLineForCheck."Line No.");
+            until GenJnlLineForCheck.Next() = 0;
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeInsertGLEntryBuffer', '', false, false)]
     local procedure CreateRetentionLedgerEntry(var TempGLEntryBuf: Record "G/L Entry" temporary; var GenJournalLine: Record "Gen. Journal Line"; var BalanceCheckAmount: Decimal; var BalanceCheckAmount2: Decimal; var BalanceCheckAddCurrAmount: Decimal; var BalanceCheckAddCurrAmount2: Decimal; var NextEntryNo: Integer)
     begin
@@ -917,6 +946,34 @@ codeunit 51009 "Retention Management"
                     Error(ErrorDocumentDetraction, PurchInvHeader."No.");
     end;
 
+    procedure ValidateStatusVendorAndDocumentNoForRetention(VendorNo: Code[20]; AppliedToDocNo: Code[20]; PostingDate: Date): Boolean
+    var
+        Vendor: Record Vendor;
+        PurchInvHeader: Record "Purch. Inv. Header";
+        ErrorDocumentDetraction: Label 'Document No %1 is detraction.', Comment = 'ESM="El documento N° %1 tiene detracción."';
+    begin
+        Vendor.Get(VendorNo);
+        if (Vendor."Good Contributor") and (PostingDate >= Vendor."Good Contributor Start Date") then
+            exit(false);
+        if (Vendor."Perception Agent") and (PostingDate >= Vendor."Perception Agent Start Date") then
+            exit(false);
+        if (Vendor."Retention Agent") and (PostingDate >= Vendor."Perception Agent Start Date") then
+            exit(false);
+        if AppliedToDocNo <> '' then
+            if PurchInvHeader.Get(AppliedToDocNo) then
+                if PurchInvHeader."Purch. Detraction" then
+                    exit(false);
+        exit(true);
+    end;
+
+    procedure ValidateStatusForAmountRetention(AmountLCY: Decimal): Boolean
+    begin
+        Setup.Get();
+        if AmountLCY >= Setup."Retention Limit Amount" then
+            exit(true);
+        exit(false);
+    end;
+
     procedure SetAutomateRetentionCheck(var RetentionStatus: Boolean; VendorNo: Code[20]; PostingDate: Date; AppliedToDocNo: Code[20]; AmountLCY: Decimal)
     var
         Vendor: Record Vendor;
@@ -937,6 +994,26 @@ codeunit 51009 "Retention Management"
                     RetentionStatus := false;
         if AmountLCY < Setup."Retention Limit Amount" then
             RetentionStatus := false;
+    end;
+
+    procedure SetAutomateRetentionForVendor(var RetentionStatus: Boolean; VendorNo: Code[20]; PostingDate: Date; AppliedToDocNo: Code[20])
+    var
+        Vendor: Record Vendor;
+        PurchInvHeader: Record "Purch. Inv. Header";
+    begin
+        RetentionStatus := true;
+        Setup.Get();
+        Vendor.Get(VendorNo);
+        if (Vendor."Good Contributor") and (PostingDate >= Vendor."Good Contributor Start Date") then
+            RetentionStatus := false;
+        if (Vendor."Perception Agent") and (PostingDate >= Vendor."Perception Agent Start Date") then
+            RetentionStatus := false;
+        if (Vendor."Retention Agent") and (PostingDate >= Vendor."Perception Agent Start Date") then
+            RetentionStatus := false;
+        if AppliedToDocNo <> '' then
+            if PurchInvHeader.Get(AppliedToDocNo) then
+                if PurchInvHeader."Purch. Detraction" then
+                    RetentionStatus := false;
     end;
 
     //--   
