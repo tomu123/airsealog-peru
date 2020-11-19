@@ -1,5 +1,6 @@
 codeunit 51001 "Accountant Book Management"
 {
+    Permissions = TableData "G/L Entry" = rim, tabledata "G/L Account" = rim;
     trigger OnRun()
     begin
 

@@ -164,6 +164,7 @@ codeunit 51029 "LD Correct Posted Documents"
         ReservStatus: Enum "Reservation Status";
         NoSerieMgt: Codeunit NoSeriesManagement;
         CreateReserveEntry: Codeunit "Create Reserv. Entry";
+        ReservationEntry: Record "Reservation Entry";
         NextDocumentNo: Code[20];
     begin
         SalesSetup.Get();
@@ -210,8 +211,17 @@ codeunit 51029 "LD Correct Posted Documents"
                     ValueEntry.SetRange("Item No.", SalesCrMemoLine."No.");
                     if ValueEntry.FindSet() then begin
                         if ItemLedgEntry.Get(ValueEntry."Item Ledger Entry No.") then begin
-                            CreateReserveEntry.CreateReservEntryFor(37, 2, SalesHeader."No.", '', 0, 0, Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), '', ItemLedgEntry."Lot No.");
-                            CreateReserveEntry.CreateEntry(ItemLedgEntry."Item No.", '', ItemLedgEntry."Location Code", '', WorkDate(), WorkDate(), 0, ReservStatus::Prospect);
+                            //CreateReserveEntry.CreateReservEntryFor(37, 2, SalesHeader."No.", '', 0, 0, Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), '', ItemLedgEntry."Lot No.");
+                            //CreateReserveEntry.CreateEntry(ItemLedgEntry."Item No.", '', ItemLedgEntry."Location Code", '', WorkDate(), WorkDate(), 0, ReservStatus::Prospect);
+                            ReservationEntry.Reset();
+                            ReservationEntry.SetRange("Source Type", 37);
+                            ReservationEntry.SetRange("Source Subtype", 2);
+                            ReservationEntry.SetRange("Source ID", ItemLedgEntry."Document No.");
+                            ReservationEntry.SetRange("Item No.", ItemLedgEntry."Item No.");
+                            if ReservationEntry.FindSet() then begin
+                                CreateReserveEntry.CreateReservEntryFor(37, 2, SalesHeader."No.", '', 0, 0, Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), Abs(ItemLedgEntry.Quantity), ReservationEntry);
+                                CreateReserveEntry.CreateEntry(ItemLedgEntry."Item No.", '', ItemLedgEntry."Location Code", '', WorkDate(), WorkDate(), 0, ReservStatus::Prospect);
+                            end;
                         end;
                     end;
                 end;

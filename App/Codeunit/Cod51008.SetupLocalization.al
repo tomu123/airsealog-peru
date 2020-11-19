@@ -88,12 +88,12 @@ codeunit 51008 "Setup Localization"
             OldVendorLedgerEntry.SetRange("Entry No.", GenJournalLine."Applies-to Entry No.");
     end;
 
-    [EventSubscriber(ObjectType::CodeUnit, Codeunit::"Gen. Jnl.-Post Line", 'OnPrepareTempEmplLedgEntryOnAfterSetFilters', '', true, true)]
-    local procedure OnPrepareTempEmplLedgEntryOnAfterSetFilters(var OldEmplLedgerEntry: Record "Employee Ledger Entry"; GenJournalLine: Record "Gen. Journal Line"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
-    begin
-        if GenJournalLine."Applies-to Entry No." <> 0 then
-            OldEmplLedgerEntry.SetRange("Entry No.", GenJournalLine."Applies-to Entry No.");
-    end;
+    // [EventSubscriber(ObjectType::CodeUnit, Codeunit::"Gen. Jnl.-Post Line", 'OnPrepareTempEmplLedgEntryOnAfterSetFilters', '', true, true)]
+    // local procedure OnPrepareTempEmplLedgEntryOnAfterSetFilters(var OldEmplLedgerEntry: Record "Employee Ledger Entry"; GenJournalLine: Record "Gen. Journal Line"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
+    // begin
+    //     if GenJournalLine."Applies-to Entry No." <> 0 then
+    //         OldEmplLedgerEntry.SetRange("Entry No.", GenJournalLine."Applies-to Entry No.");
+    // end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]
     local procedure SetOnBeforePostPurchaseDoc(var PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean; CommitIsSupressed: Boolean; var HideProgressWindow: Boolean)
@@ -322,13 +322,13 @@ codeunit 51008 "Setup Localization"
         Clear(RecRef);
         RecRef.GetTable(STGLEntryControl);
         RecRef.Reset();
-        with RecRef do begin
-            xSecurityFilter := SecurityFiltering;
-            SecurityFiltering(SecurityFiltering::Ignored);
-            Found := FindLast();
-            if SecurityFiltering <> xSecurityFilter then
-                SecurityFiltering(xSecurityFilter)
-        end;
+        //with RecRef do begin
+        xSecurityFilter := RecRef.SecurityFiltering;
+        RecRef.SecurityFiltering(RecRef.SecurityFiltering::Ignored);
+        Found := RecRef.FindLast();
+        if RecRef.SecurityFiltering <> xSecurityFilter then
+            RecRef.SecurityFiltering(xSecurityFilter);
+        //end;
         IsHandled := true;
     end;
 
@@ -378,12 +378,12 @@ codeunit 51008 "Setup Localization"
         if (GenJournalLine."Account Type" <> GenJournalLine."Account Type"::Employee) or (GenJournalLine."Posting Group" = '') then
             exit;
 
-        with DetailedCVLedgEntryBuffer do
-            case "Entry Type" of
-                "Entry Type"::"Initial Entry", "Entry Type"::Application:
-                    if EmplPostingGroup.Get(GenJournalLine."Posting Group") then
-                        AccNo := EmplPostingGroup.GetPayablesAccount();
-            end;
+        //with DetailedCVLedgEntryBuffer do
+        case DetailedCVLedgEntryBuffer."Entry Type" of
+            DetailedCVLedgEntryBuffer."Entry Type"::"Initial Entry", DetailedCVLedgEntryBuffer."Entry Type"::Application:
+                if EmplPostingGroup.Get(GenJournalLine."Posting Group") then
+                    AccNo := EmplPostingGroup.GetPayablesAccount();
+        end;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterAppliesToDocNoOnLookup', '', true, true)]
@@ -420,16 +420,16 @@ codeunit 51008 "Setup Localization"
             until DimSetEntry.Next() = 0;
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnPostEmplOnAfterCopyCVLedgEntryBuf', '', false, false)]
-    local procedure SetOnPostEmplOnAfterCopyCVLedgEntryBuf(var CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer"; GenJournalLine: Record "Gen. Journal Line")
-    begin
-        if GenJournalLine."Currency Code" <> '' then begin
-            GenJournalLine.TestField("Currency Factor");
-            CVLedgerEntryBuffer."Adjusted Currency Factor" := GenJournalLine."Currency Factor"
-        end else
-            CVLedgerEntryBuffer."Adjusted Currency Factor" := 1;
-        CVLedgerEntryBuffer."Original Currency Factor" := CVLedgerEntryBuffer."Adjusted Currency Factor";
-    end;
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnPostEmplOnAfterCopyCVLedgEntryBuf', '', false, false)]
+    // local procedure SetOnPostEmplOnAfterCopyCVLedgEntryBuf(var CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer"; GenJournalLine: Record "Gen. Journal Line")
+    // begin
+    //     if GenJournalLine."Currency Code" <> '' then begin
+    //         GenJournalLine.TestField("Currency Factor");
+    //         CVLedgerEntryBuffer."Adjusted Currency Factor" := GenJournalLine."Currency Factor"
+    //     end else
+    //         CVLedgerEntryBuffer."Adjusted Currency Factor" := 1;
+    //     CVLedgerEntryBuffer."Original Currency Factor" := CVLedgerEntryBuffer."Adjusted Currency Factor";
+    // end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post", 'OnBeforeCode', '', false, false)]
     local procedure SetOnBeforeCode(var GenJournalLine: Record "Gen. Journal Line"; var HideDialog: Boolean)

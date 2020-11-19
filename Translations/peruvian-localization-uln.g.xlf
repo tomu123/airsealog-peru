@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" target-language="en-US" original="peruvian-localization-uln">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="Peruvian-Localization-ULN">
     <body>
       <group id="body">
         <trans-unit id="Table 3008140192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9287,16 +9287,6 @@
           <source>Vendor Ledger Entry No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - Control VendLedgEntryNo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3911728218 - Action 3076061736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3254215531">
-          <source>&amp;Unapply Unique</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - Action UnapplyUnique - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3911728218 - Action 3076061736 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3254215531">
-          <source>Unselect unique one or more ledger entries that you want to unapply this record.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - Action UnapplyUnique - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3911728218 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3254215531">
           <source>The entries were successfully unapplied.</source>

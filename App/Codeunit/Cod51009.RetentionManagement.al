@@ -20,41 +20,41 @@ codeunit 51009 "Retention Management"
         InitCalculation(pGenJnlLine);
         CheckParameterCalculation();
         DeleteBankEntries(pGenJnlLine);
-        with GenJnlLine do begin
-            Reset();
-            SetCurrentKey("Document No.", "Account No.");
-            SetRange("Journal Template Name", pGenJnlLine."Journal Template Name");
-            SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
-            SetRange("Document No.", pGenJnlLine."Document No.");
-            SetRange("Account Type", "Account Type"::Vendor);
-            SetRange("Apply Retention To Line", true);
-            if FindSet() then begin
-                repeat
-                    OnBeforeCalculateRetention(GenJnlLine);
-                    GetSourceTypeVendorLedgerEntry(GenJnlLine, IsInvoice, IsCrMemo, IsLetter);
-                    if IsInvoice or IsCrMemo or IsLetter then
-                        "Retention Amount" += (Amount * Setup."Retention Percentage %") / 100;
-                    if IsInvoice then
-                        "Retention Amount" := "Retention Amount" * -1;
-                    if IsLetter then
-                        "Retention Amount" := Abs("Retention Amount");
-                    //"Document Type" := "Document Type"::" ";
-                    "Bal. Account Type" := "Bal. Account Type"::"G/L Account";
-                    "Bal. Account No." := '';
-                    "Manual Retention" := IsManual;
-                    "Retention Applies-to Entry No." := "Applies-to Entry No.";
-                    if "Currency Code" <> '' then
-                        "Retention Amount LCY" := Round("Retention Amount" / "Currency Factor", 0.01)
-                    else
-                        "Retention Amount LCY" := "Retention Amount";
-                    "Applied Retention" := "Retention Amount" <> 0;
-                    TotalAmount += Amount;
-                    TotalRetentionAmt += "Retention Amount";
-                    Modify();
-                until Next() = 0;
-                CreateGenJnLineForRetention(pGenJnlLine, TotalAmount, TotalRetentionAmt);
-            end;
+        //with GenJnlLine do begin
+        GenJnlLine.Reset();
+        GenJnlLine.SetCurrentKey("Document No.", "Account No.");
+        GenJnlLine.SetRange("Journal Template Name", pGenJnlLine."Journal Template Name");
+        GenJnlLine.SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
+        GenJnlLine.SetRange("Document No.", pGenJnlLine."Document No.");
+        GenJnlLine.SetRange("Account Type", GenJnlLine."Account Type"::Vendor);
+        GenJnlLine.SetRange("Apply Retention To Line", true);
+        if GenJnlLine.FindSet() then begin
+            repeat
+                OnBeforeCalculateRetention(GenJnlLine);
+                GetSourceTypeVendorLedgerEntry(GenJnlLine, IsInvoice, IsCrMemo, IsLetter);
+                if IsInvoice or IsCrMemo or IsLetter then
+                    GenJnlLine."Retention Amount" += (GenJnlLine.Amount * Setup."Retention Percentage %") / 100;
+                if IsInvoice then
+                    GenJnlLine."Retention Amount" := GenJnlLine."Retention Amount" * -1;
+                if IsLetter then
+                    GenJnlLine."Retention Amount" := Abs(GenJnlLine."Retention Amount");
+                //"Document Type" := "Document Type"::" ";
+                GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
+                GenJnlLine."Bal. Account No." := '';
+                GenJnlLine."Manual Retention" := IsManual;
+                GenJnlLine."Retention Applies-to Entry No." := GenJnlLine."Applies-to Entry No.";
+                if GenJnlLine."Currency Code" <> '' then
+                    GenJnlLine."Retention Amount LCY" := Round(GenJnlLine."Retention Amount" / GenJnlLine."Currency Factor", 0.01)
+                else
+                    GenJnlLine."Retention Amount LCY" := GenJnlLine."Retention Amount";
+                GenJnlLine."Applied Retention" := GenJnlLine."Retention Amount" <> 0;
+                TotalAmount += GenJnlLine.Amount;
+                TotalRetentionAmt += GenJnlLine."Retention Amount";
+                GenJnlLine.Modify();
+            until GenJnlLine.Next() = 0;
+            CreateGenJnLineForRetention(pGenJnlLine, TotalAmount, TotalRetentionAmt);
         end;
+        //end;
     end;
 
     procedure CalculateRetentionWithApplyEmployeeLedgerEntry(pGenJnlLine: Record "Gen. Journal Line"; IsManual: Boolean)
@@ -71,41 +71,41 @@ codeunit 51009 "Retention Management"
         InitCalculation(pGenJnlLine);
         CheckParameterCalculation();
         DeleteBankEntries(pGenJnlLine);
-        with GenJnlLine do begin
-            Reset();
-            SetCurrentKey("Document No.", "Account No.");
-            SetRange("Journal Template Name", pGenJnlLine."Journal Template Name");
-            SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
-            SetRange("Document No.", pGenJnlLine."Document No.");
-            SetRange("Account Type", "Account Type"::Vendor);
-            SetRange("Apply Retention To Line", true);
-            if FindSet() then begin
-                repeat
-                    OnBeforeCalculateRetention(GenJnlLine);
-                    GetSourceTypeVendorLedgerEntry(GenJnlLine, IsInvoice, IsCrMemo, IsLetter);
-                    if IsInvoice or IsCrMemo or IsLetter then
-                        "Retention Amount" += (Amount * Setup."Retention Percentage %") / 100;
-                    if IsInvoice then
-                        "Retention Amount" := "Retention Amount" * -1;
-                    if IsLetter then
-                        "Retention Amount" := Abs("Retention Amount");
-                    "Document Type" := "Document Type"::" ";
-                    "Bal. Account Type" := "Bal. Account Type"::"G/L Account";
-                    "Bal. Account No." := '';
-                    "Manual Retention" := IsManual;
-                    "Retention Applies-to Entry No." := "Applies-to Entry No.";
-                    if "Currency Code" <> '' then
-                        "Retention Amount LCY" := Round("Retention Amount" / "Currency Factor", 0.01)
-                    else
-                        "Retention Amount LCY" := "Retention Amount";
-                    "Applied Retention" := "Retention Amount" <> 0;
-                    TotalAmount += Amount;
-                    TotalRetentionAmt += "Retention Amount";
-                    Modify();
-                until Next() = 0;
-                CreateGenJnLineForRetentionWithApplyEmployeeLedgerEntry(pGenJnlLine, TotalAmount, TotalRetentionAmt);
-            end;
+        //with GenJnlLine do begin
+        GenJnlLine.Reset();
+        GenJnlLine.SetCurrentKey("Document No.", "Account No.");
+        GenJnlLine.SetRange("Journal Template Name", pGenJnlLine."Journal Template Name");
+        GenJnlLine.SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
+        GenJnlLine.SetRange("Document No.", pGenJnlLine."Document No.");
+        GenJnlLine.SetRange("Account Type", GenJnlLine."Account Type"::Vendor);
+        GenJnlLine.SetRange("Apply Retention To Line", true);
+        if GenJnlLine.FindSet() then begin
+            repeat
+                OnBeforeCalculateRetention(GenJnlLine);
+                GetSourceTypeVendorLedgerEntry(GenJnlLine, IsInvoice, IsCrMemo, IsLetter);
+                if IsInvoice or IsCrMemo or IsLetter then
+                    GenJnlLine."Retention Amount" += (GenJnlLine.Amount * Setup."Retention Percentage %") / 100;
+                if IsInvoice then
+                    GenJnlLine."Retention Amount" := GenJnlLine."Retention Amount" * -1;
+                if IsLetter then
+                    GenJnlLine."Retention Amount" := Abs(GenJnlLine."Retention Amount");
+                GenJnlLine."Document Type" := GenJnlLine."Document Type"::" ";
+                GenJnlLine."Bal. Account Type" := GenJnlLine."Bal. Account Type"::"G/L Account";
+                GenJnlLine."Bal. Account No." := '';
+                GenJnlLine."Manual Retention" := IsManual;
+                GenJnlLine."Retention Applies-to Entry No." := GenJnlLine."Applies-to Entry No.";
+                if GenJnlLine."Currency Code" <> '' then
+                    GenJnlLine."Retention Amount LCY" := Round(GenJnlLine."Retention Amount" / GenJnlLine."Currency Factor", 0.01)
+                else
+                    GenJnlLine."Retention Amount LCY" := GenJnlLine."Retention Amount";
+                GenJnlLine."Applied Retention" := GenJnlLine."Retention Amount" <> 0;
+                TotalAmount += GenJnlLine.Amount;
+                TotalRetentionAmt += GenJnlLine."Retention Amount";
+                GenJnlLine.Modify();
+            until GenJnlLine.Next() = 0;
+            CreateGenJnLineForRetentionWithApplyEmployeeLedgerEntry(pGenJnlLine, TotalAmount, TotalRetentionAmt);
         end;
+        //end;
     end;
 
     local procedure DeleteBankEntries(var pGenJnlLine: Record "Gen. Journal Line")
@@ -127,18 +127,18 @@ codeunit 51009 "Retention Management"
 
     local procedure CheckSetup(IsManual: Boolean)
     begin
-        with Setup do begin
-            TestField("Retention Percentage %");
-            TestField("Retention Limit Amount");
-            TestField("Retention G/L Account No.");
-            if IsManual then begin
-                TestField("Retention Physical Nos");
-                TestField("Max. Line. Retention Report");
-            end else begin
-                TestField("Retention Electronic Nos");
-                TestField("Regime Retention Code");
-            end;
+        //with Setup do begin
+        Setup.TestField("Retention Percentage %");
+        Setup.TestField("Retention Limit Amount");
+        Setup.TestField("Retention G/L Account No.");
+        if IsManual then begin
+            Setup.TestField("Retention Physical Nos");
+            Setup.TestField("Max. Line. Retention Report");
+        end else begin
+            Setup.TestField("Retention Electronic Nos");
+            Setup.TestField("Regime Retention Code");
         end;
+        //end;
     end;
 
     local procedure CheckCalculate(pGenJnlLiene: Record "Gen. Journal Line")
@@ -468,16 +468,16 @@ codeunit 51009 "Retention Management"
     var
         GenJnlLine: Record "Gen. Journal Line";
     begin
-        with GenJnlLine do begin
-            Reset();
-            SetRange("Journal Template Name", pGenJnlLine."Journal Template Name");
-            SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
-            SetRange("Account No.", pGenJnlLine."Reference to apply No.");
-            if FindSet() then begin
-                Validate("Amount (LCY)", "Amount (LCY)" - pGenJnlLine."Amount (LCY)");
-                Modify()
-            end;
+        //with GenJnlLine do begin
+        GenJnlLine.Reset();
+        GenJnlLine.SetRange("Journal Template Name", pGenJnlLine."Journal Template Name");
+        GenJnlLine.SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
+        GenJnlLine.SetRange("Account No.", pGenJnlLine."Reference to apply No.");
+        if GenJnlLine.FindSet() then begin
+            GenJnlLine.Validate("Amount (LCY)", GenJnlLine."Amount (LCY)" - pGenJnlLine."Amount (LCY)");
+            GenJnlLine.Modify();
         end;
+        //end;
     end;
 
     local procedure GetSourceTypeVendorLedgerEntry(var pGenJnlLine: Record "Gen. Journal Line"; var IsInvoice: Boolean; var IsCrMemo: Boolean; var IsLetter: Boolean)
@@ -506,26 +506,26 @@ codeunit 51009 "Retention Management"
         CurrentCurrencyCode: Code[10];
         CurrencyFactor: Decimal;
     begin
-        with GenJnlLine do begin
-            Reset();
-            SetRange("Journal Batch Name", pGenJnlLine."Journal Template Name");
-            SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
-            if FindFirst() then
-                repeat
-                    /*if CurrentCurrencyCode = '' then begin
-                        if "Currency Code" = '' then
-                            CurrentCurrencyCode := 'PEN'
-                        else begin
-                            CurrentCurrencyCode := "Currency Code";
-                            CurrencyFactor := "Currency Factor";
-                        end;
-                    end;*/
-                    BankAmount += "Amount (LCY)";
-                until Next() = 0;
-            //if CurrentCurrencyCode <> 'PEN' then
-            //    BankAmount := Round("Amount (LCY)" * CurrencyFactor, 0.01);
-            exit(BankAmount);
-        end;
+        //with GenJnlLine do begin
+        GenJnlLine.Reset();
+        GenJnlLine.SetRange("Journal Batch Name", pGenJnlLine."Journal Template Name");
+        GenJnlLine.SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
+        if GenJnlLine.FindFirst() then
+            repeat
+                /*if CurrentCurrencyCode = '' then begin
+                    if "Currency Code" = '' then
+                        CurrentCurrencyCode := 'PEN'
+                    else begin
+                        CurrentCurrencyCode := "Currency Code";
+                        CurrencyFactor := "Currency Factor";
+                    end;
+                end;*/
+                BankAmount += GenJnlLine."Amount (LCY)";
+            until GenJnlLine.Next() = 0;
+        //if CurrentCurrencyCode <> 'PEN' then
+        //    BankAmount := Round("Amount (LCY)" * CurrencyFactor, 0.01);
+        exit(BankAmount);
+        //end;
     end;
 
     local procedure InsertRoundingLine(var pGenJnlLine: Record "Gen. Journal Line")

@@ -257,7 +257,7 @@ codeunit 51007 "Analitycs Management"
         FileMgt: Codeunit "File Management";
         TempBlob: Codeunit "Temp Blob";
     begin
-        FileMgt.BLOBImportFromServerFile(TempBlob, '');
+        //FileMgt.BLOBImportFromServerFile(TempBlob, '');
     end;
 
     var

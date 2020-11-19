@@ -95,9 +95,9 @@ codeunit 51020 "Payment Schedule Utility"
         IF recPaymentSchedule.FINDSET THEN
             REPEAT
                 lclCount += 1;
-                WITH recPaymentSchedule DO BEGIN
-                    DELETE;
-                END;
+                //WITH recPaymentSchedule DO BEGIN
+                recPaymentSchedule.DELETE;
+            //END;
             UNTIL recPaymentSchedule.NEXT = 0;
     end;
 
@@ -143,14 +143,15 @@ codeunit 51020 "Payment Schedule Utility"
         DimSetEntry2: Record "Dimension Set Entry";
     begin
         TempDimSetEntry.DELETEALL;
-        WITH DimSetEntry2 DO BEGIN
-            SETRANGE("Dimension Set ID", DimSetID);
-            IF FINDSET THEN
-                REPEAT
-                    TempDimSetEntry := DimSetEntry2;
-                    TempDimSetEntry.INSERT;
-                UNTIL NEXT = 0;
-        END;
+        //WITH DimSetEntry2 DO BEGIN
+        DimSetEntry2.Reset();
+        DimSetEntry2.SETRANGE("Dimension Set ID", DimSetID);
+        IF DimSetEntry2.FINDSET THEN
+            REPEAT
+                TempDimSetEntry := DimSetEntry2;
+                TempDimSetEntry.INSERT;
+            UNTIL DimSetEntry2.NEXT = 0;
+        //END;
     end;
 
     procedure fnMyValidateShortcutDimValues(FieldNumber: Integer; VAR ShortcutDimCode: Code[20]; VAR DimSetID: Integer)
