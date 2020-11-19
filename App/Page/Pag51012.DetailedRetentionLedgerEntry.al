@@ -12,75 +12,75 @@ page 51012 "Detailed Retention Ledg. Entry"
         {
             repeater(DtldRetLedgerEntryRepeater)
             {
-                field("Entry No."; "Entry No.")
+                field("Entry No."; Rec."Entry No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention Legal Document"; "Retention Legal Document")
+                field("Retention Legal Document"; Rec."Retention Legal Document")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention No."; "Retention No.")
+                field("Retention No."; Rec."Retention No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention Posting Date"; "Retention Posting Date")
+                field("Retention Posting Date"; Rec."Retention Posting Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor No."; "Vendor No.")
+                field("Vendor No."; Rec."Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Name"; "Vendor Name")
+                field("Vendor Name"; Rec."Vendor Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Invoice No."; "Vendor Invoice No.")
+                field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Doc. Legal Document"; "Vendor Doc. Legal Document")
+                field("Vendor Doc. Legal Document"; Rec."Vendor Doc. Legal Document")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Doc. Posting Date"; "Vendor Doc. Posting Date")
+                field("Vendor Doc. Posting Date"; Rec."Vendor Doc. Posting Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Document Date"; "Vendor Document Date")
+                field("Vendor Document Date"; Rec."Vendor Document Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Document No."; "Vendor Document No.")
+                field("Vendor Document No."; Rec."Vendor Document No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor External Document No."; "Vendor External Document No.")
+                field("Vendor External Document No."; Rec."Vendor External Document No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Invoice"; "Amount Invoice")
+                field("Amount Invoice"; Rec."Amount Invoice")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Invoice LCY"; "Amount Invoice LCY")
+                field("Amount Invoice LCY"; Rec."Amount Invoice LCY")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Paid"; "Amount Paid")
+                field("Amount Paid"; Rec."Amount Paid")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Paid LCY"; "Amount Paid LCY")
+                field("Amount Paid LCY"; Rec."Amount Paid LCY")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Retention"; "Amount Retention")
+                field("Amount Retention"; Rec."Amount Retention")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Retention LCY"; "Amount Retention LCY")
+                field("Amount Retention LCY"; Rec."Amount Retention LCY")
                 {
                     ApplicationArea = All;
                 }

@@ -15,7 +15,7 @@ page 51003 "Setup Localization"
                 Caption = 'General';
                 Visible = true;
 
-                field("ST GL Account Realized Gain"; "ST GL Account Realized Gain")
+                field("ST GL Account Realized Gain"; Rec."ST GL Account Realized Gain")
                 {
                     ApplicationArea = All;
                     trigger OnDrillDown()
@@ -24,15 +24,15 @@ page 51003 "Setup Localization"
                         MasterData.FilterGroup(2);
                         MasterData.SetRange("Type Table", 'ADJ-TC-REF');
                         MasterData.SetRange("Type Table ref", 'ADJ-TC');
-                        MasterData.SetRange("Code ref", "ST GL Account Realized Gain");
+                        MasterData.SetRange("Code ref", Rec."ST GL Account Realized Gain");
                         MasterData.FilterGroup(0);
                         Clear(MDPage);
-                        MDPage.SetDimensionDefault('ADJ-TC-REF', 'ADJ-TC', "ST GL Account Realized Gain");
+                        MDPage.SetDimensionDefault('ADJ-TC-REF', 'ADJ-TC', Rec."ST GL Account Realized Gain");
                         MDPage.SetTableView(MasterData);
                         MDPage.RunModal();
                     end;
                 }
-                field("ST GL Account Realized Loss"; "ST GL Account Realized Loss")
+                field("ST GL Account Realized Loss"; Rec."ST GL Account Realized Loss")
                 {
                     ApplicationArea = All;
                     trigger OnDrillDown()
@@ -41,15 +41,15 @@ page 51003 "Setup Localization"
                         MasterData.FilterGroup(2);
                         MasterData.SetRange("Type Table", 'ADJ-TC-REF');
                         MasterData.SetRange("Type Table ref", 'ADJ-TC');
-                        MasterData.SetRange("Code ref", "ST GL Account Realized Loss");
+                        MasterData.SetRange("Code ref", Rec."ST GL Account Realized Loss");
                         MasterData.FilterGroup(0);
                         Clear(MDPage);
-                        MDPage.SetDimensionDefault('ADJ-TC-REF', 'ADJ-TC', "ST GL Account Realized Loss");
+                        MDPage.SetDimensionDefault('ADJ-TC-REF', 'ADJ-TC', Rec."ST GL Account Realized Loss");
                         MDPage.SetTableView(MasterData);
                         MDPage.RunModal();
                     end;
                 }
-                field("ST Adj. Exch. Dflt. Dim. Bank"; "ST Adj. Exch. Dflt. Dim. Bank")
+                field("ST Adj. Exch. Dflt. Dim. Bank"; Rec."ST Adj. Exch. Dflt. Dim. Bank")
                 {
                     ApplicationArea = All;
                     trigger OnDrillDown()
@@ -70,7 +70,7 @@ page 51003 "Setup Localization"
                         CurrPage.Update(true);
                     end;
                 }
-                field("ST Coactiva No. Serie"; "ST Coactiva No. Serie")
+                field("ST Coactiva No. Serie"; Rec."ST Coactiva No. Serie")
                 {
                     ApplicationArea = All;
                 }
@@ -78,57 +78,65 @@ page 51003 "Setup Localization"
                 group(AdjustExchangeRateLoc)
                 {
                     Caption = 'Adjust Exchange Rates';
-                    field("Adj. Exch. Rate Localization"; "Adj. Exch. Rate Localization")
+                    field("Adj. Exch. Rate Localization"; Rec."Adj. Exch. Rate Localization")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Utiliza el desarrollo localizado en referencia al tipo de ajuste pasivo o activo de los grupos contables.';
+                        trigger
+                        OnValidate()
+                        begin
+                            if Rec."Adj. Exch. Rate Localization" then
+                                gAdjExchRateLocEditable := true
+                            else
+                                gAdjExchRateLocEditable := false;
+                        end;
                     }
-                    field("Adj. Exch. Rate Doc. Pstg Gr"; "Adj. Exch. Rate Doc. Pstg Gr")
+                    field("Adj. Exch. Rate Doc. Pstg Gr"; Rec."Adj. Exch. Rate Doc. Pstg Gr")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Hace el ajuste con el grupo contable del documento, el estandar utiliza el grupo contable configurado en el ficha de maestros, cliente, proveedor, banco. Segun corresponda.';
-                        Editable = "Adj. Exch. Rate Localization";
+                        Editable = gAdjExchRateLocEditable;
                     }
-                    field("Adj. Exch. Rate Ref. Document"; "Adj. Exch. Rate Ref. Document")
+                    field("Adj. Exch. Rate Ref. Document"; Rec."Adj. Exch. Rate Ref. Document")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Hace el ajuste por tipo de cambio agrupando por documento, el estandar los agrupa por Cliente, Proveedor, Banco, etc.';
-                        Editable = "Adj. Exch. Rate Localization";
+                        Editable = gAdjExchRateLocEditable;
                     }
                 }
             }
             group(ConsultRuc)
             {
                 Caption = 'Consult Ruc', Comment = 'ESM="Consulta RUC"';
-                field("Create Option Vendor"; "Create Option Vendor")
+                field("Create Option Vendor"; Rec."Create Option Vendor")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor MN Template Code"; "Vendor MN Template Code")
+                field("Vendor MN Template Code"; Rec."Vendor MN Template Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor ME Template Code"; "Vendor ME Template Code")
+                field("Vendor ME Template Code"; Rec."Vendor ME Template Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Ext Template Code"; "Vendor Ext Template Code")
+                field("Vendor Ext Template Code"; Rec."Vendor Ext Template Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Create Option Customer"; "Create Option Customer")
+                field("Create Option Customer"; Rec."Create Option Customer")
                 {
                     ApplicationArea = All;
                 }
-                field("Customer MN Template Code"; "Customer MN Template Code")
+                field("Customer MN Template Code"; Rec."Customer MN Template Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Customer ME Template Code"; "Customer ME Template Code")
+                field("Customer ME Template Code"; Rec."Customer ME Template Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Customer Ext Template Code"; "Customer Ext Template Code")
+                field("Customer Ext Template Code"; Rec."Customer Ext Template Code")
                 {
                     ApplicationArea = All;
                 }
@@ -136,39 +144,39 @@ page 51003 "Setup Localization"
             group(Retention)
             {
                 Caption = 'Retention', Comment = 'ESM="Retención"';
-                field("Retention Agent Option"; "Retention Agent Option")
+                field("Retention Agent Option"; Rec."Retention Agent Option")
                 {
                     ApplicationArea = All;
                 }
-                field("Regime Retention Code"; "Regime Retention Code")
+                field("Regime Retention Code"; Rec."Regime Retention Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention Percentage %"; "Retention Percentage %")
+                field("Retention Percentage %"; Rec."Retention Percentage %")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention Limit Amount"; "Retention Limit Amount")
+                field("Retention Limit Amount"; Rec."Retention Limit Amount")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention G/L Account No."; "Retention G/L Account No.")
+                field("Retention G/L Account No."; Rec."Retention G/L Account No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Max. Line. Retention Report"; "Max. Line. Retention Report")
+                field("Max. Line. Retention Report"; Rec."Max. Line. Retention Report")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention Physical Nos"; "Retention Physical Nos")
+                field("Retention Physical Nos"; Rec."Retention Physical Nos")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention Electronic Nos"; "Retention Electronic Nos")
+                field("Retention Electronic Nos"; Rec."Retention Electronic Nos")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention Resolution Number"; "Retention Resolution Number")
+                field("Retention Resolution Number"; Rec."Retention Resolution Number")
                 {
                     ApplicationArea = All;
                 }
@@ -176,38 +184,38 @@ page 51003 "Setup Localization"
             group(RHRetention)
             {
                 Caption = 'RH Retntion', Comment = 'ESM="Retención recibo por honorario"';
-                field("Retention RH Nos"; "Retention RH Nos")
+                field("Retention RH Nos"; Rec."Retention RH Nos")
                 {
                     ApplicationArea = All;
                     Caption = 'Serie Nos', Comment = 'ESM="N° Serie"';
                 }
-                field("Retention RH Posted Nos"; "Retention RH Posted Nos")
+                field("Retention RH Posted Nos"; Rec."Retention RH Posted Nos")
                 {
                     ApplicationArea = All;
                     Caption = 'Posted Serie Nos', Comment = 'ESM="N° Serie Registro"';
                 }
-                field("Retention RH GLAcc. No."; "Retention RH GLAcc. No.")
+                field("Retention RH GLAcc. No."; Rec."Retention RH GLAcc. No.")
                 {
                     ApplicationArea = All;
                     Caption = 'G/L Account No.', Comment = 'ESM="N° Cuenta"';
                 }
-                field("Ret. RH VAT Prod Pstg. Gr. Ex."; "Ret. RH VAT Prod Pstg. Gr. Ex.")
+                field("Ret. RH VAT Prod Pstg. Gr. Ex."; Rec."Ret. RH VAT Prod Pstg. Gr. Ex.")
                 {
                     ApplicationArea = All;
                     Caption = 'VAT Prod. Pstg. Group Ex.', Comment = 'ESM="Gr. reg. IVA Producto exonerado"';
                     ToolTip = 'VAT Product Posting Group Exonerated', Comment = 'ESM="Grupo registro IVA Producto exonerado"';
                 }
-                field("Retention RH %"; "Retention RH %")
+                field("Retention RH %"; Rec."Retention RH %")
                 {
                     ApplicationArea = All;
                     Caption = 'Retention %', Comment = 'ESM="% Retención"';
                 }
-                field("Retention RH Limit Amount"; "Retention RH Limit Amount")
+                field("Retention RH Limit Amount"; Rec."Retention RH Limit Amount")
                 {
                     ApplicationArea = All;
                     Caption = 'Limit Amount', Comment = 'ESM="Importe minimo"';
                 }
-                field("Retention RH Validate Pre-Post"; "Retention RH Validate Pre-Post")
+                field("Retention RH Validate Pre-Post"; Rec."Retention RH Validate Pre-Post")
                 {
                     ApplicationArea = All;
                     Caption = 'Validate Pre-Post', Comment = 'ESM="Valida pre-registro"';
@@ -217,86 +225,128 @@ page 51003 "Setup Localization"
             group(Detrac)
             {
                 Caption = 'Detractions', Comment = 'ESM="Detracciones"';
-                field("Detraction Posting Group"; "Detraction Posting Group")
+                field("Detraction Posting Group"; Rec."Detraction Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Detraction Vendor"; "Detraction Vendor")
+                field("Detraction Vendor"; Rec."Detraction Vendor")
                 {
                     ApplicationArea = All;
                 }
-                field("Correlative SUNAT"; "Correlative SUNAT")
+                field("Correlative SUNAT"; Rec."Correlative SUNAT")
                 {
                     ApplicationArea = All;
                 }
-                field("Lot Number Detraction"; "Lot Number Detraction")
+                field("Lot Number Detraction"; Rec."Lot Number Detraction")
                 {
                     ApplicationArea = All;
                 }
-                field("SUNAT Generation Date"; "SUNAT Generation Date")
+                field("SUNAT Generation Date"; Rec."SUNAT Generation Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Detraction Route Export"; "Detraction Route Export")
+                field("Detraction Route Export"; Rec."Detraction Route Export")
                 {
                     ApplicationArea = All;
+                }
+                field("realized Losses Acc."; Rec."Realized Losses Acc.")
+                {
+                    ApplicationArea = All;
+                    trigger OnDrillDown()
+                    begin
+                        MasterData.Reset();
+                        MasterData.FilterGroup(2);
+                        MasterData.SetRange("Type Table", 'ADJ-TC-REF');
+                        MasterData.SetRange("Type Table ref", 'ADJ-TC');
+                        MasterData.SetRange("Code ref", Rec."Realized Losses Acc.");
+                        MasterData.FilterGroup(0);
+                        Clear(MDPage);
+                        MDPage.SetDimensionDefault('ADJ-TC-REF', 'ADJ-TC', Rec."Realized Losses Acc.");
+                        MDPage.SetTableView(MasterData);
+                        MDPage.RunModal();
+                    end;
+                }
+                field("Unrealized Gains Acc."; Rec."Realized Gains Acc.")
+                {
+                    ApplicationArea = All;
+                    trigger OnDrillDown()
+                    begin
+                        MasterData.Reset();
+                        MasterData.FilterGroup(2);
+                        MasterData.SetRange("Type Table", 'ADJ-TC-REF');
+                        MasterData.SetRange("Type Table ref", 'ADJ-TC');
+                        MasterData.SetRange("Code ref", Rec."Realized Gains Acc.");
+                        MasterData.FilterGroup(0);
+                        Clear(MDPage);
+                        MDPage.SetDimensionDefault('ADJ-TC-REF', 'ADJ-TC', Rec."Realized Gains Acc.");
+                        MDPage.SetTableView(MasterData);
+                        MDPage.RunModal();
+                    end;
                 }
             }
             group(FreeTitle)
             {
                 Caption = 'Free tile', Comment = 'ESM="Título gratuito"';
-                field("FT Free Title"; "FT Free Title")
+                field("FT Free Title"; Rec."FT Free Title")
                 {
                     ApplicationArea = All;
+                    trigger
+                    OnValidate()
+                    begin
+                        if Rec."FT Free Title" then
+                            gFTFreeTitleEditable := true
+                        else
+                            gFTFreeTitleEditable := false;
+                    end;
                 }
-                field("FT Gen. Bus. Posting Group"; "FT Gen. Bus. Posting Group")
+                field("FT Gen. Bus. Posting Group"; Rec."FT Gen. Bus. Posting Group")
                 {
                     ApplicationArea = All;
-                    Editable = "FT Free Title";
+                    Editable = gFTFreeTitleEditable;
                 }
-                field("FT VAT Prod. Posting Group"; "FT VAT Prod. Posting Group")
+                field("FT VAT Prod. Posting Group"; Rec."FT VAT Prod. Posting Group")
                 {
                     ApplicationArea = All;
-                    Editable = "FT Free Title";
+                    Editable = gFTFreeTitleEditable;
                 }
-                field("FT VAT Bus. Posting Group"; "FT VAT Bus. Posting Group")
+                field("FT VAT Bus. Posting Group"; Rec."FT VAT Bus. Posting Group")
                 {
                     ApplicationArea = All;
-                    Editable = "FT Free Title";
+                    Editable = gFTFreeTitleEditable;
                 }
             }
             group(Import)
             {
                 Caption = 'Importation', Comment = 'ESM="Importación"';
-                field("Importation No. Series"; "Importation No. Series")
+                field("Importation No. Series"; Rec."Importation No. Series")
                 {
                     ApplicationArea = All;
                 }
-                field("Importation Vendor No."; "Importation Vendor No.")
+                field("Importation Vendor No."; Rec."Importation Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("DUA Vendor No."; "DUA Vendor No.")
+                field("DUA Vendor No."; Rec."DUA Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Freight Vendor No."; "Freight Vendor No.")
+                field("Freight Vendor No."; Rec."Freight Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Other Vendor No. 1"; "Other Vendor No. 1")
+                field("Other Vendor No. 1"; Rec."Other Vendor No. 1")
                 {
                     ApplicationArea = All;
                 }
-                field("Other Vendor No. 2"; "Other Vendor No. 2")
+                field("Other Vendor No. 2"; Rec."Other Vendor No. 2")
                 {
                     ApplicationArea = All;
                 }
-                field("Handling Vendor No."; "Handling Vendor No.")
+                field("Handling Vendor No."; Rec."Handling Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Insurance Vendor No."; "Insurance Vendor No.")
+                field("Insurance Vendor No."; Rec."Insurance Vendor No.")
                 {
                     ApplicationArea = All;
                 }
@@ -304,33 +354,33 @@ page 51003 "Setup Localization"
             group("Internal Consumption")
             {
                 Caption = 'Internal Consumption', Comment = 'ESM="Consumo Interno"';
-                field("Cust. Acc. Group Int. Cons."; "Cust. Acc. Group Int. Cons.")
+                field("Cust. Acc. Group Int. Cons."; Rec."Cust. Acc. Group Int. Cons.")
                 {
                     ApplicationArea = All;
                 }
-                field("Gn. Bus. Pst. Group Int. Cons."; "Gn. Bus. Pst. Group Int. Cons.")
+                field("Gn. Bus. Pst. Group Int. Cons."; Rec."Gn. Bus. Pst. Group Int. Cons.")
                 {
                     ApplicationArea = All;
                 }
-                field("Customer Int. Cons."; "Customer Int. Cons.")
+                field("Customer Int. Cons."; Rec."Customer Int. Cons.")
                 {
                     ApplicationArea = All;
                 }
-                field("Serial No. Int. Cons."; "Serial No. Int. Cons.")
+                field("Serial No. Int. Cons."; Rec."Serial No. Int. Cons.")
                 {
                     ApplicationArea = All;
                 }
-                field("Serial No. Pstd. Int. Cons."; "Serial No. Pstd. Int. Cons.")
+                field("Serial No. Pstd. Int. Cons."; Rec."Serial No. Pstd. Int. Cons.")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipment Serial No."; "Shipment Serial No.")
+                field("Shipment Serial No."; Rec."Shipment Serial No.")
                 {
                     ApplicationArea = All;
                 }
 
 
-                field("For Code"; "For Code")
+                field("For Code"; Rec."For Code")
                 {
                     ApplicationArea = All;
                 }
@@ -338,7 +388,15 @@ page 51003 "Setup Localization"
             group(AccountantBookSetup)
             {
                 Caption = 'Setup Accountant Book', Comment = 'ESM="Conf. Libros contables"';
-                field("AB Field reference purch. book"; "AB Field reference purch. book")
+                field("AB Field reference purch. book"; Rec."AB Field reference purch. book")
+                {
+                    ApplicationArea = All;
+                }
+            }
+            group(Telecredit)
+            {
+                Caption = 'Analityc', Comment = 'ESM="Telecreditos"';
+                field("Telecredit New Version"; Rec."Telecredit New Version")
                 {
                     ApplicationArea = All;
                 }
@@ -346,7 +404,7 @@ page 51003 "Setup Localization"
             group(AnalitycGroup)
             {
                 Caption = 'Analityc', Comment = 'ESM="Analítica"';
-                field("Analityc Global Dimension"; "Analityc Global Dimension")
+                field("Analityc Global Dimension"; Rec."Analityc Global Dimension")
                 {
                     ApplicationArea = All;
                 }
@@ -432,6 +490,8 @@ page 51003 "Setup Localization"
         MDPage: Page "Master Data";
         Record81: Record 81;
         DimDescription: Label 'This setup %1 %2.', Comment = 'ESM="Se configuró %1 %2"';
+        gAdjExchRateLocEditable: Boolean;
+        gFTFreeTitleEditable: Boolean;
 
     local procedure UpdateDescription()
     var
@@ -445,8 +505,8 @@ page 51003 "Setup Localization"
         MasterData.SetRange("Code ref", 'BANK-ADJTC');
         QtyDim := MasterData.Count;
         if QtyDim = 1 then
-            "ST Adj. Exch. Dflt. Dim. Bank" := StrSubstNo(DimDescription, QtyDim, 'dimensión')
+            Rec."ST Adj. Exch. Dflt. Dim. Bank" := StrSubstNo(DimDescription, QtyDim, 'dimensión')
         else
-            "ST Adj. Exch. Dflt. Dim. Bank" := StrSubstNo(DimDescription, QtyDim, 'dimensines');
+            Rec."ST Adj. Exch. Dflt. Dim. Bank" := StrSubstNo(DimDescription, QtyDim, 'dimensines');
     end;
 }

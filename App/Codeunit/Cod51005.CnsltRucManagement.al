@@ -128,6 +128,7 @@ codeunit 51005 "Cnslt. Ruc Management"
         end else
             Vendor.Address := TextField[6];
         Vendor."VAT Registration Type" := '6';
+        Vendor."Status approved" := ExcludeApprovalVendor;
         Vendor.Insert(true);
         RecordRef_.GetTable(Vendor);
         ConfTemplMgt.UpdateRecord(ConfTempHdr, RecordRef_);
@@ -481,6 +482,11 @@ codeunit 51005 "Cnslt. Ruc Management"
         SLSetup.TestField("Vendor ME Template Code");
     end;
 
+    procedure SetExcludeApprovalVendor()
+    begin
+        ExcludeApprovalVendor := true;
+    end;
+
     var
         SLSetup: Record "Setup Localization";
         Vendor: Record Vendor;
@@ -497,6 +503,7 @@ codeunit 51005 "Cnslt. Ruc Management"
         Url: Text;
         Base64String: Text;
         SOAPAction: Text;
+        ExcludeApprovalVendor: Boolean;
         VendorCreateMsg: Label 'Create vendor %1 - %2 successful.', Comment = 'ESM="Proveedor creado %1 - %2 correctamente."';
         VendorUpdateMsg: Label 'Update vendor %1 - %2 successful.', Comment = 'ESM="Proveedor modificado %1 - %2 correctamente."';
         CustomerCreateMsg: Label 'Create customer %1 - %2 successful.', Comment = 'ESM="Cliente creado %1 - %2 correctamente."';

@@ -14,7 +14,7 @@ page 51009 "Ret. RH Purchase Invoice"
             group(General)
             {
                 Caption = 'General';
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     Importance = Standard;
@@ -23,11 +23,11 @@ page 51009 "Ret. RH Purchase Invoice"
 
                     trigger OnAssistEdit()
                     begin
-                        if AssistEdit(xRec) then
+                        if Rec.AssistEdit(xRec) then
                             CurrPage.Update;
                     end;
                 }
-                field("Buy-from Vendor No."; "Buy-from Vendor No.")
+                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = All;
                     Caption = 'Vendor No.';
@@ -38,11 +38,11 @@ page 51009 "Ret. RH Purchase Invoice"
                     trigger OnValidate()
                     begin
                         SetDefaultValueRHRetention();
-                        OnAfterValidateBuyFromVendorNo(Rec, xRec);
+                        Rec.OnAfterValidateBuyFromVendorNo(Rec, xRec);
                         CurrPage.Update;
                     end;
                 }
-                field("Buy-from Vendor Name"; "Buy-from Vendor Name")
+                field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = All;
                     Caption = 'Vendor Name';
@@ -56,7 +56,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         ApplicationAreaMgmtFacade: Codeunit "Application Area Mgmt. Facade";
                     begin
                         SetDefaultValueRHRetention();
-                        OnAfterValidateBuyFromVendorNo(Rec, xRec);
+                        Rec.OnAfterValidateBuyFromVendorNo(Rec, xRec);
 
                         if ApplicationAreaMgmtFacade.IsFoundationEnabled then
                             PurchCalcDiscByType.ApplyDefaultInvoiceDiscount(0, Rec);
@@ -67,7 +67,7 @@ page 51009 "Ret. RH Purchase Invoice"
                 group("Buy-from")
                 {
                     Caption = 'Buy-from';
-                    field("Buy-from Address"; "Buy-from Address")
+                    field("Buy-from Address"; Rec."Buy-from Address")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Address';
@@ -75,7 +75,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         QuickEntry = false;
                         ToolTip = 'Specifies the address of the vendor who ships the items.';
                     }
-                    field("Buy-from Address 2"; "Buy-from Address 2")
+                    field("Buy-from Address 2"; Rec."Buy-from Address 2")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Address 2';
@@ -83,7 +83,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         QuickEntry = false;
                         ToolTip = 'Specifies additional address information.';
                     }
-                    field("Buy-from City"; "Buy-from City")
+                    field("Buy-from City"; Rec."Buy-from City")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'City';
@@ -95,7 +95,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     {
                         ShowCaption = false;
                         Visible = IsBuyFromCountyVisible;
-                        field("Buy-from County"; "Buy-from County")
+                        field("Buy-from County"; Rec."Buy-from County")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'County';
@@ -104,7 +104,7 @@ page 51009 "Ret. RH Purchase Invoice"
                             ToolTip = 'Specifies the state, province or county of the address.';
                         }
                     }
-                    field("Buy-from Post Code"; "Buy-from Post Code")
+                    field("Buy-from Post Code"; Rec."Buy-from Post Code")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Post Code';
@@ -112,7 +112,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         QuickEntry = false;
                         ToolTip = 'Specifies the postal code.';
                     }
-                    field("Buy-from Country/Region Code"; "Buy-from Country/Region Code")
+                    field("Buy-from Country/Region Code"; Rec."Buy-from Country/Region Code")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Country/Region';
@@ -122,10 +122,10 @@ page 51009 "Ret. RH Purchase Invoice"
 
                         trigger OnValidate()
                         begin
-                            IsBuyFromCountyVisible := FormatAddress.UseCounty("Buy-from Country/Region Code");
+                            IsBuyFromCountyVisible := FormatAddress.UseCounty(Rec."Buy-from Country/Region Code");
                         end;
                     }
-                    field("Buy-from Contact No."; "Buy-from Contact No.")
+                    field("Buy-from Contact No."; Rec."Buy-from Contact No.")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Contact No.';
@@ -133,20 +133,20 @@ page 51009 "Ret. RH Purchase Invoice"
                         ToolTip = 'Specifies the number of your contact at the vendor.';
                     }
                 }
-                field("Buy-from Contact"; "Buy-from Contact")
+                field("Buy-from Contact"; Rec."Buy-from Contact")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Contact';
                     Editable = "Buy-from Vendor No." <> '';
                     ToolTip = 'Specifies the name of the person to contact about shipment of the item from this vendor.';
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies the date when the related document was created.';
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Promoted;
@@ -157,13 +157,13 @@ page 51009 "Ret. RH Purchase Invoice"
                         SaveInvoiceDiscountAmount;
                     end;
                 }
-                field("Due Date"; "Due Date")
+                field("Due Date"; Rec."Due Date")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Promoted;
                     ToolTip = 'Specifies when the invoice is due. The program calculates the date using the Payment Terms Code and Document Date fields.';
                 }
-                field("Vendor Posting Group"; "Vendor Posting Group")
+                field("Vendor Posting Group"; Rec."Vendor Posting Group")
                 {
                     ApplicationArea = All;
                     Editable = true;
@@ -173,13 +173,13 @@ page 51009 "Ret. RH Purchase Invoice"
                         VendPostingGroup: Record "Vendor Posting Group";
                         Table38: Record 38;
                     begin
-                        if "Vendor Posting Group" = '' then
+                        if Rec."Vendor Posting Group" = '' then
                             exit;
-                        VendPostingGroup.Get("Vendor Posting Group");
-                        Validate("Currency Code", VendPostingGroup."Currency Code");
+                        VendPostingGroup.Get(Rec."Vendor Posting Group");
+                        Rec.Validate("Currency Code", VendPostingGroup."Currency Code");
                     end;
                 }
-                field("Currency Code"; "Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Suite;
                     Importance = Promoted;
@@ -189,12 +189,12 @@ page 51009 "Ret. RH Purchase Invoice"
                     trigger OnAssistEdit()
                     begin
                         Clear(ChangeExchangeRate);
-                        if "Posting Date" <> 0D then
-                            ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", "Posting Date")
+                        if Rec."Posting Date" <> 0D then
+                            ChangeExchangeRate.SetParameter(Rec."Currency Code", Rec."Currency Factor", Rec."Posting Date")
                         else
-                            ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", WorkDate);
+                            ChangeExchangeRate.SetParameter(Rec."Currency Code", Rec."Currency Factor", WorkDate);
                         if ChangeExchangeRate.RunModal = ACTION::OK then begin
-                            Validate("Currency Factor", ChangeExchangeRate.GetParameter);
+                            Rec.Validate("Currency Factor", ChangeExchangeRate.GetParameter);
                             SaveInvoiceDiscountAmount;
                         end;
                         Clear(ChangeExchangeRate);
@@ -206,7 +206,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         PurchCalcDiscByType.ApplyDefaultInvoiceDiscount(0, Rec);
                     end;
                 }
-                field("Incoming Document Entry No."; "Incoming Document Entry No.")
+                field("Incoming Document Entry No."; Rec."Incoming Document Entry No.")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
@@ -214,40 +214,40 @@ page 51009 "Ret. RH Purchase Invoice"
                     Visible = false;
                 }
 
-                field("Legal Document"; "Legal Document")
+                field("Legal Document"; Rec."Legal Document")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field("Legal Status"; "Legal Status")
+                field("Legal Status"; Rec."Legal Status")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field("Posting No. Series"; "Posting No. Series")
+                field("Posting No. Series"; Rec."Posting No. Series")
                 {
                     ApplicationArea = All;
                 }
-                field("VAT Registration Type"; "VAT Registration Type")
+                field("VAT Registration Type"; Rec."VAT Registration Type")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field("VAT Registration No."; "VAT Registration No.")
+                field("VAT Registration No."; Rec."VAT Registration No.")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field("Retention RH Fourth Amount"; "Retention RH Fourth Amount")
+                field("Retention RH Fourth Amount"; Rec."Retention RH Fourth Amount")
                 {
                     Caption = 'Fourth Amount', Comment = 'ESM="Importe bruto"';
                     ApplicationArea = Basic, Suite;
                     Editable = false;
                 }
-                field("Retention RH Gross amount"; "Retention RH Gross amount")
+                field("Retention RH Gross amount"; Rec."Retention RH Gross amount")
                 {
                     Caption = 'Gross Fourth Amount', Comment = 'ESM="Importe de cuarta"';
                     ApplicationArea = Basic, Suite;
                     Editable = false;
                 }
 
-                field("Retention RH Electronic"; "Retention RH Electronic")
+                field("Retention RH Electronic"; Rec."Retention RH Electronic")
                 {
                     Caption = 'Retention RH Electronic', Comment = 'ESM="Retención Electrónica RH "';
                     ApplicationArea = Basic, Suite;
@@ -257,7 +257,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     end;
 
                 }
-                field("Vendor Invoice No."; "Vendor Invoice No.")
+                field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
                     ApplicationArea = Basic, Suite;
                     ShowMandatory = VendorInvoiceNoMandatory;
@@ -267,28 +267,28 @@ page 51009 "Ret. RH Purchase Invoice"
                     end;
 
                 }
-                field("RH Suspension"; "RH Suspension")
+                field("RH Suspension"; Rec."RH Suspension")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field("RH Suspension Date"; "RH Suspension Date")
+                field("RH Suspension Date"; Rec."RH Suspension Date")
                 {
                     ApplicationArea = All;
                     Editable = "RH Suspension";
                 }
-                field("RH Suspension Number"; "RH Suspension Number")
+                field("RH Suspension Number"; Rec."RH Suspension Number")
                 {
                     ApplicationArea = All;
                     Editable = "RH Suspension";
                 }
-                field("Posting Text"; "Posting Text")
+                field("Posting Text"; Rec."Posting Text")
                 {
                     ApplicationArea = All;
                     Caption = 'Posting Text';
                     Importance = Promoted;
                     NotBlank = true;
                 }
-                field("Posting Description"; "Posting Description")
+                field("Posting Description"; Rec."Posting Description")
                 {
                     ApplicationArea = All;
                     Importance = Promoted;
@@ -304,7 +304,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         group(GridGroupLPT1)
                         {
                             ShowCaption = false;
-                            field("Legal Property Type"; "Legal Property Type")
+                            field("Legal Property Type"; Rec."Legal Property Type")
                             {
                                 ApplicationArea = All;
                                 ShowCaption = false;
@@ -327,7 +327,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     }
                 }
 
-                field("Purchaser Code"; "Purchaser Code")
+                field("Purchaser Code"; Rec."Purchaser Code")
                 {
                     ApplicationArea = Suite;
                     Importance = Additional;
@@ -338,38 +338,39 @@ page 51009 "Ret. RH Purchase Invoice"
                         PurchaserCodeOnAfterValidate;
                     end;
                 }
-                field("Campaign No."; "Campaign No.")
+                field("Campaign No."; Rec."Campaign No.")
                 {
                     ApplicationArea = RelationshipMgmt;
                     Importance = Additional;
                     ToolTip = 'Specifies the campaign number the document is linked to.';
                 }
-                field("Order Address Code"; "Order Address Code")
+                field("Order Address Code"; Rec."Order Address Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Alternate Vendor Address Code';
                     Importance = Additional;
                     ToolTip = 'Specifies the order address of the related vendor.';
                 }
-                field("Responsibility Center"; "Responsibility Center")
+                field("Responsibility Center"; Rec."Responsibility Center")
                 {
                     ApplicationArea = Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies the code of the responsibility center, such as a distribution hub, that is associated with the involved user, company, customer, or vendor.';
                 }
-                field("Assigned User ID"; "Assigned User ID")
+                field("Assigned User ID"; Rec."Assigned User ID")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
+                    Visible = true;
                     ToolTip = 'Specifies the ID of the user who is responsible for the document.';
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies whether the record is open, waiting to be approved, invoiced for prepayment, or released to the next stage of processing.';
                 }
-                field("Job Queue Status"; "Job Queue Status")
+                field("Job Queue Status"; Rec."Job Queue Status")
                 {
                     ApplicationArea = All;
                     Importance = Additional;
@@ -388,13 +389,13 @@ page 51009 "Ret. RH Purchase Invoice"
             group("Invoice Details")
             {
                 Caption = 'Invoice Details';
-                field("Expected Receipt Date"; "Expected Receipt Date")
+                field("Expected Receipt Date"; Rec."Expected Receipt Date")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Promoted;
                     ToolTip = 'Specifies the date you expect to receive the items on the purchase document.';
                 }
-                field("Prices Including VAT"; "Prices Including VAT")
+                field("Prices Including VAT"; Rec."Prices Including VAT")
                 {
                     ApplicationArea = VAT;
                     ToolTip = 'Specifies if the Unit Price and Line Amount fields on document lines should be shown with or without VAT.';
@@ -404,7 +405,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         PricesIncludingVATOnAfterValid;
                     end;
                 }
-                field("VAT Bus. Posting Group"; "VAT Bus. Posting Group")
+                field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the VAT specification of the involved customer or vendor to link transactions made for this record with the appropriate general ledger account according to the VAT posting setup.';
@@ -419,19 +420,19 @@ page 51009 "Ret. RH Purchase Invoice"
                             PurchCalcDiscByType.ApplyDefaultInvoiceDiscount(0, Rec);
                     end;
                 }
-                field("Payment Terms Code"; "Payment Terms Code")
+                field("Payment Terms Code"; Rec."Payment Terms Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Promoted;
                     ToolTip = 'Specifies a formula that calculates the payment due date, payment discount date, and payment discount amount.';
                 }
-                field("Payment Method Code"; "Payment Method Code")
+                field("Payment Method Code"; Rec."Payment Method Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies how to make payment, such as with bank transfer, cash, or check.';
                 }
-                field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Dimensions;
                     ToolTip = 'Specifies the code for Shortcut Dimension 1, which is one of two global dimension codes that you set up in the General Ledger Setup window.';
@@ -441,7 +442,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         ShortcutDimension1CodeOnAfterV;
                     end;
                 }
-                field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Dimensions;
                     ToolTip = 'Specifies the code for Shortcut Dimension 2, which is one of two global dimension codes that you set up in the General Ledger Setup window.';
@@ -451,23 +452,23 @@ page 51009 "Ret. RH Purchase Invoice"
                         ShortcutDimension2CodeOnAfterV;
                     end;
                 }
-                field("Payment Discount %"; "Payment Discount %")
+                field("Payment Discount %"; Rec."Payment Discount %")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the payment discount percent granted if payment is made on or before the date in the Pmt. Discount Date field.';
                 }
-                field("Pmt. Discount Date"; "Pmt. Discount Date")
+                field("Pmt. Discount Date"; Rec."Pmt. Discount Date")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies the date on which the amount in the entry must be paid for a payment discount to be granted.';
                 }
-                field("Tax Liable"; "Tax Liable")
+                field("Tax Liable"; Rec."Tax Liable")
                 {
                     ApplicationArea = SalesTax;
                     ToolTip = 'Specifies if the customer or vendor is liable for sales tax.';
                 }
-                field("Tax Area Code"; "Tax Area Code")
+                field("Tax Area Code"; Rec."Tax Area Code")
                 {
                     ApplicationArea = SalesTax;
                     ToolTip = 'Specifies the tax area that is used to calculate and post sales tax.';
@@ -477,25 +478,25 @@ page 51009 "Ret. RH Purchase Invoice"
                         CurrPage.PurchLines.PAGE.RedistributeTotalsOnAfterValidate;
                     end;
                 }
-                field("Shipment Method Code"; "Shipment Method Code")
+                field("Shipment Method Code"; Rec."Shipment Method Code")
                 {
                     ApplicationArea = Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies the delivery conditions of the related shipment, such as free on board (FOB).';
                 }
-                field("Payment Reference"; "Payment Reference")
+                field("Payment Reference"; Rec."Payment Reference")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies the payment of the purchase invoice.';
                 }
-                field("Creditor No."; "Creditor No.")
+                field("Creditor No."; Rec."Creditor No.")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies the vendor who sent the purchase invoice.';
                 }
-                field("On Hold"; "On Hold")
+                field("On Hold"; Rec."On Hold")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
@@ -531,13 +532,13 @@ page 51009 "Ret. RH Purchase Invoice"
                             {
                                 ShowCaption = false;
                                 Visible = ShipToOptions = ShipToOptions::Location;
-                                field("Location Code"; "Location Code")
+                                field("Location Code"; Rec."Location Code")
                                 {
                                     ApplicationArea = Location;
                                     ToolTip = 'Specifies a code for the location where you want the items to be placed when they are received.';
                                 }
                             }
-                            field("Ship-to Name"; "Ship-to Name")
+                            field("Ship-to Name"; Rec."Ship-to Name")
                             {
                                 ApplicationArea = Basic, Suite;
                                 Caption = 'Name';
@@ -545,7 +546,7 @@ page 51009 "Ret. RH Purchase Invoice"
                                 Importance = Additional;
                                 ToolTip = 'Specifies the name of the company at the address that you want the items on the purchase document to be shipped to.';
                             }
-                            field("Ship-to Address"; "Ship-to Address")
+                            field("Ship-to Address"; Rec."Ship-to Address")
                             {
                                 ApplicationArea = Basic, Suite;
                                 Caption = 'Address';
@@ -554,7 +555,7 @@ page 51009 "Ret. RH Purchase Invoice"
                                 QuickEntry = false;
                                 ToolTip = 'Specifies the address that you want the items on the purchase document to be shipped to.';
                             }
-                            field("Ship-to Address 2"; "Ship-to Address 2")
+                            field("Ship-to Address 2"; Rec."Ship-to Address 2")
                             {
                                 ApplicationArea = Basic, Suite;
                                 Caption = 'Address 2';
@@ -563,7 +564,7 @@ page 51009 "Ret. RH Purchase Invoice"
                                 QuickEntry = false;
                                 ToolTip = 'Specifies additional address information.';
                             }
-                            field("Ship-to City"; "Ship-to City")
+                            field("Ship-to City"; Rec."Ship-to City")
                             {
                                 ApplicationArea = Basic, Suite;
                                 Caption = 'City';
@@ -576,7 +577,7 @@ page 51009 "Ret. RH Purchase Invoice"
                             {
                                 ShowCaption = false;
                                 Visible = IsShipToCountyVisible;
-                                field("Ship-to County"; "Ship-to County")
+                                field("Ship-to County"; Rec."Ship-to County")
                                 {
                                     ApplicationArea = Basic, Suite;
                                     Caption = 'County';
@@ -586,7 +587,7 @@ page 51009 "Ret. RH Purchase Invoice"
                                     ToolTip = 'Specifies the state, province or county of the address.';
                                 }
                             }
-                            field("Ship-to Post Code"; "Ship-to Post Code")
+                            field("Ship-to Post Code"; Rec."Ship-to Post Code")
                             {
                                 ApplicationArea = Basic, Suite;
                                 Caption = 'Post Code';
@@ -595,7 +596,7 @@ page 51009 "Ret. RH Purchase Invoice"
                                 QuickEntry = false;
                                 ToolTip = 'Specifies the postal code of the address that you want the items on the purchase document to be shipped to.';
                             }
-                            field("Ship-to Country/Region Code"; "Ship-to Country/Region Code")
+                            field("Ship-to Country/Region Code"; Rec."Ship-to Country/Region Code")
                             {
                                 ApplicationArea = Basic, Suite;
                                 Caption = 'Country/Region';
@@ -604,7 +605,7 @@ page 51009 "Ret. RH Purchase Invoice"
                                 QuickEntry = false;
                                 ToolTip = 'Specifies the country/region code of the address that you want the items on the purchase document to be shipped to.';
                             }
-                            field("Ship-to Contact"; "Ship-to Contact")
+                            field("Ship-to Contact"; Rec."Ship-to Contact")
                             {
                                 ApplicationArea = Basic, Suite;
                                 Caption = 'Contact';
@@ -628,14 +629,14 @@ page 51009 "Ret. RH Purchase Invoice"
                         trigger OnValidate()
                         begin
                             if PayToOptions = PayToOptions::"Default (Vendor)" then
-                                Validate("Pay-to Vendor No.", "Buy-from Vendor No.");
+                                Rec.Validate("Pay-to Vendor No.", Rec."Buy-from Vendor No.");
                         end;
                     }
                     group(Control88)
                     {
                         ShowCaption = false;
                         Visible = NOT (PayToOptions = PayToOptions::"Default (Vendor)");
-                        field("Pay-to Name"; "Pay-to Name")
+                        field("Pay-to Name"; Rec."Pay-to Name")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'Name';
@@ -649,9 +650,9 @@ page 51009 "Ret. RH Purchase Invoice"
                             var
                                 ApplicationAreaMgmtFacade: Codeunit "Application Area Mgmt. Facade";
                             begin
-                                if GetFilter("Pay-to Vendor No.") = xRec."Pay-to Vendor No." then
-                                    if "Pay-to Vendor No." <> xRec."Pay-to Vendor No." then
-                                        SetRange("Pay-to Vendor No.");
+                                if Rec.GetFilter("Pay-to Vendor No.") = xRec."Pay-to Vendor No." then
+                                    if Rec."Pay-to Vendor No." <> xRec."Pay-to Vendor No." then
+                                        Rec.SetRange("Pay-to Vendor No.");
 
                                 CurrPage.SaveRecord;
                                 if ApplicationAreaMgmtFacade.IsFoundationEnabled then
@@ -660,7 +661,7 @@ page 51009 "Ret. RH Purchase Invoice"
                                 CurrPage.Update(false);
                             end;
                         }
-                        field("Pay-to Address"; "Pay-to Address")
+                        field("Pay-to Address"; Rec."Pay-to Address")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'Address';
@@ -670,7 +671,7 @@ page 51009 "Ret. RH Purchase Invoice"
                             QuickEntry = false;
                             ToolTip = 'Specifies the address of the vendor sending the invoice.';
                         }
-                        field("Pay-to Address 2"; "Pay-to Address 2")
+                        field("Pay-to Address 2"; Rec."Pay-to Address 2")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'Address 2';
@@ -680,7 +681,7 @@ page 51009 "Ret. RH Purchase Invoice"
                             QuickEntry = false;
                             ToolTip = 'Specifies additional address information.';
                         }
-                        field("Pay-to City"; "Pay-to City")
+                        field("Pay-to City"; Rec."Pay-to City")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'City';
@@ -694,7 +695,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         {
                             ShowCaption = false;
                             Visible = IsPayToCountyVisible;
-                            field("Pay-to County"; "Pay-to County")
+                            field("Pay-to County"; Rec."Pay-to County")
                             {
                                 ApplicationArea = Basic, Suite;
                                 Caption = 'County';
@@ -705,7 +706,7 @@ page 51009 "Ret. RH Purchase Invoice"
                                 ToolTip = 'Specifies the state, province or county of the address.';
                             }
                         }
-                        field("Pay-to Post Code"; "Pay-to Post Code")
+                        field("Pay-to Post Code"; Rec."Pay-to Post Code")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'Post Code';
@@ -715,7 +716,7 @@ page 51009 "Ret. RH Purchase Invoice"
                             QuickEntry = false;
                             ToolTip = 'Specifies the postal code.';
                         }
-                        field("Pay-to Country/Region Code"; "Pay-to Country/Region Code")
+                        field("Pay-to Country/Region Code"; Rec."Pay-to Country/Region Code")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'Country/Region';
@@ -727,10 +728,10 @@ page 51009 "Ret. RH Purchase Invoice"
 
                             trigger OnValidate()
                             begin
-                                IsPayToCountyVisible := FormatAddress.UseCounty("Pay-to Country/Region Code");
+                                IsPayToCountyVisible := FormatAddress.UseCounty(Rec."Pay-to Country/Region Code");
                             end;
                         }
-                        field("Pay-to Contact No."; "Pay-to Contact No.")
+                        field("Pay-to Contact No."; Rec."Pay-to Contact No.")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'Contact No.';
@@ -739,7 +740,7 @@ page 51009 "Ret. RH Purchase Invoice"
                             Importance = Additional;
                             ToolTip = 'Specifies the number of the contact who sends the invoice.';
                         }
-                        field("Pay-to Contact"; "Pay-to Contact")
+                        field("Pay-to Contact"; Rec."Pay-to Contact")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'Contact';
@@ -753,31 +754,46 @@ page 51009 "Ret. RH Purchase Invoice"
             group("Foreign Trade")
             {
                 Caption = 'Foreign Trade';
-                field("Transaction Specification"; "Transaction Specification")
+                field("Transaction Specification"; Rec."Transaction Specification")
                 {
                     ApplicationArea = BasicEU;
                     ToolTip = 'Specifies a specification of the document''s transaction, for the purpose of reporting to INTRASTAT.';
                 }
-                field("Transaction Type"; "Transaction Type")
+                field("Transaction Type"; Rec."Transaction Type")
                 {
                     ApplicationArea = BasicEU;
                     ToolTip = 'Specifies the type of transaction that the document represents, for the purpose of reporting to INTRASTAT.';
                 }
-                field("Transport Method"; "Transport Method")
+                field("Transport Method"; Rec."Transport Method")
                 {
                     ApplicationArea = BasicEU;
                     ToolTip = 'Specifies the transport method, for the purpose of reporting to INTRASTAT.';
                 }
-                field("Entry Point"; "Entry Point")
+                field("Entry Point"; Rec."Entry Point")
                 {
                     ApplicationArea = BasicEU;
                     ToolTip = 'Specifies the code of the port of entry where the items pass into your country/region, for reporting to Intrastat.';
                 }
-                field("Area"; Area)
+                field("Area"; Rec.Area)
                 {
                     ApplicationArea = BasicEU;
                     ToolTip = 'Specifies the area of the customer or vendor, for the purpose of reporting to INTRASTAT.';
                 }
+            }
+            group(Application)
+            {
+                Caption = 'Application', Comment = 'ESM="Applicación"';
+                field("Applies-to Doc. Type"; "Applies-to Doc. Type")
+                {
+                    ApplicationArea = Basic, Suite;
+                    ToolTip = 'Specifies the type of the posted document that this document or journal line will be applied to when you post, for example to register payment.';
+                }
+                field("Applies-to Doc. No."; "Applies-to Doc. No.")
+                {
+                    ApplicationArea = Basic, Suite;
+                    ToolTip = 'Specifies the number of the posted document that this document or journal line will be applied to when you post, for example to register payment.';
+                }
+
             }
         }
         area(factboxes)
@@ -882,7 +898,7 @@ page 51009 "Ret. RH Purchase Invoice"
 
                     trigger OnAction()
                     begin
-                        CalcInvDiscForHeader;
+                        Rec.CalcInvDiscForHeader;
                         Commit;
                         PAGE.RunModal(PAGE::"Purchase Statistics", Rec);
                         PurchCalcDiscByType.ResetRecalculateInvoiceDisc(Rec);
@@ -929,7 +945,7 @@ page 51009 "Ret. RH Purchase Invoice"
 
                     trigger OnAction()
                     begin
-                        ShowDocDim;
+                        Rec.ShowDocDim;
                         CurrPage.SaveRecord;
                     end;
                 }
@@ -976,7 +992,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     var
                         IncomingDocument: Record "Incoming Document";
                     begin
-                        IncomingDocument.ShowCardFromEntryNo("Incoming Document Entry No.");
+                        IncomingDocument.ShowCardFromEntryNo(Rec."Incoming Document Entry No.");
                     end;
                 }
                 action(SelectIncomingDoc)
@@ -995,7 +1011,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     var
                         IncomingDocument: Record "Incoming Document";
                     begin
-                        Validate("Incoming Document Entry No.", IncomingDocument.SelectIncomingDocument("Incoming Document Entry No.", RecordId));
+                        Rec.Validate("Incoming Document Entry No.", IncomingDocument.SelectIncomingDocument(Rec."Incoming Document Entry No.", Rec.RecordId));
                     end;
                 }
                 action(IncomingDocAttachFile)
@@ -1037,9 +1053,9 @@ page 51009 "Ret. RH Purchase Invoice"
                     var
                         OfficeMgt: Codeunit "Office Management";
                     begin
-                        if not Insert(true) then
-                            Modify(true);
-                        OfficeMgt.InitiateSendToIncomingDocumentsWithPurchaseHeaderLink(Rec, "Buy-from Vendor No.");
+                        if not Rec.Insert(true) then
+                            Rec.Modify(true);
+                        OfficeMgt.InitiateSendToIncomingDocumentsWithPurchaseHeaderLink(Rec, Rec."Buy-from Vendor No.");
                     end;
                 }
                 action(RemoveIncomingDoc)
@@ -1058,10 +1074,10 @@ page 51009 "Ret. RH Purchase Invoice"
                     var
                         IncomingDocument: Record "Incoming Document";
                     begin
-                        if IncomingDocument.Get("Incoming Document Entry No.") then
+                        if IncomingDocument.Get(Rec."Incoming Document Entry No.") then
                             IncomingDocument.RemoveLinkToRelatedRecord;
-                        "Incoming Document Entry No." := 0;
-                        Modify(true);
+                        Rec."Incoming Document Entry No." := 0;
+                        Rec.Modify(true);
                     end;
                 }
             }
@@ -1084,7 +1100,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     var
                         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
-                        ApprovalsMgmt.ApproveRecordApprovalRequest(RecordId)
+                        ApprovalsMgmt.ApproveRecordApprovalRequest(Rec.RecordId)
                     end;
                 }
                 action(Reject)
@@ -1103,7 +1119,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     var
                         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
-                        ApprovalsMgmt.RejectRecordApprovalRequest(RecordId)
+                        ApprovalsMgmt.RejectRecordApprovalRequest(Rec.RecordId)
                     end;
                 }
                 action(Delegate)
@@ -1121,7 +1137,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     var
                         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
-                        ApprovalsMgmt.DelegateRecordApprovalRequest(RecordId)
+                        ApprovalsMgmt.DelegateRecordApprovalRequest(Rec.RecordId)
                     end;
                 }
                 action(Comment)
@@ -1221,7 +1237,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         CopyPurchDoc.SetPurchHeader(Rec);
                         CopyPurchDoc.RunModal;
                         Clear(CopyPurchDoc);
-                        if Get("Document Type", "No.") then;
+                        if Rec.Get(Rec."Document Type", Rec."No.") then;
                     end;
                 }
                 action(CalculateInvoiceDiscount)
@@ -1272,7 +1288,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     var
                         WorkflowsEntriesBuffer: Record "Workflows Entries Buffer";
                     begin
-                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(RecordId, DATABASE::"Purchase Header", "Document Type", "No.");
+                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(Rec.RecordId, DATABASE::"Purchase Header", "Document Type", Rec."No.");
                     end;
                 }
                 action(SendApprovalRequest)
@@ -1310,7 +1326,7 @@ page 51009 "Ret. RH Purchase Invoice"
                         WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
                     begin
                         ApprovalsMgmt.OnCancelPurchaseApprovalRequest(Rec);
-                        WorkflowWebhookMgt.FindAndCancel(RecordId);
+                        WorkflowWebhookMgt.FindAndCancel(Rec.RecordId);
                     end;
                 }
             }
@@ -1458,7 +1474,7 @@ page 51009 "Ret. RH Purchase Invoice"
 
                     trigger OnAction()
                     begin
-                        CancelBackgroundPosting;
+                        Rec.CancelBackgroundPosting;
                     end;
                 }
             }
@@ -1482,7 +1498,7 @@ page 51009 "Ret. RH Purchase Invoice"
                     var
                         RetRHMgt: Codeunit "Retention RH Management";
                     begin
-                        if not IsEmpty then
+                        if not Rec.IsEmpty then
                             RetRHMgt.ApplyRetention(Rec);
                         CurrPage.Update(true);
                     end;
@@ -1494,8 +1510,8 @@ page 51009 "Ret. RH Purchase Invoice"
     trigger OnAfterGetCurrRecord()
     begin
         CurrPage.IncomingDocAttachFactBox.PAGE.LoadDataFromRecord(Rec);
-        CurrPage.ApprovalFactBox.PAGE.UpdateApprovalEntriesFromSourceRecord(RecordId);
-        ShowWorkflowStatus := CurrPage.WorkflowStatus.PAGE.SetFilterOnWorkflowRecord(RecordId);
+        CurrPage.ApprovalFactBox.PAGE.UpdateApprovalEntriesFromSourceRecord(Rec.RecordId);
+        ShowWorkflowStatus := CurrPage.WorkflowStatus.PAGE.SetFilterOnWorkflowRecord(Rec.RecordId);
         SetControlAppearance;
         RetRHMgt.CalculateRHAmount(Rec);
     end;
@@ -1509,7 +1525,7 @@ page 51009 "Ret. RH Purchase Invoice"
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     trigger OnInit()
@@ -1524,12 +1540,12 @@ page 51009 "Ret. RH Purchase Invoice"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         SetDefaultValueRHRetention();
-        "Responsibility Center" := UserMgt.GetPurchasesFilter;
+        Rec."Responsibility Center" := UserMgt.GetPurchasesFilter;
 
-        if (not DocNoVisible) and ("No." = '') then
-            SetBuyFromVendorFromFilter;
+        if (not DocNoVisible) and (Rec."No." = '') then
+            Rec.SetBuyFromVendorFromFilter;
 
-        "Retention RH Electronic" := true;
+        Rec."Retention RH Electronic" := true;
 
         CalculateCurrentShippingAndPayToOption;
     end;
@@ -1546,12 +1562,12 @@ page 51009 "Ret. RH Purchase Invoice"
         IsSaaS := EnvironmentInfo.IsSaaS;
 
         if UserMgt.GetPurchasesFilter <> '' then begin
-            FilterGroup(2);
-            SetRange("Responsibility Center", UserMgt.GetPurchasesFilter);
-            FilterGroup(0);
+            Rec.FilterGroup(2);
+            Rec.SetRange("Responsibility Center", UserMgt.GetPurchasesFilter);
+            Rec.FilterGroup(0);
         end;
-        if ("No." <> '') and ("Buy-from Vendor No." = '') then
-            DocumentIsPosted := (not Get("Document Type", "No."));
+        if (Rec."No." <> '') and (Rec."Buy-from Vendor No." = '') then
+            DocumentIsPosted := (not Rec.Get(Rec."Document Type", Rec."No."));
 
         ActivateFields;
     end;
@@ -1559,12 +1575,14 @@ page 51009 "Ret. RH Purchase Invoice"
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
         if not DocumentIsPosted then
-            exit(ConfirmCloseUnposted);
+            exit(Rec.ConfirmCloseUnposted);
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         SetDefaultValueRHRetention();
+        if "Assigned User ID" = '' then
+            "Assigned User ID" := UserId;
     end;
 
     var
@@ -1609,10 +1627,10 @@ page 51009 "Ret. RH Purchase Invoice"
         VendorInvNo: Text;
         ErrorVendInvNo: label 'The first character must start with E for electronic and 0 for non-electronic.';
     begin
-        if "Vendor Invoice No." = '' then
+        if Rec."Vendor Invoice No." = '' then
             exit;
-        VendorInvNo := "Vendor Invoice No.";
-        if "Retention RH Electronic" then begin
+        VendorInvNo := Rec."Vendor Invoice No.";
+        if Rec."Retention RH Electronic" then begin
             if VendorInvNo[1] <> 'E' then
                 Error(ErrorVendInvNo);
         end else
@@ -1624,17 +1642,17 @@ page 51009 "Ret. RH Purchase Invoice"
 
     procedure SetDefaultValueRHRetention()
     begin
-        if "No." = '' then
-            "No." := RetRHMgt.GetNextPreassingNo("No. Series");
-        "Legal Document" := '02';
-        "Posting No. Series" := RetRHMgt.GetPostingNo();
+        if Rec."No." = '' then
+            Rec."No." := RetRHMgt.GetNextPreassingNo(Rec."No. Series");
+        Rec."Legal Document" := '02';
+        Rec."Posting No. Series" := RetRHMgt.GetPostingNo();
     end;
 
     local procedure ActivateFields()
     begin
-        IsBuyFromCountyVisible := FormatAddress.UseCounty("Buy-from Country/Region Code");
-        IsPayToCountyVisible := FormatAddress.UseCounty("Pay-to Country/Region Code");
-        IsShipToCountyVisible := FormatAddress.UseCounty("Ship-to Country/Region Code");
+        IsBuyFromCountyVisible := FormatAddress.UseCounty(Rec."Buy-from Country/Region Code");
+        IsPayToCountyVisible := FormatAddress.UseCounty(Rec."Pay-to Country/Region Code");
+        IsShipToCountyVisible := FormatAddress.UseCounty(Rec."Ship-to Country/Region Code");
     end;
 
     procedure LineModified()
@@ -1652,10 +1670,10 @@ page 51009 "Ret. RH Purchase Invoice"
         if ApplicationAreaMgmtFacade.IsFoundationEnabled then
             LinesInstructionMgt.PurchaseCheckAllLinesHaveQuantityAssigned(Rec);
 
-        SendToPosting(PostingCodeunitID);
+        Rec.SendToPosting(PostingCodeunitID);
 
-        IsScheduledPosting := "Job Queue Status" = "Job Queue Status"::"Scheduled for Posting";
-        DocumentIsPosted := (not PurchaseHeader.Get("Document Type", "No.")) or IsScheduledPosting;
+        IsScheduledPosting := Rec."Job Queue Status" = Rec."Job Queue Status"::"Scheduled for Posting";
+        DocumentIsPosted := (not PurchaseHeader.Get(Rec."Document Type", Rec."No.")) or IsScheduledPosting;
 
         if IsScheduledPosting then
             CurrPage.Close;
@@ -1668,7 +1686,7 @@ page 51009 "Ret. RH Purchase Invoice"
             NavigateAfterPost::"Posted Document":
                 begin
                     if IsOfficeAddin then begin
-                        PurchInvHeader.SetRange("Pre-Assigned No.", "No.");
+                        PurchInvHeader.SetRange("Pre-Assigned No.", Rec."No.");
                         PurchInvHeader.SetRange("Order No.", '');
                         if PurchInvHeader.FindFirst then
                             PAGE.Run(PAGE::"Posted Purchase Invoice", PurchInvHeader);
@@ -1692,7 +1710,7 @@ page 51009 "Ret. RH Purchase Invoice"
 
     local procedure VerifyTotal()
     begin
-        if not IsTotalValid then
+        if not Rec.IsTotalValid then
             Error(TotalsMismatchErr);
     end;
 
@@ -1728,7 +1746,7 @@ page 51009 "Ret. RH Purchase Invoice"
     local procedure PricesIncludingVATOnAfterValid()
     begin
         CurrPage.Update;
-        CalcFields("Invoice Discount Amount");
+        Rec.CalcFields("Invoice Discount Amount");
     end;
 
     local procedure SetDocNoVisible()
@@ -1736,7 +1754,7 @@ page 51009 "Ret. RH Purchase Invoice"
         DocumentNoVisibility: Codeunit DocumentNoVisibility;
         DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order",Reminder,FinChMemo;
     begin
-        DocNoVisible := DocumentNoVisibility.PurchaseDocumentNoIsVisible(DocType::Invoice, "No.");
+        DocNoVisible := DocumentNoVisibility.PurchaseDocumentNoIsVisible(DocType::Invoice, Rec."No.");
     end;
 
     procedure ShowLegalPropertyName(): Text[250]
@@ -1746,7 +1764,7 @@ page 51009 "Ret. RH Purchase Invoice"
         MyLegalDocument.Reset();
         MyLegalDocument.SetRange("Option Type", MyLegalDocument."Option Type"::"SUNAT Table");
         MyLegalDocument.SetRange("Type Code", '30');
-        MyLegalDocument.SetRange("Legal No.", "Legal Property Type");
+        MyLegalDocument.SetRange("Legal No.", Rec."Legal Property Type");
         if MyLegalDocument.Find('-') then
             exit(MyLegalDocument.Description);
         exit('');
@@ -1766,16 +1784,16 @@ page 51009 "Ret. RH Purchase Invoice"
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
     begin
-        HasIncomingDocument := "Incoming Document Entry No." <> 0;
+        HasIncomingDocument := Rec."Incoming Document Entry No." <> 0;
         SetExtDocNoMandatoryCondition;
 
         IncomingDocEmailAttachmentEnabled := OfficeMgt.EmailHasAttachments;
-        OpenApprovalEntriesExistForCurrUser := ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(RecordId);
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
+        OpenApprovalEntriesExistForCurrUser := ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(Rec.RecordId);
+        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(Rec.RecordId);
 
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(Rec.RecordId);
 
-        WorkflowWebhookMgt.GetCanRequestAndCanCancel(RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
+        WorkflowWebhookMgt.GetCanRequestAndCanCancel(Rec.RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
     end;
 
     local procedure ShowPostedConfirmationMessage()
@@ -1783,7 +1801,7 @@ page 51009 "Ret. RH Purchase Invoice"
         PurchInvHeader: Record "Purch. Inv. Header";
         InstructionMgt: Codeunit "Instruction Mgt.";
     begin
-        PurchInvHeader.SetRange("Pre-Assigned No.", "No.");
+        PurchInvHeader.SetRange("Pre-Assigned No.", Rec."No.");
         PurchInvHeader.SetRange("Order No.", '');
         if PurchInvHeader.FindFirst then
             if InstructionMgt.ShowConfirm(StrSubstNo(OpenPostedPurchaseInvQst, PurchInvHeader."No."),
@@ -1797,28 +1815,28 @@ page 51009 "Ret. RH Purchase Invoice"
         case ShipToOptions of
             ShipToOptions::"Default (Company Address)",
           ShipToOptions::"Custom Address":
-                Validate("Location Code", '');
+                Rec.Validate("Location Code", '');
             ShipToOptions::Location:
-                Validate("Location Code");
+                Rec.Validate("Location Code");
         end;
     end;
 
     local procedure CalculateCurrentShippingAndPayToOption()
     begin
-        if "Location Code" <> '' then
+        if Rec."Location Code" <> '' then
             ShipToOptions := ShipToOptions::Location
         else
-            if ShipToAddressEqualsCompanyShipToAddress then
+            if Rec.ShipToAddressEqualsCompanyShipToAddress then
                 ShipToOptions := ShipToOptions::"Default (Company Address)"
             else
                 ShipToOptions := ShipToOptions::"Custom Address";
 
         case true of
-            ("Pay-to Vendor No." = "Buy-from Vendor No.") and BuyFromAddressEqualsPayToAddress:
+            (Rec."Pay-to Vendor No." = Rec."Buy-from Vendor No.") and Rec.BuyFromAddressEqualsPayToAddress:
                 PayToOptions := PayToOptions::"Default (Vendor)";
-            ("Pay-to Vendor No." = "Buy-from Vendor No.") and (not BuyFromAddressEqualsPayToAddress):
+            (Rec."Pay-to Vendor No." = Rec."Buy-from Vendor No.") and (not Rec.BuyFromAddressEqualsPayToAddress):
                 PayToOptions := PayToOptions::"Custom Address";
-            "Pay-to Vendor No." <> "Buy-from Vendor No.":
+            Rec."Pay-to Vendor No." <> Rec."Buy-from Vendor No.":
                 PayToOptions := PayToOptions::"Another Vendor";
         end;
 

@@ -2,7 +2,7 @@ tableextension 51110 "Setup G/L Entry" extends "G/L Entry"
 {
     fields
     {
-        // Add changes to table fields here 51008..51008,51030..51039
+        // Add changes to table fields here 51008..51008,51030..51049
         field(51002; "Transaction CUO"; Integer)
         {
             DataClassification = ToBeClassified;
@@ -89,6 +89,27 @@ tableextension 51110 "Setup G/L Entry" extends "G/L Entry"
         {
             DataClassification = ToBeClassified;
             Caption = 'Acc. Gr. Mixed Base Entry No.', Comment = 'ESM="N° Mov. Origen Liq. GC Mixto"';
+        }
+        field(51040; "Source Currency Factor"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Source Currency Factor', Comment = 'ESM="Factor divisa origen"';
+            DecimalPlaces = 0 : 15;
+            Editable = false;
+            MinValue = 0;
+        }
+        field(51041; "Source Currency Code"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Source Currency Code', Comment = 'ESM="Cód. Origen Divisa"';
+        }
+        field(51042; "Source Currency Type"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Source Currency Type', Comment = 'ESM="Tipo de cambio Origen"';
+            DecimalPlaces = 0 : 4;
+            Editable = false;
+            MinValue = 0;
         }
 
         //Legal Document Begin

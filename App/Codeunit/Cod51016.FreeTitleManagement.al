@@ -11,6 +11,7 @@ codeunit 51016 "FT Free Title Management"
         GLAcc: Record "G/L Account";
         LineNo: Integer;
         MsgChange: Label '%1 changued to %2', Comment = 'ESM="%1 cargado a %2"';
+        VATPostingSetup: Record "VAT Posting Setup";
     begin
         GetLSetup();
         if not LSetup."FT Free Title" then
@@ -32,17 +33,23 @@ codeunit 51016 "FT Free Title Management"
                             SalesLine.Modify();
                             GPSetup.Get(SalesLine."Gen. Bus. Posting Group", SalesLine."Gen. Prod. Posting Group");
                             GPSetup.TestField("Sales Account");
+                            VATPostingSetup.Reset();
+                            VATPostingSetup.Get(SalesLine."VAT Bus. Posting Group", SalesLine."VAT Prod. Posting Group");
                             SalesLine2.Init();
                             SalesLine2."Document No." := pSalesHeader."No.";
                             SalesLine2."Document Type" := pSalesHeader."Document Type";
                             SalesLine2."Line No." := LineNo;
                             SalesLine2.Validate(Type, SalesLine2.Type::"G/L Account");
-                            if SalesLine2.Type = SalesLine2.Type::"G/L Account" then
+                            if SalesLine.Type = SalesLine.Type::"G/L Account" then
                                 SalesLine2.Validate("No.", SalesLine."No.")
                             else
                                 SalesLine2.Validate("No.", GPSetup."Sales Account");
                             SalesLine2.Validate(Quantity, -1);
-                            SalesLine2.Validate("VAT Prod. Posting Group", LSetup."FT VAT Prod. Posting Group");
+                            if VATPostingSetup."VAT %" = 18 then
+                                SalesLine2.Validate("VAT Prod. Posting Group", LSetup."FT VAT Prod. Posting Group")
+
+                            else
+                                SalesLine2.Validate("VAT Prod. Posting Group", SalesLine."VAT Prod. Posting Group");
                             SalesLine2.Validate("Unit Price", SalesLine."Line Amount");
                             SalesLine2."FT Free Title Line" := true;
                             SalesLine2.Insert();

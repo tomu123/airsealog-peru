@@ -191,5 +191,12 @@ tableextension 51111 "Setup Purch. Inv. Header" extends "Purch. Inv. Header"
             TableRelation = "Legal Document"."Legal No." WHERE("Option Type" = filter("SUNAT Table"), "Type Code" = filter('33'));
         }
         //Import End
+
+        field(51055; "Accountant receipt date"; date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Accountant receipt date', Comment = 'ESM="Fecha recepción contabilidad"';
+            Editable = false;
+        }
     }
 }

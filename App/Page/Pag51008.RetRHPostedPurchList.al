@@ -20,47 +20,47 @@ page 51008 "Ret. RH Posted Purch. Invoices"
             repeater(Control1)
             {
                 ShowCaption = false;
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field("Order No."; "Order No.")
+                field("Order No."; Rec."Order No.")
                 {
                     ApplicationArea = Suite;
                     Visible = false;
                 }
-                field("Vendor Invoice No."; "Vendor Invoice No.")
+                field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field("Buy-from Vendor No."; "Buy-from Vendor No.")
+                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Vendor No.', Comment = 'ESM="N° Proveedor"';
                 }
-                field("Order Address Code"; "Order Address Code")
+                field("Order Address Code"; Rec."Order Address Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Buy-from Vendor Name"; "Buy-from Vendor Name")
+                field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Vendor', Comment = 'ESM="Proveedor"';
                 }
-                field("Currency Code"; "Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Suite;
                 }
-                field("Retention RH Gross amount"; "Retention RH Gross amount")
+                field("Retention RH Gross amount"; Rec."Retention RH Gross amount")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field("Retention RH Fourth Amount"; "Retention RH Fourth Amount")
+                field("Retention RH Fourth Amount"; Rec."Retention RH Fourth Amount")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic, Suite;
 
@@ -69,7 +69,7 @@ page 51008 "Ret. RH Posted Purch. Invoices"
                         DoDrillDown;
                     end;
                 }
-                field("Amount Including VAT"; "Amount Including VAT")
+                field("Amount Including VAT"; Rec."Amount Including VAT")
                 {
                     ApplicationArea = Basic, Suite;
 
@@ -78,158 +78,158 @@ page 51008 "Ret. RH Posted Purch. Invoices"
                         DoDrillDown;
                     end;
                 }
-                field("Buy-from Post Code"; "Buy-from Post Code")
+                field("Buy-from Post Code"; Rec."Buy-from Post Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Buy-from Country/Region Code"; "Buy-from Country/Region Code")
+                field("Buy-from Country/Region Code"; Rec."Buy-from Country/Region Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Buy-from Contact"; "Buy-from Contact")
+                field("Buy-from Contact"; Rec."Buy-from Contact")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Pay-to Vendor No."; "Pay-to Vendor No.")
+                field("Pay-to Vendor No."; Rec."Pay-to Vendor No.")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Pay-to Name"; "Pay-to Name")
+                field("Pay-to Name"; Rec."Pay-to Name")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Pay-to Post Code"; "Pay-to Post Code")
+                field("Pay-to Post Code"; Rec."Pay-to Post Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Pay-to Country/Region Code"; "Pay-to Country/Region Code")
+                field("Pay-to Country/Region Code"; Rec."Pay-to Country/Region Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Pay-to Contact"; "Pay-to Contact")
+                field("Pay-to Contact"; Rec."Pay-to Contact")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Ship-to Code"; "Ship-to Code")
+                field("Ship-to Code"; Rec."Ship-to Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Ship-to Name"; "Ship-to Name")
+                field("Ship-to Name"; Rec."Ship-to Name")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Ship-to Post Code"; "Ship-to Post Code")
+                field("Ship-to Post Code"; Rec."Ship-to Post Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Ship-to Country/Region Code"; "Ship-to Country/Region Code")
+                field("Ship-to Country/Region Code"; Rec."Ship-to Country/Region Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Ship-to Contact"; "Ship-to Contact")
+                field("Ship-to Contact"; Rec."Ship-to Contact")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Purchaser Code"; "Purchaser Code")
+                field("Purchaser Code"; Rec."Purchaser Code")
                 {
                     ApplicationArea = Suite;
                     Visible = false;
                 }
-                field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Dimensions;
                     Visible = false;
                 }
-                field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Dimensions;
                     Visible = false;
                 }
-                field("Location Code"; "Location Code")
+                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = Location;
                 }
-                field("No. Printed"; "No. Printed")
+                field("No. Printed"; Rec."No. Printed")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field("Document Date"; "Document Date")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Visible = false;
-                }
-                field("Payment Terms Code"; "Payment Terms Code")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Due Date"; "Due Date")
-                {
-                    ApplicationArea = Basic, Suite;
-                }
-                field("Payment Discount %"; "Payment Discount %")
+                field("Payment Terms Code"; Rec."Payment Terms Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Payment Method Code"; "Payment Method Code")
+                field("Due Date"; Rec."Due Date")
+                {
+                    ApplicationArea = Basic, Suite;
+                }
+                field("Payment Discount %"; Rec."Payment Discount %")
                 {
                     ApplicationArea = Basic, Suite;
                     Visible = false;
                 }
-                field("Shipment Method Code"; "Shipment Method Code")
+                field("Payment Method Code"; Rec."Payment Method Code")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Visible = false;
+                }
+                field("Shipment Method Code"; Rec."Shipment Method Code")
                 {
                     ApplicationArea = Suite;
                     Visible = false;
                 }
-                field("Remaining Amount"; "Remaining Amount")
+                field("Remaining Amount"; Rec."Remaining Amount")
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field(Closed; Closed)
+                field(Closed; Rec.Closed)
                 {
                     ApplicationArea = Basic, Suite;
                 }
-                field(Cancelled; Cancelled)
+                field(Cancelled; Rec.Cancelled)
                 {
                     ApplicationArea = Basic, Suite;
-                    HideValue = NOT Cancelled;
+                    HideValue = NOT IsCancel;
                     Style = Unfavorable;
-                    StyleExpr = Cancelled;
+                    StyleExpr = IsCancel;
 
                     trigger OnDrillDown()
                     begin
-                        ShowCorrectiveCreditMemo;
+                        Rec.ShowCorrectiveCreditMemo;
                     end;
                 }
-                field(Corrective; Corrective)
+                field(Corrective; Rec.Corrective)
                 {
                     ApplicationArea = Basic, Suite;
-                    HideValue = NOT Corrective;
+                    HideValue = NOT IsCorrective;
                     Style = Unfavorable;
-                    StyleExpr = Corrective;
+                    StyleExpr = IsCorrective;
 
                     trigger OnDrillDown()
                     begin
-                        ShowCancelledCreditMemo;
+                        Rec.ShowCancelledCreditMemo;
                     end;
                 }
             }
@@ -298,7 +298,7 @@ page 51008 "Ret. RH Posted Purch. Invoices"
 
                     trigger OnAction()
                     begin
-                        ShowDimensions;
+                        Rec.ShowDimensions;
                     end;
                 }
                 action(IncomingDoc)
@@ -312,7 +312,7 @@ page 51008 "Ret. RH Posted Purch. Invoices"
                     var
                         IncomingDocument: Record "Incoming Document";
                     begin
-                        IncomingDocument.ShowCard("No.", "Posting Date");
+                        IncomingDocument.ShowCard(Rec."No.", Rec."Posting Date");
                     end;
                 }
             }
@@ -349,7 +349,7 @@ page 51008 "Ret. RH Posted Purch. Invoices"
 
                 trigger OnAction()
                 begin
-                    Navigate;
+                    Rec.Navigate;
                 end;
             }
             group(RelatedInformationNavigation)
@@ -382,7 +382,7 @@ page 51008 "Ret. RH Posted Purch. Invoices"
                     PromotedIsBig = true;
                     PromotedOnly = true;
                     Scope = Repeater;
-                    Visible = not Cancelled;
+                    Visible = not IsCancel;
 
                     trigger OnAction()
                     begin
@@ -399,7 +399,7 @@ page 51008 "Ret. RH Posted Purch. Invoices"
                     PromotedIsBig = true;
                     PromotedOnly = true;
                     Scope = Repeater;
-                    Visible = not Cancelled;
+                    Visible = not IsCancel;
 
                     trigger OnAction()
                     begin
@@ -434,11 +434,11 @@ page 51008 "Ret. RH Posted Purch. Invoices"
                     PromotedCategory = Category4;
                     PromotedOnly = true;
                     Scope = Repeater;
-                    Visible = Cancelled OR Corrective;
+                    Visible = IsCancelAndCorrect;
 
                     trigger OnAction()
                     begin
-                        ShowCanceledOrCorrCrMemo;
+                        Rec.ShowCanceledOrCorrCrMemo;
                     end;
                 }
             }
@@ -467,6 +467,9 @@ page 51008 "Ret. RH Posted Purch. Invoices"
     trigger OnAfterGetCurrRecord()
     begin
         CurrPage.IncomingDocAttachFactBox.PAGE.LoadDataFromRecord(Rec);
+        IsCancelAndCorrect := Rec.Cancelled OR Rec.Corrective;
+        IsCancel := Rec.Cancelled;
+        IsCorrective := Rec.Corrective;
     end;
 
     trigger OnOpenPage()
@@ -474,10 +477,10 @@ page 51008 "Ret. RH Posted Purch. Invoices"
         OfficeMgt: Codeunit "Office Management";
         HasFilters: Boolean;
     begin
-        HasFilters := GetFilters <> '';
-        SetSecurityFilterOnRespCenter;
+        HasFilters := Rec.GetFilters <> '';
+        Rec.SetSecurityFilterOnRespCenter;
         if HasFilters then
-            if FindFirst then;
+            if Rec.FindFirst then;
         IsOfficeAddin := OfficeMgt.IsAvailable;
     end;
 
@@ -492,4 +495,7 @@ page 51008 "Ret. RH Posted Purch. Invoices"
 
     var
         IsOfficeAddin: Boolean;
+        IsCancel: Boolean;
+        IsCorrective: Boolean;
+        IsCancelAndCorrect: Boolean;
 }

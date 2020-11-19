@@ -45,11 +45,20 @@ report 51002 "AER Update Curr. Exch. Rate"
     end;
 
     trigger OnPostReport()
+    begin
+        CallUpdateCurrency();
+    end;
+
+    procedure CallUpdateCurrency()
     var
         UnExistsDate: Label 'Posting date undefined.', Comment = 'ESM="Fecha de tipo de cambio no definido"';
     begin
-        if PostingDate = 0D then
-            Error('Posting date undefined.');
+        if (HideDialog) and (PostingDate = 0D) then
+            exit
+        else
+            if (PostingDate = 0D) then
+                Error('Fecha de registro no definida.');
+
         Day := Date2DMY(PostingDate, 1);
         Month := Date2DMY(PostingDate, 2);
         Year := Date2DMY(PostingDate, 3);
@@ -72,7 +81,8 @@ report 51002 "AER Update Curr. Exch. Rate"
                     END;
             END;
         END;
-        MESSAGE(Currency);
+        if not HideDialog then
+            Message(Currency);
     end;
 
     procedure UpdateCurrency()
@@ -192,6 +202,7 @@ report 51002 "AER Update Curr. Exch. Rate"
         Numerador: Integer;
         Counter: Integer;
         Inserted: Boolean;
+        HideDialog: Boolean;
         texValor: Text;
         TCFIN: Boolean;
         Texto: Text;
@@ -201,4 +212,14 @@ report 51002 "AER Update Curr. Exch. Rate"
         NumPos: Integer;
         I: Integer;
         TextArray: array[15] of Text;
+
+    procedure SetHideDialog()
+    begin
+        HideDialog := true;
+    end;
+
+    procedure SetPostingDate()
+    begin
+        PostingDate := Today;
+    end;
 }

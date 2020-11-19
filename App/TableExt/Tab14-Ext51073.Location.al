@@ -11,4 +11,6 @@ tableextension 51073 "Ubigeo Location" extends Location
     var
         Ubigeo: Record Ubigeo;
         Location: Record Location;
+
+    var
 }

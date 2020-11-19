@@ -367,6 +367,7 @@ codeunit 51004 "DetrAction Calculation"
         PurchInvHeader: Record "Purch. inv. Header";
         VendLedgEntry: Record "Vendor Ledger Entry";
         VendLedgEntryTemp: Record "Vendor Ledger Entry" temporary;
+        TelecreditUtility: Codeunit "Telecredit Utility";
         GenJnlLine2: Record "Gen. Journal Line";
         PENAmount: Decimal;
         StrPENAmount: Text;
@@ -646,14 +647,15 @@ codeunit 51004 "DetrAction Calculation"
                     else
                         EntryNo := 1;
 
-                    FileName := Campos[1] + Campos[2] + Campos[3] + Campos[4] + '.txt';
+                    FileName := Campos[1] + Campos[2] + Campos[3] + Campos[4];
                     TempFileBlob.CreateInStream(FileInStream);
-                    ControlFile.CreateControlFileRecord('DETRAC', FileName, '', WorkDate, WorkDate, FileInStream);
+                    ControlFile.CreateControlFileRecord('DETRAC', FileName, 'txt', WorkDate, WorkDate, FileInStream);
                     if EntryNo <> 0 then
                         if Confirm(Confirmdownload, false) then Begin
                             ControlFile.Get(EntryNo);
                             ControlFile.downLoadFile(ControlFile);
                         end;
+                    TelecreditUtility.fnMessageNotificationRemittanceFiles(FileName, STRSUBSTNO('Se creó el archivo para el documento %1', ParGenJnlLine."Document No."));
                 end;
             end;
         end;
@@ -831,6 +833,11 @@ codeunit 51004 "DetrAction Calculation"
         PurchHeader.TestField("Legal document");
         if PurchHeader."Legal document" = '01' then
             PurchHeader.TestField("Legal Property Type");
+        if PurchHeader."Purch. Detraction" then begin
+            PurchHeader.TestField("Type of Service");
+            PurchHeader.TestField("Type of Operation");
+            PurchHeader.TestField("Purch. % Detraction");
+        end;
     end;
 
     local procedure Update()

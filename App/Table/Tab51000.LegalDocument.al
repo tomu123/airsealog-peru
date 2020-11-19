@@ -131,6 +131,13 @@ table 51000 "Legal Document"
             DataClassification = ToBeClassified;
             Caption = 'UN ECE 5305';
         }
+
+        field(51025; "Type Fiduciary"; Text[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Type Fiduciary', Comment = 'ESM="Cod. Tipo Fiduciario"';
+
+        }
     }
 
     keys

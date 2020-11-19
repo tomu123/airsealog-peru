@@ -38,7 +38,7 @@ codeunit 51009 "Retention Management"
                         "Retention Amount" := "Retention Amount" * -1;
                     if IsLetter then
                         "Retention Amount" := Abs("Retention Amount");
-                    "Document Type" := "Document Type"::" ";
+                    //"Document Type" := "Document Type"::" ";
                     "Bal. Account Type" := "Bal. Account Type"::"G/L Account";
                     "Bal. Account No." := '';
                     "Manual Retention" := IsManual;
@@ -258,6 +258,7 @@ codeunit 51009 "Retention Management"
         NewGenJnlLine: Record "Gen. Journal Line";
         CurrExchRate: Record "Currency Exchange Rate";
         BankAcc: Record "Bank Account";
+        GenJnlTemplate: Record "Gen. Journal Template";
         CurrencyCode: Code[10];
         RetentionAmount: Decimal;
         BankAmount: Decimal;
@@ -266,11 +267,12 @@ codeunit 51009 "Retention Management"
     begin
         RetentionAmount := 0;
         GenJnlBatch.Get(pGenJnlLine."Journal Template Name", pGenJnlLine."Journal Batch Name");
+        GenJnlTemplate.Get(pGenJnlLine."Journal Template Name");
 
         with GenJnlLine do begin
             Reset();
             SetCurrentKey("Journal Template Name", "Journal Batch Name", "Line No.");
-            SetRange("Journal Batch Name", pGenJnlLine."Journal Template Name");
+            SetRange("Journal Template Name", pGenJnlLine."Journal Template Name");
             SetRange("Journal Batch Name", pGenJnlLine."Journal Batch Name");
             SetFilter("Account Type", '%1', "Account Type"::"Bank Account");
             if IsEmpty then
@@ -293,6 +295,8 @@ codeunit 51009 "Retention Management"
                     NewGenJnlLine."Journal Template Name" := "Journal Template Name";
                     NewGenJnlLine."Journal Batch Name" := "Journal Batch Name";
                     NewGenJnlLine."Line No." := "Line No." + 100;
+                    if GenJnlTemplate.Type = GenJnlTemplate."Type"::Payments then
+                        NewGenJnlLine."Document Type" := NewGenJnlLine."Document Type"::Payment;
                     NewGenJnlLine."Document No." := "Document No.";
                     NewGenJnlLine."Posting Date" := "Posting Date";
                     NewGenJnlLine."Account Type" := "Account Type"::"G/L Account";
@@ -344,6 +348,8 @@ codeunit 51009 "Retention Management"
             NewGenJnlLine."Journal Batch Name" := "Journal Batch Name";
             NewGenJnlLine."Journal Template Name" := "Journal Template Name";
             NewGenJnlLine."Line No." := LineNo;
+            if GenJnlTemplate.Type = GenJnlTemplate."Type"::Payments then
+                NewGenJnlLine."Document Type" := NewGenJnlLine."Document Type"::Payment;
             NewGenJnlLine."Document No." := "Document No.";
             NewGenJnlLine."Posting Date" := "Posting Date";
             NewGenJnlLine."Account Type" := "Account Type"::"Bank Account";
@@ -383,6 +389,7 @@ codeunit 51009 "Retention Management"
         NewGenJnlLine: Record "Gen. Journal Line";
         CurrExchRate: Record "Currency Exchange Rate";
         BankAcc: Record "Bank Account";
+        GenJnlTemplate: Record "Gen. Journal Template";
         CurrencyCode: Code[10];
         RetentionAmount: Decimal;
         ReferenceToApplyEntryAmountLCY: Decimal;
@@ -391,6 +398,7 @@ codeunit 51009 "Retention Management"
     begin
         RetentionAmount := 0;
         GenJnlBatch.Get(pGenJnlLine."Journal Template Name", pGenJnlLine."Journal Batch Name");
+        GenJnlTemplate.Get(pGenJnlLine."Journal Template Name");
 
         with GenJnlLine do begin
             Reset();

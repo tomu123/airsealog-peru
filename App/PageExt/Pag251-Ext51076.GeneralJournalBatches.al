@@ -5,11 +5,19 @@ pageextension 51076 "ST General Journal Batches" extends "General Journal Batche
         // Add changes to page layout here
         addbefore("Reason Code")
         {
-            field("Is Batch Check"; "Is Batch Check")
+            field("Is Batch Check"; Rec."Is Batch Check")
             {
                 ApplicationArea = All;
             }
-            field("Bank Account No. FICO"; "Bank Account No. FICO")
+            field("Bank Account No. FICO"; Rec."Bank Account No. FICO")
+            {
+                ApplicationArea = All;
+            }
+            field("Net Balance"; Rec."Net Balance")
+            {
+                ApplicationArea = All;
+            }
+            field("Net Balance (LCY)"; Rec."Net Balance (LCY)")
             {
                 ApplicationArea = All;
             }
@@ -21,7 +29,8 @@ pageextension 51076 "ST General Journal Batches" extends "General Journal Batche
             field("OpenPaymentSchedule"; OpenPaymentScheduleCount)
             {
                 ApplicationArea = All;
-                Caption = 'Open Pay. Schedule';
+                Caption = 'Open Pay. Schedule', Comment = 'ESM="Cron. Pend. Pago"';
+                ToolTip = 'Open Pay. Schedule', Comment = 'ESM="Pendientes de pago - Cronograma"';
                 StyleExpr = StylePaymentSchedule;
                 Editable = false;
 
@@ -65,6 +74,28 @@ pageextension 51076 "ST General Journal Batches" extends "General Journal Batche
         //Payment Schedule End
     }
 
+    actions
+    {
+        addafter("G/L Register")
+        {
+            action(UpdatePage)
+            {
+                ApplicationArea = All;
+                Caption = 'Update Page', Comment = 'ESM="Actualizar página"';
+                Ellipsis = true;
+                Image = UpdateDescription;
+                Promoted = true;
+                PromotedCategory = Process;
+                ShortCutKey = 'Shift+Ctrl+A';
+
+                trigger OnAction()
+                begin
+                    CurrPage.Update(true);
+                end;
+            }
+        }
+    }
+
     trigger OnOpenPage()
     begin
         SLSetup.Get();
@@ -73,7 +104,7 @@ pageextension 51076 "ST General Journal Batches" extends "General Journal Batche
 
     trigger OnAfterGetRecord()
     begin
-        OpenPaymentScheduleCount := GetCountOpenPaymentSchedule("Bank Account No. FICO");
+        OpenPaymentScheduleCount := GetCountOpenPaymentSchedule(Rec."Bank Account No. FICO");
         if OpenPaymentScheduleCount <> 0 then
             StylePaymentSchedule := 'Unfavorable'
         else
@@ -111,7 +142,7 @@ pageextension 51076 "ST General Journal Batches" extends "General Journal Batche
     begin
         GenJnlTemplate.Reset();
         GenJnlTemplate.SetRange(Type, GenJnlTemplate.Type::Payments);
-        GenJnlTemplate.SetRange(Name, "Journal Template Name");
+        GenJnlTemplate.SetRange(Name, Rec."Journal Template Name");
         if GenJnlTemplate.IsEmpty then
             exit(0);
 
@@ -120,18 +151,18 @@ pageextension 51076 "ST General Journal Batches" extends "General Journal Batche
                                               PaymentSchedule.Status::Procesado,
                                               PaymentSchedule.Status::"Por Pagar");
         case true of
-            (Name = 'DETRAC') and (not "Is Batch Check"):
+            (Rec.Name = 'DETRAC') and (not Rec."Is Batch Check"):
                 begin
                     PaymentSchedule.SetRange("Posting Group", DetractionPostingGroup);
                     //PaymentSchedule.SetRange("Is Payment Check",false);
                 end;
-            (Name <> 'DETRAC') and (not "Is Batch Check") and ("Bank Account No. FICO" <> ''):
+            (Rec.Name <> 'DETRAC') and (not Rec."Is Batch Check") and (Rec."Bank Account No. FICO" <> ''):
                 begin
-                    PaymentSchedule.SetRange("Reference Bank Acc. No.", "Bank Account No. FICO");
+                    PaymentSchedule.SetRange("Reference Bank Acc. No.", Rec."Bank Account No. FICO");
                     PaymentSchedule.SetRange("Is Payment Check", false);
                     PaymentSchedule.SetFilter("Posting Group", '<>%1', DetractionPostingGroup);
                 end;
-            (Name <> 'DETRAC') and ("Is Batch Check"):
+            (Rec.Name <> 'DETRAC') and (Rec."Is Batch Check"):
                 begin
                     PaymentSchedule.SetRange("Is Payment Check", true);
                     PaymentSchedule.SetFilter("Posting Group", '<>%1', DetractionPostingGroup);
@@ -163,23 +194,23 @@ pageextension 51076 "ST General Journal Batches" extends "General Journal Batche
     var
         PaymentSchedule: Record "Payment Schedule";
     begin
-        if GetCountOpenPaymentSchedule(Name) > 0 then begin
+        if GetCountOpenPaymentSchedule(Rec.Name) > 0 then begin
             case true of
-                (Name = 'DETRAC'): //and (not "Is Batch Check")
-                    PaymentSchedule.fnCreateJnlLine("Journal Template Name", Name, DetractionPostingGroup, true);
-                (Name <> 'DETRAC') and (not "Is Batch Check") and ("Bank Account No. FICO" <> ''):
-                    PaymentSchedule.fnCreateJnlLine("Journal Template Name", Name, DetractionPostingGroup, false);
-                (Name <> 'DETRAC') and ("Is Batch Check"):
+                (Rec.Name = 'DETRAC'): //and (not "Is Batch Check")
+                    PaymentSchedule.fnCreateJnlLine(Rec."Journal Template Name", Rec.Name, DetractionPostingGroup, true);
+                (Rec.Name <> 'DETRAC') and (not Rec."Is Batch Check") and (Rec."Bank Account No. FICO" <> ''):
+                    PaymentSchedule.fnCreateJnlLine(Rec."Journal Template Name", Rec.Name, DetractionPostingGroup, false);
+                (Rec.Name <> 'DETRAC') and (Rec."Is Batch Check"):
                     begin
-                        PaymentSchedule.fnSetIsCheck("Is Batch Check");
-                        PaymentSchedule.fnCreateJnlLine("Journal Template Name", Name, DetractionPostingGroup, false);
+                        PaymentSchedule.fnSetIsCheck(Rec."Is Batch Check");
+                        PaymentSchedule.fnCreateJnlLine(Rec."Journal Template Name", Rec.Name, DetractionPostingGroup, false);
                     end;
             end;
-            //   if Name = DetractionPostingGroup then begin
-            //      PaymentSchedule.fnCreateJnlLine("Journal Template Name",Name,DetractionPostingGroup,true);
+            //   if Rec.Name = DetractionPostingGroup then begin
+            //      PaymentSchedule.fnCreateJnlLine(Rec."Journal Template Name",Rec.Name,DetractionPostingGroup,true);
             //   end else begin
             //      PaymentSchedule.fnSetIsCheck("Is Batch Check");
-            //      PaymentSchedule.fnCreateJnlLine("Journal Template Name",Name,DetractionPostingGroup,false);
+            //      PaymentSchedule.fnCreateJnlLine(Rec."Journal Template Name",Rec.Name,DetractionPostingGroup,false);
             //   end;
         end;
     end;
@@ -188,8 +219,8 @@ pageextension 51076 "ST General Journal Batches" extends "General Journal Batche
     var
         PaymentSchedule: Record "Payment Schedule";
     begin
-        if GetCountOpenPaymentScheduleDetrac(Name) > 0 then begin
-            PaymentSchedule.fnCreateJnlLine("Journal Template Name", Name, DetractionPostingGroup, true);
+        if GetCountOpenPaymentScheduleDetrac(Rec.Name) > 0 then begin
+            PaymentSchedule.fnCreateJnlLine(Rec."Journal Template Name", Rec.Name, DetractionPostingGroup, true);
         end;
     end;
 }

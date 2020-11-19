@@ -37,6 +37,25 @@ pageextension 51093 "ST Vendor Bank Account Card" extends "Vendor Bank Account C
                     ApplicationArea = All;
                 }
             }
+            //Telecredit
+
+            group("Telecredit")
+            {
+                Caption = 'Telecredit', Comment = 'ESM="Telecreditos"';
+                field("Fiduciary"; Rec."Fiduciary")
+                {
+                    trigger OnValidate()
+                    begin
+                        fnFieldsEditables();
+                    end;
+                }
+                field("Type Fiduciary"; Rec."Type Fiduciary")
+                {
+                    Editable = gFieldEditable;
+                    Enabled = gFieldEditable;
+                }
+            }
+
         }
         //Legal Document Begin
         addbefore("Bank Account No.")
@@ -47,5 +66,37 @@ pageextension 51093 "ST Vendor Bank Account Card" extends "Vendor Bank Account C
             }
         }
         //Legal Document End
+
+        modify("Transit No.")
+        {
+            Caption = 'Transit No.', Comment = 'ESM="Identidad Fic."';
+        }
     }
+
+
+    procedure fnFieldsEditables()
+    begin
+        gFieldEditable := false;
+
+        if Rec.Fiduciary then
+            gFieldEditable := true
+    end;
+
+    trigger OnQueryClosePage(CloseAction: Action): Boolean
+    var
+        myInt: Integer;
+    begin
+        TestField(Code);
+        TestField(Name);
+        //TestField("Currency Code");
+        TestField("Legal Document");
+        TestField("Bank Account No.");
+        TestField("Reference Bank Acc. No.");
+        //TestField("Bank Account CCI");
+        if "Bank Account Type" = "Bank Account Type"::" " then
+            Error('Debe de elegir un tipo de cuenta bancaria.');
+    end;
+
+    var
+        gFieldEditable: Boolean;
 }

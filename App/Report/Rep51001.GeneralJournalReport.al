@@ -7,11 +7,13 @@ report 51001 "General Journal Report"
     Caption = 'General Journal Report', Comment = 'ESM="Diario General"';
     RDLCLayout = './App/Report/RDLC/GeneralJournalRecord.rdl';
 
+
     dataset
     {
         dataitem(GenJnlBookBuffer; "Gen. Journal Book Buffer")
         {
             UseTemporary = true;
+            RequestFilterFields = "G/L Account No.", "Legal Document No.";
             column(Period; Period)
             {
                 IncludeCaption = true;
@@ -88,18 +90,22 @@ report 51001 "General Journal Report"
                     field(StartDate; StartDate)
                     {
                         ApplicationArea = All;
+                        Caption = 'Start Date', Comment = 'ESM="Fecha Inicio"';
                     }
                     field(EndDate; EndDate)
                     {
                         ApplicationArea = All;
+                        Caption = 'End Date', Comment = 'ESM="Fecha Fin"';
                     }
                     field(PeriodDescription; PeriodDescription)
                     {
                         ApplicationArea = All;
+                        Caption = 'Period Description', Comment = 'ESM="Descripción Periodo"';
                     }
                     field(AutomaticEBook; AutomaticEBook)
                     {
                         ApplicationArea = All;
+                        Caption = 'Automatic EBook', Comment = 'ESM="Generar Electrónico (PLE)"';
                     }
                 }
             }

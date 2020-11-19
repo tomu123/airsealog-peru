@@ -12,6 +12,7 @@ report 51004 "General Ledger Report"
         dataitem(GenJnlBookBuffer; "Gen. Journal Book Buffer")
         {
             UseTemporary = true;
+            RequestFilterFields = "G/L Account No.", "Legal Document No.";
             column(Period; Period)
             {
                 IncludeCaption = true;
@@ -84,22 +85,26 @@ report 51004 "General Ledger Report"
             {
                 group(GroupName)
                 {
-                    Caption = 'Information';
+                    Caption = 'Information', Comment = 'ESM="Información"';
                     field(StartDate; StartDate)
                     {
                         ApplicationArea = All;
+                        Caption = 'Start Date', Comment = 'ESM="Fecha Inicio"';
                     }
                     field(EndDate; EndDate)
                     {
                         ApplicationArea = All;
+                        Caption = 'End Date', Comment = 'ESM="Fecha Fin"';
                     }
                     field(PeriodDescription; PeriodDescription)
                     {
                         ApplicationArea = All;
+                        Caption = 'Period Description', Comment = 'ESM="Descripción Periodo"';
                     }
                     field(AutomaticEBook; AutomaticEBook)
                     {
                         ApplicationArea = All;
+                        Caption = 'Automatic EBook', Comment = 'ESM="Generar Electrónico (PLE)"';
                     }
                 }
             }

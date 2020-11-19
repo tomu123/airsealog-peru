@@ -17,19 +17,19 @@ page 51001 "Accountant Book"
                 FreezeColumn = "Book Name";
                 ShowAsTree = true;
 
-                field("Book Code"; "Book Code")
+                field("Book Code"; Rec."Book Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Book Name"; "Book Name")
+                field("Book Name"; Rec."Book Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Format DateTime"; "Format DateTime")
+                field("Format DateTime"; Rec."Format DateTime")
                 {
                     ApplicationArea = All;
                 }
-                field("Report ID"; "Report ID")
+                field("Report ID"; Rec."Report ID")
                 {
                     ApplicationArea = All;
                 }
@@ -41,6 +41,7 @@ page 51001 "Accountant Book"
                 {
                     ApplicationArea = All;
                     SubPageLink = "File ID" = field("EBook Code");
+                    SubPageView = WHERE("Entry Type" = FILTER(<> "Recaudación"));
                 }
             }
         }
@@ -65,9 +66,9 @@ page 51001 "Accountant Book"
 
                 trigger OnAction()
                 begin
-                    if not IsEmpty then
-                        if "Report ID" <> 0 then
-                            Report.RunModal("Report ID", true, true)
+                    if not Rec.IsEmpty then
+                        if Rec."Report ID" <> 0 then
+                            Report.RunModal(Rec."Report ID", true, true)
                         else
                             Message(MsgNotPrintFormat);
                 end;
@@ -85,11 +86,11 @@ page 51001 "Accountant Book"
                     AccBookMgt: Codeunit "Accountant Book Management";
                     Page6520: page 6520;
                 begin
-                    case "EBook Code" of
+                    case Rec."EBook Code" of
                         '501', '503', '601':
-                            AccBookMgt.GenJournalBooks("EBook Code", true);
+                            AccBookMgt.GenJournalBooks(Rec."EBook Code", true);
                         '801', '802':
-                            AccBookMgt.PurchaserRecord("EBook Code", true);
+                            AccBookMgt.PurchaserRecord(Rec."EBook Code", true);
                     end;
                 end;
             }
@@ -119,6 +120,6 @@ page 51001 "Accountant Book"
 
     trigger OnAfterGetRecord()
     begin
-        IdentationColumAB := Level;
+        IdentationColumAB := Rec.Level;
     end;
 }

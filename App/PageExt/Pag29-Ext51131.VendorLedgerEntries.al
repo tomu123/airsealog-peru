@@ -3,6 +3,13 @@ pageextension 51131 "ST Vendor Ledger Entries" extends "Vendor Ledger Entries"
     layout
     {
         // Add changes to page layout here
+        addbefore("Document Type")
+        {
+            field("Document No"; "Document No.")
+            {
+                ApplicationArea = All;
+            }
+        }
         addbefore("Exported to Payment File")
         {
             field("Posting Text"; "Posting Text")
@@ -46,6 +53,14 @@ pageextension 51131 "ST Vendor Ledger Entries" extends "Vendor Ledger Entries"
         addafter("Exported to Payment File")
         {
             field("PS Not Show Payment Schedule"; "PS Not Show Payment Schedule")
+            {
+                ApplicationArea = All;
+            }
+        }
+
+        addbefore("Due Date")
+        {
+            field("Accountant receipt date"; "Accountant receipt date")
             {
                 ApplicationArea = All;
             }

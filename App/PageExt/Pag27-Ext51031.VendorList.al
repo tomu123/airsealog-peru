@@ -80,6 +80,16 @@ pageextension 51031 "Cnslt. Ruc Vendor List" extends "Vendor List"
                     CnsltRucMgt.VendorConsultRuc(Rec);
                 end;
             }
+            action(SaldoGCProveedor)
+            {
+                ApplicationArea = All;
+                Caption = 'Vendor AC Balance', Comment = 'ESM="Salgo GC Proveedor"';
+                Image = Report;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = report "Vendor AC Balance";
+            }
         }
     }
 

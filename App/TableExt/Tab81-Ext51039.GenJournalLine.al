@@ -2,7 +2,7 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
 {
     fields
     {
-        //Fields ids permission 51004..51005,51030..51039,,51045..51049,51050..51060
+        //Fields ids permission 51004..51005,51030..51039,,51045..51049,51050..51061
         //Legal Document Begin
         field(51000; "Legal Document"; Code[10])
         {
@@ -91,7 +91,7 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
         field(51020; "Check Name"; Text[100])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Check Name', Comment = 'ESM="Nombre Cheque"';
+            Caption = 'Check Name', Comment = 'ESM="Nombre "';
         }
         field(51030; "Setup Source Code"; Enum "ST Source Code Type")
         {
@@ -102,6 +102,9 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
             Caption = 'Source Currency Factor', Comment = 'ESM="Factor divisa origen"';
+            DecimalPlaces = 0 : 15;
+            Editable = false;
+            MinValue = 0;
         }
         field(51032; "ST Control Entry No."; Integer)
         {
@@ -156,6 +159,29 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
             DataClassification = ToBeClassified;
             Caption = 'Applies-to accountant group mixed', Comment = 'ESM="Liq. Grupo contable mixto"';
         }
+
+
+        modify("Account No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                case "Account Type" of
+                    "Account Type"::"G/L Account":
+                        begin
+                            if GLAccount.Get("Account No.") then begin
+                                if GLAccount."Income/Balance" = GLAccount."Income/Balance"::"Balance Sheet" then
+                                    "Income/Balance" := "Income/Balance"::"Balance Sheet"
+                                else
+                                    "Income/Balance" := "Income/Balance"::"Income Statement";
+                            end;
+                        end;
+                    else
+                        "Income/Balance" := "Income/Balance"::" ";
+                end;
+                "Source User Id." := UserId;
+            end;
+        }
+
         modify("Recipient Bank Account")
         {
             TableRelation = IF ("Account Type" = CONST(Customer)) "Customer Bank Account".Code WHERE("Customer No." = FIELD("Account No."))
@@ -169,6 +195,7 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
             IF ("Bal. Account Type" = CONST(Vendor)) "Vendor Bank Account".Code WHERE("Vendor No." = FIELD("Bal. Account No."))
             ELSE
             IF ("Bal. Account Type" = CONST(Employee)) "ST Employee Bank Account".Code WHERE("Employee No." = FIELD("Bal. Account No."));
+            //TableRelation = "ST Employee Bank Account".Code;
 
             trigger OnAfterValidate()
             var
@@ -199,26 +226,6 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
             end;
         }
 
-        modify("Account No.")
-        {
-            trigger OnAfterValidate()
-            begin
-                case "Account Type" of
-                    "Account Type"::"G/L Account":
-                        begin
-                            if GLAccount.Get("Account No.") then begin
-                                if GLAccount."Income/Balance" = GLAccount."Income/Balance"::"Balance Sheet" then
-                                    "Income/Balance" := "Income/Balance"::"Balance Sheet"
-                                else
-                                    "Income/Balance" := "Income/Balance"::"Income Statement";
-                            end;
-                        end;
-                    else
-                        "Income/Balance" := "Income/Balance"::" ";
-                end;
-                "Source User Id." := UserId;
-            end;
-        }
         //Retentions Begin
         field(51010; "Retention No."; Code[20])
         {
@@ -285,6 +292,17 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
         }
+        field(51052; "SL Source Currency Code"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Source Currency Code Loc.', Comment = 'ESM="Cód. Origen Divisa (Loc)"';
+        }
+        //51053 y 51054 libres
+        field(51055; "Accountant receipt date"; date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Accountant receipt date', Comment = 'ESM="Fecha recepción contabilidad"';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()
@@ -306,6 +324,14 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
                 SetAutomateRetention();
             end;
         }
+        modify("Currency Code")
+        {
+            trigger OnAfterValidate()
+            begin
+                Rec."Source Currency Factor" := Rec."Currency Factor";
+                Rec."SL Source Currency Code" := Rec."Currency Code";
+            end;
+        }
         //Retentions End
 
         //Import
@@ -315,6 +341,62 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
             Caption = 'Importation No.', Comment = 'ESP="N° Importación"';
             TableRelation = Importation;
         }
+        field(51061; "ST Recipient Bank Account"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Cta. Bancaria destinatario';
+            TableRelation = IF ("Account Type" = CONST(Customer)) "Customer Bank Account".Code WHERE("Customer No." = FIELD("Account No."))
+            ELSE
+            IF ("Account Type" = CONST(Vendor)) "Vendor Bank Account".Code WHERE("Vendor No." = FIELD("Account No."))
+            ELSE
+            IF ("Account Type" = CONST(Employee)) "ST Employee Bank Account".Code WHERE("Employee No." = FIELD("Account No."))
+            ELSE
+            IF ("Bal. Account Type" = CONST(Customer)) "Customer Bank Account".Code WHERE("Customer No." = FIELD("Bal. Account No."))
+            ELSE
+            IF ("Bal. Account Type" = CONST(Vendor)) "Vendor Bank Account".Code WHERE("Vendor No." = FIELD("Bal. Account No."))
+            ELSE
+            IF ("Bal. Account Type" = CONST(Employee)) "ST Employee Bank Account".Code WHERE("Employee No." = FIELD("Bal. Account No."));
+            //TableRelation = "ST Employee Bank Account".Code;
+            trigger OnValidate()
+            var
+                CustBankAcc: Record "Customer Bank Account";
+                VendBankAcc: Record "Vendor Bank Account";
+                EmplBankAcc: Record "ST Employee Bank Account";
+            begin
+
+                if "ST Recipient Bank Account" <> '' then begin
+                    if "Account Type" = "Account Type"::Customer then begin
+                        CustBankAcc.Get("Account No.", "ST Recipient Bank Account");
+                        "Payment Bank Account No." := CustBankAcc."Reference Bank Acc. No.";
+                        "Payment is check" := CustBankAcc."Bank Type Check";
+                    end else
+                        if "Account Type" = "Account Type"::Vendor then begin
+                            VendBankAcc.Get("Account No.", "ST Recipient Bank Account");
+                            "Payment Bank Account No." := VendBankAcc."Reference Bank Acc. No.";
+                            "Payment is check" := VendBankAcc."Bank Type Check";
+                        end else
+                            if "Account Type" = "Account Type"::Employee then begin
+                                EmplBankAcc.Get("Account No.", "ST Recipient Bank Account");
+                                "Payment Bank Account No." := EmplBankAcc."Payment Bank Account No.";
+                                "Payment is check" := EmplBankAcc."Bank Type Check";
+                            end;
+                end else begin
+                    "Payment Bank Account No." := '';
+                    "Payment is check" := false;
+                end;
+                "Recipient Bank Account" := "ST Recipient Bank Account";
+                if "Recipient Bank Account" = '' then
+                    exit;
+                if ("Document Type" in ["Document Type"::Invoice, "Document Type"::" ", "Document Type"::"Credit Memo"]) and
+                   (("Account Type" in ["Account Type"::Customer, "Account Type"::Vendor]) or
+                    ("Bal. Account Type" in ["Bal. Account Type"::Customer, "Bal. Account Type"::Vendor]))
+                then
+                    "Recipient Bank Account" := '';
+            end;
+        }
+
+        ///
+
     }
 
     trigger OnAfterDelete()
@@ -362,5 +444,77 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
             end;
             DelGenJnlLine.Delete();
         end;
+    end;
+
+    procedure AdjustDifferenceForDumbUser(GenJnlLine: Record "Gen. Journal Line")
+    var
+        GenJnlLine2: Record "Gen. Journal Line";
+        GenJnlLineDocsTemp: Record "Gen. Journal Line" temporary;
+        MyAmountLCY: Decimal;
+    begin
+        GenJnlLine2.Reset();
+        GenJnlLine2.SetRange("Journal Template Name", GenJnlLine."Journal Template Name");
+        GenJnlLine2.SetRange("Journal Batch Name", GenJnlLine."Journal Batch Name");
+        if GenJnlLine2.FindFirst() then
+            repeat
+                GenJnlLineDocsTemp.Reset();
+                GenJnlLineDocsTemp.SetRange("Journal Template Name", GenJnlLine2."Journal Template Name");
+                GenJnlLineDocsTemp.SetRange("Journal Batch Name", GenJnlLine2."Journal Batch Name");
+                GenJnlLineDocsTemp.SetRange("Document No.", GenJnlLine2."Document No.");
+                if GenJnlLineDocsTemp.IsEmpty then begin
+                    GenJnlLineDocsTemp.init();
+                    GenJnlLineDocsTemp.TransferFields(GenJnlLine2, true);
+                    GenJnlLineDocsTemp.Insert();
+                end;
+            until GenJnlLine2.Next() = 0;
+
+        CalculateNetBalance(GenJnlLineDocsTemp);
+
+        GenJnlLineDocsTemp.Reset();
+        if GenJnlLineDocsTemp.FindFirst() then
+            repeat
+                GenJnlLine2.Reset();
+                GenJnlLine2.SetRange("Journal Template Name", GenJnlLineDocsTemp."Journal Template Name");
+                GenJnlLine2.SetRange("Journal Batch Name", GenJnlLineDocsTemp."Journal Batch Name");
+                GenJnlLine2.SetRange("Document No.", GenJnlLineDocsTemp."Document No.");
+                GenJnlLine2.SetRange("Account Type", GenJnlLine."Account Type"::"Bank Account");
+                if GenJnlLine2.FindFirst() then
+                    repeat
+                        if GenJnlLine2."Currency Code" = '' then
+                            GenJnlLine2.Validate("Amount (LCY)", GenJnlLine2."Amount (LCY)" + GenJnlLineDocsTemp."Amount (LCY)")
+                        else
+                            GenJnlLine2.Validate(Amount, (GenJnlLine2."Amount (LCY)" + GenJnlLineDocsTemp."Amount (LCY)") * GenJnlLine2."Currency Factor");
+                        GenJnlLine2.Modify();
+                    until GenJnlLine2.Next() = 0;
+            until GenJnlLineDocsTemp.Next() = 0;
+    end;
+
+    local procedure CalculateNetBalance(var GenJnlLineDocsTemp: Record "Gen. Journal Line" temporary)
+    var
+        GenJnlLine: Record "Gen. Journal Line";
+        TotalAmounLCY: Decimal;
+    begin
+        GenJnlLineDocsTemp.Reset();
+        if GenJnlLineDocsTemp.FindFirst() then
+            repeat
+                TotalAmounLCY := 0;
+                GenJnlLine.Reset();
+                GenJnlLine.SetRange("Journal Template Name", GenJnlLineDocsTemp."Journal Template Name");
+                GenJnlLine.SetRange("Journal Batch Name", GenJnlLineDocsTemp."Journal Batch Name");
+                GenJnlLine.SetRange("Document No.", GenJnlLineDocsTemp."Document No.");
+                GenJnlLine.SetRange("Account Type", GenJnlLine."Account Type"::"Bank Account");
+                if GenJnlLine.Count in [0, 2 .. 100] then
+                    GenJnlLineDocsTemp.Delete();
+                GenJnlLine.SetRange("Account Type");
+                if GenJnlLine.FindFirst() then
+                    repeat
+                        TotalAmounLCY += GenJnlLine."Amount (LCY)";
+                    until GenJnlLine.Next() = 0;
+                if TotalAmounLCY <> 0 then begin
+                    GenJnlLineDocsTemp."Amount (LCY)" := TotalAmounLCY * -1;
+                    GenJnlLineDocsTemp.Modify();
+                end else
+                    GenJnlLineDocsTemp.Delete();
+            until GenJnlLineDocsTemp.Next() = 0;
     end;
 }

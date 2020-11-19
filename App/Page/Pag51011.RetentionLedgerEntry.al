@@ -12,69 +12,69 @@ page 51011 "Retention Ledger Entry"
         {
             repeater(RetentionRepeater)
             {
-                field("Entry No."; "Entry No.")
+                field("Entry No."; Rec."Entry No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention Legal Document"; "Retention Legal Document")
+                field("Retention Legal Document"; Rec."Retention Legal Document")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention No."; "Retention No.")
+                field("Retention No."; Rec."Retention No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Retention Posting Date"; "Retention Posting Date")
+                field("Retention Posting Date"; Rec."Retention Posting Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Retention"; "Amount Retention")
+                field("Amount Retention"; Rec."Amount Retention")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Retention LCY"; "Amount Retention LCY")
+                field("Amount Retention LCY"; Rec."Amount Retention LCY")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Paid"; "Amount Paid")
+                field("Amount Paid"; Rec."Amount Paid")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Paid LCY"; "Amount Paid LCY")
+                field("Amount Paid LCY"; Rec."Amount Paid LCY")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Invoice"; "Amount Invoice")
+                field("Amount Invoice"; Rec."Amount Invoice")
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Invoice LCY"; "Amount Invoice LCY")
+                field("Amount Invoice LCY"; Rec."Amount Invoice LCY")
                 {
                     ApplicationArea = All;
                 }
-                field(Reversed; Reversed)
+                field(Reversed; Rec.Reversed)
                 {
                     ApplicationArea = All;
                 }
-                field("Reversion Date"; "Reversion Date")
+                field("Reversion Date"; Rec."Reversion Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Reversion Motive"; "Reversion Motive")
+                field("Reversion Motive"; Rec."Reversion Motive")
                 {
                     ApplicationArea = All;
                 }
-                field("Electronic Status"; "Electronic Status")
-                {
-                    ApplicationArea = All;
-                    Visible = ShowElectronic;
-                }
-                field("Electronic Response"; "Electronic Response")
+                field("Electronic Status"; Rec."Electronic Status")
                 {
                     ApplicationArea = All;
                     Visible = ShowElectronic;
                 }
-                field("Elec. Response Description"; "Elec. Response Description")
+                field("Electronic Response"; Rec."Electronic Response")
+                {
+                    ApplicationArea = All;
+                    Visible = ShowElectronic;
+                }
+                field("Elec. Response Description"; Rec."Elec. Response Description")
                 {
                     ApplicationArea = All;
                     Visible = ShowElectronic;
@@ -119,13 +119,13 @@ page 51011 "Retention Ledger Entry"
                     Image = Cancel;
                     trigger OnAction()
                     begin
-                        if IsEmpty then
+                        if Rec.IsEmpty then
                             exit;
-                        if Reversed then
+                        if Rec.Reversed then
                             Error('La retención tiene el estado revertido.');
-                        Reversed := true;
-                        Modify();
-                        Message('Retención N° %1 anulada correctamente.', "Retention No.");
+                        Rec.Reversed := true;
+                        Rec.Modify();
+                        Message('Retención N° %1 anulada correctamente.', Rec."Retention No.");
                     end;
                 }
 
@@ -136,14 +136,14 @@ page 51011 "Retention Ledger Entry"
                     Image = Cancel;
                     trigger OnAction()
                     begin
-                        if IsEmpty then
+                        if Rec.IsEmpty then
                             exit;
-                        if Reversed then
+                        if Rec.Reversed then
                             Error('La retención tiene el estado revertido.');
                         Error('Proveedor de facturación electrónica no seleccionado.');
-                        Validate(Reversed, true);
-                        Modify();
-                        Message('Retención N° %1 anulada correctamente.', "Retention No.");
+                        Rec.Validate(Reversed, true);
+                        Rec.Modify();
+                        Message('Retención N° %1 anulada correctamente.', Rec."Retention No.");
                     end;
                 }
             }

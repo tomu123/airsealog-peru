@@ -17,6 +17,11 @@ table 51003 "Setup Localization"
             Caption = 'Adjust Exh. Rates Localization', Comment = 'ESM="Ajuste TC"';
             trigger OnValidate()
             begin
+                if "Adj. Exch. Rate Localization" then
+                    gFieldsExchRateEditable := true
+                else
+                    gFieldsExchRateEditable := false;
+
                 if not "Adj. Exch. Rate Localization" then begin
                     "Adj. Exch. Rate Doc. Pstg Gr" := "Adj. Exch. Rate Localization";
                     "Adj. Exch. Rate Ref. Document" := "Adj. Exch. Rate Localization";
@@ -405,6 +410,31 @@ table 51003 "Setup Localization"
             OptionMembers = "Buy-Vendor","Pay-Vendor";
             OptionCaption = 'Buy-Vendor,Pay-Vendor', Comment = 'ESM="Compra a proveedor,Pago a proveedor"';
         }
+        field(51190; "Telecredit New Version"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Telecredit New Version', Comment = 'ESM="Nueva Versión"';
+        }
+        field(51191; "Realized Losses Acc."; Code[20])
+        {
+            Caption = 'realized Losses Acc.', Comment = 'ESM="Cta. redondeo neg."';
+            TableRelation = "G/L Account";
+
+            trigger OnValidate()
+            begin
+
+            end;
+        }
+        field(51192; "Realized Gains Acc."; Code[20])
+        {
+            Caption = 'realized Gains Acc.', Comment = 'ESM="Cta. redondeo pos."';
+            TableRelation = "G/L Account";
+
+            trigger OnValidate()
+            begin
+
+            end;
+        }
     }
 
     keys
@@ -417,6 +447,7 @@ table 51003 "Setup Localization"
 
     var
         MasterData: record "Master Data";
+        gFieldsExchRateEditable: Boolean;
 
     local procedure ValidateRealizeGainLossAccount()
     var

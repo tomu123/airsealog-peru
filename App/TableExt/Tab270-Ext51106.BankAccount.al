@@ -43,5 +43,11 @@ tableextension 51106 "Setup Bank Account" extends "Bank Account"
             Caption = 'Legal Document', Comment = 'ESM="Documento Legal"';
             TableRelation = "Legal Document"."Legal No." where("Option Type" = const("SUNAT Table"), "Type Code" = const('03'));
         }
+        field(51011; "Process Bank"; Option)
+        {
+            Caption = 'Collection Bank', Comment = 'ESM="Banco Recaudación"';
+            OptionCaption = ' ,BCP,BBVA,SCOTIA,INTERBANK';
+            OptionMembers = " ",BCP,BBVA,SCOTIA,INTERBANK;
+        }
     }
 }

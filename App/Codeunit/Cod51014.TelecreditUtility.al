@@ -14,7 +14,7 @@ codeunit 51014 "Telecredit Utility"
     procedure fnMessageNotificationRemittanceFiles(pFileName: text[50]; pMessage: Text[1024])
     var
         lcNotification: Notification;
-        ViewFile: Label 'View File';
+        ViewFile: Label 'View File', Comment = 'ESM="Ver archivo"';
     begin
         lcNotification.Message(pMessage);
         lcNotification.Scope := NotificationScope::LocalScope;

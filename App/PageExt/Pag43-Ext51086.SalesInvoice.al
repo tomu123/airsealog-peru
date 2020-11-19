@@ -7,49 +7,107 @@ pageextension 51086 "Detrac. Sales Invoice" extends "Sales Invoice"
         {
             group(Detraction)
             {
-                Caption = 'Detraction', comment = 'ESM="Detracción"';
+                Caption = 'Detraction';
                 field("Sales Detraction"; "Sales Detraction")
                 {
                     ApplicationArea = All;
-                    Caption = 'Detraction', comment = 'ESM="Detracción"';
+                    Caption = 'Detraction';
                 }
                 field("Operation Type Detrac"; "Operation Type Detrac")
                 {
                     ApplicationArea = All;
-                    Caption = 'Operation Type', comment = 'ESM="Tipo de Operación"';
+                    Caption = 'Operation Type';
                     Editable = "Sales Detraction";
                 }
                 field("Service Type Detrac"; "Service Type Detrac")
                 {
                     ApplicationArea = All;
-                    Caption = 'Service Type', comment = 'ESM="Tipo de Servicio"';
+                    Caption = 'Service Type';
                     Editable = "Sales Detraction";
                 }
                 field("Payment Method Code Detrac"; "Payment Method Code Detrac")
                 {
                     ApplicationArea = All;
-                    Caption = 'Payment Method Detrac', comment = 'ESM="Cód. Forma de Pago Detracción"';
+                    Caption = 'Payment Method Detrac';
                     Editable = "Sales Detraction";
                 }
                 field("Sales % Detraction"; "Sales % Detraction")
                 {
                     ApplicationArea = All;
-                    Caption = '% Detraction', comment = 'ESM="% Detracción"';
+                    Caption = '% Detraction';
                     Editable = "Sales Detraction";
                 }
                 field("Sales Amt Detraction"; "Sales Amt Detraction")
                 {
                     ApplicationArea = All;
-                    Caption = 'Amount Detraction', comment = 'ESM="Importe Detracción"';
+                    Caption = 'Amount Detraction';
                     Editable = "Sales Detraction";
                 }
                 field("Sales Amt Detraction (LCY)"; "Sales Amt Detraction (LCY)")
                 {
                     ApplicationArea = All;
-                    Caption = 'Amount Detraction (LCY)', comment = 'ESM="Importe Detracción ($)"';
+                    Caption = 'Amount Detraction (LCY)';
                     Editable = "Sales Detraction";
                 }
             }
+        }
+
+        addafter("External Document No.")
+        {
+            field("Customer Posting Group"; "Customer Posting Group")
+            {
+                ApplicationArea = All;
+                Editable = true;
+                trigger OnValidate()
+                var
+                    CustPostingGroup: Record "Customer Posting Group";
+                begin
+                    if "Customer Posting Group" = '' then
+                        exit;
+                    CustPostingGroup.Get("Customer Posting Group");
+                    Validate("Currency Code", CustPostingGroup."Currency Code");
+                end;
+            }
+            field("Currency Code2"; "Currency Code")
+            {
+                ApplicationArea = Suite;
+                Caption = 'Currency Code', Comment = 'ESM="Cód. Divisa"';
+                Importance = Promoted;
+                Editable = false;
+
+                trigger OnAssistEdit()
+                var
+                    ChangeExchangeRate: Page "Change Exchange Rate";
+                    DocumentTotals: Codeunit "Document Totals";
+                begin
+                    Clear(ChangeExchangeRate);
+                    if "Posting Date" <> 0D then
+                        ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", "Posting Date")
+                    else
+                        ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", WorkDate);
+                    if ChangeExchangeRate.RunModal = ACTION::OK then begin
+                        Validate("Currency Factor", ChangeExchangeRate.GetParameter);
+                        CurrPage.SaveRecord;
+                        DocumentTotals.SalesRedistributeInvoiceDiscountAmountsOnDocument(Rec);
+                        CurrPage.Update(false);
+                        //SaveInvoiceDiscountAmount;
+                    end;
+                    Clear(ChangeExchangeRate);
+                end;
+
+                trigger OnValidate()
+                var
+                    SalesCalcDiscByType: Codeunit "Sales - Calc Discount By Type";
+                begin
+                    CurrPage.SaveRecord;
+                    SalesCalcDiscByType.ApplyDefaultInvoiceDiscount(0, Rec);
+                end;
+            }
+        }
+        modify("Currency Code")
+        {
+            Visible = false;
+            Editable = false;
         }
 
         //Legal Documents BEGIN

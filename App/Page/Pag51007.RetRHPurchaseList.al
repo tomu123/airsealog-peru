@@ -21,205 +21,205 @@ page 51007 "Ret. RH Purchase Invoices"
             repeater(Control1)
             {
                 ShowCaption = false;
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the number of the involved entry or record, according to the specified number series.';
                 }
-                field("Buy-from Vendor No."; "Buy-from Vendor No.")
+                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the name of the vendor who delivered the items.';
                 }
-                field("Order Address Code"; "Order Address Code")
+                field("Order Address Code"; Rec."Order Address Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the order address of the related vendor.';
                     Visible = false;
                 }
-                field("Buy-from Vendor Name"; "Buy-from Vendor Name")
+                field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name of the vendor who delivered the items.';
                 }
-                field("Vendor Authorization No."; "Vendor Authorization No.")
+                field("Vendor Authorization No."; Rec."Vendor Authorization No.")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the compensation agreement identification number, sometimes referred to as the RMA No. (Returns Materials Authorization).';
                     Visible = false;
                 }
-                field("Vendor Invoice No."; "Vendor Invoice No.")
+                field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the document number of the original document you received from the vendor. You can require the document number for posting, or let it be optional. By default, it''s required, so that this document references the original. Making document numbers optional removes a step from the posting process. For example, if you attach the original invoice as a PDF, you might not need to enter the document number. To specify whether document numbers are required, in the Purchases & Payables Setup window, select or clear the Ext. Doc. No. Mandatory field.';
                 }
-                field("Buy-from Post Code"; "Buy-from Post Code")
+                field("Buy-from Post Code"; Rec."Buy-from Post Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the post code of the vendor who delivered the items.';
                     Visible = false;
                 }
-                field("Buy-from Country/Region Code"; "Buy-from Country/Region Code")
+                field("Buy-from Country/Region Code"; Rec."Buy-from Country/Region Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the city of the vendor who delivered the items.';
                     Visible = false;
                 }
-                field("Buy-from Contact"; "Buy-from Contact")
+                field("Buy-from Contact"; Rec."Buy-from Contact")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name of the contact person at the vendor who delivered the items.';
                     Visible = false;
                 }
-                field("Pay-to Vendor No."; "Pay-to Vendor No.")
+                field("Pay-to Vendor No."; Rec."Pay-to Vendor No.")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the number of the vendor that you received the invoice from.';
                     Visible = false;
                 }
-                field("Pay-to Name"; "Pay-to Name")
+                field("Pay-to Name"; Rec."Pay-to Name")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name of the vendor who you received the invoice from.';
                     Visible = false;
                 }
-                field("Pay-to Post Code"; "Pay-to Post Code")
+                field("Pay-to Post Code"; Rec."Pay-to Post Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the post code of the vendor that you received the invoice from.';
                     Visible = false;
                 }
-                field("Pay-to Country/Region Code"; "Pay-to Country/Region Code")
+                field("Pay-to Country/Region Code"; Rec."Pay-to Country/Region Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the country/region code of the address.';
                     Visible = false;
                 }
-                field("Pay-to Contact"; "Pay-to Contact")
+                field("Pay-to Contact"; Rec."Pay-to Contact")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name of the person to contact about an invoice from this vendor.';
                     Visible = false;
                 }
-                field("Ship-to Code"; "Ship-to Code")
+                field("Ship-to Code"; Rec."Ship-to Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies a code for an alternate shipment address if you want to ship to another address than the one that has been entered automatically. This field is also used in case of drop shipment.';
                     Visible = false;
                 }
-                field("Ship-to Name"; "Ship-to Name")
+                field("Ship-to Name"; Rec."Ship-to Name")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name of the customer at the address that the items are shipped to.';
                     Visible = false;
                 }
-                field("Ship-to Post Code"; "Ship-to Post Code")
+                field("Ship-to Post Code"; Rec."Ship-to Post Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the postal code of the address that the items are shipped to.';
                     Visible = false;
                 }
-                field("Ship-to Country/Region Code"; "Ship-to Country/Region Code")
+                field("Ship-to Country/Region Code"; Rec."Ship-to Country/Region Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the country/region code of the address that the items are shipped to.';
                     Visible = false;
                 }
-                field("Ship-to Contact"; "Ship-to Contact")
+                field("Ship-to Contact"; Rec."Ship-to Contact")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name of the contact person at the address that the items are shipped to.';
                     Visible = false;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the date when the posting of the purchase document will be recorded.';
                     Visible = false;
                 }
-                field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Dimensions;
                     ToolTip = 'Specifies the code for Shortcut Dimension 1, which is one of two global dimension codes that you set up in the General Ledger Setup window.';
                     Visible = false;
                 }
-                field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Dimensions;
                     ToolTip = 'Specifies the code for Shortcut Dimension 2, which is one of two global dimension codes that you set up in the General Ledger Setup window.';
                     Visible = false;
                 }
-                field("Location Code"; "Location Code")
+                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = Location;
                     ToolTip = 'Specifies a code for the location where you want the items to be placed when they are received.';
                 }
-                field("Purchaser Code"; "Purchaser Code")
+                field("Purchaser Code"; Rec."Purchaser Code")
                 {
                     ApplicationArea = Suite;
                     ToolTip = 'Specifies which purchaser is assigned to the vendor.';
                     Visible = false;
                 }
-                field("Assigned User ID"; "Assigned User ID")
+                field("Assigned User ID"; Rec."Assigned User ID")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the ID of the user who is responsible for the document.';
                 }
-                field("Currency Code"; "Currency Code")
+                field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = Suite;
                     ToolTip = 'Specifies the code of the currency of the amounts on the purchase lines.';
                     Visible = false;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the date when the related document was created.';
                     Visible = false;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies whether the record is open, waiting to be approved, invoiced for prepayment, or released to the next stage of processing.';
                     Visible = false;
                 }
-                field("Payment Terms Code"; "Payment Terms Code")
+                field("Payment Terms Code"; Rec."Payment Terms Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies a formula that calculates the payment due date, payment discount date, and payment discount amount.';
                     Visible = false;
                 }
-                field("Due Date"; "Due Date")
+                field("Due Date"; Rec."Due Date")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies when the invoice is due.';
                     Visible = false;
                 }
-                field("Payment Discount %"; "Payment Discount %")
+                field("Payment Discount %"; Rec."Payment Discount %")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the payment discount percent granted if payment is made on or before the date in the Pmt. Discount Date field.';
                     Visible = false;
                 }
-                field("Payment Method Code"; "Payment Method Code")
+                field("Payment Method Code"; Rec."Payment Method Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies how to make payment, such as with bank transfer, cash, or check.';
                     Visible = false;
                 }
-                field("Shipment Method Code"; "Shipment Method Code")
+                field("Shipment Method Code"; Rec."Shipment Method Code")
                 {
                     ApplicationArea = Suite;
                     ToolTip = 'Specifies the delivery conditions of the related shipment, such as free on board (FOB).';
                     Visible = false;
                 }
-                field("Requested Receipt Date"; "Requested Receipt Date")
+                field("Requested Receipt Date"; Rec."Requested Receipt Date")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the date that you want the vendor to deliver your order. The field is used to calculate the latest date you can order, as follows: requested receipt date - lead time calculation = order date. If you do not need delivery on a specific date, you can leave the field blank.';
                     Visible = false;
                 }
-                field("Job Queue Status"; "Job Queue Status")
+                field("Job Queue Status"; Rec."Job Queue Status")
                 {
                     ApplicationArea = All;
                     Style = Unfavorable;
@@ -231,12 +231,12 @@ page 51007 "Ret. RH Purchase Invoices"
                     var
                         JobQueueEntry: Record "Job Queue Entry";
                     begin
-                        if "Job Queue Status" = "Job Queue Status"::" " then
+                        if Rec."Job Queue Status" = Rec."Job Queue Status"::" " then
                             exit;
-                        JobQueueEntry.ShowStatusMsg("Job Queue Entry ID");
+                        JobQueueEntry.ShowStatusMsg(Rec."Job Queue Entry ID");
                     end;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the sum of the amounts in the Amount field on the associated purchase lines.';
@@ -295,7 +295,7 @@ page 51007 "Ret. RH Purchase Invoices"
 
                     trigger OnAction()
                     begin
-                        CalcInvDiscForHeader;
+                        Rec.CalcInvDiscForHeader;
                         Commit;
                         PAGE.RunModal(PAGE::"Purchase Statistics", Rec);
                     end;
@@ -327,7 +327,7 @@ page 51007 "Ret. RH Purchase Invoices"
 
                     trigger OnAction()
                     begin
-                        ShowDocDim;
+                        Rec.ShowDocDim;
                     end;
                 }
             }
@@ -351,7 +351,7 @@ page 51007 "Ret. RH Purchase Invoices"
                     var
                         WorkflowsEntriesBuffer: Record "Workflows Entries Buffer";
                     begin
-                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(RecordId, DATABASE::"Purchase Header", "Document Type", "No.");
+                        WorkflowsEntriesBuffer.RunWorkflowEntriesPage(Rec.RecordId, DATABASE::"Purchase Header", "Document Type", Rec."No.");
                     end;
                 }
                 action(Vendor)
@@ -440,7 +440,7 @@ page 51007 "Ret. RH Purchase Invoices"
                         WorkflowWebhookManagement: Codeunit "Workflow Webhook Management";
                     begin
                         ApprovalsMgmt.OnCancelPurchaseApprovalRequest(Rec);
-                        WorkflowWebhookManagement.FindAndCancel(RecordId);
+                        WorkflowWebhookManagement.FindAndCancel(Rec.RecordId);
                     end;
                 }
             }
@@ -470,7 +470,7 @@ page 51007 "Ret. RH Purchase Invoices"
                             repeat
                                 VerifyTotal(PurchaseHeader);
                             until PurchaseHeader.Next = 0;
-                            PurchaseBatchPostMgt.RunWithUI(PurchaseHeader, Count, ReadyToPostQst);
+                            PurchaseBatchPostMgt.RunWithUI(PurchaseHeader, Rec.Count, ReadyToPostQst);
                         end else begin
                             VerifyTotal(Rec);
                             Post(CODEUNIT::"Purch.-Post (Yes/No)");
@@ -556,7 +556,7 @@ page 51007 "Ret. RH Purchase Invoices"
 
                     trigger OnAction()
                     begin
-                        CancelBackgroundPosting;
+                        Rec.CancelBackgroundPosting;
                     end;
                 }
             }
@@ -586,7 +586,7 @@ page 51007 "Ret. RH Purchase Invoices"
         CurrPage.IncomingDocAttachFactBox.PAGE.LoadDataFromRecord(Rec);
 
         // Contextual Power BI FactBox: send data to filter the report in the FactBox: (SourceTableFildToCompare,QueryName/FieldName)
-        CurrPage."Power BI Report FactBox".PAGE.SetCurrentListSelection("No.", false, PowerBIVisible);
+        CurrPage."Power BI Report FactBox".PAGE.SetCurrentListSelection(Rec."No.", false, PowerBIVisible);
     end;
 
     trigger OnInit()
@@ -598,11 +598,11 @@ page 51007 "Ret. RH Purchase Invoices"
     var
         PurchasesPayablesSetup: Record "Purchases & Payables Setup";
     begin
-        SetSecurityFilterOnRespCenter;
+        Rec.SetSecurityFilterOnRespCenter;
 
         JobQueueActive := PurchasesPayablesSetup.JobQueueActive;
 
-        CopyBuyFromVendorFilter;
+        Rec.CopyBuyFromVendorFilter;
     end;
 
     var
@@ -623,11 +623,11 @@ page 51007 "Ret. RH Purchase Invoices"
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         WorkflowWebhookManagement: Codeunit "Workflow Webhook Management";
     begin
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
+        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(Rec.RecordId);
 
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(Rec.RecordId);
 
-        WorkflowWebhookManagement.GetCanRequestAndCanCancel(RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
+        WorkflowWebhookManagement.GetCanRequestAndCanCancel(Rec.RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
     end;
 
     procedure Post(PostingCodeunitID: Integer)
@@ -638,7 +638,7 @@ page 51007 "Ret. RH Purchase Invoices"
         if ApplicationAreaMgmtFacade.IsFoundationEnabled then
             LinesInstructionMgt.PurchaseCheckAllLinesHaveQuantityAssigned(Rec);
 
-        SendToPosting(PostingCodeunitID);
+        Rec.SendToPosting(PostingCodeunitID);
 
         if ApplicationAreaMgmtFacade.IsFoundationEnabled then
             ShowPostedConfirmationMessage;
@@ -649,7 +649,7 @@ page 51007 "Ret. RH Purchase Invoices"
         PurchInvHeader: Record "Purch. Inv. Header";
         InstructionMgt: Codeunit "Instruction Mgt.";
     begin
-        PurchInvHeader.SetRange("Pre-Assigned No.", "No.");
+        PurchInvHeader.SetRange("Pre-Assigned No.", Rec."No.");
         PurchInvHeader.SetRange("Order No.", '');
         if PurchInvHeader.FindFirst then
             if InstructionMgt.ShowConfirm(StrSubstNo(OpenPostedPurchaseInvQst, PurchInvHeader."No."),

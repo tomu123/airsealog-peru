@@ -3,6 +3,13 @@ pageextension 51132 "ST Customer Ledger Entries" extends "Customer Ledger Entrie
     layout
     {
         // Add changes to page layout here
+        addafter("Posting Date")
+        {
+            field("Document Date"; "Document Date")
+            {
+                ApplicationArea = All;
+            }
+        }
         addbefore("Exported to Payment File")
         {
             field("Posting Text"; "Posting Text")

@@ -6,7 +6,7 @@ tableextension 51114 "ST Customer" extends Customer
         field(51008; "Preferred Bank Account Code ME"; code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Preferred Bank Acc. Code ME', Comment = 'ESM="Cód. Banco Preferidos  ME"';
+            Caption = 'Preferred Bank Acc. Code ME', Comment = 'ESM="Banco Recaudación ME"';
             TableRelation = "Customer Bank Account".Code where("Customer No." = field("No."));
         }
         //Consult RUC Begin

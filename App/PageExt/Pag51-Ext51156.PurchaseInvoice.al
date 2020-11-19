@@ -57,7 +57,7 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
             }
         }
 
-        addafter("Vendor Invoice No.")
+        addbefore("Vendor Invoice No.")
         {
             field("Posting No. Series"; "Posting No. Series")
             {
@@ -70,20 +70,14 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
                 trigger OnValidate()
                 var
                     VendorInvNo: Text;
-                    ErrorVendInvNo: label 'The first character must start with E for electronic and 0 for non-electronic.', Comment = 'ESM="El primer carácter debe comenzar con E para electrónico y 0 para no electrónico."';
+                    ErrorVendInvNo: label 'The first character must start with E, F for electronic.', Comment = 'ESM="El primer caracter para la serie debe de ser E ó F solo para electrónicos."';
                 begin
-                    if "Vendor Invoice No." = '' then
-                        exit;
-                    VendorInvNo := "Vendor Invoice No.";
-                    if "Electronic Bill" then begin
-                        if not (VendorInvNo[1] in ['F', 'E', 'B']) then
-                            Error(ErrorVendInvNo);
-                    end else
-                        if VendorInvNo[1] <> '0' then
-                            Error(ErrorVendInvNo);
-
+                    Validate("Vendor Invoice No.");
                 end;
             }
+        }
+        addafter("Vendor Invoice No.")
+        {
             field("Posting Text"; "Posting Text")
             {
                 ApplicationArea = All;
@@ -111,19 +105,8 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
         modify("Vendor Invoice No.")
         {
             trigger OnAfterValidate()
-            var
-                VendorInvNo: Text;
-                ErrorVendInvNo: label 'The first character must start with E for electronic and 0 for non-electronic.';
             begin
-                if "Vendor Invoice No." = '' then
-                    exit;
-                VendorInvNo := "Vendor Invoice No.";
-                if "Electronic Bill" then begin
-                    if not (VendorInvNo[1] in ['F', 'E', 'B']) then
-                        Error(ErrorVendInvNo);
-                end else
-                    if VendorInvNo[1] <> '0' then
-                        Error(ErrorVendInvNo);
+                ValidateVendorInvoiceNo();
             end;
         }
 
@@ -328,6 +311,7 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
                 field("Electronic Doc. Ref"; "Electronic Doc. Ref")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("Applies-to Doc. No. Ref."; "Applies-to Doc. No. Ref.")
                 {
@@ -697,6 +681,14 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
             Caption = 'INCOTERM';
         }
         //Import End
+
+        addafter("Posting Date")
+        {
+            field("Accountant receipt date"; "Accountant receipt date")
+            {
+                ApplicationArea = All;
+            }
+        }
     }
 
 
@@ -704,6 +696,20 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
     actions
     {
         // Add changes to page actions here
+        modify(Post)
+        {
+            trigger OnBeforeAction()
+            begin
+                ValidateVendorInvoiceNo();
+            end;
+        }
+        modify(PostAndPrint)
+        {
+            trigger OnBeforeAction()
+            begin
+                ValidateVendorInvoiceNo();
+            end;
+        }
     }
 
     trigger OnAfterGetRecord()
@@ -750,5 +756,22 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
         if MyLegalDocument.Find('-') then
             exit(MyLegalDocument.Description);
         exit('');
+    end;
+
+    local procedure ValidateVendorInvoiceNo()
+    var
+        VendorInvNo: Text;
+        ErrorVendInvNo: label 'The first character must start with E, F for electronic.', Comment = 'ESM="El primer caracter para la serie debe de ser E ó F solo para electrónicos."';
+        ErrorVendInvNo2: label 'The first character must start with E, F for electronic.', Comment = 'ESM="Si la seríe de [N° Factura proveedor] inicia con F ó E, debe de activar el check de [Factura Electrónica]."';
+    begin
+        if "Vendor Invoice No." = '' then
+            exit;
+        VendorInvNo := "Vendor Invoice No.";
+        if "Electronic Bill" then begin
+            if not (VendorInvNo[1] in ['F', 'E', 'B']) then
+                Error(ErrorVendInvNo);
+        end else
+            if VendorInvNo[1] in ['E', 'F'] then
+                Error(ErrorVendInvNo2);
     end;
 }

@@ -12,79 +12,83 @@ page 51000 "Legal Document List"
         {
             repeater(ListDocumentsTypes)
             {
-                field("Option Type"; "Option Type")
+                field("Option Type"; Rec."Option Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Type Code"; "Type Code")
+                field("Type Code"; Rec."Type Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Legal No."; "Legal No.")
+                field("Legal No."; Rec."Legal No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Description"; "Description")
+                field("Description"; Rec."Description")
                 {
                     ApplicationArea = All;
                 }
-                field("Serie Allow Alphanumeric"; "Serie Allow Alphanumeric")
+                field("Serie Allow Alphanumeric"; Rec."Serie Allow Alphanumeric")
                 {
                     ApplicationArea = All;
                 }
-                field("Serie Lenght"; "Serie Lenght")
+                field("Serie Lenght"; Rec."Serie Lenght")
                 {
                     ApplicationArea = All;
                 }
-                field("Number Allow Alphanumeric"; "Number Allow Alphanumeric")
+                field("Number Allow Alphanumeric"; Rec."Number Allow Alphanumeric")
                 {
                     ApplicationArea = All;
                 }
-                field("Number Lenght"; "Number Lenght")
+                field("Number Lenght"; Rec."Number Lenght")
                 {
                     ApplicationArea = All;
                 }
-                field("Min. Serie Lenght"; "Min. Serie Lenght")
+                field("Min. Serie Lenght"; Rec."Min. Serie Lenght")
                 {
                     ApplicationArea = All;
                 }
-                field("Min. Number Lenght"; "Min. Number Lenght")
+                field("Min. Number Lenght"; Rec."Min. Number Lenght")
                 {
                     ApplicationArea = All;
                 }
-                field("Adjust Serie"; "Adjust Serie")
+                field("Adjust Serie"; Rec."Adjust Serie")
                 {
                     ApplicationArea = All;
                 }
-                field("Adjust Number"; "Adjust Number")
+                field("Adjust Number"; Rec."Adjust Number")
                 {
                     ApplicationArea = All;
                 }
-                field("Description Type"; "Description Type")
+                field("Description Type"; Rec."Description Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Generic Code"; "Generic Code")
+                field("Generic Code"; Rec."Generic Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Alternative Code"; "Alternative Code")
+                field("Alternative Code"; Rec."Alternative Code")
                 {
                     ApplicationArea = All;
                 }
-                field("TAX Code"; "TAX Code")
+                field("TAX Code"; Rec."TAX Code")
                 {
                     ApplicationArea = All;
                 }
-                field(Affectation; Affectation)
+                field(Affectation; Rec.Affectation)
                 {
                     ApplicationArea = All;
                 }
-                field("Applied Level"; "Applied Level")
+                field("Applied Level"; Rec."Applied Level")
                 {
                     ApplicationArea = All;
                 }
-                field("UN ECE 5305"; "UN ECE 5305")
+                field("UN ECE 5305"; Rec."UN ECE 5305")
+                {
+                    ApplicationArea = All;
+                }
+                field("Type Fiduciary"; Rec."Type Fiduciary")
                 {
                     ApplicationArea = All;
                 }

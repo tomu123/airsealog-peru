@@ -125,4 +125,21 @@ codeunit 51022 "PR Purchase Validate"
         FullDocTypeTxt := FullDocTypeTxtLabel;
         IsHandled := true;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post (Yes/No)", 'OnAfterConfirmPost', '', false, false)]
+    local procedure OnBeforeConfirmPostCU91(PurchaseHeader: Record "Purchase Header")
+    var
+        DocumentAttachment: Record "Document Attachment";
+    begin
+        if PurchaseHeader."Document Type" <> PurchaseHeader."Document Type"::Order then
+            exit;
+        DocumentAttachment.Reset();
+        DocumentAttachment.SetRange("Table ID", Database::"Purchase Header");
+        DocumentAttachment.SetRange("No.", PurchaseHeader."No.");
+        DocumentAttachment.SetRange("Document Type", DocumentAttachment."Document Type"::Order);
+        if DocumentAttachment.IsEmpty then begin
+            Message('Para poder dar recepción al documento, se solicita de forma obligatoria un documento adjunto');
+            exit;
+        end;
+    end;
 }

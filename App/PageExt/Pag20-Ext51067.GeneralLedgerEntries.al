@@ -16,27 +16,34 @@ pageextension 51067 "Setup General Ledger Entries" extends "General Ledger Entri
             field("Transaction CUO"; "Transaction CUO")
             {
                 ApplicationArea = All;
-                Caption = 'Transaction CUO';
             }
             field("Correlative CUO"; "Correlative CUO")
             {
                 ApplicationArea = All;
-                Caption = 'Correlative CUO';
             }
             field(Opening; Opening)
             {
                 ApplicationArea = All;
-                Caption = 'Opening';
             }
             field("Posting Text"; "Posting Text")
             {
                 ApplicationArea = All;
-                Caption = 'Posting Text';
             }
             field("Setup Source Code"; "Setup Source Code")
             {
                 ApplicationArea = All;
-                Caption = 'Source Code ULN';
+            }
+            field("Source Currency Code"; "Source Currency Code")
+            {
+                ApplicationArea = All;
+            }
+            field("Source Currency Type"; "Source Currency Type")
+            {
+                ApplicationArea = All;
+            }
+            field("Source Currency Factor"; "Source Currency Factor")
+            {
+                ApplicationArea = All;
             }
         }
         addafter("Global Dimension 2 Code")
@@ -100,6 +107,33 @@ pageextension 51067 "Setup General Ledger Entries" extends "General Ledger Entri
             field("Importation No."; "Importation No.")
             {
                 ApplicationArea = All;
+            }
+        }
+    }
+
+    actions
+    {
+        addlast(Reporting)
+        {
+            action(DayliVoucher)
+            {
+                ApplicationArea = All;
+                Caption = 'Dayli Voucher', Comment = 'ESM="Voucher diario"';
+                Image = Report;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Report;
+
+                trigger OnAction()
+                var
+                    GLEntry: Record "G/L Entry";
+                    DayliVoucher: Report "LU Daily Voucher";
+                begin
+                    GLEntry.SetRange("Document No.", "Document No.");
+                    DayliVoucher.SetTableView(GLEntry);
+                    DayliVoucher.Run();
+                    GLEntry.Reset();
+                end;
             }
         }
     }

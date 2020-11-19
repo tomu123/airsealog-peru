@@ -77,10 +77,17 @@ tableextension 51045 "Setup Vend. Ledger Entry" extends "Vendor Ledger Entry"
         //Paymetn Schedule
         field(51031; "PS Not Show Payment Schedule"; Boolean)
         {
-            CalcFormula = lookup ("Vendor Posting Group"."PS Not Show" WHERE(Code = FIELD("Vendor Posting Group")));
+            CalcFormula = lookup("Vendor Posting Group"."PS Not Show" WHERE(Code = FIELD("Vendor Posting Group")));
             Caption = 'Not Show Payment Schedule', Comment = 'ESM="No Mostrar en Crono. Pagos"';
             Editable = false;
             FieldClass = FlowField;
+        }
+        field(51055; "Accountant receipt date"; date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Accountant receipt date', Comment = 'ESM="Fecha recepción contabilidad"';
+            Editable = false;
+
         }
     }
 

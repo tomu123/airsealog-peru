@@ -8,8 +8,19 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
         {
             DataClassification = ToBeClassified;
             Caption = 'Legal Document', Comment = 'ESM="Documento Legal"';
-            TableRelation = "Legal Document"."Legal No." where("Option Type" = const("SUNAT Table"), "Type Code" = const('10'));
+            TableRelation = if ("Document Type" = const("Credit Memo")) "Legal Document"."Legal No." where("Option Type" = const("SUNAT Table"), "Type Code" = const('10'), "Legal No." = const('07'))
+            else
+            "Legal Document"."Legal No." where("Option Type" = const("SUNAT Table"), "Type Code" = const('10'));
             ValidateTableRelation = false;
+            trigger OnValidate()
+            var
+                SerieNo: Code[20];
+                NumberNo: Code[20];
+            begin
+                if "Legal Document" = '' then
+                    exit;
+                SetPostingSerieNo();
+            end;
         }
         field(51001; "Legal Status"; Option)
         {
@@ -17,6 +28,12 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
             Caption = 'Legal Status', Comment = 'ESM="Estado legal"';
             OptionMembers = Success,Anulled,OutFlow;
             OptionCaption = 'Success,Anulled,OutFlow', Comment = 'ESM="Normal,Anulado,Extornado"';
+            trigger OnValidate()
+            begin
+                if "Legal Document" = '' then
+                    exit;
+                SetPostingSerieNo();
+            end;
         }
         field(51002; "Legal Document Ref."; Code[10])
         {
@@ -60,7 +77,7 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
         {
             DataClassification = ToBeClassified;
             Caption = 'Applies-to Doc. No. Ref.', Comment = 'ESM="Liq. por N° Documento Ref."';
-            TableRelation = if ("Manual Document Ref." = Const(false)) "Sales Invoice Header"."No." where("Legal Status" = const(Success), "Legal Document" = field("Legal Document Ref."), "Sell-to Customer No." = field("Sell-to Customer No."));
+            TableRelation = if ("Manual Document Ref." = Const(false)) "Sales Invoice Header"."No." where("Legal Status" = const(Success), "Sell-to Customer No." = field("Sell-to Customer No."));
             ValidateTableRelation = false;
             trigger OnValidate()
             var
@@ -298,8 +315,10 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
     var
         SalesLine: Record "Sales Line";
         GLSetup: Record "General Ledger Setup";
+        NoSeries: Record "No. Series";
         DetractCalculation: Codeunit "DetrAction Calculation";
         FreeTitleMgt: Codeunit "FT Free Title Management";
+        LegalDocMgt: Codeunit "Legal Document Management";
         ErrorOverflowAmt: Label 'The detraction cannot exceed the Invoice', Comment = 'ESM="La detracción no de exceder la factura"';
         ErrorDetractLegalDoc: Label 'Can´t be applied to a document type 03', Comment = 'ESM="No puede aplicar un documento tipo 03"';
 
@@ -342,5 +361,22 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
                     end;
                 end;
         end;
+    end;
+
+    procedure SetPostingSerieNo()
+    begin
+        NoSeries.Reset();
+        NoSeries.SetRange("Operation Type", NoSeries."Operation Type"::Sales);
+        NoSeries.SetRange("Legal Document", "Legal Document");
+        //NoSeries.SetRange("Legal Status", "Legal Status");
+        NoSeries.SetRange("Internal Operation", "Legal Status" = "Legal Status"::OutFlow);
+        OnBeforeFilterNoSeries(NoSeries, Rec);
+        if NoSeries.FindFirst() then
+            "Posting No. Series" := NoSeries.Code;
+    end;
+
+    [IntegrationEvent(false, false)]
+    procedure OnBeforeFilterNoSeries(var NoSeries: Record "No. Series"; var SalesHeader: Record "Sales Header")
+    begin
     end;
 }

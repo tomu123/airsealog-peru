@@ -27,7 +27,6 @@ page 51024 "Payment Schedule"
                 }
                 field("Document Date"; "Document Date")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Enabled = false;
                 }
@@ -81,7 +80,7 @@ page 51024 "Payment Schedule"
                     Editable = false;
                     Enabled = false;
                 }
-                field("Receipt Date"; "Receipt Date")
+                field("Accountant Receipt Date"; "Accountant Receipt Date")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -145,6 +144,20 @@ page 51024 "Payment Schedule"
                     Visible = true;
 
                 }
+                field("Dollarized"; Dollarized)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    Visible = true;
+
+                }
+                field("T.C. Dollarized"; "T.C. Dollarized")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    Visible = true;
+
+                }
                 field("Preferred Bank Account Code"; "Preferred Bank Account Code")
                 {
                     ApplicationArea = All;
@@ -161,13 +174,14 @@ page 51024 "Payment Schedule"
                 }
                 field("gAccountBankNation"; "gAccountBankNation")
                 {
-                    Caption = 'Cód. Cuenta Banco de la Nación', Comment = 'ESM="Cód. Cuenta Banco de la Nación"';
+                    Caption = 'Cód. Cuenta Banco de la Nación', Comment = 'ESM="Cód. Cuenta Banco de la Nación Proveedor"';
                     ApplicationArea = All;
                     Editable = false;
 
                 }
                 field("Payment Method Code"; "Payment Method Code")
                 {
+                    Editable = false;
                     ApplicationArea = All;
                 }
                 field("Reference Bank Acc. No."; "Reference Bank Acc. No.")
@@ -180,8 +194,17 @@ page 51024 "Payment Schedule"
                 {
                     ApplicationArea = All;
                     Editable = false;
-                    Enabled = false;
+                    //Enabled = true;
 
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        Rec."Posting Group" := Rec."Posting Group";
+                    end;
+
+                    trigger OnDrillDown()
+                    begin
+                        Rec."Posting Group" := Rec."Posting Group";
+                    end;
                 }
                 field("Service Type"; "Service Type")
                 {
@@ -269,6 +292,11 @@ page 51024 "Payment Schedule"
         }
         area(FactBoxes)
         {
+            part(SLPostingGroupBuffer; "SL Posting Group Buffer")
+            {
+                ApplicationArea = All;
+                Caption = 'Psoting Groups', Comment = 'ESM="Grupos de registro"';
+            }
             systempart(notes; Mynotes)
             {
                 ApplicationArea = all;
@@ -378,9 +406,15 @@ page 51024 "Payment Schedule"
                     trigger OnAction()
                     begin
                         cuUtilities.fnNavigate(Rec);
-
                     end;
 
+                }
+                action(SaldoGCProveedor)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Vendor AC Balance', Comment = 'ESM="Salgo GC Proveedor"';
+                    Image = Report;
+                    RunObject = report "Vendor AC Balance";
                 }
             }
             group(Actions2)
@@ -486,7 +520,7 @@ page 51024 "Payment Schedule"
     trigger OnAfterGetCurrRecord()
     begin
         SetStatusEntry;
-
+        SetPostingGroupBuffer();
     end;
 
     trigger OnAfterGetRecord()
@@ -591,6 +625,11 @@ page 51024 "Payment Schedule"
 
     end;
 
+    local procedure SetPostingGroupBuffer()
+    begin
+        CurrPage.SLPostingGroupBuffer.Page.SetPostingBufferEntries();
+    end;
+
     procedure fnProcessAction()
     var
 
@@ -604,6 +643,7 @@ page 51024 "Payment Schedule"
         CLEAR(lcCuMPWUtilities);
 
         CurrPage.SETSELECTIONFILTER(lcRecPaymentSchedule);
+
 
         lcRecPaymentSchedule.SETFILTER("Reference Bank Acc. No.", '%1|%2', '', '-');
         if lcRecPaymentSchedule.Count > 0 then begin

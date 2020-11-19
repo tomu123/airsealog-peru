@@ -5,15 +5,15 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
         // Add changes to page layout here
         addafter("Applies-to ID")
         {
-            field("Applies-to Entry No."; "Applies-to Entry No.")
+            field("Applies-to Entry No."; Rec."Applies-to Entry No.")
             {
                 ApplicationArea = All;
-                Caption = 'Applied-to Entry No.';
+                Caption = 'Applied-to Entry No.', Comment = 'ESM="Liq. por N° Mov."';
             }
         }
         addafter(Description)
         {
-            field("Posting Group"; "Posting Group")
+            field("Posting Group"; Rec."Posting Group")
             {
                 ApplicationArea = All;
                 Editable = true;
@@ -34,7 +34,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
         {
             field(IsManual; IsManual)
             {
-                Caption = 'Manual Retention';
+                Caption = 'Manual Retention', Comment = 'ESM="Retención Manual"';
                 ApplicationArea = All;
                 Visible = ShowRetention;
             }
@@ -42,24 +42,25 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
 
         addafter("Bal. Account No.")
         {
-            field("Applied Retention"; "Applied Retention")
+            field("Applied Retention"; Rec."Applied Retention")
             {
                 ApplicationArea = All;
                 Visible = ShowRetention;
             }
-            field("Retention Amount"; "Retention Amount")
+            field("Retention Amount"; Rec."Retention Amount")
             {
                 ApplicationArea = All;
                 Visible = ShowRetention;
                 Editable = false;
             }
-            field("Retention Amount LCY"; "Retention Amount LCY")
+            field("Retention Amount LCY"; Rec."Retention Amount LCY")
             {
                 ApplicationArea = All;
                 Visible = ShowRetention;
                 Editable = false;
             }
         }
+
 
         modify(GetAppliesToDocDueDate)
         {
@@ -84,18 +85,18 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
         //Add Pc 27.09.20
         addafter("Account No.")
         {
-            field("Check Name15467"; "Check Name")
+            field("Check Name15467"; Rec."Check Name")
             {
                 ApplicationArea = All;
             }
         }
         addafter("Document Type")
         {
-            field("Document Date24911"; "Document Date")
+            field("Document Date24911"; Rec."Document Date")
             {
                 ApplicationArea = All;
             }
-            field("Due Date45223"; "Due Date")
+            field("Due Date45223"; Rec."Due Date")
             {
                 ApplicationArea = All;
             }
@@ -106,18 +107,35 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
         }
         addafter("Job Queue Status")
         {
-            field("Check Printed54770"; "Check Printed")
+            field("Check Printed54770"; Rec."Check Printed")
             {
                 ApplicationArea = All;
             }
         }
+
         addafter("Recipient Bank Account")
         {
+            field("ST Recipient Bank Account"; "ST Recipient Bank Account")
+            {
+                ApplicationArea = All;
+            }
             field("gAccountBankNation"; "gAccountBankNation")
             {
                 Caption = 'Cód. Cuenta Banco de la Nación', Comment = 'ESM="Cód. Cuenta Banco de la Nación"';
                 ApplicationArea = All;
                 Editable = false;
+
+            }
+        }
+        modify("Recipient Bank Account")
+        {
+            Visible = false;
+        }
+        addafter(Description)
+        {
+            field("Posting Text"; "Posting Text")
+            {
+
 
             }
         }
@@ -147,6 +165,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
                     var
                     begin
                         CLEAR(MassiveBankPayments);
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGenerateRegisterAccountsPayable(Rec);
 
                     end;
@@ -167,6 +186,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
 
                     begin
                         CLEAR(MassiveBankPayments);
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGenerateSalaryTelecreditEmployee(Rec);
 
                     end;
@@ -181,9 +201,32 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
                     PromotedIsBig = true;
                     PromotedCategory = Process;
                     trigger OnAction();
+                    var
+                        lcSetupLocalization: Record "Setup Localization";
+                        RecGenJournalLine: Record 81;
                     begin
+                        RecGenJournalLine.Reset();
+                        RecGenJournalLine.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+                        RecGenJournalLine.SetRange("Journal Template Name", Rec."Journal Template Name");
+                        RecGenJournalLine.SetRange("Applied Retention", true);
+                        if RecGenJournalLine.FindSet() then begin
+                            repeat
+                                if (RecGenJournalLine."Retention Amount LCY" = 0) or (RecGenJournalLine."Retention Amount LCY" = 0) then
+                                    Error('La linea %1 tiene marcado el check de retencion, favor de calcular retencion para la linea', RecGenJournalLine."Line No.");
+                            until RecGenJournalLine.Next() = 0;
+
+                        end;
+
+
                         CLEAR(MassiveBankPayments);
-                        MassiveBankPayments.fnGenerateVendorTelecreditBCP(Rec, FALSE, FALSE);
+                        lcSetupLocalization.GET;
+
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
+
+                        if lcSetupLocalization."Telecredit New Version" then
+                            MassiveBankPayments.fnGenerateVendorTelecreditBCPV2(Rec, FALSE, FALSE)
+                        else
+                            MassiveBankPayments.fnGenerateVendorTelecreditBCP(Rec, FALSE, FALSE);
                     end;
                 }
                 action(ExportBBVABankPayroll)
@@ -200,6 +243,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
 
                     begin
                         CLEAR(MassiveBankPayments);
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGenerateSalaryTelecreditEmployee(Rec);
 
                     end;
@@ -218,6 +262,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
 
                     begin
                         CLEAR(MassiveBankPayments);
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGenerateVendorTelecreditBBVA(Rec);
 
 
@@ -237,6 +282,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
                     trigger OnAction();
                     begin
                         CLEAR(MassiveBankPayments);
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGenerateSalaryTelecreditEmployee(Rec);
 
                     end;
@@ -258,6 +304,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
                         CLEAR(MassiveBankPayments);
                         IF Rec.ISEMPTY THEN
                             EXIT;
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGenerateVendorTelecreditITBK(Rec);
 
                     end;
@@ -276,6 +323,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
                     trigger OnAction();
                     begin
                         CLEAR(MassiveBankPayments);
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGenerateSalaryTelecreditEmployee(Rec);
 
                     end;
@@ -296,6 +344,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
                         CLEAR(MassiveBankPayments);
                         IF Rec.ISEMPTY THEN
                             EXIT;
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGenerateVendorTelecreditScotiabank(Rec);
 
                     end;
@@ -314,6 +363,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
                     trigger OnAction();
                     begin
                         CLEAR(MassiveBankPayments);
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGenerateSalaryTelecreditEmployee(Rec);
 
 
@@ -335,6 +385,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
                         CLEAR(MassiveBankPayments);
                         IF Rec.ISEMPTY THEN
                             EXIT;
+                        SLSetupMgt.ValidateMixedCurrencyCode(rec."Journal Template Name", Rec."Journal Batch Name");
                         MassiveBankPayments.fnGeneratePaymentTelecredit(Rec);
 
                     end;
@@ -382,13 +433,37 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
                 action(CalculateRetention)
                 {
                     ApplicationArea = All;
-                    Caption = 'Calculate Retention';
+                    Caption = 'Calculate Retention', Comment = 'ESM="Calcular Retención"';
                     Image = CalculateBalanceAccount;
                     trigger OnAction()
                     begin
                         RetentionMgt.CalculateRetention(Rec, IsManual);
+                        Rec.AdjustDifferenceForDumbUser(Rec);
+                        CurrPage.Update(true);
                     end;
                 }
+            }
+        }
+        addafter(ApplyEntries)
+        {
+            action(AdjusDiffForDumbUser)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Adjust Difference for bank', Comment = 'ESM="Ajustar dif. para banco"';
+                Ellipsis = true;
+                Image = AdjustEntries;
+                Promoted = true;
+                PromotedCategory = Process;
+                ShortCutKey = 'Shift+Ctrl+E';
+                ToolTip = 'This function is used to automatically adjust the difference of a document versus the bank line.', Comment = 'ESM="Esta función sirve para ajustar de manera automatica la diferencia de un documento versus la linea de banco."';
+
+                trigger OnAction()
+                var
+                    ConfirmAdjust: Label 'Do you want to adjust the difference in the journal?', Comment = 'ESM="¿Desea realizar el ajustar la diferencia en el diario?"';
+                begin
+                    if Confirm(ConfirmAdjust, false) then
+                        Rec.AdjustDifferenceForDumbUser(Rec);
+                end;
             }
         }
     }
@@ -418,11 +493,11 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
     begin
         gAccountBankNation := '';
 
-        if "Account Type" <> "Account Type"::Vendor then
+        if Rec."Account Type" <> Rec."Account Type"::Vendor then
             exit;
 
         lcvendor.Reset();
-        lcvendor.SetRange("No.", "Account No.");
+        lcvendor.SetRange("No.", Rec."Account No.");
         if lcvendor.FindFirst() then
             gAccountBankNation := lcvendor."Currenct Account BNAC";
 
@@ -434,8 +509,8 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
         BankAccNoFICO: Text;
     begin
         GenJnlBatch2.Reset();
-        GenJnlBatch2.SetRange("Journal Template Name", "Journal Template Name");
-        GenJnlBatch2.SetRange(Name, "Journal Batch Name");
+        GenJnlBatch2.SetRange("Journal Template Name", Rec."Journal Template Name");
+        GenJnlBatch2.SetRange(Name, Rec."Journal Batch Name");
         if GenJnlBatch2.IsEmpty then
             exit;
         GenJnlBatch2.Find('-');
@@ -454,6 +529,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
         SLSetupMgt: Codeunit "Setup Localization";
         DetracCalculation: Codeunit "DetrAction Calculation";
         MassiveBankPayments: Codeunit "Massive Banks Payments";
+        rec81: Record 81;
         ViewPaymentsBCP: Boolean;
         ViewPaymentsBBVA: Boolean;
         ViewPaymentsIBK: Boolean;

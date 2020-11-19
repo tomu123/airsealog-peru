@@ -5,12 +5,12 @@ pageextension 51037 "Setup Cash Receipt Journal" extends "Cash Receipt Journal"
         // Add changes to page layout here
         addafter("Applies-to Doc. No.")
         {
-            field("Applies-to Entry No."; "Applies-to Entry No.")
+            field("Applies-to Entry No."; Rec."Applies-to Entry No.")
             {
                 ApplicationArea = All;
-                Caption = 'Applied-to Entry No.';
+                Caption = 'Applied-to Entry No.', Comment = 'ESM="Liq. por N° Mov."';
             }
-            field("Posting Group"; "Posting Group")
+            field("Posting Group"; Rec."Posting Group")
             {
                 ApplicationArea = All;
                 Editable = true;

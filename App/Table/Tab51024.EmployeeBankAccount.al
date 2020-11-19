@@ -1,6 +1,6 @@
 table 51024 "ST Employee Bank Account"
 {
-    Caption = 'Employee Bank Account';
+    Caption = 'Employee Bank Account', Comment = 'ESM="Bancos empleado"';
     DataCaptionFields = "Employee No.", "Code", Name;
     DrillDownPageID = "ST Employee Bank Account List";
     LookupPageID = "ST Employee Bank Account List";

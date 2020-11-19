@@ -5,7 +5,7 @@ pageextension 51107 "Setup Bank Account Card" extends "Bank Account Card"
         // Add changes to page layout here
         addafter("Bank Account No.")
         {
-            field("Bank Account CCI"; "Bank Account CCI")
+            field("Bank Account CCI"; Rec."Bank Account CCI")
             {
                 ApplicationArea = All;
                 Caption = 'Bank Account CCI', Comment = 'ESM="N° Cuenta CCI"';
@@ -13,7 +13,7 @@ pageextension 51107 "Setup Bank Account Card" extends "Bank Account Card"
         }
         addbefore("Bank Account No.")
         {
-            field("Bank Account Type"; "Bank Account Type")
+            field("Bank Account Type"; Rec."Bank Account Type")
             {
                 ApplicationArea = All;
                 Caption = 'Bank Account Type', Comment = 'ESM="Tipo de cuenta banco"';
@@ -30,7 +30,7 @@ pageextension 51107 "Setup Bank Account Card" extends "Bank Account Card"
                     Editable = false;
                     Visible = false;
                 }
-                field("Is Check Bank"; "Is Check Bank")
+                field("Is Check Bank"; Rec."Is Check Bank")
                 {
                     ApplicationArea = All;
                 }
@@ -39,13 +39,26 @@ pageextension 51107 "Setup Bank Account Card" extends "Bank Account Card"
         //Legal Document Begin
         addbefore("Bank Account No.")
         {
-            field("Legal Document"; "Legal Document")
+            field("Legal Document"; Rec."Legal Document")
             {
                 ApplicationArea = All;
                 Caption = 'Legal Document', Comment = 'ESM="Documenta Legal"';
             }
+            field("Process Type BBVA"; Rec."Process Type BBVA")
+            {
+                ApplicationArea = All;
+            }
         }
         //Legal Document End
+
+        addafter("Process Type BBVA")
+        {
+            field("Process Bank"; "Process Bank")
+            {
+                ApplicationArea = All;
+
+            }
+        }
     }
 
     var

@@ -79,5 +79,12 @@ tableextension 51112 "Setup Purch. Cr. Memo Hdr." extends "Purch. Cr. Memo Hdr."
             DataClassification = ToBeClassified;
             Caption = 'Posting Text', Comment = 'ESM="Texto registro"';
         }
+        field(51055; "Accountant receipt date"; date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Accountant receipt date', Comment = 'ESM="Fecha recepción contabilidad"';
+            Editable = false;
+
+        }
     }
 }

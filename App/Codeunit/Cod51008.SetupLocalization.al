@@ -10,6 +10,7 @@ codeunit 51008 "Setup Localization"
     begin
         GenJournalLine."Posting Group" := CustLedgerEntry."Customer Posting Group";
         GenJournalLine."Source Currency Factor" := CustLedgerEntry."Source Currency Factor";
+        GenJournalLine."SL Source Currency Code" := CustLedgerEntry."Currency Code";
         GenJournalLine."External Document No." := CustLedgerEntry."External Document No.";
         GenJournalLine."Dimension Set ID" := CustLedgerEntry."Dimension Set ID";
         GenJournalLine."Shortcut Dimension 1 Code" := CustLedgerEntry."Global Dimension 1 Code";
@@ -26,6 +27,7 @@ codeunit 51008 "Setup Localization"
     begin
         GenJournalLine."Posting Group" := VendorLedgerEntry."Vendor Posting Group";
         GenJournalLine."Source Currency Factor" := VendorLedgerEntry."Source Currency Factor";
+        GenJournalLine."SL Source Currency Code" := VendorLedgerEntry."Currency Code";
         GenJournalLine."External Document No." := VendorLedgerEntry."External Document No.";
         GenJournalLine."Dimension Set ID" := VendorLedgerEntry."Dimension Set ID";
         GenJournalLine."Shortcut Dimension 1 Code" := VendorLedgerEntry."Global Dimension 1 Code";
@@ -42,6 +44,7 @@ codeunit 51008 "Setup Localization"
     begin
         GenJournalLine."Posting Group" := EmployeeLedgerEntry."Employee Posting Group";
         GenJournalLine."Source Currency Factor" := EmployeeLedgerEntry."Source Currency Factor";
+        GenJournalLine."SL Source Currency Code" := EmployeeLedgerEntry."Currency Code";
         GenJournalLine."External Document No." := EmployeeLedgerEntry."External Document No.";
         GenJournalLine."Dimension Set ID" := EmployeeLedgerEntry."Dimension Set ID";
         GenJournalLine."Shortcut Dimension 1 Code" := EmployeeLedgerEntry."Global Dimension 1 Code";
@@ -85,12 +88,12 @@ codeunit 51008 "Setup Localization"
             OldVendorLedgerEntry.SetRange("Entry No.", GenJournalLine."Applies-to Entry No.");
     end;
 
-    // [EventSubscriber(ObjectType::CodeUnit, Codeunit::"Gen. Jnl.-Post Line", 'OnPrepareTempEmplLedgEntryOnAfterSetFilters', '', true, true)]
-    // local procedure OnPrepareTempEmplLedgEntryOnAfterSetFilters(var OldEmplLedgerEntry: Record "Employee Ledger Entry"; GenJournalLine: Record "Gen. Journal Line"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
-    // begin
-    //     if GenJournalLine."Applies-to Entry No." <> 0 then
-    //         OldEmplLedgerEntry.SetRange("Entry No.", GenJournalLine."Applies-to Entry No.");
-    // end;
+    [EventSubscriber(ObjectType::CodeUnit, Codeunit::"Gen. Jnl.-Post Line", 'OnPrepareTempEmplLedgEntryOnAfterSetFilters', '', true, true)]
+    local procedure OnPrepareTempEmplLedgEntryOnAfterSetFilters(var OldEmplLedgerEntry: Record "Employee Ledger Entry"; GenJournalLine: Record "Gen. Journal Line"; CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer")
+    begin
+        if GenJournalLine."Applies-to Entry No." <> 0 then
+            OldEmplLedgerEntry.SetRange("Entry No.", GenJournalLine."Applies-to Entry No.");
+    end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]
     local procedure SetOnBeforePostPurchaseDoc(var PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean; CommitIsSupressed: Boolean; var HideProgressWindow: Boolean)
@@ -135,12 +138,18 @@ codeunit 51008 "Setup Localization"
     begin
         GLEntry."Posting Text" := GenJournalLine."Posting Text";
         GLEntry."Applies-to Acc. Group Mixed" := GenJournalLine."Applies-to Acc. Group Mixed";
+        GLEntry."Source Currency Factor" := GenJournalLine."Source Currency Factor";
+        GLEntry."Source Currency Code" := GenJournalLine."SL Source Currency Code";
+        if GenJournalLine."Source Currency Factor" <> 0 then
+            GLEntry."Source Currency Type" := Round(1 / GenJournalLine."Source Currency Factor", 0.001);
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterCopyGenJnlLineFromPurchHeader', '', true, true)]
     procedure OnAfterCopyGenJnlLineFromPurchHeaderExtends(PurchaseHeader: Record "Purchase Header"; VAR GenJournalLine: Record "Gen. Journal Line");
     begin
         GenJournalLine."Posting Text" := PurchaseHeader."Posting Text";
+        GenJournalLine."Source Currency Factor" := PurchaseHeader."Currency Factor";
+        GenJournalLine."SL Source Currency Code" := PurchaseHeader."Currency Code";
         //GenJournalLine."Applies-to Acc. Group Mixed" := SetAccountantGroupMixed(PurchaseHeader);
     end;
 
@@ -158,6 +167,8 @@ codeunit 51008 "Setup Localization"
     local procedure SetOnAfterCopyGenJnlLineFromSalesHeader(SalesHeader: Record "Sales Header"; var GenJournalLine: Record "Gen. Journal Line")
     begin
         GenJournalLine."Posting Text" := SalesHeader."Posting Text";
+        GenJournalLine."Source Currency Factor" := SalesHeader."Currency Factor";
+        GenJournalLine."SL Source Currency Code" := SalesHeader."Currency Code";
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Vendor Ledger Entry", 'OnAfterCopyVendLedgerEntryFromGenJnlLine', '', true, true)]
@@ -270,6 +281,15 @@ codeunit 51008 "Setup Localization"
         Updated := true;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterRecreatePurchLine', '', false, false)]
+    local procedure OnAfterRecreatePurchLineTable38(var PurchLine: Record "Purchase Line"; var TempPurchLine: Record "Purchase Line" temporary)
+    begin
+        PurchLine."Shortcut Dimension 1 Code" := TempPurchLine."Shortcut Dimension 1 Code";
+        PurchLine."Shortcut Dimension 2 Code" := TempPurchLine."Shortcut Dimension 2 Code";
+        PurchLine."Dimension Set ID" := TempPurchLine."Dimension Set ID";
+        PurchLine.Modify();
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Find Record Management", 'OnBeforeFindLastEntryIgnoringSecurityFilter', '', true, true)]
     local procedure SetOnBeforeFindLastEntryIgnoringSecurityFilter(var RecRef: RecordRef; var Found: Boolean; var IsHandled: Boolean)
     var
@@ -286,7 +306,6 @@ codeunit 51008 "Setup Localization"
         GLEntryEntryNo.SetCurrentKey("Entry No.");
         if not GLEntryEntryNo.FindLast() then
             exit;
-
 
         GLEntryTransactionNo.SetCurrentKey("Transaction No.");
         GLEntryTransactionNo.FindLast();
@@ -401,16 +420,22 @@ codeunit 51008 "Setup Localization"
             until DimSetEntry.Next() = 0;
     end;
 
-    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnPostEmplOnAfterCopyCVLedgEntryBuf', '', false, false)]
-    // local procedure SetOnPostEmplOnAfterCopyCVLedgEntryBuf(var CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer"; GenJournalLine: Record "Gen. Journal Line")
-    // begin
-    //     if GenJournalLine."Currency Code" <> '' then begin
-    //         GenJournalLine.TestField("Currency Factor");
-    //         CVLedgerEntryBuffer."Adjusted Currency Factor" := GenJournalLine."Currency Factor"
-    //     end else
-    //         CVLedgerEntryBuffer."Adjusted Currency Factor" := 1;
-    //     CVLedgerEntryBuffer."Original Currency Factor" := CVLedgerEntryBuffer."Adjusted Currency Factor";
-    // end;
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnPostEmplOnAfterCopyCVLedgEntryBuf', '', false, false)]
+    local procedure SetOnPostEmplOnAfterCopyCVLedgEntryBuf(var CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer"; GenJournalLine: Record "Gen. Journal Line")
+    begin
+        if GenJournalLine."Currency Code" <> '' then begin
+            GenJournalLine.TestField("Currency Factor");
+            CVLedgerEntryBuffer."Adjusted Currency Factor" := GenJournalLine."Currency Factor"
+        end else
+            CVLedgerEntryBuffer."Adjusted Currency Factor" := 1;
+        CVLedgerEntryBuffer."Original Currency Factor" := CVLedgerEntryBuffer."Adjusted Currency Factor";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post", 'OnBeforeCode', '', false, false)]
+    local procedure SetOnBeforeCode(var GenJournalLine: Record "Gen. Journal Line"; var HideDialog: Boolean)
+    begin
+        ValidateMixedCurrencyCode(GenJournalLine."Journal Template Name", GenJournalLine."Journal Batch Name");
+    end;
 
     [EventSubscriber(ObjectType::Table, Database::"CV Ledger Entry Buffer", 'OnAfterCopyFromEmplLedgerEntry', '', false, false)]
     local procedure SetOnAfterCopyFromEmplLedgerEntry(var CVLedgerEntryBuffer: Record "CV Ledger Entry Buffer"; EmployeeLedgerEntry: Record "Employee Ledger Entry")
@@ -488,6 +513,60 @@ codeunit 51008 "Setup Localization"
             BankAccNo := BankAcc."No.";
             CurrentCode := BankAcc."Currency Code";
         end;
+    end;
+
+    procedure ValidateMixedCurrencyCode(JournalTemplateName: Code[10]; JournalBatchName: Code[10])
+    var
+        GenJnlLine2: Record "Gen. Journal Line";
+        GenJnlLineDocsTemp: Record "Gen. Journal Line" temporary;
+        LastCurrencyCode: Code[10];
+        IsCurrencyCodeMixed: Boolean;
+        CountRecord: Integer;
+        WarningCurrencyCodeMixed: Label 'The record contains lines with different types of currency. do you wish to continue?', Comment = 'ESM="El registro contiene lineas con diferentes tipos de divisa. ¿Desea continuar?"';
+        ErrorCurrencyCodeMixed: Label 'The record contains lines with different types of currency, please correct.', Comment = 'ESM="El registro contiene lineas con diferentes tipos de divisa favor de corregir."';
+    begin
+        GenJnlLine2.Reset();
+        GenJnlLine2.SetRange("Journal Template Name", JournalTemplateName);
+        GenJnlLine2.SetRange("Journal Batch Name", JournalBatchName);
+        GenJnlLine2.SetRange("Applied Retention", true);
+        if not GenJnlLine2.IsEmpty then
+            exit;
+        GenJnlLine2.SetRange("Applied Retention");
+        if GenJnlLine2.FindFirst() then
+            repeat
+                GenJnlLineDocsTemp.Reset();
+                GenJnlLineDocsTemp.SetRange("Journal Template Name", GenJnlLine2."Journal Template Name");
+                GenJnlLineDocsTemp.SetRange("Journal Batch Name", GenJnlLine2."Journal Batch Name");
+                GenJnlLineDocsTemp.SetRange("Document No.", GenJnlLine2."Document No.");
+                if GenJnlLineDocsTemp.IsEmpty then begin
+                    GenJnlLineDocsTemp.init();
+                    GenJnlLineDocsTemp.TransferFields(GenJnlLine2, true);
+                    GenJnlLineDocsTemp.Insert();
+                end;
+            until GenJnlLine2.Next() = 0;
+
+        IsCurrencyCodeMixed := false;
+        GenJnlLineDocsTemp.Reset();
+        if GenJnlLineDocsTemp.FindFirst() then
+            repeat
+                LastCurrencyCode := '';
+                CountRecord := 0;
+                GenJnlLine2.Reset();
+                GenJnlLine2.SetRange("Journal Template Name", GenJnlLineDocsTemp."Journal Template Name");
+                GenJnlLine2.SetRange("Journal Batch Name", GenJnlLineDocsTemp."Journal Batch Name");
+                GenJnlLine2.SetRange("Document No.", GenJnlLineDocsTemp."Document No.");
+                if GenJnlLine2.FindFirst() then
+                    repeat
+                        if CountRecord = 0 then
+                            LastCurrencyCode := GenJnlLine2."Currency Code";
+                        CountRecord += 1;
+                        IsCurrencyCodeMixed := LastCurrencyCode <> GenJnlLine2."Currency Code";
+                    until (GenJnlLine2.Next() = 0) or (IsCurrencyCodeMixed);
+            until GenJnlLineDocsTemp.Next() = 0;
+
+        if IsCurrencyCodeMixed then
+            if not Confirm(WarningCurrencyCodeMixed, false) then
+                Error(ErrorCurrencyCodeMixed);
     end;
 
     procedure SetPasswordEncryp(Password: Text)
@@ -618,10 +697,135 @@ codeunit 51008 "Setup Localization"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostPurchaseDoc', '', false, false)]
+    local procedure ValidateFileAdjn(var PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean; CommitIsSupressed: Boolean; var HideProgressWindow: Boolean)
+    var
+        lclRecDocumentAttachment: Record "Document Attachment";
+        DocumentAttachmentError: Label 'attached file not exist.', Comment = 'ESM=" archivo adjunto no existe."';
+    begin
+        if PurchaseHeader."Legal Document" in ['01', '02', '07', '08'] then begin
+            lclRecDocumentAttachment.SetRange("Table ID", 38);
+            lclRecDocumentAttachment.SetRange("Document Type", PurchaseHeader."Document Type");
+            lclRecDocumentAttachment.SetRange("No.", PurchaseHeader."No.");
+            if not lclRecDocumentAttachment.FindSet() then
+                Error(DocumentAttachmentError);
+        end;
 
+
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeCreateGLEntryGainLossInsertGLEntry', '', false, false)]
+    local procedure OnBeforeCreateGLEntryGainLossInsertGLEntry(VAR GenJnlLine: Record "Gen. Journal Line"; VAR GLEntry: Record "G/L Entry")
+    var
+        lclSetupLocalization: Record "Setup Localization";
+        lclRecCurrency: Record Currency;
+        lclRecPurchInvHeader: Record "Purch. Inv. Header";
+        MasterData: Record "Master Data";
+        SLSetup: Record "Setup Localization";
+        DimSetEntry: Record "Dimension Set Entry";
+        DimMgt: Codeunit DimensionManagement;
+        GlobalDimensionNo: Integer;
+        AccNoNew: text;
+        AccNoOld: Text;
+    begin
+        lclSetupLocalization.Get();
+        AccNoOld := GenJnlLine."Account No.";
+        lclRecPurchInvHeader.reset;
+        lclRecPurchInvHeader.SetRange("No.", GenJnlLine."Document No.");
+        lclRecPurchInvHeader.SetFilter("Currency Code", '<>%1', '');
+        lclRecPurchInvHeader.SetRange("Purch. Detraction", true);
+        if lclRecPurchInvHeader.FindSet() then begin
+            //lclSetupLocalization.TestField("Realized Losses Acc.");
+            //lclSetupLocalization.TestField("Realized Gains Acc.");
+
+            if lclRecCurrency.get(lclRecPurchInvHeader."Currency Code") then begin
+                if (GenJnlLine."Account No." = lclRecCurrency."Realized Gains Acc.") and (lclSetupLocalization."Realized Gains Acc." <> '') then
+                    GenJnlLine."Account No." := lclSetupLocalization."Realized Gains Acc.";
+                if (GLEntry."G/L Account No." = lclRecCurrency."Realized Gains Acc.") and (lclSetupLocalization."Realized Gains Acc." <> '') then
+                    GLEntry."G/L Account No." := lclSetupLocalization."Realized Gains Acc.";
+
+                if (GenJnlLine."Account No." = lclRecCurrency."Realized Losses Acc.") and (lclSetupLocalization."Realized Losses Acc." <> '') then
+                    GenJnlLine."Account No." := lclSetupLocalization."Realized Losses Acc.";
+                if (GLEntry."G/L Account No." = lclRecCurrency."Realized Losses Acc.") and (lclSetupLocalization."Realized Losses Acc." <> '') then
+                    GLEntry."G/L Account No." := lclSetupLocalization."Realized Losses Acc.";
+
+                AccNoNew := GenJnlLine."Account No.";
+            end;
+
+
+            if AccNoNew <> AccNoOld then begin
+                MasterData.Reset();
+                MasterData.SetRange("Type Table", 'ADJ-TC-REF');
+                MasterData.SetRange("Type Table ref", 'ADJ-TC');
+                MasterData.SetRange("Code ref", AccNoNew);
+                if MasterData.FindFirst() then
+                    repeat
+                        GlobalDimensionNo := GetDimensionNo(MasterData."Dimension Code", MasterData."Dimension Value Code");
+                        case GlobalDimensionNo of
+                            1:
+                                GenJnlLine."Shortcut Dimension 1 Code" := MasterData."Dimension Value Code";
+                            2:
+                                GenJnlLine."Shortcut Dimension 2 Code" := MasterData."Dimension Value Code";
+                        end;
+                        DimMgt.ValidateShortcutDimValues(GlobalDimensionNo, MasterData."Dimension Value Code", GenJnlLine."Dimension Set ID");
+                    until MasterData.Next() = 0;
+            end;
+        end;
+    end;
+
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", 'OnRejectApprovalRequest', '', false, false)]
+    // local procedure SetOnRejectApprovalRequest(var ApprovalEntry: Record "Approval Entry")
+    // begin
+    //     if Confirm('Is debug?') then begin
+    //         ApprovalEntry.Amount := ApprovalEntry.Amount;
+    //     end;
+    // end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Whse.-Post Receipt", 'OnBeforeRun', '', false, false)]
+    local procedure ValidateFileAdjWhseReceipt(var WarehouseReceiptLine: Record "Warehouse Receipt Line")
+    var
+        lclSTControlFile: Record "ST Control File";
+        DocumentAttachmentError: Label 'attached file not exist.', Comment = 'ESM="Archivo adjunto no existe RRR."';
+        as: Codeunit "Whse.-Post Receipt";
+        p: Page "Warehouse Receipt";
+        AdS: Page "Purchase Order";
+    begin
+        lclSTControlFile.Reset();
+        lclSTControlFile.SetRange("File ID", WarehouseReceiptLine."No.");
+        if not lclSTControlFile.FindSet() then
+            Error(DocumentAttachmentError);
+        // end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnValidatePaymentTermsCodeOnBeforeCalcDueDate', '', false, false)]
+    local procedure SetOnValidatePaymentTermsCodeOnBeforeCalcDueDate(var PurchaseHeader: Record "Purchase Header"; var xPurchaseHeader: Record "Purchase Header"; CalledByFieldNo: Integer; CallingFieldNo: Integer; var IsHandled: Boolean)
+    var
+        PaymentTerms: Record "Payment Terms";
+    begin
+        if (PurchaseHeader."Accountant receipt date" = 0D) or (CalledByFieldNo <> 23) then
+            exit;
+        IsHandled := true;
+        PaymentTerms.Get(PurchaseHeader."Payment Terms Code");
+        PurchaseHeader."Due Date" := CalcDate(PaymentTerms."Due Date Calculation", PurchaseHeader."Accountant receipt date");
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterInitRecord', '', false, false)]
+    local procedure SetOnAfterInitRecord(var PurchHeader: Record "Purchase Header")
+    begin
+        if PurchHeader."Accountant receipt date" = 0D then
+            PurchHeader."Accountant receipt date" := PurchHeader."Posting Date";
+    end;
+
+    [EventSubscriber(ObjectType::Table, DATABASE::"Employee Ledger Entry", 'OnAfterCopyEmployeeLedgerEntryFromGenJnlLine', '', false, false)]
+    local procedure OnAfterCopyEmployeeLedgerEntryFromGenJnlLine(var EmployeeLedgerEntry: Record "Employee Ledger Entry"; GenJournalLine: Record "Gen. Journal Line")
+    var
+    begin
+        EmployeeLedgerEntry."External Document No." := GenJournalLine."External Document No.";
+    end;
 
     var
         STSetup: Record "Setup Localization";
         GLSetupShortcutDimCode: array[10] of code[20];
         Notification: Notification;
 }
+

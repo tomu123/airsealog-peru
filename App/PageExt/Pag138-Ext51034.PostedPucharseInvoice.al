@@ -166,6 +166,13 @@ pageextension 51034 "Detrac Posted Pucharse Invoice" extends "Posted Purchase In
                 }
             }
         }
+        addafter("Posting Date")
+        {
+            field("Accountant receipt date"; "Accountant receipt date")
+            {
+                ApplicationArea = All;
+            }
+        }
     }
 
     actions

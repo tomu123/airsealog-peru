@@ -29,7 +29,7 @@ report 51022 "Detrac. Load Detraction File"
                 PurchInvHeader.Reset();
                 PurchInvHeader.SetRange("Buy-from Vendor No.", DataTxt_[5]);
                 PurchInvHeader.SetRange("Legal Status", PurchInvHeader."Legal Status"::Success);
-                if ((StrPos(DataTxt_[15], 'F') > 0) or (StrPos(DataTxt_[15], 'E') < 0)) then
+                if ((StrPos(DataTxt_[15], 'F') > 0) or (StrPos(DataTxt_[15], 'E') > 0)) then
                     PurchInvHeader.SetFilter("Vendor Invoice No.", DataTxt_[15] + '*-*' + DataTxt_[16])
                 else
                     PurchInvHeader.SetFilter("Vendor Invoice No.", '*' + DataTxt_[15] + '*-*' + DataTxt_[16]);

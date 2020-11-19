@@ -16,7 +16,7 @@ tableextension 51079 "ST Vendor Bank Account" extends "Vendor Bank Account"
         field(51002; "Reference Bank Acc. No."; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Reference Bank', Comment = 'ESM="Banco Referencia"';
+            Caption = 'Reference Bank', Comment = 'ESM="Banco pagador"';
             TableRelation = "Bank Account";
             trigger OnValidate()
             begin
@@ -48,6 +48,17 @@ tableextension 51079 "ST Vendor Bank Account" extends "Vendor Bank Account"
             DataClassification = ToBeClassified;
             Caption = 'Legal Document', Comment = 'ESM="Document Legal"';
             TableRelation = "Legal Document"."Legal No." where("Option Type" = const("SUNAT Table"), "Type Code" = const('03'));
+        }
+        field(51012; "Fiduciary"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Fiduciary', Comment = 'ESM="Fiduciario"';
+        }
+        field(51013; "Type Fiduciary"; Option)
+        {
+            Caption = 'Type Fiduciary', Comment = 'ESM="Tipo Fiduciario"';
+            OptionCaption = 'Bank Fiduciary,Vendor Fiduciary', Comment = 'ESM="Banco Fiduciario,Proveedor Fiduciario"';
+            OptionMembers = "Bank Fiduciary","Vendor Fiduciary";
         }
     }
 

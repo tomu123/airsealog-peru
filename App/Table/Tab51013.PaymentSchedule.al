@@ -20,10 +20,10 @@ table 51013 "Payment Schedule"
             DataClassification = ToBeClassified;
             Caption = 'External Document No.', Comment = 'ESM="N° Documento Externo"';
         }
-        field(51004; "Receipt Date"; Date)
+        field(51004; "Accountant Receipt Date"; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Receipt Date', Comment = 'ESM="Fecha recepción"';
+            Caption = 'Accountant receipt Date', Comment = 'ESM="Fecha recepción contabilidad"';
         }
 
         field(51005; "Due Date"; Date)
@@ -44,22 +44,29 @@ table 51013 "Payment Schedule"
         field(51008; Amount; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Amount', Comment = 'ESM="Importe"';
+            Caption = 'Amount', Comment = 'ESM="Importe Pendiente"';
         }
         field(51009; "Amount LCY"; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Amount LCY', Comment = 'ESM="Importe (DL)"';
+            Caption = 'Amount LCY', Comment = 'ESM="Importe Pendiente D. Local"';
         }
         field(51010; "Total a Pagar"; Decimal)
         {
             DataClassification = ToBeClassified;
             Caption = 'Total a Pagar';
+            trigger OnValidate()
+            begin
+                IF ABS("Total a Pagar") > ABS(Amount) then
+                    Error(Text0005);
+
+                fnCalDollarized();
+            end;
         }
         field(51011; "Preferred Bank Account Code"; code[45])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Preferred Bank Account Code', Comment = 'ESM="Cód. Banco Preferido"';
+            Caption = 'Preferred Bank Account Code', Comment = 'ESM="Cód. Banco Destino"';
             trigger OnValidate();
             begin
                 CASE "Type Source" OF
@@ -133,12 +140,12 @@ table 51013 "Payment Schedule"
         field(51016; "Bank Account No."; Code[80])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Bank Account No.', Comment = 'ESM="N° Cuenta Bancaria"';
+            Caption = 'Bank Account No.', Comment = 'ESM="N° Cuenta Bancaria Destino Proveedor/Empleador"';
         }
         field(51017; "Reference Bank Acc. No."; Code[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Reference Bank', Comment = 'ESM="N° Banco Ref."';
+            Caption = 'Reference Bank', Comment = 'ESM="Cód. Banco Pagador"';
             trigger OnValidate()
             begin
                 CheckPermissionReferenceBankNo();
@@ -187,6 +194,16 @@ table 51013 "Payment Schedule"
         {
             DataClassification = ToBeClassified;
             Caption = 'Posting Group', Comment = 'ESM="Grupo Registro"';
+            TableRelation = if ("Type Source" = CONST("Customer Entries")) "Customer Posting Group"
+            else
+            if ("Type Source" = CONST("Vendor Entries")) "Vendor Posting Group"
+            else
+            if ("Type Source" = CONST("Employee Entries")) "Employee Posting Group";
+
+            trigger OnLookup()
+            begin
+                Rec."Posting Group" := Rec."Posting Group";
+            end;
         }
         field(51022; "Process Date"; DateTime)
         {
@@ -201,13 +218,13 @@ table 51013 "Payment Schedule"
         field(51024; "Payment Terms Code"; Code[10])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Payment Terms Code', Comment = 'ESM="Cód. Término de pago"';
+            Caption = 'Payment Terms Code', Comment = 'ESM="Condición de pago"';
             TableRelation = "Payment Terms";
         }
         field(51025; "Vend./Cust. Account No."; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Vend./Cust. Account No.', Comment = 'ESM="Empleado/Proveedor N°"';
+            Caption = 'Vend./Cust. Account No.', Comment = 'ESM="Empleado/Proveedor cta contable N°"';
         }
         field(51026; "Document Date"; Date)
         {
@@ -262,7 +279,7 @@ table 51013 "Payment Schedule"
         field(51036; "User ID"; Code[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Assigned User ID', Comment = 'ESM="Id. Usuario Asignado"';
+            Caption = 'Assigned User ID', Comment = 'ESM="Usuario Proceso CP"';
             TableRelation = User;
         }
         field(51037; "Setup Source Code"; Enum "ST Source Code Type")
@@ -273,7 +290,7 @@ table 51013 "Payment Schedule"
         field(51038; "Source User Id."; Code[50])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Source User Id.', Comment = 'ESM="Id. Usuario Origen"';
+            Caption = 'Source User Id.', Comment = 'ESM="Usuario Origen"';
 
         }
         field(51039; "Payment Method Code"; Code[10])
@@ -287,6 +304,25 @@ table 51013 "Payment Schedule"
             DataClassification = ToBeClassified;
             Caption = 'Is Payment Check', Comment = 'ESM="Pago con cheque"';
             //TableRelation = "Payment Method";
+        }
+        field(51041; "T.C. Dollarized"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'T.C. Dolarizado', Comment = 'ESM="T.C. Dolarizado"';
+            DecimalPlaces = 0 : 3;
+            //TableRelation = "Payment Method";
+        }
+        field(51042; "Dollarized"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Dolarizado', Comment = 'ESM="Dolarizado "';
+            DecimalPlaces = 0 : 2;
+            //TableRelation = "Payment Method";
+        }
+        field(51043; "Source Currency Factor"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Source Currency Factor', Comment = 'ESM="Factor divisa de origen"';
         }
     }
     keys
@@ -506,13 +542,17 @@ table 51013 "Payment Schedule"
                                 lcRecGenJnllLine."Recipient Bank Account" := lcRecVendor."Preferred Bank Account Code"
                             else
                                 lcRecGenJnllLine."Recipient Bank Account" := lcRecVendor."Preferred Bank Account Code ME";
-
+                            lcRecGenJnllLine."ST Recipient Bank Account" := lcRecGenJnllLine."Recipient Bank Account";
                             if lcRecGenJnllLine."Posting Text" = '' THEN
                                 lcRecGenJnllLine."Posting Text" := VendLedgEntry."Posting Text";
                             if lcRecGenJnllLine."Posting Text" = '' THEN
                                 lcRecGenJnllLine."Posting Text" := VendLedgEntry."Vendor Name";
                             lcRecGenJnllLine."Payment Method Code" := PaymentSchedule."Payment Method Code";
                             //++ end ULN::RRR  002     2018.01.30    v.001
+                            //++ Begin ULN::PC 001 2020.10.12
+                            lcRecGenJnllLine."Document Type" := lcRecGenJnllLine."Document Type"::Payment;
+                            lcRecGenJnllLine."Message to Recipient" := fnGetFiduciary(lcRecVendor, lcRecGenJnllLine);
+                            //--End 
                             //--
                             lcRecGenJnllLine.Validate("Currency Code", PaymentSchedule."Currency Code");
                             lcRecGenJnllLine.Validate(Amount, PaymentSchedule."Total a Pagar");
@@ -600,7 +640,7 @@ table 51013 "Payment Schedule"
                                 lcRecGenJnllLine."Recipient Bank Account" := Employee."Preferred Bank Account Code MN"
                             else
                                 lcRecGenJnllLine."Recipient Bank Account" := Employee."Preferred Bank Account Code ME";
-
+                            lcRecGenJnllLine."ST Recipient Bank Account" := lcRecGenJnllLine."Recipient Bank Account";
                             if lcRecGenJnllLine."Posting Text" = '' THEN
                                 lcRecGenJnllLine."Posting Text" := EmplLedgerEntry."Posting Text";
                             if lcRecGenJnllLine."Posting Text" = '' THEN
@@ -676,7 +716,7 @@ table 51013 "Payment Schedule"
             lcRecGenJnllLine."Line No." := lcLineNo;
             lcRecGenJnllLine."Document No." := lcDocumentNo;
             lcRecGenJnllLine.Validate("Account Type", lcRecGenJnllLine."Account Type"::"Bank Account");
-
+            lcRecGenJnllLine."Document Type" := lcRecGenJnllLine."Document Type"::Payment;
             CASE true OF
                 (pDetrac) and (not IsBatchCheck):
                     begin
@@ -773,6 +813,17 @@ table 51013 "Payment Schedule"
         if lcLineNo <> 0 THEN
             lcCuGenJnlManagement.TemplateSelectionFromBatch(lcRecGenJnlBatch);
     end;
+
+    local procedure fnGetFiduciary(pVendor: Record Vendor; pRecGenJnllLine: Record "Gen. Journal Line"): Text;
+    var
+        lcVendorBankAccount: Record "Vendor Bank Account";
+        lclFiduciaryTxt: Text;
+    begin
+        Clear(lclFiduciaryTxt);
+        lclFiduciaryTxt := pRecGenJnllLine."External Document No.";
+        exit(lclFiduciaryTxt);
+    end;
+
 
     local procedure AutoMarkEntriesForRetention(GenJnlTemplateName: Code[10]; GenJnlBatchName: Code[10])
     var
@@ -1035,6 +1086,31 @@ table 51013 "Payment Schedule"
 
     end;
 
+    procedure fnCalDollarized()
+    var
+        lcCurrencyExchangeRate: Record "Currency Exchange Rate";
+    begin
+        Rec.Dollarized := "Total a Pagar";
+
+        if "Original Amount" >= 0 THEN
+            "Total a Pagar" := Abs("Total a Pagar")
+        else
+            "Total a Pagar" := -Abs("Total a Pagar");
+
+        case "Currency Code" of
+            'EUR':
+                Dollarized := ("Total a Pagar" / "Source Currency Factor") / "T.C. Dollarized";
+            'USD':
+                Dollarized := "Total a Pagar";
+            '':
+                Dollarized := ("Total a Pagar" / "Source Currency Factor") / "T.C. Dollarized";
+        END;
+
+
+
+        Rec.Modify();
+    end;
+
     var
         recVendorLedgerEntry: Record "Vendor Ledger Entry";
         VendLedgEntry: Record "Vendor Ledger Entry";
@@ -1051,4 +1127,5 @@ table 51013 "Payment Schedule"
         Parameter: array[4] of Text;
         ParameterValue: array[4] of Text;
         Text0004: Label 'El documento %1 no se encuentra como pendiente.';
+        Text0005: Label 'Total a Pagar debe ser Menor/Igual al Importe Pendiente! ';
 }

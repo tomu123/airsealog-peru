@@ -11,13 +11,18 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
             TableRelation = "Legal Document"."Legal No." where("Option Type" = const("SUNAT Table"), "Type Code" = const('10'));
             ValidateTableRelation = false;
             trigger OnValidate()
+            var
+                SerieNo: Code[20];
+                NumberNo: Code[20];
             begin
                 if "Legal Document" = '' then
                     exit;
                 SetPostingSerieNo();
+                LegalDocMgt.ValidateLegalDocumentFormat("Vendor Invoice No.", "Legal Document", SerieNo, NumberNo, false, false);
+                if (StrLen(SerieNo) > 0) and (StrLen(NumberNo) > 0) then
+                    "Vendor Invoice No." := SerieNo + '-' + NumberNo;
             end;
         }
-
         field(51001; "Legal Status"; Option)
         {
             DataClassification = CustomerContent;
@@ -37,12 +42,6 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
             Caption = 'Legal Document Ref.', Comment = 'ESM="Documento Legal Ref."';
             TableRelation = "Legal Document"."Legal No." where("Option Type" = const("SUNAT Table"), "Type Code" = const('10'));
             ValidateTableRelation = false;
-            trigger OnValidate()
-            var
-                myInt: Integer;
-            begin
-
-            end;
         }
         field(51011; "VAT Registration Type"; Code[2])
         {
@@ -199,18 +198,18 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
         field(51050; "Setup Source Code"; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Source Code ULN';
+            Caption = 'Source Code ULN', Comment = 'ESM="Cód Origen ULN"';
             TableRelation = "Master Data".Code where("Type Table" = const('STPSOURCECODE'));
         }
         field(51051; "Posting Text"; Text[250])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Posting Text';
+            Caption = 'Posting Text', Comment = 'ESM="Texto Registro"';
         }
         field(51052; "Electronic Bill"; Boolean)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Electronic Bill';
+            Caption = 'Electronic Bill', Comment = 'ESM="Factura electrónica"';
         }
         field(51053; "Shortcut Dimension 5 Code"; Code[20])
         {
@@ -228,6 +227,16 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
             DataClassification = ToBeClassified;
             Caption = 'Applies-to Entry No.', Comment = 'ESM="Liq. por N° Movimiento"';
         }
+        field(51055; "Accountant receipt date"; date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Accountant receipt date', Comment = 'ESM="Fecha recepción contabilidad"';
+
+            trigger OnValidate()
+            begin
+                Validate("Payment Terms Code");
+            end;
+        }
         modify("Document Date")
         {
             trigger OnAfterValidate()
@@ -235,6 +244,7 @@ tableextension 51109 "Setup Purchase Header" extends "Purchase Header"
                 SetHideValidationDialog(true);
                 UpdateCurrencyFactor();
                 SetHideValidationDialog(false);
+                Validate("Accountant receipt date", "Document Date");
             end;
         }
         modify("Currency Code")

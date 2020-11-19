@@ -1,7 +1,7 @@
 codeunit 51000 "Legal Document Management"
 {
     var
-        /*Codeunit12: Codeunit 90;
+        /*Codeunit12: Codeunit 20;
         Page256: Page 39;
         CancellingOnly: Boolean;
         IsOutFlowLegelDocument: Boolean;
@@ -167,6 +167,7 @@ codeunit 51000 "Legal Document Management"
     begin
         GenJnlLine."Legal Document" := PurchHeader."Legal Document";
         GenJnlLine."Legal Status" := PurchHeader."Legal Status";
+        GenJnlLine."Accountant receipt date" := PurchHeader."Accountant receipt date";
     end;
 
     [EventSubscriber(ObjectType::Table, DataBase::"Cust. Ledger Entry", 'OnAfterCopyCustLedgerEntryFromGenJnlLine', '', true, true)]
@@ -181,6 +182,7 @@ codeunit 51000 "Legal Document Management"
     begin
         VendorLedgerEntry."Legal Document" := GenJournalLine."Legal Document";
         VendorLedgerEntry."Legal Status" := GenJournalLine."Legal Status";
+        VendorLedgerEntry."Accountant receipt date" := GenJournalLine."Accountant receipt date";
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"VAT Entry", 'OnAfterCopyFromGenJnlLine', '', true, true)]
@@ -211,6 +213,7 @@ codeunit 51000 "Legal Document Management"
         GenJournalLine."Legal Status" := PurchaseHeader."Legal Status";
         GenJournalLine."Legal Document" := PurchaseHeader."Legal Document";
         GenJournalLine."Legal Document Ref." := PurchaseHeader."Legal Document Ref.";
+        GenJournalLine."Accountant receipt date" := PurchaseHeader."Accountant receipt date";
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterInitRecord', '', true, true)]

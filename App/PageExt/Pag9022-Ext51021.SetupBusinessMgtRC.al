@@ -106,6 +106,15 @@ pageextension 51021 "Setup Business Mgt. RC" extends "Business Manager Role Cent
                 PromotedCategory = Process;
                 RunObject = Page "Posted Payment Schedule";
             }
+            action(ListPaymentCollection)
+            {
+                ApplicationArea = All;
+                Caption = 'Payment - Collection', Comment = 'ESM="Cobros - Recaudacion"';
+                Image = PaymentHistory;
+                Promoted = true;
+                PromotedCategory = Process;
+                RunObject = Page "Payment Collection";
+            }
         }
     }
 }

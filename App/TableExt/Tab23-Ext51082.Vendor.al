@@ -2,11 +2,15 @@ tableextension 51082 "ST Vendor" extends Vendor
 {
     fields
     {
-        // Add changes to table fields here
+        // Add changes to table fields here 51023..51024,51030..51035
+        modify("Preferred Bank Account Code")
+        {
+            Caption = 'Preferred Bank Acc. Code', Comment = 'ESM="Banco destino MN"';
+        }
         field(51023; "Preferred Bank Account Code ME"; code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Preferred Bank Acc. Code ME', Comment = 'ESM="Cód. Banco Preferidos  ME"';
+            Caption = 'Preferred Bank Acc. Code ME', Comment = 'ESM="Banco destino  ME"';
             TableRelation = "Vendor Bank Account".Code where("Vendor No." = field("No."));
         }
         field(51024; "Vendor Posting Group ME"; Code[20])
@@ -14,6 +18,11 @@ tableextension 51082 "ST Vendor" extends Vendor
             DataClassification = ToBeClassified;
             Caption = 'Vendor Posting Group ME', Comment = 'ESM="Grupo regitro proveedor ME"';
             TableRelation = "Vendor Posting Group";
+        }
+        field(51030; "Status approved"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Status approved', Comment = 'ESM="Estado aprobado"';
         }
 
         //Consult RUC Begin 

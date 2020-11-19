@@ -1,7 +1,7 @@
 page 51026 "Posted Payment Schedule"
 {
     Editable = false;
-    Caption = 'Posted Payment Schedule';
+    Caption = 'Posted Payment Schedule', Comment = 'ESM="Hist. Cronograma de Pagos"';
     PageType = List;
     SourceTable = "Posted Payment Schedule";
     SourceTableView = WHERE(Status = FILTER(Pagado));
@@ -16,7 +16,7 @@ page 51026 "Posted Payment Schedule"
                 field("Document No. Post"; "Document No. Post")
                 {
                     ApplicationArea = All;
-                    StyleExpr = StyleText;
+                    //StyleExpr = StyleText;
                 }
                 field("VAT Registration No."; "VAT Registration No.")
                 {
@@ -94,7 +94,46 @@ page 51026 "Posted Payment Schedule"
                 {
                     ApplicationArea = All;
                 }
+                field("gAccountBankNation"; "gAccountBankNation")
+                {
+                    Caption = 'Cód. Cuenta Banco de la Nación Proveedor', Comment = 'ESM="Cód. Cuenta Banco de la Nación Proveedor"';
+                    ApplicationArea = All;
+                    Editable = false;
+
+                }
                 field("Process Date"; "Process Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("Reversed Vendor"; "Reversed Vendor")
+                {
+                    ApplicationArea = All;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        Rec."Source Currency Factor" := Rec."Source Currency Factor";
+                    end;
+
+                    trigger OnDrillDown()
+                    begin
+                        Rec."Source Currency Factor" := Rec."Source Currency Factor";
+                    end;
+                }
+                field("Reversed Employee"; "Reversed Employee")
+                {
+                    ApplicationArea = All;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    begin
+                        Rec."Source Currency Factor" := Rec."Source Currency Factor";
+                    end;
+
+                    trigger OnDrillDown()
+                    begin
+                        Rec."Source Currency Factor" := Rec."Source Currency Factor";
+                    end;
+                }
+                field("Type Source"; "Type Source")
                 {
                     ApplicationArea = All;
                 }
@@ -160,20 +199,23 @@ page 51026 "Posted Payment Schedule"
     begin
         BankLedgEntryPostingDate := 0D;
         GetBank();
+        fnGetVendorInfo;
     end;
+
+
 
     var
         BankLedgEntryPostingDate: Date;
         BankAccLedgEntry: Record "Bank Account Ledger Entry";
         StyleText: Text;
-
+        gAccountBankNation: Text;
 
 
     trigger OnAfterGetCurrRecord()
     var
         myInt: Integer;
     begin
-        StyleText := 'Favorable';
+        //StyleText := 'Favorable';
     end;
 
     local procedure GetBank();
@@ -182,6 +224,18 @@ page 51026 "Posted Payment Schedule"
         BankAccLedgEntry.SETRANGE("Document No.", "Document No. Post");
         IF BankAccLedgEntry.FINDFIRST THEN
             BankLedgEntryPostingDate := BankAccLedgEntry."Posting Date";
+    end;
+
+    procedure fnGetVendorInfo()
+    var
+        lcvendor: Record vendor;
+    begin
+        gAccountBankNation := '';
+        lcvendor.Reset();
+        lcvendor.SetRange("VAT Registration No.", "VAT Registration No.");
+        if lcvendor.FindFirst() then
+            gAccountBankNation := lcvendor."Currenct Account BNAC";
+
     end;
 }
 

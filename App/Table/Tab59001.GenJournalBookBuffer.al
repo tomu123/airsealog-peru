@@ -1,6 +1,7 @@
 table 59001 "Gen. Journal Book Buffer"
 {
     DataClassification = ToBeClassified;
+    Caption = 'Gen. Journal Book', Comment = 'ESM="Libros Diario & Mayor"';
 
     fields
     {
@@ -23,6 +24,8 @@ table 59001 "Gen. Journal Book Buffer"
         field(59004; "G/L Account No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            Caption = 'G/L Account No.', Comment = 'ESM="N° Cuenta"';
+            TableRelation = "G/L Account" WHERE("Account Type" = CONST(Posting), Blocked = CONST(false));
         }
         field(59005; "Unit Operation Code"; Code[20])
         {
@@ -39,14 +42,21 @@ table 59001 "Gen. Journal Book Buffer"
         field(59008; "VAT Registration Type"; Code[1])
         {
             DataClassification = ToBeClassified;
+            Caption = 'VAT Registration Type', Comment = 'ESM="Tipo Doc. Identidad"';
+            TableRelation = "Legal Document"."Legal No." where("Option Type" = const("SUNAT Table"), "Type Code" = const('02'));
+            ValidateTableRelation = false;
         }
         field(59009; "VAT Registration No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            Caption = 'VAT Registration No.', Comment = 'ESM="RUC"';
         }
         field(59010; "Legal Document No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            Caption = 'Legal Document No.', Comment = 'ESM="Documento Legal"';
+            TableRelation = "Legal Document"."Legal No." where("Option Type" = const("SUNAT Table"), "Type Code" = const('10'));
+            ValidateTableRelation = false;
         }
         field(59011; "Serie Document"; Code[10])
         {

@@ -24,7 +24,7 @@ report 51011 "Generate Payment Schedule"
 
             trigger OnAfterGetRecord();
             begin
-                CreateLinesFromCustomerLedgerEntries();
+                //CreateLinesFromCustomerLedgerEntries();
                 CreateLinesFromVendorLedgerEntries();
                 CreateLinesFromEmployeeLedgerEntries();
             end;
@@ -77,6 +77,14 @@ report 51011 "Generate Payment Schedule"
                         Caption = 'Return Cr. Memo No.', Comment = 'ESM="Devolución NC"';
                         Visible = false;
                     }
+
+                    field("T.C. DOLARIZADO"; gExchangeRateReference)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'T.C. DOLARIZADO', Comment = 'ESM="T.C. DOLARIZADO"';
+                        Visible = true;
+                        DecimalPlaces = 0 : 3;
+                    }
                 }
             }
         }
@@ -89,30 +97,10 @@ report 51011 "Generate Payment Schedule"
         MESSAGE('Proceso Finalizado');
     end;
 
-    var
-        Customer: Record "Customer";
-        Vendor: Record "Vendor";
-        Employee: Record Employee;
-        Tabla81: Record 81;
-        PaymentSchedule: Record "Payment Schedule";
-        PaymentSchedule2: Record "Payment Schedule";
-        CustLedgerEntry: Record "Cust. Ledger Entry";
-        VendorLedgerEntry: Record "Vendor Ledger Entry";
-        EmplLedgerEntry: Record "Employee Ledger Entry";
-        EmplLedgerEntry2: Record "Employee Ledger Entry";
-        CustBankAccount: Record "Customer Bank Account";
-        VendorBankAccount: Record "Vendor Bank Account";
-        EmplBankAccount: Record "ST Employee Bank Account";
-        PurchInvHeader: Record "Purch. Inv. Header";
-        VendLedgEntry2: Record "Vendor Ledger Entry";
-        DetractionSerOperation: Record "Detraction Services Operation";
-        VendorNo: Code[250];
-        EmployeeNo: Code[250];
-        VendorPostingGroupCode: Code[250];
-        EmplPostingGroupCode: Code[250];
-        DueDate: Date;
-        LineNo: Integer;
-        ReturnCrMemo: Boolean;
+    trigger OnInitReport()
+    begin
+        fnInitExchangeRateReference;
+    end;
 
     local procedure CreateLinesFromVendorLedgerEntries()
     var
@@ -213,7 +201,7 @@ report 51011 "Generate Payment Schedule"
                         end;
 
                         PaymentSchedule."External Document No." := VendorLedgerEntry."External Document No.";
-                        //PaymentSchedule."Receipt Date" := VendorLedgerEntry."Accounting Receipt Date";
+                        PaymentSchedule."Accountant receipt Date" := VendorLedgerEntry."Accountant receipt date";
                         PaymentSchedule."Due Date" := VendorLedgerEntry."Due Date";
                         PaymentSchedule."Calculate Date" := DueDate;
                         PaymentSchedule."Posting Group" := VendorLedgerEntry."Vendor Posting Group";
@@ -242,6 +230,17 @@ report 51011 "Generate Payment Schedule"
                         PaymentSchedule."User ID" := UserId;
                         PaymentSchedule."Source User Id." := VendorLedgerEntry."User ID";
                         //RetentionMgt.SetAutomateRetentionCheck(PaymentSchedule.Retention, PaymentSchedule."VAT Registration No.", PaymentSchedule."Document Date", '', ABS(PaymentSchedule."Total a Pagar"));
+                        //Posting Group-----------------------------------------------
+                        Clear(gVariant);
+                        gVariant := VendorLedgerEntry;
+                        fnInsertDataExt(PaymentSchedule, gVariant);
+                        //Posting Group-----------------------------------------------
+                        //Dollarized-----------------------------------------------
+                        Clear(gVariant);
+                        gVariant := VendorLedgerEntry;
+                        fnInsertDollarized(PaymentSchedule, gVariant);
+                        //Dollarized-----------------------------------------------
+
                         PaymentSchedule.Insert();
                     end;
                 end;
@@ -323,6 +322,16 @@ report 51011 "Generate Payment Schedule"
                     PaymentSchedule."User ID" := UserId;
                     PaymentSchedule."Source User Id." := CustLedgerEntry."User ID";
                     //
+                    //Posting Group-----------------------------------------------
+                    Clear(gVariant);
+                    gVariant := CustLedgerEntry;
+                    fnInsertDataExt(PaymentSchedule, gVariant);
+                    //Posting Group-----------------------------------------------
+                    //Dollarized-----------------------------------------------
+                    Clear(gVariant);
+                    gVariant := CustLedgerEntry;
+                    fnInsertDollarized(PaymentSchedule, gVariant);
+                    //Dollarized-----------------------------------------------
                     PaymentSchedule.Insert();
                 end;
             until CustLedgerEntry.NEXT = 0;
@@ -390,7 +399,7 @@ report 51011 "Generate Payment Schedule"
                         //---Importe Original
                         EmplLedgerEntry2.Reset();
                         EmplLedgerEntry2.SetRange("Document No.", EmplLedgerEntry."Document No.");
-                        EmplLedgerEntry2.SetRange("Document Type", EmplLedgerEntry2."Document Type"::Invoice);
+                        //EmplLedgerEntry2.SetRange("Document Type", EmplLedgerEntry2."Document Type"::Invoice);
                         if EmplLedgerEntry2.FindFirst() then begin
                             EmplLedgerEntry2.CalcFields(Amount);
                             PaymentSchedule."Original Amount" := EmplLedgerEntry2.Amount;
@@ -423,7 +432,7 @@ report 51011 "Generate Payment Schedule"
                         end;
 
                         PaymentSchedule."External Document No." := EmplLedgerEntry."External Document No.";
-                        //PaymentSchedule."Receipt Date" := EmplLedgerEntry."Accounting Receipt Date";
+                        //PaymentSchedule."Accountant receipt Date" := EmplLedgerEntry."Accountant receipt Date";
                         PaymentSchedule."Due Date" := EmplLedgerEntry."PS Due Date";
                         PaymentSchedule."Calculate Date" := DueDate;
                         PaymentSchedule."Posting Group" := EmplLedgerEntry."Employee Posting Group";
@@ -451,10 +460,150 @@ report 51011 "Generate Payment Schedule"
                         end;
                         PaymentSchedule."User ID" := UserId;
                         PaymentSchedule."Source User Id." := EmplLedgerEntry."User ID";
+                        //Posting Group-----------------------------------------------
+                        Clear(gVariant);
+                        gVariant := EmplLedgerEntry;
+                        fnInsertDataExt(PaymentSchedule, gVariant);
+                        //Posting Group-----------------------------------------------
+                        //Dollarized-----------------------------------------------
+                        Clear(gVariant);
+                        gVariant := EmplLedgerEntry;
+                        fnInsertDollarized(PaymentSchedule, gVariant);
+                        //Dollarized-----------------------------------------------
                         PaymentSchedule.Insert();
                     end;
                 end;
                 until EmplLedgerEntry.NEXT = 0;
         end;
     end;
+
+    local procedure fnInitExchangeRateReference()
+    var
+        lcCurrencyExchangeRate: Record "Currency Exchange Rate";
+        lcExchangeRateReference: Decimal;
+    begin
+        gExchangeRateReference := 0;
+        lcCurrencyExchangeRate.Reset();
+        gExchangeRateReference := lcCurrencyExchangeRate.GetCurrentCurrencyFactor('USD');
+        if gExchangeRateReference <> 0 then
+            gExchangeRateReference := 1 / gExchangeRateReference;
+    end;
+
+    local procedure fnInsertDollarized(var parPaymentSchedule: Record "Payment Schedule"; var Variant: Variant)
+    var
+        lcCurrencyExchangeRate: Record "Currency Exchange Rate";
+        lcExchangeRateReference: Decimal;
+        RecRef: RecordRef;
+        lcRecEmployeeLedgerEntry: Record "Employee Ledger Entry";
+        lcRecVendorLedgerEntry: Record "Vendor Ledger Entry";
+        lcRecCustLedgerEntry: Record "Cust. Ledger Entry";
+    begin
+        RecRef.GetTable(Variant);
+        parPaymentSchedule."T.C. Dollarized" := gExchangeRateReference;
+        case RecRef.Number() of
+            DATABASE::"Employee Ledger Entry":
+                begin
+                    RecRef.SetTable(lcRecEmployeeLedgerEntry);
+                    parPaymentSchedule.Dollarized := lcRecEmployeeLedgerEntry."Remaining Amount";
+                    parPaymentSchedule."Source Currency Factor" := lcRecEmployeeLedgerEntry."Original Currency Factor";
+                    CASE parPaymentSchedule."Currency Code" of
+                        'USD':
+                            parPaymentSchedule.Dollarized := lcRecEmployeeLedgerEntry."Remaining Amount";
+                        ELSE
+                            parPaymentSchedule.Dollarized := ROUND(lcRecEmployeeLedgerEntry."Remaining Amt. (LCY)" / gExchangeRateReference, 0.01, '=');
+                    END;
+                end;
+            DATABASE::"Vendor Ledger Entry":
+                begin
+                    RecRef.SetTable(lcRecVendorLedgerEntry);
+                    parPaymentSchedule.Dollarized := lcRecVendorLedgerEntry."Remaining Amount";
+                    parPaymentSchedule."Source Currency Factor" := lcRecVendorLedgerEntry."Original Currency Factor";
+                    CASE parPaymentSchedule."Currency Code" of
+                        'USD':
+                            parPaymentSchedule.Dollarized := lcRecVendorLedgerEntry."Remaining Amount";
+                        ELSE
+                            parPaymentSchedule.Dollarized := ROUND(lcRecVendorLedgerEntry."Remaining Amt. (LCY)" / gExchangeRateReference, 0.01, '=');
+                    END;
+                end;
+            DATABASE::"Cust. Ledger Entry":
+                begin
+                    RecRef.SetTable(lcRecCustLedgerEntry);
+                    parPaymentSchedule.Dollarized := lcRecCustLedgerEntry."Remaining Amount";
+                    parPaymentSchedule."Source Currency Factor" := lcRecCustLedgerEntry."Original Currency Factor";
+                    CASE parPaymentSchedule."Currency Code" of
+                        'USD':
+                            parPaymentSchedule.Dollarized := lcRecCustLedgerEntry."Remaining Amount";
+                        ELSE
+                            parPaymentSchedule.Dollarized := ROUND(lcRecCustLedgerEntry."Remaining Amt. (LCY)" / gExchangeRateReference, 0.01, '=');
+                    END;
+                end;
+        end;
+
+    end;
+
+    local procedure fnInsertDataExt(var parPaymentSchedule: Record "Payment Schedule"; var Variant: Variant)
+    var
+        RecRef: RecordRef;
+        lcRecEmployeePostingGroup: Record "Employee Posting Group";
+        lcRecVendorPostingGroup: Record "Vendor Posting Group";
+        lcRecCustomerPostingGroup: Record "Customer Posting Group";
+        lcRecPurchInvHeader: Record "Purch. Inv. Header";
+    begin
+        IF parPaymentSchedule."Posting Group" = '' then
+            EXIT;
+
+        RecRef.GetTable(Variant);
+
+        case RecRef.Number() of
+            DATABASE::"Employee Ledger Entry":
+                begin
+                    IF lcRecEmployeePostingGroup.GET(parPaymentSchedule."Posting Group") then
+                        parPaymentSchedule."Vend./Cust. Account No." := lcRecEmployeePostingGroup."Payables Account";
+                end;
+            DATABASE::"Vendor Ledger Entry":
+                begin
+                    IF lcRecVendorPostingGroup.GET(parPaymentSchedule."Posting Group") then
+                        parPaymentSchedule."Vend./Cust. Account No." := lcRecVendorPostingGroup."Payables Account";
+
+                    if lcRecPurchInvHeader.get(parPaymentSchedule."Document No.") then
+                        parPaymentSchedule."Payment Terms Code" := lcRecPurchInvHeader."Payment Terms Code"
+                end;
+            DATABASE::"Cust. Ledger Entry":
+                begin
+                    IF lcRecCustomerPostingGroup.GET(parPaymentSchedule."Posting Group") then
+                        parPaymentSchedule."Vend./Cust. Account No." := lcRecCustomerPostingGroup."Receivables Account";
+
+
+                end;
+        end;
+
+    end;
+
+    var
+        Customer: Record "Customer";
+        Vendor: Record "Vendor";
+        Employee: Record Employee;
+        Tabla81: Record 81;
+        PaymentSchedule: Record "Payment Schedule";
+        PaymentSchedule2: Record "Payment Schedule";
+        CustLedgerEntry: Record "Cust. Ledger Entry";
+        VendorLedgerEntry: Record "Vendor Ledger Entry";
+        EmplLedgerEntry: Record "Employee Ledger Entry";
+        EmplLedgerEntry2: Record "Employee Ledger Entry";
+        CustBankAccount: Record "Customer Bank Account";
+        VendorBankAccount: Record "Vendor Bank Account";
+        EmplBankAccount: Record "ST Employee Bank Account";
+        PurchInvHeader: Record "Purch. Inv. Header";
+        VendLedgEntry2: Record "Vendor Ledger Entry";
+        DetractionSerOperation: Record "Detraction Services Operation";
+        VendorNo: Code[250];
+        EmployeeNo: Code[250];
+        VendorPostingGroupCode: Code[250];
+        EmplPostingGroupCode: Code[250];
+        DueDate: Date;
+        LineNo: Integer;
+        ReturnCrMemo: Boolean;
+        gExchangeRateReference: Decimal;
+
+        gVariant: Variant;
 }

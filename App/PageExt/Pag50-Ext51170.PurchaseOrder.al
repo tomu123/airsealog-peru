@@ -28,102 +28,110 @@ pageextension 51170 "ST Purchase Order" extends "Purchase Order"
             }
         }
 
+        modify(Prepayment)
+        {
+            Visible = false;
+        }
+        modify("Foreign Trade")
+        {
+            Visible = false;
+        }
         addafter(Prepayment)
         {
-            group(Detractions)
-            {
-                Caption = 'Detractions', Comment = 'ESM="Detracciones"';
-                field("Purch. Detraction"; "Purch. Detraction")
-                {
-                    ApplicationArea = All;
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        CurrPage.Update();
-                    end;
-                }
-                group(TypeOfService)
-                {
-                    Caption = 'Type Of Service', Comment = 'ESM="Tipo de servicio"';
-                    grid(Mygrid)
-                    {
-                        field("Type of Service"; "Type of Service")
-                        {
-                            ApplicationArea = All;
-                            ShowCaption = false;
-                            trigger OnValidate()
-                            var
-                                myInt: Integer;
-                            begin
-                                CurrPage.Update();
-                            end;
-                        }
-                    }
-                }
-                group(TypeOfOperation)
-                {
-                    Caption = 'Type Of Operation', Comment = 'ESM="Tipo de operación"';
-                    grid(Mygrid2)
-                    {
-                        field("Type of Operation"; "Type of Operation")
-                        {
-                            ApplicationArea = All;
-                            ShowCaption = false;
-                            trigger OnValidate()
-                            var
-                                myInt: Integer;
-                            begin
-                                CurrPage.Update();
-                            end;
-                        }
-                    }
-                }
-                field("Purch. % Detraction"; "Purch. % Detraction")
-                {
-                    ApplicationArea = All;
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        CurrPage.Update();
-                    end;
-                }
-                field("Purch. Amount Detraction"; "Purch. Amount Detraction")
-                {
-                    ApplicationArea = All;
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        CurrPage.Update();
-                    end;
-                }
-                field("Purch Amount Detraction (DL)"; "Purch Amount Detraction (DL)")
-                {
-                    ApplicationArea = All;
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        CurrPage.Update();
-                    end;
-                }
-                field("Purch. Detraction Operation"; "Purch. Detraction Operation")
-                {
-                    ApplicationArea = All;
-                }
-                field("Purch Date Detraction"; "Purch Date Detraction")
-                {
-                    ApplicationArea = All;
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-                        CurrPage.Update();
-                    end;
-                }
-            }
+            // group(Detractions)
+            // {
+            //     Caption = 'Detractions', Comment = 'ESM="Detracciones"';
+            //     field("Purch. Detraction"; "Purch. Detraction")
+            //     {
+            //         ApplicationArea = All;
+            //         trigger OnValidate()
+            //         var
+            //             myInt: Integer;
+            //         begin
+            //             CurrPage.Update();
+            //         end;
+            //     }
+            //     group(TypeOfService)
+            //     {
+            //         Caption = 'Type Of Service', Comment = 'ESM="Tipo de servicio"';
+            //         grid(Mygrid)
+            //         {
+            //             field("Type of Service"; "Type of Service")
+            //             {
+            //                 ApplicationArea = All;
+            //                 ShowCaption = false;
+            //                 trigger OnValidate()
+            //                 var
+            //                     myInt: Integer;
+            //                 begin
+            //                     CurrPage.Update();
+            //                 end;
+            //             }
+            //         }
+            //     }
+            //     group(TypeOfOperation)
+            //     {
+            //         Caption = 'Type Of Operation', Comment = 'ESM="Tipo de operación"';
+            //         grid(Mygrid2)
+            //         {
+            //             field("Type of Operation"; "Type of Operation")
+            //             {
+            //                 ApplicationArea = All;
+            //                 ShowCaption = false;
+            //                 trigger OnValidate()
+            //                 var
+            //                     myInt: Integer;
+            //                 begin
+            //                     CurrPage.Update();
+            //                 end;
+            //             }
+            //         }
+            //     }
+            //     field("Purch. % Detraction"; "Purch. % Detraction")
+            //     {
+            //         ApplicationArea = All;
+            //         trigger OnValidate()
+            //         var
+            //             myInt: Integer;
+            //         begin
+            //             CurrPage.Update();
+            //         end;
+            //     }
+            //     field("Purch. Amount Detraction"; "Purch. Amount Detraction")
+            //     {
+            //         ApplicationArea = All;
+            //         trigger OnValidate()
+            //         var
+            //             myInt: Integer;
+            //         begin
+            //             CurrPage.Update();
+            //         end;
+            //     }
+            //     field("Purch Amount Detraction (DL)"; "Purch Amount Detraction (DL)")
+            //     {
+            //         ApplicationArea = All;
+            //         trigger OnValidate()
+            //         var
+            //             myInt: Integer;
+            //         begin
+            //             CurrPage.Update();
+            //         end;
+            //     }
+            //     field("Purch. Detraction Operation"; "Purch. Detraction Operation")
+            //     {
+            //         ApplicationArea = All;
+            //     }
+            //     field("Purch Date Detraction"; "Purch Date Detraction")
+            //     {
+            //         ApplicationArea = All;
+            //         trigger OnValidate()
+            //         var
+            //             myInt: Integer;
+            //         begin
+            //             CurrPage.Update();
+            //         end;
+            //     }
+            // }
         }
         //Legal Document Begin
         addlast(General)
@@ -360,6 +368,107 @@ pageextension 51170 "ST Purchase Order" extends "Purchase Order"
         {
             Caption = 'INCOTERM', Comment = 'ESM="INCOTERM"';
         }
+        addafter("Due Date")
+        {
+            field("Vendor Posting Group"; "Vendor Posting Group")
+            {
+                ApplicationArea = All;
+                Editable = true;
+                Caption = 'Vendor Posting Group';
+                trigger OnValidate()
+                var
+                    VendPostingGroup: Record "Vendor Posting Group";
+                begin
+                    if "Vendor Posting Group" = '' then
+                        exit;
+                    VendPostingGroup.Get("Vendor Posting Group");
+                    Validate("Currency Code", VendPostingGroup."Currency Code");
+                end;
+            }
+            field("Currency Code2"; "Currency Code")
+            {
+                ApplicationArea = Suite;
+                Importance = Promoted;
+                Editable = false;
+                ToolTip = 'Specifies the currency code for amounts on the purchase lines.';
+
+                trigger OnAssistEdit()
+                var
+                    ChangeExchangeRate: Page "Change Exchange Rate";
+                    DocumentTotals: Codeunit "Document Totals";
+                begin
+                    Clear(ChangeExchangeRate);
+                    if "Posting Date" <> 0D then
+                        ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", "Posting Date")
+                    else
+                        ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", WorkDate);
+                    if ChangeExchangeRate.RunModal = ACTION::OK then begin
+                        Validate("Currency Factor", ChangeExchangeRate.GetParameter);
+                        CurrPage.SaveRecord;
+                        DocumentTotals.PurchaseRedistributeInvoiceDiscountAmountsOnDocument(Rec);
+                        CurrPage.Update(false);
+                        //SaveInvoiceDiscountAmount;
+                    end;
+                    Clear(ChangeExchangeRate);
+                end;
+
+                trigger OnValidate()
+                var
+                    PurchCalcDiscByType: Codeunit "Purch - Calc Disc. By Type";
+                begin
+                    CurrPage.SaveRecord;
+                    PurchCalcDiscByType.ApplyDefaultInvoiceDiscount(0, Rec);
+                end;
+            }
+        }
+        addafter("Vendor Invoice No.")
+        {
+            field("Posting No. Series"; "Posting No. Series")
+            {
+                ApplicationArea = All;
+            }
+            field("Electronic Bill"; "Electronic Bill")
+            {
+                ApplicationArea = All;
+                Caption = 'Electronic Bill', Comment = 'ESM="Factura electrónica"';
+                trigger OnValidate()
+                var
+                    VendorInvNo: Text;
+                    ErrorVendInvNo: label 'The first character must start with E for electronic and 0 for non-electronic.', Comment = 'ESM="El primer carácter debe comenzar con E para electrónico y 0 para no electrónico."';
+                begin
+                    if "Vendor Invoice No." = '' then
+                        exit;
+                    VendorInvNo := "Vendor Invoice No.";
+                    if "Electronic Bill" then begin
+                        if not (VendorInvNo[1] in ['F', 'E', 'B']) then
+                            Error(ErrorVendInvNo);
+                    end else
+                        if VendorInvNo[1] <> '0' then
+                            Error(ErrorVendInvNo);
+
+                end;
+            }
+            field("Posting Text"; "Posting Text")
+            {
+                ApplicationArea = All;
+                Caption = 'Posting Text', Comment = 'ESM="Texto registro"';
+                Importance = Promoted;
+                NotBlank = true;
+            }
+            field("Posting Description2"; "Posting Description")
+            {
+                caption = 'Posting Text', Comment = 'ESM="Texto de registro"';
+                ApplicationArea = All;
+                ToolTip = 'Specifies additional posting information for the document. After you post the document, the description can add detail to vendor and customer ledger entries.';
+                Importance = Promoted;
+                Visible = true;
+            }
+        }
+        modify("Currency Code")
+        {
+            Visible = false;
+            Editable = false;
+        }
     }
 
     actions
@@ -381,5 +490,11 @@ pageextension 51170 "ST Purchase Order" extends "Purchase Order"
         if MyLegalDocument.Find('-') then
             exit(MyLegalDocument.Description);
         exit('');
+    end;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        if "Assigned User ID" = '' then
+            "Assigned User ID" := UserId;
     end;
 }

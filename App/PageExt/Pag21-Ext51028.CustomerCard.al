@@ -3,6 +3,18 @@ pageextension 51028 "Cnslt. Ruc Customer Card" extends "Customer Card"
     layout
     {
         // Add changes to page layout here
+        modify("Preferred Bank Account Code")
+        {
+            Caption = 'Preferred Bank Acc. Code MN', Comment = 'ESM="Banco Recaudación MN"';
+        }
+        addafter("Preferred Bank Account Code")
+        {
+            field("Preferred Bank Account Code ME"; "Preferred Bank Account Code ME")
+            {
+                ApplicationArea = All;
+                Caption = 'Preferred Bank Acc. Code ME', Comment = 'ESM="Banco Recaudación ME"';
+            }
+        }
         addafter("VAT Registration No.")
         {
             field("SUNAT Status"; "SUNAT Status")
@@ -92,6 +104,16 @@ pageextension 51028 "Cnslt. Ruc Customer Card" extends "Customer Card"
                 begin
                     CnsltRucMgt.CustomerConsultRuc(Rec);
                 end;
+            }
+            action(BalanceACCustomer)
+            {
+                ApplicationArea = All;
+                Caption = 'Customer AC Balance', Comment = 'ESM="Salgo GC Cliente"';
+                Image = Report;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = report "Customer AC Balance";
             }
         }
     }

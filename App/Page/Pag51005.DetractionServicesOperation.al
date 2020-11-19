@@ -11,27 +11,27 @@ page 51005 "Detraction Services/Operation"
         {
             repeater(GroupName)
             {
-                field("Type Servicies/Operation"; "Type Services/Operation")
+                field("Type Servicies/Operation"; Rec."Type Services/Operation")
                 {
                     ApplicationArea = All;
 
                 }
-                field(Code; Code)
+                field(Code; Rec.Code)
                 {
                     ApplicationArea = All;
                     //FieldPropertyName = FieldPropertyValue;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                     //FieldPropertyName = FieldPropertyValue;
                 }
-                field("Detraction Percentage"; "Detraction Percentage")
+                field("Detraction Percentage"; Rec."Detraction Percentage")
                 {
                     ApplicationArea = All;
                     //FieldPropertyName = FieldPropertyValue;
                 }
-                field("Detraction Amount"; "Detraction Amount")
+                field("Detraction Amount"; Rec."Detraction Amount")
                 {
                     ApplicationArea = All;
                     //FieldPropertyName = FieldPropertyValue;

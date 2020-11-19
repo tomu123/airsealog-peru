@@ -18,7 +18,7 @@ tableextension 51088 "FT Sales Line" extends "Sales Line"
 
         field(51018; "Inventory Availability"; Decimal)
         {
-            CalcFormula = Sum ("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = FIELD("No."),
+            CalcFormula = Sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = FIELD("No."),
                                                                               "Variant Code" = FIELD("Variant Code"),
                                                                               "Location Code" = FIELD("Location Code"),
                                                                               Open = FILTER(true)));

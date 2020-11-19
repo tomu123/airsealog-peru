@@ -17,41 +17,41 @@ pageextension 51138 "ST Unapply Vendor Entries" extends "Unapply Vendor Entries"
     actions
     {
         // Add changes to page actions here
-        // addafter(Unapply)
-        // {
-        //     action(UnapplyUnique)
-        //     {
-        //         ApplicationArea = Basic, Suite;
-        //         Caption = '&Unapply Unique';
-        //         Visible = Unapplied;
-        //         Image = UnApply;
-        //         Promoted = true;
-        //         PromotedCategory = Process;
-        //         PromotedOnly = true;
-        //         ToolTip = 'Unselect unique one or more ledger entries that you want to unapply this record.';
+        addafter(Unapply)
+        {
+            action(UnapplyUnique)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = '&Unapply Unique';
+                Visible = Unapplied;
+                Image = UnApply;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedOnly = true;
+                ToolTip = 'Unselect unique one or more ledger entries that you want to unapply this record.';
 
-        //         trigger OnAction()
-        //         var
-        //             STVendEntryApplyPostedEntries: Codeunit "ST VendEntry-Apply Posted Entr";
-        //             ConfirmManagement: Codeunit "Confirm Management";
-        //         begin
-        //             if IsEmpty then
-        //                 Error(Text010);
-        //             if not ConfirmManagement.GetResponseOrDefault(Text011, true) then
-        //                 exit;
+                trigger OnAction()
+                var
+                    STVendEntryApplyPostedEntries: Codeunit "ST VendEntry-Apply Posted Entr";
+                    ConfirmManagement: Codeunit "Confirm Management";
+                begin
+                    if IsEmpty then
+                        Error(Text010);
+                    if not ConfirmManagement.GetResponseOrDefault(Text011, true) then
+                        exit;
 
-        //             STVendEntryApplyPostedEntries.PostUnApplyUniqueVendor(DtldVendLedgEntry2, DocNo, PostingDate, FilterVendorLedgerEntryNos);
-        //             DeleteAll();
-        //             Message(Text009);
+                    STVendEntryApplyPostedEntries.PostUnApplyUniqueVendor(DtldVendLedgEntry2, DocNo, PostingDate, FilterVendorLedgerEntryNos);
+                    DeleteAll();
+                    Message(Text009);
 
-        //             CurrPage.Close;
-        //         end;
-        //     }
-        // }
-        // modify(Unapply)
-        // {
-        //     Visible = not Unapplied;
-        // }
+                    CurrPage.Close;
+                end;
+            }
+        }
+        modify(Unapply)
+        {
+            Visible = not Unapplied;
+        }
     }
 
     local procedure InsertEntries()
