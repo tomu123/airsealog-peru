@@ -31,7 +31,7 @@ codeunit 51017 "Amount in letters"
         Text1100004: Label 'CON ';
         Text1100005: Label 'MILLONES ';
         Text1100006: Label 'UN MILLÓN ';
-        Text1100007: Label 'MIL        ';
+        Text1100007: Label 'MIL ';
         Text1100008: Label 'CIEN ';
         Text1100009: Label 'CIENTO ';
         Text1100010: Label 'DOSCIENTOS ';

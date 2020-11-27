@@ -4649,7 +4649,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Amount in letters - NamedType Text1100006</note>
         </trans-unit>
         <trans-unit id="Codeunit 2861534346 - NamedType 739893670" size-unit="char" translate="yes" xml:space="preserve">
-          <source>MIL        </source>
+          <source>MIL </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Amount in letters - NamedType Text1100007</note>
         </trans-unit>
