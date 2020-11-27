@@ -322,13 +322,13 @@ codeunit 51008 "Setup Localization"
         Clear(RecRef);
         RecRef.GetTable(STGLEntryControl);
         RecRef.Reset();
-        //with RecRef do begin
-        xSecurityFilter := RecRef.SecurityFiltering;
-        RecRef.SecurityFiltering(RecRef.SecurityFiltering::Ignored);
-        Found := RecRef.FindLast();
-        if RecRef.SecurityFiltering <> xSecurityFilter then
-            RecRef.SecurityFiltering(xSecurityFilter);
-        //end;
+        with RecRef do begin
+            xSecurityFilter := SecurityFiltering;
+            SecurityFiltering(SecurityFiltering::Ignored);
+            Found := FindLast();
+            if SecurityFiltering <> xSecurityFilter then
+                SecurityFiltering(xSecurityFilter)
+        end;
         IsHandled := true;
     end;
 
@@ -378,12 +378,12 @@ codeunit 51008 "Setup Localization"
         if (GenJournalLine."Account Type" <> GenJournalLine."Account Type"::Employee) or (GenJournalLine."Posting Group" = '') then
             exit;
 
-        //with DetailedCVLedgEntryBuffer do
-        case DetailedCVLedgEntryBuffer."Entry Type" of
-            DetailedCVLedgEntryBuffer."Entry Type"::"Initial Entry", DetailedCVLedgEntryBuffer."Entry Type"::Application:
-                if EmplPostingGroup.Get(GenJournalLine."Posting Group") then
-                    AccNo := EmplPostingGroup.GetPayablesAccount();
-        end;
+        with DetailedCVLedgEntryBuffer do
+            case "Entry Type" of
+                "Entry Type"::"Initial Entry", "Entry Type"::Application:
+                    if EmplPostingGroup.Get(GenJournalLine."Posting Group") then
+                        AccNo := EmplPostingGroup.GetPayablesAccount();
+            end;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterAppliesToDocNoOnLookup', '', true, true)]

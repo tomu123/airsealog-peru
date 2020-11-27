@@ -409,6 +409,23 @@ page 51003 "Setup Localization"
                     ApplicationArea = All;
                 }
             }
+            group(Advanced)
+            {
+                Caption = 'Advanced', Comment = 'ESM="Anticipo"';
+                field("Account Advanced PEN"; "Account Advanced PEN")
+                {
+                    ApplicationArea = All;
+                }
+                field("Account Advanced USD"; "Account Advanced USD")
+                {
+                    ApplicationArea = All;
+                }
+                field("Dimension Advanced"; "Dimension Advanced")
+                {
+                    ApplicationArea = All;
+                }
+
+            }
         }
     }
 

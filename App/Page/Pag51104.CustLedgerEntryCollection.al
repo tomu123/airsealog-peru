@@ -6,6 +6,7 @@ page 51104 "CustLedgerEntry Collection"
     UsageCategory = Administration;
     SourceTable = "Collection Payment Buffer";
     SourceTableTemporary = true;
+    Editable = false;
 
     layout
     {

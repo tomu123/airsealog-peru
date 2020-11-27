@@ -161,10 +161,10 @@ codeunit 51029 "LD Correct Posted Documents"
         ItemLedgEntry: Record "Item Ledger Entry";
         ValueEntry: Record "Value Entry";
         SalesLine: Record "Sales Line";
+        ReservationEntry: Record "Reservation Entry";
         ReservStatus: Enum "Reservation Status";
         NoSerieMgt: Codeunit NoSeriesManagement;
         CreateReserveEntry: Codeunit "Create Reserv. Entry";
-        ReservationEntry: Record "Reservation Entry";
         NextDocumentNo: Code[20];
     begin
         SalesSetup.Get();

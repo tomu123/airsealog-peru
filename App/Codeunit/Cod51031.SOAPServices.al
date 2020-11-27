@@ -22,4 +22,9 @@ codeunit 51031 "SP SOAP Services"
             XMLResult.SetVendor(VendorNo);
         XMLResult.Export;
     end;
+
+    procedure SetContract(XMLMessage: XmlPort "Post Contract")
+    begin
+        XMLMessage.Import();
+    end;
 }

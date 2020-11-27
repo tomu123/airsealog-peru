@@ -166,7 +166,7 @@ codeunit 51038 "Mgmt Collection"
                         end;
                     'INTERBANK':
                         begin
-                            lclFileName := 'IBK' + Format(Today);
+                            lclFileName := 'C' + Format(Today) + '.016';
                         end;
                 end;
                 PostFileToControlFileRecord(lclFileName);
@@ -187,19 +187,21 @@ codeunit 51038 "Mgmt Collection"
     begin
         CustLedgerEntry.RESET;
         CustLedgerEntry.SetRange(CustLedgerEntry."Currency Code", pCurrencyCode);
+        CustLedgerEntry.SetFilter("Remaining Amount", '<>%1', 0);
 
         if (pDateFrom <> 0D) and (pDateTo <> 0D) then
-            CustLedgerEntry.SetFilter("Date Filter", '%1..%2', pDateFrom, pDateTo);
+            CustLedgerEntry.SetFilter("Posting Date", '%1..%2', pDateFrom, pDateTo);
 
         if pSerieDoc <> '' then
-            CustLedgerEntry.SetFilter("Document No.", '%1', pSerieDoc + '*');
+            CustLedgerEntry.SetFilter("Document No.", UpperCase(pSerieDoc));
 
-        CustLedgerEntry.SetFilter("Remaining Amount", '<>%1', 0);
-        if CustLedgerEntry.FindFirst then
+        if CustLedgerEntry.FindFirst then begin
             repeat
                 if IsCustomerBankAcc(CustLedgerEntry."Customer No.", pBankNo, pCurrencyCode) then
                     FillCollectionBuffer(CustLedgerEntry, pBankCollection, pBankNo, pTFileCode, pTRecord);
             until CustLedgerEntry.Next = 0;
+        end else
+            Message('No existen valores, con los criterios indicado.');
     end;
 
     procedure FillCollectionBuffer(var pCustLedgerEntry: Record "Cust. Ledger Entry";
@@ -1059,16 +1061,22 @@ codeunit 51038 "Mgmt Collection"
         rTxtTotalSB += SecuenceSBP;
 
         //CODIGO CONCEPTO
-        rTxtTotalSB += '00';
+        rTxtTotalSB += '01';
 
         //DESCRIPCION CONCEPTO
-        rTxtTotalSB += PADSTR('', 30, ' ');
+        if pCurrencyCode = '' then
+            lclTemp := 'SUMINISTRO DE ENERGIA EN SOLES'
+        else
+            lclTemp := 'SUMINISTRO DE ENERGIA EN DOLARES';
+
+        rTxtTotalSB += lclTemp + PADSTR(lclTemp, 30 - StrLen(lclTemp), ' ');
 
         //AFECTO AL PAGO PARCIAL
         rTxtTotalSB += '0';
 
         //CUENTA DE ABONO
-        rTxtTotalSB += PADSTR('', 14, '0');
+        lclTemp := SetValuesSCOTIA(pBankNo, pCurrencyCode);
+        rTxtTotalSB += lclTemp + PADSTR(lclTemp, 14 - StrLen(lclTemp), '0');
 
         //FILLER
         rTxtTotalSB += PADSTR('', 200, ' ');
@@ -1092,30 +1100,33 @@ codeunit 51038 "Mgmt Collection"
         rTxtHeaderIBK += '21';
 
         // 3	Código de rubro	2	5	6	N	2		Código asignado por el banco
-        rTxtHeaderIBK += '00';
+        // rTxtHeaderIBK += '00';
 
         // 4	Código de empresa	3	7	9	N	3		Código asignado por el banco
-        rTxtHeaderIBK += '000';
+        // rTxtHeaderIBK += '000';
 
         // 5	Código de servicio	2	10	11	N	2		Código asignado por el banco
-        rTxtHeaderIBK += '00';
+        // rTxtHeaderIBK += '00';
 
         // 6	Código de solicitud	2	12	13	N	2		Código que identifica a la solicitud 
-        rTxtHeaderIBK += '00';
+        // rTxtHeaderIBK += '00';
+        rTxtHeaderIBK += '074010101';
 
         // 7	Descripción de solicitud	30	14	43	A	30		Descripción de la solicitud
         rTxtHeaderIBK += PADSTR('', 30, ' ');
 
-        // 8	Origen de la Solicitud	1	44	44	N	1		Modalidad de ingreso solo para Pago Automático caso contrario cero
+        // 8	Origen de la Solicitud	1	44	44	N	1		
+        // Modalidad de ingreso solo para Pago Automático caso contrario cero
         rTxtHeaderIBK += '0';
 
         // 9	Código de requerimiento	3	45	47	N	3		Valor fijo (ver valores)
         rTxtHeaderIBK += '002';
 
         // 10	Canal de envío	1	48	48	N	1		Valor fijo (ver valores)
-        rTxtHeaderIBK += '0';
+        rTxtHeaderIBK += '1';
 
-        // 11	Tipo de información	1	49	49	A	1		Tipo de información (ver valores) solo para Data Parcial y Data Completa caso contrario blanco
+        // 11	Tipo de información	1	49	49	A	1		
+        // Tipo de información (ver valores) solo para Data Parcial y Data Completa caso contrario blanco
         rTxtHeaderIBK += pTRecord;
 
         // 12	Número de registros	15	50	64	N	15		Número de Registros de detalle 
@@ -1127,43 +1138,50 @@ codeunit 51038 "Mgmt Collection"
         // 14	Fecha de proceso	8	75	82	N	8		Fecha a cargar/grabación de la información (Formato YYYYMMDD)
         rTxtHeaderIBK += GetDate(pProcessDate);
 
-        // 15	Fecha de Inicio de Cargos	8	83	90	N	8		Fecha de inicio de cargos recurrentes (Formato YYYYMMDD) solo para Pago Automático caso contrario ceros
+        // 15	Fecha de Inicio de Cargos	8	83	90	N	8		
+        // Fecha de inicio de cargos recurrentes (Formato YYYYMMDD) solo para Pago Automático caso contrario ceros
         rTxtHeaderIBK += PADSTR('', 8, '0');
-
-        // 16	Moneda	2	91	92	N	2		Código de la moneda (ver valores) en la que esta incrita la empresa  solo para Pago Automático caso contrario ceros
-        rTxtHeaderIBK += '00';
 
         case pCurrencyCode of
             '':
                 begin
                     lclAmountTxt1 := DelChr(FORMAT(pTotalAmount, 0, '<Precision,2:2><Standard Format,0>'), '=', ',.');
-                    lclAmountTxt2 := PADSTR('', 15, '0');
+                    lclAmountTxt2 := PADSTR('', 13, '0');
+                    lclTemp := '01';
                 end;
             'USD':
                 begin
                     lclAmountTxt2 := DelChr(FORMAT(pTotalAmount, 0, '<Precision,2:2><Standard Format,0>'), '=', ',.');
-                    lclAmountTxt1 := PADSTR('', 15, '0');
+                    lclAmountTxt1 := PADSTR('', 13, '0');
+                    lclTemp := '02';
                 end;
         end;
+        // 16	Moneda	2	91	92	N	2		
+        // Código de la moneda (ver valores) en la que esta incrita la empresa  solo para Pago Automático caso contrario ceros
+        rTxtHeaderIBK += lclTemp;
+
         // 17	IrTxtHeaderIBKmporte total 1	15	93	107	N	13	2	Importe total en soles a cobrar (si la cobranza es en soles) solo para Data Completa, Importe total a cargar solo para Pago Automático caso contrario ceros
-        lclTemp := PADSTR('', 15 - STRLEN(lclAmountTxt1), '0') + lclAmountTxt1;
+        lclTemp := PADSTR('', 13 - STRLEN(lclAmountTxt1), '0') + lclAmountTxt1;
         rTxtHeaderIBK += lclTemp;
 
         // 18	Importe total 2	15	108	122	N	13	2	Importe total en dólares a cobrar (si la cobranza es en dólares) solo para Data Completa caso contrario ceros
-        lclTemp := PADSTR('', 15 - STRLEN(lclAmountTxt2), '0') + lclAmountTxt2;
+        lclTemp := PADSTR('', 13 - STRLEN(lclAmountTxt2), '0') + lclAmountTxt2;
         rTxtHeaderIBK += lclTemp;
 
-        // 19	Tipo de Glosa	1	123	123	A	1		Tipo de glosa (ver valores) a utilizar en las notas de abono/débito solo para Pago Automático
+        // 19	Tipo de Glosa	1	123	123	A	1		
+        // Tipo de glosa (ver valores) a utilizar en las notas de abono/débito solo para Pago Automático
         rTxtHeaderIBK += 'G';
 
-        // 20	Glosa General	50	124	173	A	50		Relacionada al tipo de glosa solo para Pago Automático caso contrario blancos
+        // 20	Glosa General	50	124	173	A	50		
+        // Relacionada al tipo de glosa solo para Pago Automático caso contrario blancos
         rTxtHeaderIBK += PADSTR('', 50, ' ');
 
         // 21	Libre	221	174	394	A	221		Blancos
         rTxtHeaderIBK += PADSTR('', 221, ' ');
 
         // 22	Tipo Formato	2	395	396	N	2		Valor fijo (ver valores)
-        rTxtHeaderIBK += '02';
+        // 01: Data Parcial; 02: Data Completa; 03: Pago Automático
+        rTxtHeaderIBK += pTRecord;
 
         // 23	Código fijo	4	397	400	N	4		Valor fijo (ver valores)
         rTxtHeaderIBK += '0000';
@@ -1213,7 +1231,9 @@ codeunit 51038 "Mgmt Collection"
         rTxtQuotaIBK += '0000';
     end;
 
-    local procedure INTERBANKLinesStructure(var pRecCollectionBuffer: Record "Collection Payment Buffer" temporary; pCurrencyCode: text; TRecord: Text) rTxtLinesIBK: Text
+    local procedure INTERBANKLinesStructure(var pRecCollectionBuffer: Record "Collection Payment Buffer" temporary;
+                                                pCurrencyCode: text;
+                                                TRecord: Text) rTxtLinesIBK: Text
     var
         lclTemp: Text;
     begin
@@ -1224,29 +1244,37 @@ codeunit 51038 "Mgmt Collection"
         lclTemp := pRecCollectionBuffer."Customer No.";
         rTxtLinesIBK += lclTemp + PADSTR('', 20 - StrLen(lclTemp), ' ');
 
-        // 3	Nombre del deudor	30	23	52	A	30		Nombre del Deudor solo para Data Parcial y Data Completa caso contrario espacios
+        // 3	Nombre del deudor	30	23	52	A	30		
+        // Nombre del Deudor solo para Data Parcial y Data Completa caso contrario espacios
         lclTemp := copystr(pRecCollectionBuffer."Customer Name", 1, 30);
         rTxtLinesIBK += lclTemp + PADSTR('', 30 - StrLen(lclTemp), ' ');
 
-        // 4	Referencia 1	10	53	62	A	10		Referencia de Operación 1 solo para Data Parcial y Data Completa caso contrario espacios
+        // 4	Referencia 1	10	53	62	A	10		
+        // Referencia de Operación 1 solo para Data Parcial y Data Completa caso contrario espacios
         rTxtLinesIBK += PADSTR('', 10, ' ');
 
-        // 5	Referencia 2	10	63	72	A	10		Referencia de Operación 2 solo para Data Parcial y Data Completa caso contrario espacios
+        // 5	Referencia 2	10	63	72	A	10		
+        // Referencia de Operación 2 solo para Data Parcial y Data Completa caso contrario espacios
         rTxtLinesIBK += PADSTR('', 10, ' ');
 
-        // 6	Tipo de Operación	1	73	73	A	1		Tipo de operación (ver valores) solo para Data Completa caso contrario espacio
+        // 6	Tipo de Operación	1	73	73	A	1		
+        // Tipo de operación (ver valores) solo para Data Completa caso contrario espacio
         rTxtLinesIBK += TRecord;
 
-        // 7	Código de cuota	8	74	81	A	8		Código de Cuota (alineado a la izquierda) solo para Data Completa caso contrario espacios
+        // 7	Código de cuota	8	74	81	A	8		
+        // Código de Cuota (alineado a la izquierda) solo para Data Completa caso contrario espacios
         rTxtLinesIBK += PADSTR('', 8, ' ');
 
-        // 8	Fecha de emisión	8	82	89	N	8		Fecha de emisión del documento a cobrar Formato YYYYMMDD solo para Data Completa caso contrario ceros
+        // 8	Fecha de emisión	8	82	89	N	8		
+        // Fecha de emisión del documento a cobrar Formato YYYYMMDD solo para Data Completa caso contrario ceros
         rTxtLinesIBK += GetDate(pRecCollectionBuffer."Document Date");
 
-        // 9	Fecha de vencimiento	8	90	97	N	8		Fecha de Vencimiento del documento a cobrar Formato YYYYMMDD solo para Data Completa caso contrario ceros
+        // 9	Fecha de vencimiento	8	90	97	N	8		
+        // Fecha de Vencimiento del documento a cobrar Formato YYYYMMDD solo para Data Completa caso contrario ceros
         rTxtLinesIBK += GetDate(pRecCollectionBuffer."Due Date");
 
-        // 10	Número de documento	15	98	112	A	15		Número de Documento relacionado al cobro solo para Data Completa caso contrario espacios
+        // 10	Número de documento	15	98	112	A	15		
+        // Número de Documento relacionado al cobro solo para Data Completa caso contrario espacios
         lclTemp := copystr(pRecCollectionBuffer."Document No.", 1, 15);
         rTxtLinesIBK += lclTemp + PADSTR('', 15 - StrLen(lclTemp), ' ');
 
@@ -1279,37 +1307,52 @@ codeunit 51038 "Mgmt Collection"
         // 18	Importe del concepto 7	9	169	177	N	7	2	Si no maneja conceptos enviar ceros solo para Data Completa caso contrario ceros
         rTxtLinesIBK += PADSTR('', 9, ' ');
 
-        // 19	Tipo de la cuenta Principal	1	178	178	A	1		Tipo de la cuenta en que se va a cargar solo para Pago Automático caso contrario espacio
+        // 19	Tipo de la cuenta Principal	1	178	178	A	1		
+        // Tipo de la cuenta en que se va a cargar solo para Pago Automático caso contrario espacio
         rTxtLinesIBK += ' ';
 
-        // 20	Producto de la cuenta principal	3	179	181	A	3		Producto de la cuenta del cliente a quien se le debitara (si es cuenta de depósitos) solo para Pago Automático caso contrario espacios
+        // 20	Producto de la cuenta principal	3	179	181	A	3		
+        // Producto de la cuenta del cliente a quien se le debitara (si es cuenta de depósitos) 
+        // solo para Pago Automático caso contrario espacios
         rTxtLinesIBK += PADSTR('', 3, ' ');
 
-        // 21	Moneda de la cuenta Principal	2	182	183	A	2		Moneda de la cuenta del cliente a quien se le debitara (si es cuenta de depósitos) solo para Pago Automático caso contrario espacios
+        // 21	Moneda de la cuenta Principal	2	182	183	A	2		
+        // Moneda de la cuenta del cliente a quien se le debitara (si es cuenta de depósitos) 
+        // solo para Pago Automático caso contrario espacios
         rTxtLinesIBK += PADSTR('', 2, ' ');
 
-        // 22	Numero de la cuenta Principal	20	184	203	A	20		Número de la cuenta del cliente a quien se le debitara solo para Pago Automático caso contrario espacios
+        // 22	Numero de la cuenta Principal	20	184	203	A	20		
+        // Número de la cuenta del cliente a quien se le debitara solo para Pago Automático caso contrario espacios
         rTxtLinesIBK += PADSTR('', 20, ' ');
 
-        // 23	Importe a abonar cuenta 1	15	204	218	N	13	2	Importe a abonar en la cuenta recaudadora 1 solo para Pago Automático caso contrario ceros
+        // 23	Importe a abonar cuenta 1	15	204	218	N	13	2	
+        // Importe a abonar en la cuenta recaudadora 1 solo para Pago Automático caso contrario ceros
         rTxtLinesIBK += PADSTR('', 15, ' ');
 
-        // 24	Tipo de la cuenta Secundaria	1	219	219	A	1		Tipo de la cuenta secundaria en que se va a cargar solo para Pago Automático caso contrario espacio
+        // 24	Tipo de la cuenta Secundaria	1	219	219	A	1		
+        // Tipo de la cuenta secundaria en que se va a cargar solo para Pago Automático caso contrario espacio
         rTxtLinesIBK += ' ';
 
-        // 25	Producto de la cuenta Secundaria	3	220	222	A	3		Producto de la cuenta secundaria del cliente a quien se le debitara (si es cuenta de depósitos) solo para Pago Automático caso contrario espacios
+        // 25	Producto de la cuenta Secundaria	3	220	222	A	3		
+        // Producto de la cuenta secundaria del cliente a quien se le debitara (si es cuenta de depósitos) 
+        // solo para Pago Automático caso contrario espacios
         rTxtLinesIBK += '000';
 
-        // 26	Moneda de la cuenta Secundaria	2	223	224	A	2		Moneda de la cuenta secundaria del cliente a quien se le debitara (si es cuenta de depósitos) solo para Pago Automático caso contrario espacios
+        // 26	Moneda de la cuenta Secundaria	2	223	224	A	2		
+        // Moneda de la cuenta secundaria del cliente a quien se le debitara (si es cuenta de depósitos) 
+        // solo para Pago Automático caso contrario espacios
         rTxtLinesIBK += '  ';
 
-        // 27	Numero de la cuenta Secundaria	20	225	244	A	20		Número de la cuenta secundaria del cliente a quien se le debitara solo para Pago Automático caso contrario espacios
+        // 27	Numero de la cuenta Secundaria	20	225	244	A	20		
+        // Número de la cuenta secundaria del cliente a quien se le debitara solo para Pago Automático caso contrario espacios
         rTxtLinesIBK += PADSTR('', 20, ' ');
 
-        // 28	Importe a abonar cuenta 2	15	245	259	N	13	2	Importe a abonar en la cuenta recaudadora 2 solo para Pago Automático caso contrario ceros
+        // 28	Importe a abonar cuenta 2	15	245	259	N	13	2	
+        // Importe a abonar en la cuenta recaudadora 2 solo para Pago Automático caso contrario ceros
         rTxtLinesIBK += PADSTR('', 15, '0');
 
-        // 29	Glosa Particular	67	260	326	A	67		Relacionada al tipo de glosa solo para Pago Automático caso contrario espacios
+        // 29	Glosa Particular	67	260	326	A	67		
+        // Relacionada al tipo de glosa solo para Pago Automático caso contrario espacios
         rTxtLinesIBK += PADSTR('', 67, ' ');
 
         // 30	Libre	68	327	394	A	68		Blancos
@@ -1320,6 +1363,39 @@ codeunit 51038 "Mgmt Collection"
 
         // 32	Código fijo	4	397	400	N	4		Valor fijo (ver valores)
         rTxtLinesIBK += PADSTR('', 4, ' ');
+
+    end;
+
+    local procedure BCPRespuest()
+    var
+    begin
+
+        // 1 – 2  2  A  Tipo de registro (CC= Cabecera)  
+
+        // 3 – 5  3  N  Código de (de la cta. de )  
+
+        // 6  1  N  Código de la moneda (de la cta. de )  
+
+        // 7 – 13  7  N  Número de cuenta de la Empresa Afiliada  
+
+        // 14 – 14  1  A  Tipo de validación C= Completa)  
+
+        // 15 – 22  8  N  Fecha de proceso (AAAAMMDD)  
+
+        // 23 – 31  9  N  Cantidad total de registros enviados (en el detalle)  
+
+        // 32 – 46  15  N  Monto total de los importes pagados , incluyendo los registros de extornados (en detalle, 2 decimales)  
+
+        // 47 – 50  4  N  Código Interno BCP (código interno de la cuenta recaudadora)  
+
+        // 51 – 56  6  AN Casilla (usuario Teletransfer de la cuenta recaudadora)  
+
+        // 57 – 62  6  N  Hora  en que se realizo el corte de información, HHMMSS  
+
+        // 63 – 68  6  AN  Código Servicio  
+
+        // 69 – 250  182  Filler (libre)  
+
 
     end;
 }

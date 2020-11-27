@@ -70,7 +70,25 @@ table 51003 "Setup Localization"
             Caption = 'Coactiva No. Serie', Comment = 'ESM="N° Serie Coactiva"';
             TableRelation = "No. Series";
         }
+        field(51008; "Account Advanced USD"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Cuenta Anticipo Dolares', Comment = 'ESM="Cuenta Anticipo Dolares"';
+            TableRelation = "G/L Account";
+        }
 
+        field(51009; "Account Advanced PEN"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Cuenta Anticipo Soles', Comment = 'ESM="Cuenta Anticipo Soles"';
+            TableRelation = "G/L Account";
+        }
+        field(51010; "Dimension Advanced"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Dimension Anticipo', Comment = 'ESM="Dimension Anticipo"';
+            TableRelation = Dimension;
+        }
         field(51115; "Analityc Global Dimension"; Code[20])
         {
             Caption = 'Analityc Global Dimension', Comment = 'ESM="Dimensión Analítica"';

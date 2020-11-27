@@ -19,19 +19,18 @@ codeunit 51023 "ST VendEntry-Apply Posted Entr"
         DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry";
         ApplicationEntryNo: Integer;
     begin
-        //with DtldVendLedgEntry do begin
-        DtldVendLedgEntry.Reset();
-        DtldVendLedgEntry.SetCurrentKey("Vendor Ledger Entry No.", "Entry Type");
-        DtldVendLedgEntry.SetRange("Vendor Ledger Entry No.", VendLedgEntryNo);
-        DtldVendLedgEntry.SetRange("Entry Type", DtldVendLedgEntry."Entry Type"::Application);
-        DtldVendLedgEntry.SetRange(Unapplied, false);
-        ApplicationEntryNo := 0;
-        if DtldVendLedgEntry.Find('-') then
-            repeat
-                if DtldVendLedgEntry."Entry No." > ApplicationEntryNo then
-                    ApplicationEntryNo := DtldVendLedgEntry."Entry No.";
-            until DtldVendLedgEntry.Next = 0;
-        //end;
+        with DtldVendLedgEntry do begin
+            SetCurrentKey("Vendor Ledger Entry No.", "Entry Type");
+            SetRange("Vendor Ledger Entry No.", VendLedgEntryNo);
+            SetRange("Entry Type", "Entry Type"::Application);
+            SetRange(Unapplied, false);
+            ApplicationEntryNo := 0;
+            if Find('-') then
+                repeat
+                    if "Entry No." > ApplicationEntryNo then
+                        ApplicationEntryNo := "Entry No.";
+                until Next = 0;
+        end;
         exit(ApplicationEntryNo);
     end;
 
@@ -39,16 +38,15 @@ codeunit 51023 "ST VendEntry-Apply Posted Entr"
     var
         UnapplyVendEntries: Page "Unapply Vendor Entries";
     begin
-        //with DtldVendLedgEntry do begin
-        DtldVendLedgEntry.Reset();
-        DtldVendLedgEntry.TestField("Entry Type", DtldVendLedgEntry."Entry Type"::Application);
-        DtldVendLedgEntry.TestField(Unapplied, false);
-        UnapplyVendEntries.SetUnapplyUnique();
-        UnapplyVendEntries.SetDtldVendLedgEntryUnique(DtldVendLedgEntry."Entry No.");
-        UnapplyVendEntries.SetDtldVendLedgEntry(DtldVendLedgEntry."Entry No.");
-        UnapplyVendEntries.LookupMode(true);
-        UnapplyVendEntries.RunModal;
-        //end;
+        with DtldVendLedgEntry do begin
+            TestField("Entry Type", "Entry Type"::Application);
+            TestField(Unapplied, false);
+            UnapplyVendEntries.SetUnapplyUnique();
+            UnapplyVendEntries.SetDtldVendLedgEntryUnique("Entry No.");
+            UnapplyVendEntries.SetDtldVendLedgEntry("Entry No.");
+            UnapplyVendEntries.LookupMode(true);
+            UnapplyVendEntries.RunModal;
+        end;
     end;
 
     procedure UnApplyVendLedgEntry(VendLedgEntryNo: Integer)
@@ -69,24 +67,23 @@ codeunit 51023 "ST VendEntry-Apply Posted Entr"
         DetailedVendorLedgEntry: Record "Detailed Vendor Ledg. Entry";
     begin
         TempVendorLedgerEntry.DeleteAll();
-        //with DetailedVendorLedgEntry do begin
-        DetailedVendorLedgEntry.Reset();
-        if DetailedVendorLedgEntry2."Transaction No." = 0 then begin
-            DetailedVendorLedgEntry.SetCurrentKey("Application No.", "Vendor No.", "Entry Type");
-            DetailedVendorLedgEntry.SetRange("Application No.", DetailedVendorLedgEntry2."Application No.");
-        end else begin
-            DetailedVendorLedgEntry.SetCurrentKey("Transaction No.", "Vendor No.", "Entry Type");
-            DetailedVendorLedgEntry.SetRange("Transaction No.", DetailedVendorLedgEntry2."Transaction No.");
+        with DetailedVendorLedgEntry do begin
+            if DetailedVendorLedgEntry2."Transaction No." = 0 then begin
+                SetCurrentKey("Application No.", "Vendor No.", "Entry Type");
+                SetRange("Application No.", DetailedVendorLedgEntry2."Application No.");
+            end else begin
+                SetCurrentKey("Transaction No.", "Vendor No.", "Entry Type");
+                SetRange("Transaction No.", DetailedVendorLedgEntry2."Transaction No.");
+            end;
+            SetRange("Vendor No.", DetailedVendorLedgEntry2."Vendor No.");
+            SetRange(Unapplied, false);
+            SetFilter("Entry Type", '<>%1', "Entry Type"::"Initial Entry");
+            if FindSet then
+                repeat
+                    TempVendorLedgerEntry."Entry No." := "Vendor Ledger Entry No.";
+                    if TempVendorLedgerEntry.Insert() then;
+                until Next = 0;
         end;
-        DetailedVendorLedgEntry.SetRange("Vendor No.", DetailedVendorLedgEntry2."Vendor No.");
-        DetailedVendorLedgEntry.SetRange(Unapplied, false);
-        DetailedVendorLedgEntry.SetFilter("Entry Type", '<>%1', DetailedVendorLedgEntry."Entry Type"::"Initial Entry");
-        if DetailedVendorLedgEntry.FindSet then
-            repeat
-                TempVendorLedgerEntry."Entry No." := DetailedVendorLedgEntry."Vendor Ledger Entry No.";
-                if TempVendorLedgerEntry.Insert() then;
-            until DetailedVendorLedgEntry.Next = 0;
-        //end;
     end;
 
     local procedure CheckPostingDate(PostingDate: Date; var MaxPostingDate: Date)
@@ -137,18 +134,18 @@ codeunit 51023 "ST VendEntry-Apply Posted Entr"
         DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry";
         LastTransactionNo: Integer;
     begin
-        //with DtldVendLedgEntry do begin
-        DtldVendLedgEntry.SetCurrentKey("Vendor Ledger Entry No.", "Entry Type");
-        DtldVendLedgEntry.SetRange("Vendor Ledger Entry No.", VendLedgEntryNo);
-        DtldVendLedgEntry.SetRange(Unapplied, false);
-        DtldVendLedgEntry.SetFilter("Entry Type", '<>%1&<>%2', DtldVendLedgEntry."Entry Type"::"Unrealized Loss", DtldVendLedgEntry."Entry Type"::"Unrealized Gain");
-        LastTransactionNo := 0;
-        if DtldVendLedgEntry.FindSet then
-            repeat
-                if LastTransactionNo < DtldVendLedgEntry."Transaction No." then
-                    LastTransactionNo := DtldVendLedgEntry."Transaction No.";
-            until DtldVendLedgEntry.Next = 0;
-        //end;
+        with DtldVendLedgEntry do begin
+            SetCurrentKey("Vendor Ledger Entry No.", "Entry Type");
+            SetRange("Vendor Ledger Entry No.", VendLedgEntryNo);
+            SetRange(Unapplied, false);
+            SetFilter("Entry Type", '<>%1&<>%2', "Entry Type"::"Unrealized Loss", "Entry Type"::"Unrealized Gain");
+            LastTransactionNo := 0;
+            if FindSet then
+                repeat
+                    if LastTransactionNo < "Transaction No." then
+                        LastTransactionNo := "Transaction No.";
+                until Next = 0;
+        end;
         exit(LastTransactionNo);
     end;
 

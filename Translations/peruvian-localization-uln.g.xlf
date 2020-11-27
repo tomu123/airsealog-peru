@@ -343,6 +343,21 @@
           <note from="Developer" annotates="general" priority="2">ESM="N° Serie Coactiva"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field ST Coactiva No. Serie - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 4151650223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cuenta Anticipo Dolares</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cuenta Anticipo Dolares"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Account Advanced USD - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 1448389952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cuenta Anticipo Soles</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cuenta Anticipo Soles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Account Advanced PEN - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 1457952602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dimension Anticipo</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Dimension Anticipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Dimension Advanced - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4047494536 - Field 1582634066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Analityc Global Dimension</source>
           <note from="Developer" annotates="general" priority="2">ESM="Dimensión Analítica"</note>
@@ -797,6 +812,11 @@
           <source>Analityc</source>
           <note from="Developer" annotates="general" priority="2">ESM="Analítica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Control AnalitycGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047494536 - Control 4270985946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Advanced</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Anticipo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Control Advanced - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4047494536 - Action 1572708512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Master Data</source>
@@ -3272,6 +3292,881 @@
           <source>No. Suministro</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Collection Payment Buffer - Field No. Suministro - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2753660944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unidad de negocio</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Unidad de negocio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Unidad de negocio - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1698162069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Propuesta</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Propuesta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Propuesta - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2932310199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Oportunidad</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Oportunidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Oportunidad - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1641233144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3977130433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de cliente</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tipo de cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1057440889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de documento DP</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de documento DP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tipo de documento DP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1607335192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nro. Documento 1</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nro. Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nro. Documento 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2231268992 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Producto</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Producto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1940395567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modelo documeento</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Modelo documeento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Modelo documeento - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2904264880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contrato principal</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Contrato principal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Contrato principal - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1081050614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Moneda_1</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Moneda"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Moneda_1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2824680946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Penalidad Res. Contrato(%)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Penalidad por resolución de contrato (%)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Penalidad Res. Contrato(%) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4088389464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Responsable Propietario</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Responsable Propietario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Responsable Propietario - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 814966011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nombre - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2576344976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha inicio contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha inicio contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha inicio contrato - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1789951786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha fin contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha fin contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha fin contrato - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 286716282 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha inicio real contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha inicio real contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha inicio real contrato - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2698808144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha fin real contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha fin real contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha fin real contrato - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 777814193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de firma contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de firma contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de firma contrato - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1711884609 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de revisión</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de revisión"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de revisión - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2838028356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fec. Resolución observaciones</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de resolución de observaciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fec. Resolución observaciones - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1572328100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de envío de contrato</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de envío de contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de envío de contrato - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3378387680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de documento</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tipo de documento IF - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3425049087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nro. documento</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nro. documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nro. documento - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1612370792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dirección IC</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Dirección"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Dirección IC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3066116985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>País</source>
+          <note from="Developer" annotates="general" priority="2">ESM="País"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field País - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 166495147 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Departamento / Región</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Departamento / Región"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Departamento / Región - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1557317609 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Provincia</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Provincia - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2114124546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Distrito / Comuna</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Distrito / Comuna"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Distrito / Comuna - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3917751983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Representante Atria (1)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Representante Atria (1)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Representante Atria (1) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3856466210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Representante Atria (2)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Representante Atria (2)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Representante Atria (2) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 74036250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Representante cliente (1)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Representante cliente (1)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Representante cliente (1) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3118708009 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargo RL 1</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cargo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cargo RL 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4187781004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dirección RL </source>
+          <note from="Developer" annotates="general" priority="2">ESM="Dirección"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Dirección RL  - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1807785155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correo Electrónico RL</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Correo Electrónico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Correo Electrónico RL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4267112662 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>teléfono celular RL</source>
+          <note from="Developer" annotates="general" priority="2">ESM="teléfono celular"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field teléfono celular RL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1203866759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Representante cliente (2)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Representante cliente (2)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Representante cliente (2) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1558681476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargo</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cargo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cargo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1834217378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dirección</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Dirección"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Dirección - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2852233033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correo Electrónico</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Correo Electrónico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Correo Electrónico - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3783602400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>teléfono celular</source>
+          <note from="Developer" annotates="general" priority="2">ESM="teléfono celular"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field teléfono celular - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2692767954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nro. Partida</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nro. Partida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nro. Partida - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3250454382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha escritura pública</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha escritura pública"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha escritura pública - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2599887695 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notaria escritura pública</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Notaria escritura pública"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Notaria escritura pública - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1505114903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ciudad escritura pública</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ciudad escritura pública"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Ciudad escritura pública - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3816458146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aval cliente (1)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Aval cliente (1)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Aval cliente (1) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3877743919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aval cliente (2)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Aval cliente (2)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Aval cliente (2) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3263393600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aval cliente (3)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Aval cliente (3)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Aval cliente (3) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3358271381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Aval cliente (4)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Aval cliente (4)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Aval cliente (4) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 294415237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Es una migración</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Es una migración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Es una migración - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4041255339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Realizo enc. 6m despues inic.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Realizo encuesta 6 meses después de inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Realizo enc. 6m despues inic. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3087973566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Renovación automática</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Renovación automática"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Renovación automática - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 806020206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nro. de años a renovar</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nro. de años a renovar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nro. de años a renovar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1607821287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plazo solicitud no renov. (m)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo de solicitud de no renovación (Meses)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plazo solicitud no renov. (m) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 169899330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Derecho preferente</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Derecho preferente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Derecho preferente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1418624533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plazo sol. Nvas cotizaciones</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo para solicitar nuevas cotizaciones (Meses)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plazo sol. Nvas cotizaciones - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 105540921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cantidad de cot. solicitadas</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cantidad de cotizaciones solicitadas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cantidad de cot. solicitadas - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1690482398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plazo inf. mejor oferta rec(D)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo para informar mejor oferta recibida (Días)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plazo inf. mejor oferta rec(D) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 947064814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plazo inf. decisiónDer.Pref(D)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo para inf. decisión derecho preferente (Días)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plazo inf. decisiónDer.Pref(D) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 499061161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plazo sol. aumentoPot/Ene.(M)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo solicitud aumento Potencia y Energía (Meses)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plazo sol. aumentoPot/Ene.(M) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 609813881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plz. R. solic. aumentoPot/EneD</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo respuesta solic. aumento Pot. y Ene. (Días)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plz. R. solic. aumentoPot/EneD - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1114902823 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plazo de emisión de factura(D)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo de emisión de factura (Días)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plazo de emisión de factura(D) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4268787182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plazo de pago (Días)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo de pago (Días)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plazo de pago (Días) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1426406344 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plz. Pago ent. fact (texto)-CI</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo de pago (días) desde entrega factura (texto) - Carga Inicial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plz. Pago ent. fact (texto)-CI - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 412558853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plz. Corte No pago fact.(Días)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo de Corte por no pago factura (Días)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plz. Corte No pago fact.(Días) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1783804743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plz.Peri. NoPagos prev. Resol.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo de periodos no pagados antes de resolución"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plz.Peri. NoPagos prev. Resol. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1999573499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plz. Incumpli. Gen. Resol. (D)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Plazo Incumpli. generadora para resolución (Días)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Plz. Incumpli. Gen. Resol. (D) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3911799890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Margen real (US$/MWh)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Margen real (US$/MWh)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Margen real (US$/MWh) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2510994742 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contrato Atria S</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Contrato Atria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Contrato Atria S - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1054982409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Suministro</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Suministro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Suministro - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2388344882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nombre suministro</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nombre suministro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nombre suministro - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1966961327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dirección concatenada</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Dirección concatenada"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Dirección concatenada - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3952561952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Distribuidora S</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Distribuidora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Distribuidora S - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1697077281 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Punto suministro</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Punto suministro"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Punto suministro - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 671513447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Barra de Referencia</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Barra de Referencia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Barra de Referencia - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 869321501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Propietario S</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Propietario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Propietario S - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1910647433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Moneda S</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Moneda"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Moneda S - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 163690288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de inicio (contrato)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de inicio (contrato)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de inicio (contrato) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3598871442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de fin (contrato)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de fin (contrato)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de fin (contrato) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4188208697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de migración</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de migración"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de migración - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 907591732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exceso potencia (%)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Exceso potencia (%)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Exceso potencia (%) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3649447400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exceso energía (%)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Exceso energía (%)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Exceso energía (%) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1629758770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Potencia Mín. Facturable kW(%)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Potencia Mín. Facturable kW (%)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Potencia Mín. Facturable kW(%) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2085435637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Potencia Min. Fact. kW (Monto)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Potencia Min. Facturable kW (Monto)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Potencia Min. Fact. kW (Monto) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 970309762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Potencia Estacional</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Potencia Estacional"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Potencia Estacional - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 143363651 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Precio Escalonado</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Precio Escalonado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Precio Escalonado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4084704940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de carta pre aviso</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de carta pre aviso"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de carta pre aviso - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 963369374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de carta distribuidora</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de carta distribuidora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de carta distribuidora - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 761654814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CorrelativoCarta distribuidora</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Correlativo carta distribuidora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field CorrelativoCarta distribuidora - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 85628707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Max. PC - HP (kW)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Max. PC - HP (kW)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Max. PC - HP (kW) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3174921737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Max. PC - HFP (kW)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Max. PC - HFP (kW)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Max. PC - HFP (kW) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4013799157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mes</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Mes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Mes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1639389149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Potencia Contratada HP (kW)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Potencia Contratada HP (kW)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Potencia Contratada HP (kW) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3156002063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Potencia Contratada HFP (kW)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Potencia Contratada HFP (kW)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Potencia Contratada HFP (kW) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3444587677 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de inicio P</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de inicio P - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 379449067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de fin P</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de fin"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de fin P - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 29276526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Moneda Precio energia HP y HFP</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Moneda Precio energia HP y HFP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Moneda Precio energia HP y HFP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2587763244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de cambio</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de cambio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tipo de cambio - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2169288974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Precio energía HP/HFP(US$/MWh)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Precio energía HP y HFP (US$/MWh)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Precio energía HP/HFP(US$/MWh) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2360963522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prec energía HP/HFP(O-Mon/kWh)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Precio energía HP y HFP (OtrasMon/kWh)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Prec energía HP/HFP(O-Mon/kWh) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 392838859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contrato Atria</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Contrato Atria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Contrato Atria - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3651054688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Moneda</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Moneda"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Moneda - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2316199572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Propietario</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Propietario"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Propietario - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3444731459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Energía HP Index</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Energía HP Index"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Energía HP Index - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1875635310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valor Index Energía HP - PP</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Valor Index Energía HP - PP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Valor Index Energía HP - PP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2994293245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mes Vigencia</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Mes Vigencia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Mes Vigencia - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2683934633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Año vigencia</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Año vigencia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Año vigencia - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3424962897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Energía HFP Index</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Energía HFP Index"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Energía HFP Index - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3062010248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valor Index Energía HFP - PP</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Valor Index Energía HFP - PP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Valor Index Energía HFP - PP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 223223015 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Potencia Index</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Potencia Index"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Potencia Index - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 320258386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valor Index Potencia - PP</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Valor Index Potencia - PP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Valor Index Potencia - PP - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3013680162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe financiamiento G</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe financiamiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Importe financiamiento G - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1800111269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe financiamiento LetrasG</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe financiamiento en letras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Importe financiamiento LetrasG - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 639811662 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Concepto del préstamo G</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Concepto del préstamo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Concepto del préstamo G - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1855528535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contrato relacionado PPA CR</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Contrato relacionado PPA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Contrato relacionado PPA CR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1947664692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha inicio contrato rel. CR</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de inicio contrato relacionado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha inicio contrato rel. CR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2906996285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de fin contrato rel. CR</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de fin contrato relacionado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de fin contrato rel. CR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1689442520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Banco del cliente DBC 1</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Banco del cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Banco del cliente DBC 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3222509925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo cuenta bancaria DBC 1</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo cuenta bancaria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tipo cuenta bancaria DBC 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2938833071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nro. cuenta banc.cliente DBC 1</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nro. cuenta bancaria cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nro. cuenta banc.cliente DBC 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 164727583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CCI DBC 1</source>
+          <note from="Developer" annotates="general" priority="2">ESM="CCI"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field CCI DBC 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2540897661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nro. cuenta detracción DBC 1</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nro. cuenta detracción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nro. cuenta detracción DBC 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 127694381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de inicio</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de inicio - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1239051227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de fin</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de fin"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de fin - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3824899549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Energía mínima esperada MWh</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Energía mínima esperada MWh"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Energía mínima esperada MWh - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3156042468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Inicio Repago DLL</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Inicio Repago DLL"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha Inicio Repago DLL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4059793073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consumo mínimo anual (MWh)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Consumo mínimo anual (MWh)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Consumo mínimo anual (MWh) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1513677886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>potencia contratada anual(MWh)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="potencia contratada anual (MWh)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field potencia contratada anual(MWh) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1930880757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Análisis cons. energía</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de análisis consumo energía"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha Análisis cons. energía - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1718459789 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fec.Ini.Últ. peri. energía mín</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de inicio último periodo de energía mínima"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fec.Ini.Últ. peri. energía mín - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4057785438 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fec.fin.últ.peri. energía mín.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de fin último periodo de energía mínima"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fec.fin.últ.peri. energía mín. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1898073144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ejec. negocios financieros 1</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ejecutivo negocios financieros"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Ejec. negocios financieros 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 121723880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cons.Total Energía espe. (MWh)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Consumo total Energía esperada (MWh)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cons.Total Energía espe. (MWh) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2855381533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Máx. energía mín. espe. (MWh)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Máxima energía mínima esperada (MWh)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Máx. energía mín. espe. (MWh) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3935911196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cons.Ene.mín. últ. Peri. (MWh)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Consumo energía mínima último periodo (MWh)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cons.Ene.mín. últ. Peri. (MWh) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2535769761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ejec. negocios financieros 2</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ejecutivo negocios financieros"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Ejec. negocios financieros 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3854214450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Precio energía(US$/MWh) Letras</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Precio energía (US$/MWh) en letras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Precio energía(US$/MWh) Letras - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3173466378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ejec. negocios financieros 3</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ejecutivo negocios financieros"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Ejec. negocios financieros 3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2238938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe financiamiento</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe financiamiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Importe financiamiento - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3772741392 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe financiamiento letras</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe financiamiento en letras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Importe financiamiento letras - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1123452228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Concepto del préstamo G2</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Concepto del préstamo G2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Concepto del préstamo G2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1974851760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contrato relacionado PPA</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Contrato relacionado PPA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Contrato relacionado PPA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3560703732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de inicio contrato rel.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de inicio contrato relacionado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de inicio contrato rel. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4068879942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de fin contrato rel.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de fin contrato relacionado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de fin contrato rel. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2327139137 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Banco del cliente DBC 2</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Banco del cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Banco del cliente DBC 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2584813308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo cuenta bancaria DBC 2</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo cuenta bancaria"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tipo cuenta bancaria DBC 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 556955626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nro. cuenta banc.cliente DBC 2</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nro. cuenta bancaria cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nro. cuenta banc.cliente DBC 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2077817434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CCI DBC 2</source>
+          <note from="Developer" annotates="general" priority="2">ESM="CCI"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field CCI DBC 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1903201044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nro. cuenta detracción DBC 2</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nro. cuenta detracción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nro. cuenta detracción DBC 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3789987277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Monto Cuota</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Monto Cuota"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Monto Cuota - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3042146303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Monto Cuota en letras</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Monto Cuota en letras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Monto Cuota en letras - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3361793 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Número cuotas financiamiento</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Número de cuotas financiamiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Número cuotas financiamiento - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3146432006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Número cuotas finan. (letras)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Número de cuotas financiamiento (letras)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Número cuotas finan. (letras) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 212009784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tasa  anual (%)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tasa  anual (%)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tasa  anual (%) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 161000854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tasa nominal anual (%)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tasa nominal anual (%)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tasa nominal anual (%) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3479192413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tasa efectiva anual (%)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tasa efectiva anual (%)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tasa efectiva anual (%) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4245388219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tasa efectiva anual en letras</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tasa efectiva anual en letras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tasa efectiva anual en letras - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3117533997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tasa moratoria (%)</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tasa moratoria (%)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Tasa moratoria (%) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1131676705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha deuda distribuidora</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha deuda distribuidora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha deuda distribuidora - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 595169844 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Distribuidora G</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Distribuidora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Distribuidora G - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2921323570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de emisión pagare</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de emisión pagare"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de emisión pagare - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3510227764 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Día de pago</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Día de pago"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Día de pago - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3948971023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha primera cuota de pago</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha primera cuota de pago"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha primera cuota de pago - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4184547550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha última cuota de pago</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha última cuota de pago"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha última cuota de pago - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 884619006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ejec. negocios financieros G</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ejecutivo negocios financieros"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Ejec. negocios financieros G - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4190244980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nro. de cuota</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Nro. de cuota"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Nro. de cuota - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1345656999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Saldo</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Saldo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Saldo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3680059174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Capital</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Capital"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Capital - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4147964400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intereses</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Intereses"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Intereses - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 3144616520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cuota</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cuota"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cuota - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2964082669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Días</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Días"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Días - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 2181289803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha de pago</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha de pago"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Fecha de pago - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 1121923280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IGV Intereses</source>
+          <note from="Developer" annotates="general" priority="2">ESM="IGV Intereses"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field IGV Intereses - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4006921589 - Field 4241855458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cuota con IGV</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Cuota con IGV"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cuota con IGV - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 186425721 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve">
           <source>The length of the document does not meet the required length and format.</source>

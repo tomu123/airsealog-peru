@@ -50,7 +50,10 @@ page 51103 "Payment Collection"
                             TipoArchivo::"Archivo de Actualización":
                                 TFileCode := 'A';
                             TipoArchivo::"Archivo de Reemplazo":
-                                TFileCode := 'R';
+                                if CollectionBank = 'INTERBANK' then
+                                    TFileCode := 'M'
+                                else
+                                    TFileCode := 'R';
                         end;
                         TipoRegistro := '';
                         TRecordCode := '';
@@ -98,6 +101,10 @@ page 51103 "Payment Collection"
                                 Text := '';
                             end;
                         end;
+                        if CollectionBank = 'INTERBANK' THEN begin
+                            if Text = 'Pago Automatico' then
+                                TRecordCode := ' ';
+                        end;
                         exit(true)
                     end;
                 }
@@ -111,6 +118,16 @@ page 51103 "Payment Collection"
                         ApplicationArea = All;
                         Importance = Standard;
                         Visible = true;
+
+                        trigger OnValidate()
+                        var
+                        begin
+                            if not ApplyFilter then begin
+                                DateFrom := 0D;
+                                DateTo := 0D;
+                                SerieDoc := '';
+                            end;
+                        end;
                     }
                     field(DateFrom; DateFrom)
                     {
@@ -151,15 +168,6 @@ page 51103 "Payment Collection"
                 {
                     ApplicationArea = All;
                 }
-
-                field("Start Date"; Rec."Start Date")
-                {
-                    ApplicationArea = All;
-                }
-                field("Exists File"; Rec."File Blob".HasValue())
-                {
-                    ApplicationArea = All;
-                }
                 field("Create User ID"; Rec."Create User ID")
                 {
                     ApplicationArea = All;
@@ -168,6 +176,12 @@ page 51103 "Payment Collection"
                 {
                     ApplicationArea = All;
                 }
+                field("Exists File"; Rec."File Blob".HasValue())
+                {
+                    ApplicationArea = All;
+                }
+
+
             }
         }
     }
@@ -194,11 +208,12 @@ page 51103 "Payment Collection"
                         Error('Seleccione Tipo registro para continuar!');
 
                     if ApplyFilter then begin
-                        if (DateFrom = 0D) Or (DateTo = 0D) then
-                            Error('Indique rango de fechas!');
-                        if SerieDoc = '' then
-                            Error('Indique serie documento!');
+                        // if (DateFrom = 0D) Or (DateTo = 0D) then
+                        //     Error('Indique rango de fechas!');
+                        // if SerieDoc = '' then
+                        //     Error('Indique serie documento!');
                     end;
+                    Clear(MgmtCollection);
                     MgmtCollection.FindFillCollection(CollectionBank,
                                                     BankAccountNo,
                                                     CurrencyCode,
@@ -210,6 +225,20 @@ page 51103 "Payment Collection"
                     CurrPage.Update();
                 end;
             }
+            // action(UploadFile)
+            // {
+            //     ApplicationArea = All;
+            //     Caption = 'Subir archivo respuesta';
+            //     Image = ImportFile;
+            //     Promoted = true;
+            //     PromotedIsBig = true;
+
+            //     trigger OnAction()
+            //     var
+            //     begin
+
+            //     end;
+            // }
             action(MultiSelect)
             {
                 ApplicationArea = All;
