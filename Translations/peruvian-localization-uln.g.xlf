@@ -11685,7 +11685,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 1524349356 - NamedType 3366378640" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>The detraction cannot exceed the Invoice</source>
-          <note from="Developer" annotates="general" priority="2">ESM="La detracción no de exceder la factura"</note>
+          <note from="Developer" annotates="general" priority="2">ESM="La detracción no debe exceder la factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - NamedType ErrorOverflowAmt</note>
         </trans-unit>
         <trans-unit id="TableExtension 1524349356 - NamedType 2787859134" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">

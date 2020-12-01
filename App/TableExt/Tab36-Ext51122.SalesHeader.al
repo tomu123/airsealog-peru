@@ -319,7 +319,7 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
         DetractCalculation: Codeunit "DetrAction Calculation";
         FreeTitleMgt: Codeunit "FT Free Title Management";
         LegalDocMgt: Codeunit "Legal Document Management";
-        ErrorOverflowAmt: Label 'The detraction cannot exceed the Invoice', Comment = 'ESM="La detracción no de exceder la factura"';
+        ErrorOverflowAmt: Label 'The detraction cannot exceed the Invoice', Comment = 'ESM="La detracción no debe exceder la factura"';
         ErrorDetractLegalDoc: Label 'Can´t be applied to a document type 03', Comment = 'ESM="No puede aplicar un documento tipo 03"';
 
     local procedure FactorByPostingDateSales()
@@ -370,6 +370,8 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
         NoSeries.SetRange("Legal Document", "Legal Document");
         //NoSeries.SetRange("Legal Status", "Legal Status");
         NoSeries.SetRange("Internal Operation", "Legal Status" = "Legal Status"::OutFlow);
+        if "Legal Document Ref." <> '' then
+            NoSeries.SetRange("Legal Document Ref.", "Legal Document Ref.");
         OnBeforeFilterNoSeries(NoSeries, Rec);
         if NoSeries.FindFirst() then
             "Posting No. Series" := NoSeries.Code;

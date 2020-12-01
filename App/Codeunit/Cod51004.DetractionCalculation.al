@@ -806,6 +806,19 @@ codeunit 51004 "DetrAction Calculation"
         Clear(PgDetracServOpe);
     end;
 
+    procedure GetPercentageDetraction(CodTypeService: Code[20]): Decimal
+    var
+        DetracServOpe: Record "DetrAction Services Operation";
+    begin
+        DetracServOpe.Reset();
+        DetracServOpe.SetFilter(DetracServOpe."Type Services/Operation", '%1', 0);
+        DetracServOpe.SetRange(Code, CodTypeService);
+        if DetracServOpe.FindSet() then
+            exit(DetracServOpe."Detraction Percentage")
+        else
+            exit(0);
+    end;
+
     procedure ValidateTypeOfServiceAnticipo(VAR ParTypeofService: Text; VAR ParPurchDetrac: Decimal)
     var
         DetracServOpe: Record "DetrAction Services Operation";
