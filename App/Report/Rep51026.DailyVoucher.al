@@ -140,6 +140,7 @@ report 51026 "LU Daily Voucher"
                 field(reqShowAnalyticEntries; reqShowAnalyticEntries)
                 {
                     Caption = 'Analytic entries', Comment = 'ESM="Mov. Analíticos"';
+                    ApplicationArea = All;
                 }
             }
         }

@@ -7,11 +7,11 @@ pageextension 51187 "Mov. Entry. Employee PG" extends 234
         {
             field("Employee Posting Group"; "Employee Posting Group")
             {
-
+                ApplicationArea = All;
             }
             field("Entry No."; "Entry No.")
             {
-
+                ApplicationArea = All;
             }
 
         }

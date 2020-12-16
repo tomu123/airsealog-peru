@@ -10,6 +10,7 @@ pageextension 51099 "Setup G/L Account Card" extends "G/L Account Card"
                 Caption = 'Setup Localization';
                 field(FirstField; FirstField)
                 {
+                    ApplicationArea = All;
                     Visible = false;
                     Editable = false;
                 }

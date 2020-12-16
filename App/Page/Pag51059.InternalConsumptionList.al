@@ -20,7 +20,7 @@ page 51059 "Internal Consumption List"
             {
                 field("No."; "No.")
                 {
-
+                    ApplicationArea = All;
                     trigger OnAssistEdit()
                     begin
                         IF AssistEdit(xRec) THEN
@@ -29,7 +29,7 @@ page 51059 "Internal Consumption List"
                 }
                 field("Sell-to Customer No."; "Sell-to Customer No.")
                 {
-
+                    ApplicationArea = All;
                     trigger OnValidate()
                     begin
                         SelltoCustomerNoOnAfterValidat;
@@ -37,16 +37,19 @@ page 51059 "Internal Consumption List"
                 }
                 field("Sell-to Customer Name"; "Sell-to Customer Name")
                 {
+                    ApplicationArea = All;
                 }
                 field("Posting Date"; "Posting Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Document Date"; "Document Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
                 {
-
+                    ApplicationArea = Dimensions;
                     trigger OnValidate()
                     begin
                         ShortcutDimension1CodeOnAfterV;
@@ -54,6 +57,7 @@ page 51059 "Internal Consumption List"
                 }
                 field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                 {
+                    ApplicationArea = Dimensions;
 
                     trigger OnValidate()
                     begin
@@ -62,9 +66,11 @@ page 51059 "Internal Consumption List"
                 }
                 field("External Document No."; "External Document No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Assigned User ID"; "Assigned User ID")
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -80,6 +86,7 @@ page 51059 "Internal Consumption List"
                 Image = Invoice;
                 action(Statistics)
                 {
+                    ApplicationArea = All;
                     Caption = 'Statistics';
                     Image = Statistics;
                     Promoted = true;
@@ -97,6 +104,7 @@ page 51059 "Internal Consumption List"
                 action(Dimensions)
                 {
                     AccessByPermission = TableData 348 = R;
+                    ApplicationArea = Dimensions;
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     Promoted = true;
@@ -112,6 +120,7 @@ page 51059 "Internal Consumption List"
                 action(Customer)
                 {
                     Caption = 'Customer';
+                    ApplicationArea = All;
                     Image = Customer;
                     RunObject = Page 21;
                     RunPageLink = "No." = FIELD("Sell-to Customer No.");
@@ -120,6 +129,7 @@ page 51059 "Internal Consumption List"
                 action(Approvals)
                 {
                     Caption = 'Approvals';
+                    ApplicationArea = All;
                     Image = Approvals;
 
                     trigger OnAction()
@@ -133,6 +143,7 @@ page 51059 "Internal Consumption List"
                 action(Comments)
                 {
                     Caption = 'Co&mments';
+                    ApplicationArea = All;
                     Image = ViewComments;
                     Promoted = true;
                     PromotedCategory = Category8;
@@ -154,6 +165,7 @@ page 51059 "Internal Consumption List"
                 action(Approve)
                 {
                     Caption = 'Approve';
+                    ApplicationArea = All;
                     Image = Approve;
                     Promoted = true;
                     PromotedCategory = Category4;
@@ -168,6 +180,7 @@ page 51059 "Internal Consumption List"
                 action(Reject)
                 {
                     Caption = 'Reject';
+                    ApplicationArea = All;
                     Image = Reject;
                     Promoted = true;
                     PromotedCategory = Category4;
@@ -182,6 +195,7 @@ page 51059 "Internal Consumption List"
                 action(Delegate)
                 {
                     Caption = 'Delegate';
+                    ApplicationArea = All;
                     Image = Delegate;
                     Promoted = true;
                     PromotedCategory = Category4;
@@ -195,6 +209,7 @@ page 51059 "Internal Consumption List"
                 action(Comment)
                 {
                     Caption = 'Comments';
+                    ApplicationArea = All;
                     Image = ViewComments;
                     Promoted = true;
                     PromotedCategory = Category4;
@@ -212,6 +227,7 @@ page 51059 "Internal Consumption List"
                 action(Release)
                 {
                     Caption = 'Re&lease';
+                    ApplicationArea = Suite;
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Category5;
@@ -228,6 +244,7 @@ page 51059 "Internal Consumption List"
                 action(Reopen)
                 {
                     Caption = 'Re&open';
+                    ApplicationArea = Basic, Suite;
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Category5;
@@ -248,6 +265,7 @@ page 51059 "Internal Consumption List"
                 action(PostOrder)
                 {
                     Caption = 'P&ost';
+                    ApplicationArea = All;
                     Image = PostOrder;
                     Promoted = true;
                     PromotedCategory = Category6;
@@ -262,6 +280,7 @@ page 51059 "Internal Consumption List"
                 action(PostAndSend)
                 {
                     Caption = 'Post and &Send';
+                    ApplicationArea = All;
                     Ellipsis = true;
                     Image = PostSendTo;
                     Promoted = true;
@@ -276,6 +295,7 @@ page 51059 "Internal Consumption List"
                 action(PostAndPrint)
                 {
                     Caption = 'Post and &Print';
+                    ApplicationArea = All;
                     Image = PostPrint;
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Category6;
@@ -291,6 +311,7 @@ page 51059 "Internal Consumption List"
                 action(PostAndEmail)
                 {
                     Caption = 'Post and Email';
+                    ApplicationArea = All;
                     Image = PostMail;
 
                     trigger OnAction()

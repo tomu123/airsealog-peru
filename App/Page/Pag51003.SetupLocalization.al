@@ -457,48 +457,48 @@ page 51003 "Setup Localization"
                 end;
             }
 
-            action(Test0001)
-            {
-                ApplicationArea = All;
-                Visible = false;
-                trigger OnAction()
-                var
-                    CodeText: Code[20];
-                    ResponseEncript: Text;
-                    Record36: record 352;
-                    Codeunit1: Codeunit 2;
-                begin
-                    CodeText := 'Renato';
-                    if not EncryptionKeyExists() then
-                        CreateEncryptionKey();
-                    ResponseEncript := Encrypt(CodeText);
-                    Message(ResponseEncript);
+            // action(Test0001)
+            // {
+            //     ApplicationArea = All;
+            //     Visible = false;
+            //     trigger OnAction()
+            //     var
+            //         CodeText: Code[20];
+            //         ResponseEncript: Text;
+            //         Record36: record 352;
+            //         Codeunit1: Codeunit 2;
+            //     begin
+            //         CodeText := 'Renato';
+            //         if not EncryptionKeyExists() then
+            //             CreateEncryptionKey();
+            //         ResponseEncript := Encrypt(CodeText);
+            //         Message(ResponseEncript);
 
-                    ResponseEncript := Decrypt('NojehoUcBaEggeqxWyyXxrig/0YJ1Ej1HXPtgdUKwx6vcAtBxsBxHubLHy4JWGSTf61jIwK4DHl0Hju+v22S3jQIYExf9dj3P3D5mI+rplzhF39XCnI4j9PK7Z7cG50TXxW2RSxA6/J6yObyVDQtFw8lFvlW3LyPDOmKksblq63FrOow51/1xQJUwAjfWbXP3oQmXOr1Qa/2FZsQT/qQrvlwxzpTisz8WZPhv0P9mDZJNTGSLeYsWrlVjG39U/fe3ss5MXuoVClR9sgxy0DRxXZtHEdh2qH3SzuK3yNJc+yqdWKUtG/GLsUREshdtfYApJSlIB6rZhl+C24C8VE5rQ==');
-                    Message(ResponseEncript);
-                end;
-            }
-            action(ExportEncriptionKey)
-            {
-                ApplicationArea = All;
-                Visible = false;
-                trigger OnAction()
-                var
-                    CodeText: Code[20];
-                    ResponseEncript: Text;
-                    Record36: record 352;
-                    Codeunit1: Codeunit 2;
-                begin
-                    CodeText := 'Renato';
-                    if not EncryptionKeyExists() then
-                        CreateEncryptionKey();
-                    ResponseEncript := Encrypt(CodeText);
-                    Message(ResponseEncript);
+            //         ResponseEncript := Decrypt('NojehoUcBaEggeqxWyyXxrig/0YJ1Ej1HXPtgdUKwx6vcAtBxsBxHubLHy4JWGSTf61jIwK4DHl0Hju+v22S3jQIYExf9dj3P3D5mI+rplzhF39XCnI4j9PK7Z7cG50TXxW2RSxA6/J6yObyVDQtFw8lFvlW3LyPDOmKksblq63FrOow51/1xQJUwAjfWbXP3oQmXOr1Qa/2FZsQT/qQrvlwxzpTisz8WZPhv0P9mDZJNTGSLeYsWrlVjG39U/fe3ss5MXuoVClR9sgxy0DRxXZtHEdh2qH3SzuK3yNJc+yqdWKUtG/GLsUREshdtfYApJSlIB6rZhl+C24C8VE5rQ==');
+            //         Message(ResponseEncript);
+            //     end;
+            // }
+            // action(ExportEncriptionKey)
+            // {
+            //     ApplicationArea = All;
+            //     Visible = false;
+            //     trigger OnAction()
+            //     var
+            //         CodeText: Code[20];
+            //         ResponseEncript: Text;
+            //         Record36: record 352;
+            //         Codeunit1: Codeunit 2;
+            //     begin
+            //         CodeText := 'Renato';
+            //         if not EncryptionKeyExists() then
+            //             CreateEncryptionKey();
+            //         ResponseEncript := Encrypt(CodeText);
+            //         Message(ResponseEncript);
 
-                    ResponseEncript := Decrypt('NojehoUcBaEggeqxWyyXxrig/0YJ1Ej1HXPtgdUKwx6vcAtBxsBxHubLHy4JWGSTf61jIwK4DHl0Hju+v22S3jQIYExf9dj3P3D5mI+rplzhF39XCnI4j9PK7Z7cG50TXxW2RSxA6/J6yObyVDQtFw8lFvlW3LyPDOmKksblq63FrOow51/1xQJUwAjfWbXP3oQmXOr1Qa/2FZsQT/qQrvlwxzpTisz8WZPhv0P9mDZJNTGSLeYsWrlVjG39U/fe3ss5MXuoVClR9sgxy0DRxXZtHEdh2qH3SzuK3yNJc+yqdWKUtG/GLsUREshdtfYApJSlIB6rZhl+C24C8VE5rQ==');
-                    Message(ResponseEncript);
-                end;
-            }
+            //         ResponseEncript := Decrypt('NojehoUcBaEggeqxWyyXxrig/0YJ1Ej1HXPtgdUKwx6vcAtBxsBxHubLHy4JWGSTf61jIwK4DHl0Hju+v22S3jQIYExf9dj3P3D5mI+rplzhF39XCnI4j9PK7Z7cG50TXxW2RSxA6/J6yObyVDQtFw8lFvlW3LyPDOmKksblq63FrOow51/1xQJUwAjfWbXP3oQmXOr1Qa/2FZsQT/qQrvlwxzpTisz8WZPhv0P9mDZJNTGSLeYsWrlVjG39U/fe3ss5MXuoVClR9sgxy0DRxXZtHEdh2qH3SzuK3yNJc+yqdWKUtG/GLsUREshdtfYApJSlIB6rZhl+C24C8VE5rQ==');
+            //         Message(ResponseEncript);
+            //     end;
+            // }
         }
     }
 

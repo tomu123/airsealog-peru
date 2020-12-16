@@ -136,7 +136,6 @@ table 51000 "Legal Document"
         {
             DataClassification = ToBeClassified;
             Caption = 'Type Fiduciary', Comment = 'ESM="Cod. Tipo Fiduciario"';
-
         }
     }
 

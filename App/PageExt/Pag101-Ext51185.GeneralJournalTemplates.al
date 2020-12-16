@@ -7,6 +7,7 @@ pageextension 51185 "General Journal Templates-ADD" extends 101
         {
             field(ImportarPlanilla; ImportarPlanilla)
             {
+                ApplicationArea = All;
                 Caption = 'Importar Planilla';
             }
         }

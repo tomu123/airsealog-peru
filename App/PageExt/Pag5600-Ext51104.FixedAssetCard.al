@@ -10,6 +10,7 @@ pageextension 51104 "Setup Fixed Asset Card" extends "Fixed Asset Card"
                 Caption = 'Setup Localization';
                 field(FirstField; FirstField)
                 {
+                    ApplicationArea = All;
                     Visible = false;
                     Editable = false;
                 }

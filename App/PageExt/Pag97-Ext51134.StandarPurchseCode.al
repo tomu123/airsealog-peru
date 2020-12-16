@@ -44,6 +44,7 @@ pageextension 51134 "PR Purch. Quote Subform" extends "Purchase Quote Subform"
             {
                 Caption = 'Generic Purchase', Comment = 'ESM="Compra genérica"';
                 Image = PurchaseInvoice;
+                ApplicationArea = All;
 
                 trigger OnAction()
                 begin

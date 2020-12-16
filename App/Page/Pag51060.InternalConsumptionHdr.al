@@ -22,7 +22,7 @@ page 51060 "Internal Consumption Hdr"
                 field("No."; "No.")
                 {
                     Editable = false;
-
+                    ApplicationArea = All;
                     trigger OnAssistEdit()
                     begin
                         IF AssistEdit(xRec) THEN
@@ -31,17 +31,20 @@ page 51060 "Internal Consumption Hdr"
                 }
                 field("Sell-to Customer Name"; "Sell-to Customer Name")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Posting Date"; "Posting Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Document Date"; "Document Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
                 {
-
+                    ApplicationArea = Dimensions;
                     trigger OnValidate()
                     begin
                         ShortcutDimension1CodeOnAfterV;
@@ -49,6 +52,7 @@ page 51060 "Internal Consumption Hdr"
                 }
                 field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                 {
+                    ApplicationArea = Dimensions;
 
                     trigger OnValidate()
                     begin
@@ -57,24 +61,30 @@ page 51060 "Internal Consumption Hdr"
                 }
                 field("Internal Consumption"; "Internal Consumption")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Responsibility Center"; "Responsibility Center")
                 {
+                    ApplicationArea = All;
                 }
                 field("Posting Description"; "Posting Description")
                 {
+                    ApplicationArea = All;
                 }
                 field("External Document No."; "External Document No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'Document No.';
                 }
                 field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
                 {
+                    ApplicationArea = All;
                     Visible = true;
                 }
                 field("Assigned User ID"; "Assigned User ID")
                 {
+                    ApplicationArea = All;
                 }
                 group("Serie No. Register")
                 {
@@ -90,12 +100,15 @@ page 51060 "Internal Consumption Hdr"
                             //GridLayout = Rows;
                             field("Posting No. Series"; "Posting No. Series")
                             {
+                                ApplicationArea = All;
                             }
                             field("SetLastSerieNoUsedToBe"; PALJUtilities."SetLastSerieNoUsedToBe"(Rec))
                             {
+                                ApplicationArea = All;
                             }
                             field("Shipping No. Series"; "Shipping No. Series")
                             {
+                                ApplicationArea = All;
                             }
                         }
                     }
@@ -104,6 +117,7 @@ page 51060 "Internal Consumption Hdr"
             part(IntConsSubform; "Internal Consumption Subform")
             {
                 SubPageLink = "Document No." = FIELD("No.");
+                ApplicationArea = All;
             }
         }
 
@@ -119,6 +133,7 @@ page 51060 "Internal Consumption Hdr"
                 Image = Invoice;
                 action(Statistics)
                 {
+                    ApplicationArea = All;
                     Caption = 'Statistics';
                     Image = Statistics;
                     Promoted = true;
@@ -136,6 +151,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Dimensions)
                 {
                     AccessByPermission = TableData 348 = R;
+                    ApplicationArea = Dimensions;
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     Promoted = true;
@@ -151,6 +167,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Customer)
                 {
                     Caption = 'Customer';
+                    ApplicationArea = All;
                     Image = Customer;
                     RunObject = Page 21;
                     RunPageLink = "No." = FIELD("Sell-to Customer No.");
@@ -159,6 +176,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Approvals)
                 {
                     Caption = 'Approvals';
+                    ApplicationArea = All;
                     Image = Approvals;
 
                     trigger OnAction()
@@ -172,6 +190,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Comments)
                 {
                     Caption = 'Co&mments';
+                    ApplicationArea = All;
                     Image = ViewComments;
                     Promoted = true;
                     PromotedCategory = Category8;
@@ -193,6 +212,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Approve)
                 {
                     Caption = 'Approve';
+                    ApplicationArea = All;
                     Image = Approve;
                     Promoted = true;
                     PromotedCategory = Category4;
@@ -207,6 +227,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Reject)
                 {
                     Caption = 'Reject';
+                    ApplicationArea = All;
                     Image = Reject;
                     Promoted = true;
                     PromotedCategory = Category4;
@@ -221,6 +242,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Delegate)
                 {
                     Caption = 'Delegate';
+                    ApplicationArea = All;
                     Image = Delegate;
                     Promoted = true;
                     PromotedCategory = Category4;
@@ -234,6 +256,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Comment)
                 {
                     Caption = 'Comments';
+                    ApplicationArea = All;
                     Image = ViewComments;
                     Promoted = true;
                     PromotedCategory = Category4;
@@ -251,6 +274,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Release)
                 {
                     Caption = 'Re&lease';
+                    ApplicationArea = Suite;
                     Image = ReleaseDoc;
                     Promoted = true;
                     PromotedCategory = Category5;
@@ -267,6 +291,7 @@ page 51060 "Internal Consumption Hdr"
                 action(Reopen)
                 {
                     Caption = 'Re&open';
+                    ApplicationArea = Basic, Suite;
                     Image = ReOpen;
                     Promoted = true;
                     PromotedCategory = Category5;
@@ -287,6 +312,7 @@ page 51060 "Internal Consumption Hdr"
                 action(MyPost)
                 {
                     Caption = 'P&ost';
+                    ApplicationArea = All;
                     Image = PostOrder;
                     Promoted = true;
                     PromotedCategory = Category6;
@@ -301,6 +327,7 @@ page 51060 "Internal Consumption Hdr"
                 action(PostAndSend)
                 {
                     Caption = 'Post and &Send';
+                    ApplicationArea = All;
                     Ellipsis = true;
                     Image = PostSendTo;
                     Promoted = true;
@@ -315,6 +342,7 @@ page 51060 "Internal Consumption Hdr"
                 action(PostAndPrint)
                 {
                     Caption = 'Post and &Print';
+                    ApplicationArea = All;
                     Image = PostPrint;
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Category6;
@@ -330,6 +358,7 @@ page 51060 "Internal Consumption Hdr"
                 action(PostAndEmail)
                 {
                     Caption = 'Post and Email';
+                    ApplicationArea = All;
                     Image = PostMail;
 
                     trigger OnAction()

@@ -569,16 +569,16 @@ codeunit 51008 "Setup Localization"
                 Error(ErrorCurrencyCodeMixed);
     end;
 
-    procedure SetPasswordEncryp(Password: Text)
-    var
-        CodeText: Code[20];
-        ResponseEncrypt: Text;
-    begin
-        CodeText := 'Renato';
-        CreateEncryptionKey();
-        ResponseEncrypt := Encrypt(CodeText);
-        Message(ResponseEncrypt);
-    end;
+    // procedure SetPasswordEncryp(Password: Text)
+    // var
+    //     CodeText: Code[20];
+    //     ResponseEncrypt: Text;
+    // begin
+    //     CodeText := 'Renato';
+    //     CreateEncryptionKey();
+    //     ResponseEncrypt := Encrypt(CodeText);
+    //     Message(ResponseEncrypt);
+    // end;
 
     procedure AlertAndViewWhitNotification(Message: Text; ShowText: Text; CodeunitID: Integer; FunctionName: Text; Parameter: array[4] of Text; ValueParameter: array[4] of Text)
     begin

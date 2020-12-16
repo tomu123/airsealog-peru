@@ -136,7 +136,7 @@ pageextension 51038 "Setup Payment Journal" extends "Payment Journal"
             field("Posting Text"; "Posting Text")
             {
 
-
+                ApplicationArea = All;
             }
         }
         //End PC 27.09.20

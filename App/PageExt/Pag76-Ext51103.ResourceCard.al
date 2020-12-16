@@ -10,6 +10,7 @@ pageextension 51103 "Setup Resource Card" extends "Resource Card"
                 Caption = 'Setup Localization';
                 field(FirstField; FirstField)
                 {
+                    ApplicationArea = All;
                     Visible = false;
                     Editable = false;
                 }

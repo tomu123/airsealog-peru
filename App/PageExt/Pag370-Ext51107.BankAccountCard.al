@@ -27,6 +27,7 @@ pageextension 51107 "Setup Bank Account Card" extends "Bank Account Card"
                 Caption = 'Setup Localization', Comment = 'ESM="Configuración de localización"';
                 field(FirstField; FirstField)
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     Visible = false;
                 }

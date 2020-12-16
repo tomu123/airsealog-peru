@@ -44,6 +44,7 @@ pageextension 51093 "ST Vendor Bank Account Card" extends "Vendor Bank Account C
                 Caption = 'Telecredit', Comment = 'ESM="Telecreditos"';
                 field("Fiduciary"; Rec."Fiduciary")
                 {
+                    ApplicationArea = All;
                     trigger OnValidate()
                     begin
                         fnFieldsEditables();
@@ -51,6 +52,7 @@ pageextension 51093 "ST Vendor Bank Account Card" extends "Vendor Bank Account C
                 }
                 field("Type Fiduciary"; Rec."Type Fiduciary")
                 {
+                    ApplicationArea = All;
                     Editable = gFieldEditable;
                     Enabled = gFieldEditable;
                 }

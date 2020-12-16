@@ -27,6 +27,7 @@ page 51024 "Payment Schedule"
                 }
                 field("Document Date"; "Document Date")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     Enabled = false;
                 }

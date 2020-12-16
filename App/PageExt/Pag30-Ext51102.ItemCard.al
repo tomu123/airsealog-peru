@@ -10,6 +10,7 @@ pageextension 51102 "Setup Item Card" extends "Item Card"
                 Caption = 'Setup Localization';
                 field(FirstField; FirstField)
                 {
+                    ApplicationArea = All;
                     Visible = false;
                     Editable = false;
                 }

@@ -61,6 +61,7 @@ report 51726 GenJournalReturn
                     {
 
                         Editable = false;
+                        ApplicationArea = All;
                         Caption = 'Nombre de fichero';
                         trigger OnAssistEdit()
                         var
@@ -81,6 +82,7 @@ report 51726 GenJournalReturn
                     field(gSheetName; gSheetName)
                     {
                         Editable = false;
+                        ApplicationArea = All;
                         Caption = 'Nombre Hoja';
                         trigger OnAssistEdit()
                         var

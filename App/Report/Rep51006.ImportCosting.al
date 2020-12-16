@@ -202,6 +202,7 @@ report 51006 "Import Costing"
                 {
                     field(Detalle; Detalle)
                     {
+                        ApplicationArea = All;
                         Caption = 'View Detail', Comment = 'Ver Detalle';
                     }
 

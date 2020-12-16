@@ -19,7 +19,7 @@ page 51064 "Internal Consumption Subform"
             {
                 field(Type; Type)
                 {
-
+                    ApplicationArea = Advanced;
                     trigger OnValidate()
                     begin
                         TypeOnAfterValidate;
@@ -27,7 +27,7 @@ page 51064 "Internal Consumption Subform"
                         TypeChosen := HasTypeToFillMandatoryFields;
                         SetLocationCodeMandatory;
 
-                        IF xRec."No." <> '' THEN
+                        if xRec."No." <> '' then
                             RedistributeTotalsOnAfterValidate;
                         //"Item Category Group Panol" := gSetupLocalization."Item Category Group Pañol";
                         "Internal Comsuption" := TRUE;
@@ -36,6 +36,7 @@ page 51064 "Internal Consumption Subform"
                 field(gNo; gNo)
                 {
                     TableRelation = Item;
+                    ApplicationArea = All;
                     Caption = 'No.';
                     trigger OnValidate()
                     begin
@@ -45,6 +46,7 @@ page 51064 "Internal Consumption Subform"
                 field("No."; "No.")
                 {
                     Enabled = false;
+                    ApplicationArea = All;
                     TableRelation = Item;
                     Visible = false;
                     trigger OnValidate()
@@ -53,7 +55,7 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("Variant Code"; "Variant Code")
                 {
-
+                    ApplicationArea = All;
                     trigger OnValidate()
                     begin
                         VariantCodeOnAfterValidate;
@@ -61,12 +63,15 @@ page 51064 "Internal Consumption Subform"
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field("Description 2"; "Description 2")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit of Measure Code"; "Unit of Measure Code")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -76,6 +81,7 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("Location Code"; "Location Code")
                 {
+                    ApplicationArea = Location;
 
                     trigger OnValidate()
                     begin
@@ -85,10 +91,11 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("Inventory Availability"; "Inventory Availability")
                 {
+                    ApplicationArea = All;
                 }
                 field(Quantity; Quantity)
                 {
-
+                    ApplicationArea = All;
                     trigger OnValidate()
                     begin
                         QuantityOnAfterValidate;
@@ -96,28 +103,33 @@ page 51064 "Internal Consumption Subform"
 
                         SalesHeader.SETRANGE(SalesHeader."No.", "Document No.");
                         SalesHeader.SETRANGE(SalesHeader."Document Type", "Document Type");
-                        IF SalesHeader.FINDSET THEN BEGIN
-                            IF SalesHeader."Internal Consumption" = TRUE THEN
+                        if SalesHeader.FINDSET then begin
+                            if SalesHeader."Internal Consumption" = TRUE then
                                 "Unit Price" := 0;
 
                             CurrPage.UPDATE;
-                        END;
+                        end;
                     end;
                 }
                 field("Unit of Measure"; "Unit of Measure")
                 {
+                    ApplicationArea = All;
                 }
                 field("Appl.-from Item Entry"; "Appl.-from Item Entry")
                 {
+                    ApplicationArea = All;
                 }
                 field("Appl.-to Item Entry"; "Appl.-to Item Entry")
                 {
+                    ApplicationArea = All;
                 }
                 field("Deferral Code"; "Deferral Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Resource Type"; "Resource Type")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -129,7 +141,7 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("Resource No."; "Resource No.")
                 {
-
+                    ApplicationArea = All;
                     trigger OnValidate()
                     begin
                         fGetDimesionsResource();
@@ -137,15 +149,19 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
                 {
+                    ApplicationArea = Dimensions;
                 }
                 field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                 {
+                    ApplicationArea = Dimensions;
                 }
                 field("ShortcutDimCode[3]"; ShortcutDimCode[3])
                 {
+                    ApplicationArea = Dimensions;
                     CaptionClass = '1,2,3';
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(3),
                                                                   "Dimension Value Type" = CONST(Standard),
@@ -159,6 +175,7 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("ShortcutDimCode[4]"; ShortcutDimCode[4])
                 {
+                    ApplicationArea = Dimensions;
                     CaptionClass = '1,2,4';
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(4),
                                                                   "Dimension Value Type" = CONST(Standard),
@@ -172,6 +189,7 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("ShortcutDimCode[5]"; ShortcutDimCode[5])
                 {
+                    ApplicationArea = Dimensions;
                     CaptionClass = '1,2,5';
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(5),
                                                                   "Dimension Value Type" = CONST(Standard),
@@ -185,6 +203,7 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("ShortcutDimCode[6]"; ShortcutDimCode[6])
                 {
+                    ApplicationArea = Dimensions;
                     CaptionClass = '1,2,6';
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(6),
                                                                   "Dimension Value Type" = CONST(Standard),
@@ -198,6 +217,7 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("ShortcutDimCode[7]"; ShortcutDimCode[7])
                 {
+                    ApplicationArea = Dimensions;
                     CaptionClass = '1,2,7';
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(7),
                                                                   "Dimension Value Type" = CONST(Standard),
@@ -211,6 +231,7 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("ShortcutDimCode[8]"; ShortcutDimCode[8])
                 {
+                    ApplicationArea = Dimensions;
                     CaptionClass = '1,2,8';
                     TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(8),
                                                                   "Dimension Value Type" = CONST(Standard),
@@ -224,17 +245,21 @@ page 51064 "Internal Consumption Subform"
                 }
                 field("Document No."; "Document No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Requisition No."; "Requisition No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Resource Fam.No."; fnGetResourceFam)
                 {
+                    ApplicationArea = All;
                     Caption = 'Resource Fam.No.';
                     Editable = false;
                 }
                 field("Department Name"; fnGetDepartmentName)
                 {
+                    ApplicationArea = All;
                     Caption = 'Department Name';
                     Editable = false;
                 }
@@ -246,6 +271,7 @@ page 51064 "Internal Consumption Subform"
                     Visible = false;
                     field("Invoice Discount Amount"; TotalSalesLine."Inv. Discount Amount")
                     {
+                        ApplicationArea = All;
                         AutoFormatExpression = TotalSalesHeader."Currency Code";
                         AutoFormatType = 1;
                         Caption = 'Invoice Discount Amount';
@@ -264,6 +290,7 @@ page 51064 "Internal Consumption Subform"
                     }
                     field("Invoice Disc. Pct."; SalesCalcDiscByType.GetCustInvoiceDiscountPct(Rec))
                     {
+                        ApplicationArea = All;
                         Caption = 'Invoice Discount %';
                         DecimalPlaces = 0 : 2;
                         Editable = false;
@@ -277,6 +304,7 @@ page 51064 "Internal Consumption Subform"
                     Visible = false;
                     field("Total Amount Excl. VAT"; TotalSalesLine.Amount)
                     {
+                        ApplicationArea = All;
                         AutoFormatExpression = TotalSalesHeader."Currency Code";
                         AutoFormatType = 1;
                         CaptionClass = DocumentTotals.GetTotalExclVATCaption(SalesHeader."Currency Code");
@@ -288,6 +316,7 @@ page 51064 "Internal Consumption Subform"
                     }
                     field("Total VAT Amount"; VATAmount)
                     {
+                        ApplicationArea = All;
                         AutoFormatExpression = TotalSalesHeader."Currency Code";
                         AutoFormatType = 1;
                         CaptionClass = DocumentTotals.GetTotalVATCaption(SalesHeader."Currency Code");
@@ -298,6 +327,7 @@ page 51064 "Internal Consumption Subform"
                     }
                     field("Total Amount Incl. VAT"; TotalSalesLine."Amount Including VAT")
                     {
+                        ApplicationArea = All;
                         AutoFormatExpression = TotalSalesHeader."Currency Code";
                         AutoFormatType = 1;
                         CaptionClass = DocumentTotals.GetTotalInclVATCaption(SalesHeader."Currency Code");
@@ -307,6 +337,7 @@ page 51064 "Internal Consumption Subform"
                     }
                     field(RefreshTotals; RefreshMessageText)
                     {
+                        ApplicationArea = All;
                         DrillDown = true;
                         Editable = false;
                         Enabled = RefreshMessageEnabled;
