@@ -27,7 +27,7 @@ page 51064 "Internal Consumption Subform"
                         TypeChosen := HasTypeToFillMandatoryFields;
                         SetLocationCodeMandatory;
 
-                        if xRec."No." <> '' then
+                        if xRec."No." <> '' THEN
                             RedistributeTotalsOnAfterValidate;
                         //"Item Category Group Panol" := gSetupLocalization."Item Category Group Pañol";
                         "Internal Comsuption" := TRUE;

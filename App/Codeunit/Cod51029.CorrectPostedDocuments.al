@@ -1,5 +1,10 @@
 codeunit 51029 "LD Correct Posted Documents"
 {
+    Permissions = tabledata "G/L Entry" = rm, tabledata "Sales Invoice Header" = rimd, tabledata "Sales Header" = rm,
+                tabledata "Cust. Ledger Entry" = rm, tabledata "VAT Entry" = rm, tabledata "Value Entry" = rm, tabledata "Item Ledger Entry" = rm,
+                tabledata "Job Ledger Entry" = rm, tabledata "Bank Account Ledger Entry" = rm, tabledata "Detailed Cust. Ledg. Entry" = rm, tabledata "Cost Entry" = rm,
+                tabledata "Purchase Header" = rm, tabledata "Vendor Ledger Entry" = rm, tabledata "Purch. Inv. Header" = rimd, tabledata "Purch. Cr. Memo Hdr." = rimd,
+                tabledata "Sales Cr.Memo Header" = rimd, tabledata "Sales Invoice Line" = rimd, tabledata "Sales Cr.Memo Line" = rimd, tabledata "Purch. Inv. Line" = rimd, tabledata "Purch. Cr. Memo Line" = rimd;
     trigger OnRun()
     begin
 
@@ -24,7 +29,7 @@ codeunit 51029 "LD Correct Posted Documents"
             if not Confirm('¿Desea corregir el Documento %1?', false, pSalesInvoiceHeader."No.") then
                 exit(false);
 
-            CreateCreditMemoFromPostedSalesinvoice(SalesHeader, pSalesInvoiceHeader, SalesHeader."Legal Status");
+            CreateCreditMemoFromPostedSalesinvoice(SalesHeader, pSalesInvoiceHeader, SalesHeader."Legal Status"::OutFlow);
             Codeunit.Run(Codeunit::"Sales-Post", SalesHeader);
             RenameSalesDocument(Database::"Sales Invoice Header", pSalesInvoiceHeader."No.");
         end;
@@ -239,8 +244,16 @@ codeunit 51029 "LD Correct Posted Documents"
         SalesSetup: Record "Sales & Receivables Setup";
         SalesInvHeader: Record "Sales Invoice Header";
         CorrectPostedSalesInvoice: Codeunit "Correct Posted Sales Invoice";
+        NoSerie: Record "No. Series";
     begin
         SalesSetup.Get();
+        NoSerie.Reset();
+        NoSerie.SetRange("Operation Type", NoSerie."Operation Type"::Sales);
+        NoSerie.SetRange("Legal Document", '07');
+        NoSerie.SetRange("Legal Status", NoSerie."Legal Status"::OutFlow);
+        NoSerie.SetRange("Internal Operation", true);
+        if NoSerie.FindSet() then;
+
         SalesSetup.TestField("Posted Credit Memo Nos.");
         SalesSetup.TestField("Posted Return Receipt Nos.");
         if SalesInvHeader.Get(pSalesInvoiceHeader."No.") then
@@ -248,7 +261,8 @@ codeunit 51029 "LD Correct Posted Documents"
         SalesHeader."Payment Terms Code" := pSalesInvoiceHeader."Payment Terms Code";
         SalesHeader.Status := SalesHeader.Status::Released;
         SalesSetup.TestField("Posted Credit Memo Nos.");
-        SalesHeader."Posting No. Series" := SalesSetup."Posted Credit Memo Nos.";
+        //SalesHeader."Posting No. Series" := SalesSetup."Posted Credit Memo Nos.";
+        SalesHeader."Posting No. Series" := NoSerie.Code;
         SalesHeader."Legal Document" := '07';
         SalesHeader.Validate("Legal Status", LegalStatus);
         SalesHeader.Validate(SalesHeader."Applies-to Doc. Type", SalesHeader."Applies-to Doc. Type"::Invoice);
@@ -282,16 +296,20 @@ codeunit 51029 "LD Correct Posted Documents"
         NewDocumentNo: Code[20];
         IsOutFlow: Boolean;
         LegalStatus: Option;
+        Prefix: Text;
         ErrorRenameSDoc: Label 'The number of characters has been exceeded to rename document %1.';
     begin
         if StrLen(DocumentNo) + 1 > 20 then
             Error(StrSubstNo(ErrorRenameSDoc, DocumentNo));
-        NewDocumentNo := 'E' + DocumentNo;
+
+        Prefix := GetPrefixSalesDocument(SourceTableID, DocumentNo);
+        //NewDocumentNo := 'E' + DocumentNo;
+        NewDocumentNo := Prefix + DocumentNo;
 
         case SourceTableID of
             112:
                 begin
-                    SalesInvHeader.Get(DocumentNo);
+                    if SalesInvHeader.Get(DocumentNo) then;
                     LegalStatus := SalesInvHeader."Legal Status";
                     IsOutFlow := SalesInvHeader."Legal Status" = SalesInvHeader."Legal Status"::OutFlow;
                     if IsOutFlow then begin
@@ -319,7 +337,7 @@ codeunit 51029 "LD Correct Posted Documents"
                 end;
             114:
                 begin
-                    SalesCrMemoHdr.Get(DocumentNo);
+                    if SalesCrMemoHdr.Get(DocumentNo) then;
                     LegalStatus := SalesCrMemoHdr."Legal Status";
                     IsOutFlow := SalesCrMemoHdr."Legal Status" = SalesCrMemoHdr."Legal Status"::OutFlow;
                     if IsOutFlow then begin
@@ -397,6 +415,38 @@ codeunit 51029 "LD Correct Posted Documents"
         OnAfterRenameSalesDocument(DocumentNo, NewDocumentNo, IsOutFlow);
     end;
 
+    local procedure GetPrefixSalesDocument(SourceTableID: Integer; DocumentNo: Code[20]): Text
+    var
+        SalesInvHeader: Record "Sales Invoice Header";
+        SalesCrMemoHdr: Record "Sales Cr.Memo Header";
+        Prefix: Text;
+    begin
+        case SourceTableID of
+            112:
+                begin
+                    SalesInvHeader.Reset();
+                    SalesInvHeader.SetCurrentKey("No.");
+                    SalesInvHeader.SetFilter("No.", '%1', '*' + DocumentNo);
+                    SalesInvHeader.Ascending(true);
+                    if SalesInvHeader.FindSet() then begin
+                        Prefix := DelChr(SalesInvHeader."No.", '=', DocumentNo);
+                        Prefix := Prefix + 'E';
+                    end;
+                end;
+            114:
+                begin
+                    SalesCrMemoHdr.Reset();
+                    SalesCrMemoHdr.SetCurrentKey("No.");
+                    SalesCrMemoHdr.SetFilter("No.", '%1', '*' + DocumentNo);
+                    SalesCrMemoHdr.Ascending(true);
+                    if SalesCrMemoHdr.FindSet() then begin
+                        Prefix := DelChr(SalesCrMemoHdr."No.", '=', DocumentNo);
+                        Prefix := Prefix + 'E';
+                    end;
+                end;
+        end;
+        exit(Prefix);
+    end;
     //******************************************** End Sales *****************************************************
 
     //******************************************** Begin Purchase *****************************************************
@@ -1025,7 +1075,7 @@ codeunit 51029 "LD Correct Posted Documents"
                         until VATEntry.Next() = 0;
 
                     if SalesHeader."Legal Status" = SalesHeader."Legal Status"::OutFlow then begin
-                        RenameSalesDocument(Database::"Sales Invoice Header", SalesCrMemoHdr."No.");
+                        RenameSalesDocument(Database::"Sales Invoice Header", SalesInvoiceHeader."No.");
                     end;
                 end;
         end;

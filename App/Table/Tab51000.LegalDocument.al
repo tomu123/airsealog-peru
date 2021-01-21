@@ -2,7 +2,8 @@ table 51000 "Legal Document"
 {
     DataClassification = ToBeClassified;
     Caption = 'Legal Document', Comment = 'ESM="Documento Legal"';
-
+    LookupPageId = "Legal Document List";
+    DrillDownPageId = "Legal Document List";
     fields
     {
         field(51001; "Option Type"; Option)

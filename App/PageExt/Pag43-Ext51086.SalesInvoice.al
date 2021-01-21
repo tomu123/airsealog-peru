@@ -11,42 +11,35 @@ pageextension 51086 "Detrac. Sales Invoice" extends "Sales Invoice"
                 field("Sales Detraction"; "Sales Detraction")
                 {
                     ApplicationArea = All;
-                    Caption = 'Detraction';
                 }
                 field("Operation Type Detrac"; "Operation Type Detrac")
                 {
                     ApplicationArea = All;
-                    Caption = 'Operation Type';
                     Editable = "Sales Detraction";
                 }
                 field("Service Type Detrac"; "Service Type Detrac")
                 {
                     ApplicationArea = All;
-                    Caption = 'Service Type';
                     Editable = "Sales Detraction";
                 }
                 field("Payment Method Code Detrac"; "Payment Method Code Detrac")
                 {
                     ApplicationArea = All;
-                    Caption = 'Payment Method Detrac';
                     Editable = "Sales Detraction";
                 }
                 field("Sales % Detraction"; "Sales % Detraction")
                 {
                     ApplicationArea = All;
-                    Caption = '% Detraction';
                     Editable = "Sales Detraction";
                 }
                 field("Sales Amt Detraction"; "Sales Amt Detraction")
                 {
                     ApplicationArea = All;
-                    Caption = 'Amount Detraction';
                     Editable = "Sales Detraction";
                 }
                 field("Sales Amt Detraction (LCY)"; "Sales Amt Detraction (LCY)")
                 {
                     ApplicationArea = All;
-                    Caption = 'Amount Detraction (LCY)';
                     Editable = "Sales Detraction";
                 }
             }
@@ -172,7 +165,7 @@ pageextension 51086 "Detrac. Sales Invoice" extends "Sales Invoice"
             group(NotaDebito)
             {
                 Visible = true;
-                Caption = 'Debit Note', Comment = 'Nota Débito';
+                Caption = 'Debit Note', Comment = 'ESM="Nota Débito"';
 
                 field("Applies-to Doc. Type"; "Applies-to Doc. Type")
                 {

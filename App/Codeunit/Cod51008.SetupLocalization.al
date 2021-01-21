@@ -703,15 +703,13 @@ codeunit 51008 "Setup Localization"
         lclRecDocumentAttachment: Record "Document Attachment";
         DocumentAttachmentError: Label 'attached file not exist.', Comment = 'ESM=" archivo adjunto no existe."';
     begin
-        if PurchaseHeader."Legal Document" in ['01', '02', '07', '08'] then begin
-            lclRecDocumentAttachment.SetRange("Table ID", 38);
-            lclRecDocumentAttachment.SetRange("Document Type", PurchaseHeader."Document Type");
-            lclRecDocumentAttachment.SetRange("No.", PurchaseHeader."No.");
-            if not lclRecDocumentAttachment.FindSet() then
-                Error(DocumentAttachmentError);
-        end;
-
-
+        // if PurchaseHeader."Legal Document" in ['01', '02', '07', '08'] then begin
+        //     lclRecDocumentAttachment.SetRange("Table ID", 38);
+        //     lclRecDocumentAttachment.SetRange("Document Type", PurchaseHeader."Document Type");
+        //     lclRecDocumentAttachment.SetRange("No.", PurchaseHeader."No.");
+        //     if not lclRecDocumentAttachment.FindSet() then
+        //         Error(DocumentAttachmentError);
+        // end;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeCreateGLEntryGainLossInsertGLEntry', '', false, false)]

@@ -1,5 +1,7 @@
 codeunit 51004 "DetrAction Calculation"
 {
+    Permissions = tabledata "G/L Entry" = rimd, TableData "Purch. Inv. Header" = rimd,
+                  tabledata "Vendor Ledger Entry" = rimd;
     trigger OnRun()
     Begin
 

@@ -277,11 +277,11 @@ pageextension 51152 "ST Vendor Card" extends "Vendor Card"
     var
         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
     begin
-        if not "Status approved" then begin
-            if ApprovalsMgmt.CheckVendorApprovalsWorkflowEnabled(Rec) then
-                ApprovalsMgmt.OnSendVendorForApproval(Rec);
-            "Status approved" := true;
-            Modify();
-        end;
+        // if not "Status approved" then begin
+        //     if ApprovalsMgmt.CheckVendorApprovalsWorkflowEnabled(Rec) then
+        //         ApprovalsMgmt.OnSendVendorForApproval(Rec);
+        //     "Status approved" := true;
+        //     Modify();
+        // end;
     end;
 }

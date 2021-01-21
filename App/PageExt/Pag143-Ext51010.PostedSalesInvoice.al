@@ -38,10 +38,10 @@ pageextension 51010 "Legal Doc. Pstd Sales Inv." extends "Posted Sales Invoices"
                 var
                     NewDocumentNo: Code[20];
                 begin
-                    NewDocumentNo := Rec."No.";
+                    //NewDocumentNo := Rec."No.";
                     LDCorrectPstdDoc.SalesCorrectInvoice(Rec);
-                    Get(NewDocumentNo);
-                    SelectLatestVersion();
+                    //Get(NewDocumentNo);
+                    //SelectLatestVersion();
                 end;
             }
 

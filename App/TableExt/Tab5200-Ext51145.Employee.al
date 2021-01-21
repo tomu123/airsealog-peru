@@ -58,7 +58,7 @@ tableextension 51145 "ST Employee" extends Employee
     begin
         if "VAT Registration No." <> '' then
             if (("VAT Registration Type" <> '') and ("VAT Registration Type" = '1') and (StrLen("VAT Registration No.") <> 8)) or
-                (("VAT Registration Type" <> '') and ("VAT Registration Type" = '6') and (StrLen("VAT Registration No.") <> 12)) then
+                (("VAT Registration Type" <> '') and ("VAT Registration Type" = '6') and (StrLen("VAT Registration No.") <> 11)) then
                 Error(ErrorVatRegistrationNo);
     end;
 

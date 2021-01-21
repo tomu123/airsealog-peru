@@ -9783,41 +9783,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Detraction - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1830809694 - Control 903500139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
-          <source>Detraction</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Sales Detraction - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1830809694 - Control 3796322276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
-          <source>Operation Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Operation Type Detrac - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1830809694 - Control 4145097476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
-          <source>Service Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Service Type Detrac - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1830809694 - Control 2132268135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
-          <source>Payment Method Detrac</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Payment Method Code Detrac - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1830809694 - Control 4149145576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
-          <source>% Detraction</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Sales % Detraction - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1830809694 - Control 1786891467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
-          <source>Amount Detraction</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Sales Amt Detraction - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1830809694 - Control 1160757562 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
-          <source>Amount Detraction (LCY)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control Sales Amt Detraction (LCY) - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 2136146676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Currency Code</source>
           <note from="Developer" annotates="general" priority="2">ESM="Cód. Divisa"</note>
@@ -9835,7 +9800,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 1830809694 - Control 685493271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4034894651">
           <source>Debit Note</source>
-          <note from="Developer" annotates="general" priority="2">Nota Débito</note>
+          <note from="Developer" annotates="general" priority="2">ESM="Nota Débito"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Detrac. Sales Invoice - Control NotaDebito - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2988390158 - Control 4068444749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1708100201">
@@ -11025,7 +10990,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 1346423013 - Field 544368334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>VAT Registration Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo Doc. Identidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field VAT Registration Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1346423013 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
