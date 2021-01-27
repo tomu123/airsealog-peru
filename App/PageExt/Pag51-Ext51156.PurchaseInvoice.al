@@ -92,6 +92,10 @@ pageextension 51156 "ST Purchase Invoice" extends "Purchase Invoice"
                 Importance = Promoted;
                 Visible = true;
             }
+            field("Posting No."; "Posting No.")
+            {
+                ApplicationArea = All;
+            }
         }
         modify("Currency Code")
         {

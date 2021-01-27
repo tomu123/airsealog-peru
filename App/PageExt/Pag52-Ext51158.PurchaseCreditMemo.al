@@ -90,6 +90,10 @@ pageextension 51158 "ST Purchase Credit Memo" extends "Purchase Credit Memo"
                 Importance = Promoted;
                 Visible = true;
             }
+            field("Posting No."; "Posting No.")
+            {
+                ApplicationArea = All;
+            }
         }
         modify("Currency Code")
         {

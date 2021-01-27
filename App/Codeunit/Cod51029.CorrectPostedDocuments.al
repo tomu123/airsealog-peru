@@ -4,7 +4,8 @@ codeunit 51029 "LD Correct Posted Documents"
                 tabledata "Cust. Ledger Entry" = rm, tabledata "VAT Entry" = rm, tabledata "Value Entry" = rm, tabledata "Item Ledger Entry" = rm,
                 tabledata "Job Ledger Entry" = rm, tabledata "Bank Account Ledger Entry" = rm, tabledata "Detailed Cust. Ledg. Entry" = rm, tabledata "Cost Entry" = rm,
                 tabledata "Purchase Header" = rm, tabledata "Vendor Ledger Entry" = rm, tabledata "Purch. Inv. Header" = rimd, tabledata "Purch. Cr. Memo Hdr." = rimd,
-                tabledata "Sales Cr.Memo Header" = rimd, tabledata "Sales Invoice Line" = rimd, tabledata "Sales Cr.Memo Line" = rimd, tabledata "Purch. Inv. Line" = rimd, tabledata "Purch. Cr. Memo Line" = rimd;
+                tabledata "Sales Cr.Memo Header" = rimd, tabledata "Sales Invoice Line" = rimd, tabledata "Sales Cr.Memo Line" = rimd, tabledata "Purch. Inv. Line" = rimd,
+                tabledata "Purch. Cr. Memo Line" = rimd, tabledata "Detailed Vendor Ledg. Entry" = rim;
     trigger OnRun()
     begin
 
@@ -664,7 +665,7 @@ codeunit 51029 "LD Correct Posted Documents"
         end;
         PurchHeader."Vendor Cr. Memo No." := 'NC' + pPurchInvHeader."Vendor Invoice No.";
         PurchHeader.Modify();
-
+        CheckNumberVendorMemoNop(PurchHeader."Vendor Cr. Memo No.", PurchHeader."Buy-from Vendor No.");
         OnAfterCreatePurchCrMemoFromPostedPurchInvoice(PurchHeader, pPurchInvHeader);
     end;
 
@@ -874,6 +875,20 @@ codeunit 51029 "LD Correct Posted Documents"
         end;
 
         OnAfterRenamePurchDocument(DocumentNo, NewDocumentNo, IsOutFlow);
+    end;
+
+    local procedure CheckNumberVendorMemoNop(No: Code[20]; VendorCode: Code[20])
+    var
+        VendorLedgerEntry: Record "Vendor Ledger Entry";
+    begin
+        VendorLedgerEntry.RESET;
+        VendorLedgerEntry.SETRANGE(VendorLedgerEntry."Vendor No.", VendorCode);
+        VendorLedgerEntry.SETFILTER(VendorLedgerEntry."External Document No.", '%1', '*' + No);
+        IF VendorLedgerEntry.FINDSET THEN
+            REPEAT
+                VendorLedgerEntry."External Document No." := 'E' + VendorLedgerEntry."External Document No.";
+                VendorLedgerEntry.MODIFY;
+            UNTIL VendorLedgerEntry.NEXT = 0;
     end;
 
     //******************************************** End Purchase *****************************************************
