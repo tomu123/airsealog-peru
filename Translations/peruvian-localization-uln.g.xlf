@@ -9328,7 +9328,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Tipo Doc. Identidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension LD Company Information - Field VAT Registration Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2264965709 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+        <trans-unit id="TableExtension 2264965709 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2264965709">
           <source>The length of the document does not meet the required length and format.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El numero de documento no cumple con el formato requerido."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension LD Company Information - NamedType ErrorVatRegistrationNo</note>
@@ -9473,7 +9473,7 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup G/L Account Card - Control SetupLocalization - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 4059355906 - Control 472459596 - Method 2126772001 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4219821699">
+        <trans-unit id="PageExtension 4059355906 - Control 472459596 - Method 2126772001 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4059355906">
           <source>Only one account is allowed for generic purchase</source>
           <note from="Developer" annotates="general" priority="2">ESM="Solo se permite una cuenta para compras genéricas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup G/L Account Card - Control PR Generic Purchase - Method OnValidate - NamedType Text001</note>
@@ -9653,7 +9653,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Esta función sirve para ajustar de manera automatica la diferencia de un documento versus la linea de banco."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup Payment Journal - Action AdjusDiffForDumbUser - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2990270960 - Action 1617541948 - Method 1377591017 - NamedType 324793857" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+        <trans-unit id="PageExtension 2990270960 - Action 1617541948 - Method 1377591017 - NamedType 324793857" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2990270960">
           <source>Do you want to adjust the difference in the journal?</source>
           <note from="Developer" annotates="general" priority="2">ESM="¿Desea realizar el ajustar la diferencia en el diario?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup Payment Journal - Action AdjusDiffForDumbUser - Method OnAction - NamedType ConfirmAdjust</note>
@@ -9818,6 +9818,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Sales Credit Memo - Control Aplicacion - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2988390158 - Control 2614479299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1708100201">
+          <source>Detraction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Sales Credit Memo - Control Detraction - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3616129241 - Field 3008140192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1351594800">
           <source>Legal Document</source>
           <note from="Developer" annotates="general" priority="2">ESM="Documento Legal"</note>
@@ -9903,7 +9908,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Factura electrónica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Order - Control Electronic Bill - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2336017870 - Control 1379872363 - Method 2126772001 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+        <trans-unit id="PageExtension 2336017870 - Control 1379872363 - Method 2126772001 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2336017870">
           <source>The first character must start with E for electronic and 0 for non-electronic.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El primer carácter debe comenzar con E para electrónico y 0 para no electrónico."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Order - Control Electronic Bill - Method OnValidate - NamedType ErrorVendInvNo</note>
@@ -9938,7 +9943,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Factura electrónica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Invoice - Control Electronic Bill - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1509445583 - Control 1379872363 - Method 2126772001 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+        <trans-unit id="PageExtension 1509445583 - Control 1379872363 - Method 2126772001 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1509445583">
           <source>The first character must start with E, F for electronic.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El primer caracter para la serie debe de ser E ó F solo para electrónicos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Invoice - Control Electronic Bill - Method OnValidate - NamedType ErrorVendInvNo</note>
@@ -10008,12 +10013,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Invoice - Change Entry Point - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1509445583 - Method 3621900726 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+        <trans-unit id="PageExtension 1509445583 - Method 3621900726 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1509445583">
           <source>The first character must start with E, F for electronic.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El primer caracter para la serie debe de ser E ó F solo para electrónicos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Invoice - Method ValidateVendorInvoiceNo - NamedType ErrorVendInvNo</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1509445583 - Method 3621900726 - NamedType 1565832829" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+        <trans-unit id="PageExtension 1509445583 - Method 3621900726 - NamedType 1565832829" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1509445583">
           <source>The first character must start with E, F for electronic.</source>
           <note from="Developer" annotates="general" priority="2">ESM="Si la seríe de [N° Factura proveedor] inicia con F ó E, debe de activar el check de [Factura Electrónica]."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Invoice - Method ValidateVendorInvoiceNo - NamedType ErrorVendInvNo2</note>
@@ -10053,12 +10058,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Credit Memo - Control LegalPropertyType - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 471836165 - Method 3781490732 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
+        <trans-unit id="PageExtension 471836165 - Method 3781490732 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 471836165">
           <source>The first character must start with E, F for electronic.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El primer caracter para la serie debe de ser E ó F solo para electrónicos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Credit Memo - Method ValidateVendorCrMemoNo - NamedType ErrorVendInvNo</note>
         </trans-unit>
-        <trans-unit id="PageExtension 471836165 - Method 3781490732 - NamedType 1565832829" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
+        <trans-unit id="PageExtension 471836165 - Method 3781490732 - NamedType 1565832829" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 471836165">
           <source>The first character must start with E, F for electronic.</source>
           <note from="Developer" annotates="general" priority="2">ESM="Si la seríe de [N° Nóta Crédito proveedor] inicia con F ó E, debe de activar el check de [Factura Electrónica]."</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Credit Memo - Method ValidateVendorCrMemoNo - NamedType ErrorVendInvNo2</note>
@@ -10148,17 +10153,17 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - Control VendLedgEntryNo - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3911728218 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3254215531">
+        <trans-unit id="PageExtension 3911728218 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3911728218">
           <source>The entries were successfully unapplied.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - NamedType Text009</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3911728218 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3254215531">
+        <trans-unit id="PageExtension 3911728218 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3911728218">
           <source>There is nothing to unapply.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - NamedType Text010</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3911728218 - NamedType 1026443335" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3254215531">
+        <trans-unit id="PageExtension 3911728218 - NamedType 1026443335" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3911728218">
           <source>To unapply these entries, correcting entries will be posted.\Do you want to unapply the entries?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Unapply Vendor Entries - NamedType Text011</note>
@@ -10278,7 +10283,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Compra genérica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PR Purch. Quote Subform - Action GenericPurchase - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2751795860 - Method 634079255 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 997943925">
+        <trans-unit id="PageExtension 2751795860 - Method 634079255 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2751795860">
           <source>Generic purchase lines are added, you want to continue</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PR Purch. Quote Subform - Method FillGenericPurchase - NamedType Text001</note>
@@ -10993,7 +10998,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Tipo Doc. Identidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - Field VAT Registration Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1346423013 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+        <trans-unit id="TableExtension 1346423013 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 1346423013">
           <source>The length of the document does not meet the required length and format.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El numero de documento no cumple con el formato requerido."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Customer - NamedType ErrorVatRegistrationNo</note>
@@ -11178,7 +11183,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Compra genérica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Vendor - Field PR Generic Purchase - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2553632317 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+        <trans-unit id="TableExtension 2553632317 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2553632317">
           <source>The length of the document does not meet the required length and format.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El numero de documento no cumple con el formato requerido."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Vendor - NamedType ErrorVatRegistrationNo</note>
@@ -11648,12 +11653,12 @@
           <note from="Developer" annotates="general" priority="2">Consumo Interno</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - Field Internal Consumption - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1524349356 - NamedType 3366378640" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+        <trans-unit id="TableExtension 1524349356 - NamedType 3366378640" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 1524349356">
           <source>The detraction cannot exceed the Invoice</source>
           <note from="Developer" annotates="general" priority="2">ESM="La detracción no debe exceder la factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - NamedType ErrorOverflowAmt</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1524349356 - NamedType 2787859134" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+        <trans-unit id="TableExtension 1524349356 - NamedType 2787859134" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 1524349356">
           <source>Can´t be applied to a document type 03</source>
           <note from="Developer" annotates="general" priority="2">ESM="No puede aplicar un documento tipo 03"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - NamedType ErrorDetractLegalDoc</note>
@@ -11933,7 +11938,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Compra genérica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Purchase Header - Field PR Purchase Request - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4014451445 - Method 3803665708 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+        <trans-unit id="TableExtension 4014451445 - Method 3803665708 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 4014451445">
           <source>Vendor No.: %1, cannot generate Purchase order</source>
           <note from="Developer" annotates="general" priority="2">ESM="N° Proveedor: %1, no puede generar pedido de compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Purchase Header - Method ValidateVendorGenericPurchase - NamedType Text001</note>
@@ -11983,7 +11988,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Cód. Banco. Preferencia ME"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Employee - Field Preferred Bank Account Code ME - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2576401975 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+        <trans-unit id="TableExtension 2576401975 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2576401975">
           <source>The length of the document does not meet the required length and format.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El numero de documento no cumple con el formato requerido."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Employee - NamedType ErrorVatRegistrationNo</note>
@@ -12203,7 +12208,7 @@
           <note from="Developer" annotates="general" priority="2">ESM="Texto registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Gen. Journal Line - Field Posting Text - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 3074488742 - Field 1489563871 - Method 2126772001 - NamedType 2358423092" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+        <trans-unit id="TableExtension 3074488742 - Field 1489563871 - Method 2126772001 - NamedType 2358423092" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3074488742">
           <source>Cannot enter the stick character "|" in the text field register for the correct display of electronic books.</source>
           <note from="Developer" annotates="general" priority="2">ESM="No se puede ingresar el caracter palote "|" en el campo texto registro por la correcta visualización de libros electronicos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Gen. Journal Line - Field Posting Text - Method OnValidate - NamedType CharacterInvalid</note>

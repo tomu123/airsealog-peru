@@ -109,6 +109,44 @@ pageextension 51117 "Legal Doc. Sales Credit Memo" extends "Sales Credit Memo"
                 }
 
             }
+            group(Detraction)
+            {
+                Caption = 'Detraction';
+                field("Sales Detraction"; "Sales Detraction")
+                {
+                    ApplicationArea = All;
+                }
+                field("Operation Type Detrac"; "Operation Type Detrac")
+                {
+                    ApplicationArea = All;
+                    Editable = "Sales Detraction";
+                }
+                field("Service Type Detrac"; "Service Type Detrac")
+                {
+                    ApplicationArea = All;
+                    Editable = "Sales Detraction";
+                }
+                field("Payment Method Code Detrac"; "Payment Method Code Detrac")
+                {
+                    ApplicationArea = All;
+                    Editable = "Sales Detraction";
+                }
+                field("Sales % Detraction"; "Sales % Detraction")
+                {
+                    ApplicationArea = All;
+                    Editable = "Sales Detraction";
+                }
+                field("Sales Amt Detraction"; "Sales Amt Detraction")
+                {
+                    ApplicationArea = All;
+                    Editable = "Sales Detraction";
+                }
+                field("Sales Amt Detraction (LCY)"; "Sales Amt Detraction (LCY)")
+                {
+                    ApplicationArea = All;
+                    Editable = "Sales Detraction";
+                }
+            }
         }
         //Ubigeo Begin ********************************************************************************************************
         // Add changes to page layout here
