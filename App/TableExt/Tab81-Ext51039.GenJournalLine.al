@@ -414,9 +414,12 @@ tableextension 51039 "Setup Gen. Journal Line" extends "Gen. Journal Line"
         GLAccount: Record "G/L Account";
         RetentionMgt: Codeunit "Retention Management";
         PaymentSchedule: record "Payment Schedule";
+        SLSetup: Record "Setup Localization";
 
     local procedure SetAutomateRetention()
     begin
+        if SLSetup."Retention Agent Option" = SLSetup."Retention Agent Option"::Disable then
+            exit;
         if ("Account Type" = "Account Type"::Vendor) and ("Account No." <> '') and
             ("Posting Date" <> 0D) and ("Applies-to Doc. No." <> '') and ("Amount (LCY)" <> 0) then
             RetentionMgt.SetAutomateRetentionCheck("Applied Retention", "Account No.", "Posting Date", "Applies-to Doc. No.", "Amount (LCY)");

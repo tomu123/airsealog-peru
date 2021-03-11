@@ -408,6 +408,65 @@ codeunit 51001 "Accountant Book Management"
         CloseWindows();
     end;
 
+    procedure SalesRecord(pBookCode: Code[10]; IsEBook: Boolean)
+    var
+        VATEntry: Record "VAT Entry";
+        EntryNo: Integer;
+        TotalRecords: Integer;
+        CountRecords: Integer;
+    begin
+        EntryNo := 0;
+        SLSetup.Get();
+        CountRecords := 0;
+        BookCode := pBookCode;
+        if not NotRequestDate then
+            if not SetDate() then
+                exit;
+        if not CheckDateExists() then
+            exit;
+        OpenWindows(IsEBook);
+        VATEntry.Reset();
+        VATEntry.SetRange("Posting Date", StartDate, EndDate);
+        VATEntry.SetFilter("Legal Status", '%1|%2', VATEntry."Legal Status"::Success, VATEntry."Legal Status"::Anulled);
+        VATEntry.SetRange(Type, VATEntry.Type::Sale);
+        case BookCode of
+            '1401':
+                VATEntry.SETFILTER("Legal Document", '<>%1&<>%2&<>%3&<>%4&<>%5', '91', '97', '98', '02', '00');
+        end;
+        TotalRecords := VATEntry.Count;
+        if VATEntry.FindFirst() then
+            repeat
+                CountRecords += 1;
+                SalesRecordBuffer.Reset();
+                SalesRecordBuffer.SetRange("Document No.", VATEntry."Document No.");
+                SalesRecordBuffer.SetRange("Legal Document", VATEntry."Legal Document");
+                IF SalesRecordBuffer.FindSet() then begin
+                    if VATEntry."Legal Status" = VATEntry."Legal Status"::Success then
+                        AddSalesTaxedValues(VATEntry);
+                    SalesRecordBuffer.Modify();
+                end else begin
+                    EntryNo += 1;
+                    SalesRecordBuffer.Init();
+                    SalesRecordBuffer."Document No." := VATEntry."Document No.";
+                    SalesRecordBuffer."Entry No." := EntryNo;
+                    SalesRecordBuffer.Period := Format(VATEntry."Document Date", 0, '<Year4><Month,2>') + '00';
+                    SetSalesInformationCUO(VATEntry."Entry No.");
+                    SalesRecordBuffer."Document Date" := VATEntry."Document Date";
+                    SalesRecordBuffer."Legal Document" := VATEntry."Legal Document";
+                    SetInformationFromSalesDocument(VATEntry);
+                    if VATEntry."Legal Status" = VATEntry."Legal Status"::Success then
+                        AddSalesTaxedValues(VATEntry);
+                    //SalesRecordBuffer.Cancelled := VATEntry."Legal Status" = VATEntry."Legal Status"::Anulled;
+                    SalesRecordBuffer.Insert();
+                end;
+                UpdateWindows(1, CountRecords, TotalRecords);
+            until VATEntry.Next() = 0;
+
+        if IsEBook then
+            CreateFileEBookFromSalesRecord();
+        CloseWindows();
+    end;
+
     local procedure SetInformationCUO(VATEntryNo: Integer)
     var
         VATPostingSetup: Record "VAT Posting Setup";
@@ -419,6 +478,21 @@ codeunit 51001 "Accountant Book Management"
             if GLEntry.Get(GLEntryLinkVATEntry."G/L Entry No.") then begin
                 PurchRecordBuffer."Transaction CUO" := GLEntry."Transaction CUO";
                 PurchRecordBuffer."Correlative cuo" := GLEntry."Correlative CUO";
+            end;
+        end;
+    end;
+
+    local procedure SetSalesInformationCUO(VATEntryNo: Integer)
+    var
+        VATPostingSetup: Record "VAT Posting Setup";
+        GLEntryLinkVATEntry: Record "G/L Entry - VAT Entry Link";
+        GLEntry: Record "G/L Entry";
+    begin
+        GLEntryLinkVATEntry.SetRange("VAT Entry No.", VATEntryNo);
+        if GLEntryLinkVATEntry.FindFirst() then begin
+            if GLEntry.Get(GLEntryLinkVATEntry."G/L Entry No.") then begin
+                SalesRecordBuffer."Transaction CUO" := GLEntry."Transaction CUO";
+                SalesRecordBuffer."Correlative cuo" := GLEntry."Correlative CUO";
             end;
         end;
     end;
@@ -552,6 +626,136 @@ codeunit 51001 "Accountant Book Management"
         OnAfterSetInformationFromPurchDocument(PurchRecordBuffer, VATEntry);
     end;
 
+    local procedure SetInformationFromSalesDocument(var VATEntry: record "VAT Entry")
+    var
+        SalesInvHeader: Record "Sales Invoice Header";
+        SalesCrMemoHdr: Record "Sales Cr.Memo Header";
+        SalesInvHeader2: Record "Sales Invoice Header";
+        SalesCrMemoHdr2: Record "Sales Cr.Memo Header";
+        LegalDocMgt: Codeunit "Legal Document Management";
+    begin
+        if VATEntry."Legal Document" = '07' then begin
+            if SalesCrMemoHdr.Get(VATEntry."Document No.") then begin
+                SalesRecordBuffer."Payment Due Date" := SalesCrMemoHdr."Due Date";
+                LegalDocMgt.ValidateLegalDocumentFormat(SalesCrMemoHdr."External Document No.",
+                                                            VATEntry."Legal Document",
+                                                            SalesRecordBuffer."Serie Document",
+                                                            SalesRecordBuffer."Number Document",
+                                                            false,
+                                                            false);
+                //if VATEntry."Legal Document" = '50' then
+                //  Evaluate(SalesRecordBuffer."DUA Document Year", Format(VATEntry."Document Date", 0, '<Year4>'));
+                SalesRecordBuffer."Field 9 Total Amount" := 0;
+                SetCustomerFromSalesCrMemo(SalesCrMemoHdr);
+                GetCurrencyCode(SalesCrMemoHdr."Currency Code", SalesRecordBuffer."Currency Code");
+                if SalesCrMemoHdr."Currency Code" = '' then
+                    SalesRecordBuffer."Currency Amount" := 1
+                else
+                    SalesRecordBuffer."Currency Amount" := 1 / SalesCrMemoHdr."Currency Factor";
+                if SalesCrMemoHdr."Legal Document" in ['07', '08'] then begin
+                    if SalesCrMemoHdr."Manual Document Ref." then begin
+                        SalesRecordBuffer."Mod. Document Date" := SalesCrMemoHdr."Applies-to Document Date Ref.";
+                        SalesRecordBuffer."Mod. Legal Document" := SalesCrMemoHdr."Legal Document Ref.";
+                        SalesRecordBuffer."Mod. Serie" := SalesCrMemoHdr."Applies-to Serie Ref.";
+                        SalesRecordBuffer."Mod. Document" := SalesCrMemoHdr."Applies-to Number Ref.";
+                        LegalDocMgt.ValidateLegalDocumentFormat(SalesRecordBuffer."Mod. Serie" + '-' + SalesRecordBuffer."Mod. Document",
+                                                                SalesRecordBuffer."Mod. Legal Document",
+                                                                SalesRecordBuffer."Mod. Serie",
+                                                                SalesRecordBuffer."Mod. Document",
+                                                                false,
+                                                                false);
+                    end else
+                        if SalesCrMemoHdr."Applies-to Doc. No. Ref." <> '' then
+                            SetSalesRecordBufferFromSalesCrMemoHdrModicated(SalesCrMemoHdr)
+                        else
+                            if SalesCrMemoHdr."Applies-to Doc. No." <> '' then begin
+                                if SalesCrMemoHdr2.Get(SalesCrMemoHdr."Applies-to Doc. No.") then
+                                    SetSalesRecordBufferFromSalesCrMemoHdrModicated(SalesCrMemoHdr2)
+                                else begin
+                                    SalesCrMemoHdr2.Reset();
+                                    SalesCrMemoHdr2.SetRange("Sell-to Customer No.", SalesCrMemoHdr."Sell-to Customer No.");
+                                    SalesCrMemoHdr2.SetRange("No.", SalesCrMemoHdr."Applies-to Doc. No.");
+                                    if SalesCrMemoHdr2.Find('-') then
+                                        SetSalesRecordBufferFromSalesCrMemoHdrModicated(SalesCrMemoHdr2);
+                                end;
+                            end;
+                end;
+                // SalesRecordBuffer."Clas. Property and Services" := SalesCrMemoHdr."Legal Property Type";
+                if VATEntry."Legal Document" in ['03', '16', '21'] then
+                    SalesRecordBuffer.Status := 0
+                else begin
+                    case true of
+                        (Date2DMY(VATEntry."Document Date", 2) = Date2DMY(VATEntry."Posting Date", 2)) and
+                        (Date2DMY(VATEntry."Document Date", 3) = Date2DMY(VATEntry."Posting Date", 3)):
+                            SalesRecordBuffer.Status := 1;
+                        (Date2DMY(VATEntry."Document Date", 2) < Date2DMY(VATEntry."Posting Date", 2)) or
+                        (Date2DMY(VATEntry."Document Date", 3) < Date2DMY(VATEntry."Posting Date", 3)):
+                            SalesRecordBuffer.Status := 6;
+                        (VATEntry."Posting Date" - VATEntry."Document Date") > 365:
+                            SalesRecordBuffer.Status := 7;
+                        (VATEntry."Document Date" > Today()) or (VATEntry."Document Date" > EndDate):
+                            SalesRecordBuffer."Field Free" := 'Error fecha emisión'
+                    end;
+                end;
+            end;
+        end else begin
+            if SalesInvHeader.Get(VATEntry."Document No.") then begin
+                SalesRecordBuffer."Payment Due Date" := SalesInvHeader."Due Date";
+                LegalDocMgt.ValidateLegalDocumentFormat(VATEntry."Document No.",//ojito
+                                                            VATEntry."Legal Document",
+                                                            SalesRecordBuffer."Serie Document",
+                                                            SalesRecordBuffer."Number Document",
+                                                            false,
+                                                            false);
+                //if VATEntry."Legal Document" = '50' then
+                //  Evaluate(SalesRecordBuffer."DUA Document Year", Format(VATEntry."Document Date", 0, '<Year4>'));
+                SalesRecordBuffer."Field 9 Total Amount" := 0;
+                SetCustomerFromSalesInvoice(SalesInvHeader);
+                GetCurrencyCode(SalesInvHeader."Currency Code", SalesRecordBuffer."Currency Code");
+                if SalesInvHeader."Currency Code" = '' then
+                    SalesRecordBuffer."Currency Amount" := 1
+                else
+                    SalesRecordBuffer."Currency Amount" := 1 / SalesInvHeader."Currency Factor";
+                if SalesInvHeader."Legal Document" in ['07', '08'] then begin
+                    if SalesInvHeader."Applies-to Doc. No." <> '' then begin
+                        if SalesInvHeader2.Get(SalesInvHeader."Applies-to Doc. No.") then
+                            SetSalesRecordBufferFromSalesInvHdrModicated(SalesInvHeader2)
+                        else begin
+                            SalesInvHeader2.Reset();
+                            SalesInvHeader2.SetRange("Sell-to Customer No.", SalesInvHeader."Sell-to Customer No.");
+                            SalesInvHeader2.SetRange("No.", SalesInvHeader."Applies-to Doc. No.");
+                            if SalesInvHeader2.Find('-') then
+                                SetSalesRecordBufferFromSalesInvHdrModicated(SalesInvHeader2);
+                        end;
+                    end else
+                        if SalesInvHeader."Applies-to Doc. No. Ref." <> '' then
+                            SetSalesRecordBufferFromSalesInvHdrModicated(SalesInvHeader);
+
+                end;
+                //SalesRecordBuffer."Clas. Property and Services" := SalesInvHeader."Legal Property Type";
+                if VATEntry."Legal Document" in ['03', '16', '21'] then
+                    SalesRecordBuffer.Status := 0
+                else begin
+                    case true of
+                        (Date2DMY(VATEntry."Document Date", 2) = Date2DMY(VATEntry."Posting Date", 2)) and
+                        (Date2DMY(VATEntry."Document Date", 3) = Date2DMY(VATEntry."Posting Date", 3)):
+                            SalesRecordBuffer.Status := 1;
+                        (Date2DMY(VATEntry."Document Date", 2) < Date2DMY(VATEntry."Posting Date", 2)) or
+                        (Date2DMY(VATEntry."Document Date", 3) < Date2DMY(VATEntry."Posting Date", 3)):
+                            SalesRecordBuffer.Status := 6;
+                        (VATEntry."Posting Date" - VATEntry."Document Date") > 365:
+                            SalesRecordBuffer.Status := 7;
+                        (VATEntry."Document Date" > Today()) or (VATEntry."Document Date" > EndDate):
+                            SalesRecordBuffer."Field Free" := 'Error fecha emisión'
+                    end;
+                end;
+            end;
+        end;
+
+        OnAfterSetInformationFromSalesDocument(SalesRecordBuffer, VATEntry);
+    end;
+
+
     local procedure SetVendorFromPurchInvoice(var pPurchInvHdr: Record "Purch. Inv. Header")
     var
         Vendor: Record Vendor;
@@ -596,6 +800,50 @@ codeunit 51001 "Accountant Book Management"
         end;
     end;
 
+    local procedure SetCustomerFromSalesInvoice(var pSalesInvHdr: Record "Sales Invoice Header")
+    var
+        Customer: Record Customer;
+    begin
+        case SLSetup."AB Field reference sales. book" of
+            SLSetup."AB Field reference sales. book"::"Sell-Customer":
+                begin
+                    Customer.Get(pSalesInvHdr."Sell-to Customer No.");
+                    SalesRecordBuffer."VAT Registration Type" := Customer."VAT Registration Type";
+                    SalesRecordBuffer."VAT Registration No." := Customer."VAT Registration No.";
+                    SalesRecordBuffer."Customer Name" := pSalesInvHdr."Sell-to Customer Name";
+                end;
+            SLSetup."AB Field reference sales. book"::"Bill-Customer":
+                begin
+                    Customer.Get(pSalesInvHdr."Bill-to Customer No.");
+                    SalesRecordBuffer."VAT Registration Type" := Customer."VAT Registration Type";
+                    SalesRecordBuffer."VAT Registration No." := Customer."VAT Registration No.";
+                    SalesRecordBuffer."Customer Name" := pSalesInvHdr."Bill-to Customer No.";
+                end;
+        end;
+    end;
+
+    local procedure SetCustomerFromSalesCrMemo(var pSalesCrMemoHdr: Record "Sales Cr.Memo Header")
+    var
+        Customer: Record Customer;
+    begin
+        case SLSetup."AB Field reference sales. book" of
+            SLSetup."AB Field reference sales. book"::"Sell-Customer":
+                begin
+                    Customer.Get(pSalesCrMemoHdr."Sell-to Customer No.");
+                    SalesRecordBuffer."VAT Registration Type" := Customer."VAT Registration Type";
+                    SalesRecordBuffer."VAT Registration No." := Customer."VAT Registration No.";
+                    SalesRecordBuffer."Customer Name" := pSalesCrMemoHdr."Sell-to Customer Name";
+                end;
+            SLSetup."AB Field reference sales. book"::"Bill-Customer":
+                begin
+                    Customer.Get(pSalesCrMemoHdr."Bill-to Customer No.");
+                    SalesRecordBuffer."VAT Registration Type" := Customer."VAT Registration Type";
+                    SalesRecordBuffer."VAT Registration No." := Customer."VAT Registration No.";
+                    SalesRecordBuffer."Customer Name" := pSalesCrMemoHdr."Bill-to Customer No.";
+                end;
+        end;
+    end;
+
     local procedure AddPurchTaxedValues(var VATEntry: Record "VAT Entry")
     var
         VATPostingSetup: Record "VAT Posting Setup";
@@ -635,6 +883,43 @@ codeunit 51001 "Accountant Book Management"
 
     end;
 
+    local procedure AddSalesTaxedValues(var VATEntry: Record "VAT Entry")
+    var
+        VATPostingSetup: Record "VAT Posting Setup";
+    begin
+        VATPostingSetup.Get(VATEntry."VAT Bus. Posting Group", VATEntry."VAT Prod. Posting Group");
+
+        with SalesRecordBuffer do begin
+            case VATPostingSetup."Sales Record Type" of
+                VATPostingSetup."Sales Record Type"::EXPORTS:
+                    begin
+                        "Amount Export invoiced" += VATEntry.Base;
+                    end;
+                VATPostingSetup."Sales Record Type"::TAXES:
+                    begin
+                        "Taxed Base" += VATEntry.Base;
+                        "Taxed VAT" += VATEntry.Amount;
+                    end;
+                VATPostingSetup."Sales Record Type"::"STACKED RICE":
+                    begin
+                        "Taxed Stacked Rice" += VATEntry.Base;
+                        "Taxed VAT  Stacked Rice" += VATEntry.Base;
+                    end;
+                VATPostingSetup."Sales Record Type"::EXONERATED:
+                    "Total Amount Exonerated" += VATEntry.Base;
+                VATPostingSetup."Sales Record Type"::INAFFECTS:
+                    "Total Amount Unaffected" += VATEntry.Base;
+                VATPostingSetup."Sales Record Type"::ISC:
+                    "ISC Amount" += VATEntry.Base;
+                VATPostingSetup."Sales Record Type"::"OTHER TAXES AND CHARGES":
+                    "Others Amount" += VATEntry.Base;
+            end;
+            "Total Amount" += "Taxed Base" + "Taxed VAT" + "Taxed Base" + "Amount Export invoiced" + "Taxed Stacked Rice" + "Taxed VAT  Stacked Rice"
+             + "Total Amount Exonerated" + "Total Amount Unaffected" + "ISC Amount" + "Others Amount";
+        end;
+
+    end;
+
     procedure SetPurchRecordBufferFromPurchInvHdrModicated(var PurchInvHeader: Record "Purch. Inv. Header")
     begin
         PurchRecordBuffer."Mod. Document Date" := PurchInvHeader."Applies-to Document Date Ref.";
@@ -649,6 +934,20 @@ codeunit 51001 "Accountant Book Management"
                                                 false);
     end;
 
+    procedure SetSalesRecordBufferFromSalesInvHdrModicated(var SalesInvHeader: Record "Sales Invoice Header")
+    begin
+        SalesRecordBuffer."Mod. Document Date" := SalesInvHeader."Applies-to Document Date Ref.";
+        SalesRecordBuffer."Mod. Legal Document" := SalesInvHeader."Legal Document Ref.";
+        SalesRecordBuffer."Mod. Serie" := SalesInvHeader."Applies-to Serie Ref.";
+        SalesRecordBuffer."Mod. Document" := SalesInvHeader."Applies-to Number Ref.";
+        LegalDocMgt.ValidateLegalDocumentFormat(SalesInvHeader."External Document No.",
+                                                SalesRecordBuffer."Mod. Legal Document",
+                                                SalesRecordBuffer."Serie Document",
+                                                SalesRecordBuffer."Number Document",
+                                                false,
+                                                false);
+    end;
+
     procedure SetPurchRecordBufferFromPurchCrMemoHdrModicated(var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.")
     begin
         PurchRecordBuffer."Mod. Document Date" := PurchCrMemoHdr."Applies-to Document Date Ref.";
@@ -656,6 +955,20 @@ codeunit 51001 "Accountant Book Management"
         PurchRecordBuffer."Mod. Serie" := PurchCrMemoHdr."Applies-to Serie Ref.";
         PurchRecordBuffer."Mod. Document" := PurchCrMemoHdr."Applies-to Number Ref.";
         LegalDocMgt.ValidateLegalDocumentFormat(PurchCrMemoHdr."Vendor Cr. Memo No.",
+                                                PurchRecordBuffer."Mod. Legal Document",
+                                                PurchRecordBuffer."Serie Document",
+                                                PurchRecordBuffer."Number Document",
+                                                false,
+                                                false);
+    end;
+
+    procedure SetSalesRecordBufferFromSalesCrMemoHdrModicated(var SalesCrMemoHdr: Record "Sales Cr.Memo Header")
+    begin
+        SalesRecordBuffer."Mod. Document Date" := SalesCrMemoHdr."Applies-to Document Date Ref.";
+        SalesRecordBuffer."Mod. Legal Document" := SalesCrMemoHdr."Legal Document Ref.";
+        SalesRecordBuffer."Mod. Serie" := SalesCrMemoHdr."Applies-to Serie Ref.";
+        SalesRecordBuffer."Mod. Document" := SalesCrMemoHdr."Applies-to Number Ref.";
+        LegalDocMgt.ValidateLegalDocumentFormat(SalesCrMemoHdr."External Document No.",
                                                 PurchRecordBuffer."Mod. Legal Document",
                                                 PurchRecordBuffer."Serie Document",
                                                 PurchRecordBuffer."Number Document",
@@ -795,6 +1108,84 @@ codeunit 51001 "Accountant Book Management"
         end;
     end;
 
+    procedure CreateFileEBookFromSalesRecord()
+    var
+        MyLineText: Text[1024];
+        MySeparator: Text[10];
+        TotalRecords: Integer;
+        CountRecords: Integer;
+        IsExistsFile: Boolean;
+    begin
+        CreateTempFile();
+        CountRecords := 0;
+        MySeparator := '|';
+        case BookCode of
+            '1401':
+                begin
+                    with SalesRecordBuffer do begin
+                        Reset();
+                        TotalRecords := Count;
+                        if FindFirst() then
+                            repeat
+                                MyLineText := '';
+                                CountRecords += 1;
+                                IsExistsFile := true;
+                                MyLineText += Period + MySeparator;//Field 01
+                                MyLineText += Format("Transaction CUO") + MySeparator;//Field 02
+                                MyLineText += "Correlative cuo" + MySeparator;//Field 03
+                                MyLineText += Format("Document Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 04
+                                MyLineText += Format("Payment Due Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 05
+                                MyLineText += "Legal Document" + MySeparator;//Field 06
+                                MyLineText += "Serie Document" + MySeparator;//Field 07
+                                MyLineText += format("Number Document") + MySeparator;//Field 08
+                                IF "Legal Document" IN ['01'] then
+                                    MyLineText += MySeparator //Field 09
+                                ELSE
+                                    MyLineText += Format("Field 9 Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 09
+                                MyLineText += "VAT Registration Type" + MySeparator;//Field 10
+                                MyLineText += "VAT Registration No." + MySeparator;//Field 11
+                                MyLineText += "Customer Name" + MySeparator;//Field 12
+                                MyLineText += Format("Amount Export invoiced", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 13
+                                MyLineText += Format("Taxed Base", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 14
+                                MyLineText += Format("Taxed Base Discount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 15
+                                MyLineText += Format("Taxed VAT", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 16
+                                MyLineText += Format("Disc. Municipal Promotion Tax", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 17
+                                MyLineText += Format("Total Amount Exonerated", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 18
+                                MyLineText += Format("Total Amount Unaffected", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 19
+                                MyLineText += Format("ISC Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 20
+                                MyLineText += Format("Taxed Stacked Rice", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 21
+                                MyLineText += Format("Taxed VAT  Stacked Rice", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 22
+                                MyLineText += Format("Bag tax", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23                            
+                                MyLineText += Format("Others Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 24
+                                MyLineText += Format("Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 25
+                                if "Currency Code" = '' then
+                                    MyLineText += 'PEN' + MySeparator//Field 26 
+                                else
+                                    MyLineText += "Currency Code" + MySeparator;//Field 26
+                                MyLineText += Format("Currency Amount", 0, '<Precision,3:2><Standard Format,2>') + MySeparator;//Field 27
+                                MyLineText += Format("Mod. Document Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Fiedl 28
+                                MyLineText += "Mod. Legal Document" + MySeparator;//Field 29
+                                MyLineText += "Mod. Serie" + MySeparator;//Field 30
+                                MyLineText += "Mod. Document" + MySeparator;//Field 31
+                                MyLineText += "Contract Identification" + MySeparator;//Field 32
+                                MyLineText += MySeparator;//Field 33
+                                if "Payment indicator" <> 0 then
+                                    MyLineText += Format("Payment indicator") + MySeparator
+                                else
+                                    MyLineText += MySeparator;//Field 34
+                                MyLineText += format(Status) + MySeparator;//Field 35
+                                MyLineText += "Field Free" + MySeparator;//Field 36
+                                InsertLineToTempFile(MyLineText);
+                                UpdateWindows(2, CountRecords, TotalRecords);
+                            until Next() = 0;
+                        if IsExistsFile then
+                            PostFileToControlFileRecord();
+                    end;
+                end;
+
+        end;
+    end;
+
     procedure GetPuchRecordBuffer(var pPurchRecordBuffer: Record "Purchase Record Buffer" temporary)
     begin
         PurchRecordBuffer.Reset();
@@ -804,6 +1195,17 @@ codeunit 51001 "Accountant Book Management"
                 pPurchRecordBuffer.TransferFields(PurchRecordBuffer, true);
                 pPurchRecordBuffer.Insert();
             until PurchRecordBuffer.Next() = 0;
+    end;
+
+    procedure GetSalesRecordBuffer(var pSalesRecordBuffer: Record "Sales Record Buffer" temporary)
+    begin
+        SalesRecordBuffer.Reset();
+        if SalesRecordBuffer.FindFirst() then
+            repeat
+                pSalesRecordBuffer.Init();
+                pSalesRecordBuffer.TransferFields(SalesRecordBuffer, true);
+                pSalesRecordBuffer.Insert();
+            until SalesRecordBuffer.Next() = 0;
     end;
 
     //File Management functions
@@ -959,6 +1361,11 @@ codeunit 51001 "Accountant Book Management"
     begin
     end;
 
+    [IntegrationEvent(false, false)]
+    procedure OnAfterSetInformationFromSalesDocument(var SalesRecordBuffer: Record "Sales Record Buffer" temporary; var VATEntry: Record "VAT Entry")
+    begin
+    end;
+
 
     //Functions for init dev.
     procedure InitializeConfigurationAccountantBook()
@@ -987,7 +1394,7 @@ codeunit 51001 "Accountant Book Management"
         CreateAccountantBook(2, '102', '1.2', 0, 'LIBRO CAJA Y BANCOS - DETALLE DE LOS MOVIMIENTOS DE LA CUENTA CORRIENTE', 1);
         CreateAccountantBook(49, '1201', '12.1', 0, 'REGISTRO DEL INVENTARIO PERMANENTE EN UNIDADES FÍSICAS - DETALLE DEL INVENTARIO PERMANENTE EN UNIDADES FÍSICAS', 1);
         CreateAccountantBook(50, '1301', '13.1', 0, 'REGISTRO DEL INVENTARIO PERMANENTE VALORIZADO - DETALLE DEL INVENTARIO VALORIZADO', 1);
-        CreateAccountantBook(51, '1401', '14.1', 0, 'REGISTRO DE VENTAS E INGRESOS', 1);
+        CreateAccountantBook(51, '1401', '14.1', 51730, 'REGISTRO DE VENTAS E INGRESOS', 1);
         CreateAccountantBook(4, '301', '3.1', 0, 'LIBRO DE INVENTARIOS Y BALANCES - BALANCE GENERAL', 2);
         CreateAccountantBook(5, '302', '3.2', 0, 'LIBRO DE INVENTARIOS Y BALANCES - DETALLE DEL SALDO DE LA CUENTA 10 EFECTIVO Y EQUIVALENTES DE EFECTIVO (2)', 2);
         CreateAccountantBook(6, '303', '3.3', 0, 'LIBRO DE INVENTARIOS Y BALANCES - DETALLE DEL SALDO DE LA CUENTA 12 CUENTAS POR COBRAR COMERCIALES – TERCEROS Y 13 CUENTAS POR COBRAR COMERCIALES – RELACIONADAS', 2);
@@ -1022,7 +1429,7 @@ codeunit 51001 "Accountant Book Management"
         CreateAccountantBook(37, '703', '7.3', 0, 'REGISTRO DE ACTIVOS FIJOS - DETALLE DE LA DIFERENCIA DE CAMBIO', 2);
         CreateAccountantBook(38, '704', '7.4', 0, 'REGISTRO DE ACTIVOS FIJOS - DETALLE DE LOS ACTIVOS FIJOS BAJO LA MODALIDAD DE ARRENDAMIENTO FINANCIERO AL 31.12', 2);
         CreateAccountantBook(40, '801', '8.1', 51000, 'REGISTRO DE COMPRAS', 2);
-        CreateAccountantBook(41, '802', '8.2', 0, 'REGISTRO DE COMPRAS - NO DOMICILIADOS', 2);
+        CreateAccountantBook(41, '802', '8.2', 51000, 'REGISTRO DE COMPRAS - NO DOMICILIADOS', 2);
         CreateAccountantBook(43, '901', '9.1', 0, 'REGISTRO DE CONSIGNACIONES - PARA EL CONSIGNADOR - CONTROL DE BIENES ENTREGADOS EN CONSIGNACIÓN', 2);
         CreateAccountantBook(44, '902', '9.2', 0, 'REGISTRO DE CONSIGNACIONES - PARA EL CONSIGNATARIO - CONTROL DE BIENES RECIBIDOS EN CONSIGNACIÓN', 2);
     end;
@@ -1045,6 +1452,7 @@ codeunit 51001 "Accountant Book Management"
 
     var
         PurchRecordBuffer: Record "Purchase Record Buffer" temporary;
+        SalesRecordBuffer: Record "Sales Record Buffer" temporary;
         GenJnlBookBuffer: Record "Gen. Journal Book Buffer" temporary;
         GLAccountBuffer: Record "G/L Account" temporary;
         SLSetup: Record "Setup Localization";

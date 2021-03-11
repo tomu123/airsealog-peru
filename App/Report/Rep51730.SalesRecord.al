@@ -1,15 +1,15 @@
-report 51000 "Purchase Record"
+report 51730 "Sales Record"
 {
     UsageCategory = Administration;
     ApplicationArea = All;
     PreviewMode = PrintLayout;
     DefaultLayout = RDLC;
-    Caption = 'Purchase Record', Comment = 'ESM="Registro de compras"';
-    RDLCLayout = './App/Report/RDLC/PurchaseRecord.rdl';
+    Caption = 'Sles Record', Comment = 'ESM="Registro de Ventas"';
+    RDLCLayout = './App/Report/RDLC/SalesRecord.rdl';
 
     dataset
     {
-        dataitem(PurchaseRecord; "Purchase Record Buffer")
+        dataitem(SalesRecord; "Sales Record Buffer")
         {
             UseTemporary = true;
             column(Period; Period)
@@ -24,7 +24,7 @@ report 51000 "Purchase Record"
             {
                 IncludeCaption = true;
             }
-            column(Document_Date; "Document Date")
+            column(FechaEmision; "Document Date")
             {
                 IncludeCaption = true;
             }
@@ -32,7 +32,23 @@ report 51000 "Purchase Record"
             {
                 IncludeCaption = true;
             }
+            column(DocTypeSUNAT; "Legal Document")
+            {
+                IncludeCaption = true;
+            }
+            column(NoDoc; "Number Document")
+            {
+                IncludeCaption = true;
+            }
+            column(TipoDoc; "Legal Document")
+            {
+                IncludeCaption = true;
+            }
             column(Legal_Document; "Legal Document")
+            {
+                IncludeCaption = true;
+            }
+            column(SerieDoc; "Serie Document")
             {
                 IncludeCaption = true;
             }
@@ -40,15 +56,12 @@ report 51000 "Purchase Record"
             {
                 IncludeCaption = true;
             }
-            column(DUA_Document_Year; "DUA Document Year")
-            {
-                IncludeCaption = true;
-            }
+
             column(Number_Document; "Number Document")
             {
                 IncludeCaption = true;
             }
-            column(Field_10_Total_Amount; "Field 10 Total Amount")
+            column(Field_9_Total_Amount; "Field 9 Total Amount")
             {
                 IncludeCaption = true;
             }
@@ -60,40 +73,32 @@ report 51000 "Purchase Record"
             {
                 IncludeCaption = true;
             }
-            column(Vendor_Name; "Vendor Name")
+            column(Customer_Name; "Customer Name")
             {
                 IncludeCaption = true;
             }
-            column(Taxed_Base; TaxedBaseIGV)
+            column(Exportacion; "Amount Export invoiced")
+            {
+                IncludeCaption = true;
+            }
+            column(BaseImponible; "Taxed Base")
             {
                 //IncludeCaption = true;
             }
-            column(Taxed_VAT; "Taxed VAT")
+            column(Exonerada; "Total Amount Exonerated")
+            {
+                //IncludeCaption = true;
+            }
+            column(Inafecta; "Total Amount Unaffected")
+            {
+                //IncludeCaption = true;
+            }
+            column(IGV; "Taxed VAT")
             {
                 IncludeCaption = true;
             }
-            column(Untaxed_Base; "Untaxed Base")
-            {
-                IncludeCaption = true;
-            }
-            column(Untaxed_VAT; "Untaxed VAT")
-            {
-                IncludeCaption = true;
-            }
-            column(Refund_Base; "Refund Base")
-            {
-                IncludeCaption = true;
-            }
-            column(Refund_VAT; "Refund VAT")
-            {
-                IncludeCaption = true;
-            }
-            column(NOT_Taxed_VAT; "NOT Taxed VAT")
 
-            {
-                IncludeCaption = true;
-            }
-            column(ISC_Amount; "ISC Amount")
+            column(ISC; "ISC Amount")
             {
                 IncludeCaption = true;
             }
@@ -101,54 +106,36 @@ report 51000 "Purchase Record"
             {
                 IncludeCaption = true;
             }
-            column(Total_Amount; TotalAmountIGV)
+            column(ImporteTotal; "Total Amount")
             {
-                //IncludeCaption = true;
+
             }
             column(Currency_Code; "Currency Code")
             {
                 IncludeCaption = true;
             }
-            column(Currency_Amount; "Currency Amount")
+            column(TipoCambio; "Currency Amount")
             {
                 IncludeCaption = true;
             }
-            column(Mod__Document_Date; "Mod. Document Date")
+            column(FechaRef; "Mod. Document Date")
             {
                 IncludeCaption = true;
             }
-            column(Mod__Legal_Document; "Mod. Legal Document")
+            column(TipoRef; "Mod. Legal Document")
             {
                 IncludeCaption = true;
             }
-            column(Mod__Serie; "Mod. Serie")
+            column(SerieRef; "Mod. Serie")
             {
                 IncludeCaption = true;
             }
-            column(DUA_Code; "DUA Code")
+
+            column(NoRef; "Mod. Document")
             {
                 IncludeCaption = true;
             }
-            column(Mod__Document; "Mod. Document")
-            {
-                IncludeCaption = true;
-            }
-            column(Ref__Number_Not_Address_; "Ref. Number Not Address.")
-            {
-                IncludeCaption = true;
-            }
-            column(Detraction_Emision_Date; "Detraction Emision Date")
-            {
-                IncludeCaption = true;
-            }
-            column(Detraction_Operation_No_; "Detraction Operation No.")
-            {
-                IncludeCaption = true;
-            }
-            column(Retention_Mark; "Retention Mark")
-            {
-                IncludeCaption = true;
-            }
+
             column(PeriodDescription; PeriodDescription)
             {
             }
@@ -177,6 +164,10 @@ report 51000 "Purchase Record"
             {
 
             }
+            column(DefinicionGratuito; gDefinicionGratuito)
+            {
+
+            }
             trigger OnAfterGetRecord()
             var
                 LegalDocumentRec: Record "Legal Document";
@@ -194,7 +185,7 @@ report 51000 "Purchase Record"
                 if "Legal Document" = '50' then begin
                     TaxedBaseIGV := ("Taxed VAT" * 100) / 18;
                     TotalAmountIGV := TaxedBaseIGV + "Taxed VAT";
-                    "NOT Taxed VAT" := 0;
+
                 end else begin
                     TaxedBaseIGV := "Taxed Base";
                     TotalAmountIGV := "Total Amount";
@@ -221,34 +212,20 @@ report 51000 "Purchase Record"
                     Caption = 'Information';
                     field(StartDate; StartDate)
                     {
+                        Caption = 'StartDate', Comment = 'ESM="Fecha Inicial"';
                         ApplicationArea = All;
-                        Caption = 'Start Date', Comment = 'ESM="Fecha Inicio"';
                     }
                     field(EndDate; EndDate)
                     {
+                        Caption = 'EndDate', Comment = 'ESM="Fecha Final"';
                         ApplicationArea = All;
-                        Caption = 'End Date', Comment = 'ESM="Fecha Fin"';
                     }
                     field(PeriodDescription; PeriodDescription)
                     {
+                        Caption = 'PeriodDescription', Comment = 'ESM="Descripción"';
                         ApplicationArea = All;
-                        Caption = 'Description', Comment = 'ESM="Descripción"';
                     }
-                    field(ShowRH; ShowRH)
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Show RH', Comment = 'ESM="Mostrar RH"';
-                    }
-                    field(NotAddress; NotAddress)
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Not Address', Comment = 'ESM="No domiciliado"';
-                    }
-                    field(AutomaticEBook; AutomaticEBook)
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Automatic EBook', Comment = 'ESM="Libro Electrónico"';
-                    }
+
                 }
             }
         }
@@ -271,19 +248,17 @@ report 51000 "Purchase Record"
         if (StartDate = 0D) or (EndDate = 0D) then
             Error(ShowErrorEmptyDate);
         AccBookMgt.SetDate(StartDate, EndDate);
-        if NotAddress then begin
-            TitlePurchaseRecors := 'Formato 8.2: REGISTROS DE COMPRAS NO DOMICILIADOS';
-            AccBookMgt.PurchaserRecord('802', AutomaticEBook);
-        end else begin
-            TitlePurchaseRecors := 'Formato 8.1: REGISTROS DE COMPRAS';
-            AccBookMgt.PurchaserRecord('801', AutomaticEBook);
-            AccBookMgt.GetPuchRecordBuffer(PurchaseRecord);
-            PurchaseRecord.Reset();
-        end;
+
+        TitlePurchaseRecors := 'Formato 14.1: REGISTROS DE VENTAS';
+        AccBookMgt.SalesRecord('1401', AutomaticEBook);
+        AccBookMgt.GetSalesRecordBuffer(SalesRecord);
+        SalesRecord.Reset();
+
         CompInf.Get();
     end;
 
     var
+        gDefinicionGratuito: Boolean;
         StartDate: Date;
         EndDate: Date;
         TaxedBaseIGV: Decimal;
@@ -297,9 +272,4 @@ report 51000 "Purchase Record"
         CompInf: Record "Company Information";
         AccBookMgt: Codeunit "Accountant Book Management";
         ShowErrorEmptyDate: Label 'Enter Start Date and End Date to continue.', Comment = 'ESM="Ingrese fecha de inicio y fin para continuar."';
-
-    procedure SetNotAddress()
-    begin
-        NotAddress := true;
-    end;
 }

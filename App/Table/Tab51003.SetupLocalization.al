@@ -428,6 +428,13 @@ table 51003 "Setup Localization"
             OptionMembers = "Buy-Vendor","Pay-Vendor";
             OptionCaption = 'Buy-Vendor,Pay-Vendor', Comment = 'ESM="Compra a proveedor,Pago a proveedor"';
         }
+        field(51141; "AB Field reference Sales. book"; Option)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Field reference Sales. book', Comment = 'ESM="Campo ref. libro venta"';
+            OptionMembers = "Sell-Customer","Bill-Customer";
+            OptionCaption = 'Sell-Customer,Bill-Customer', Comment = 'ESM="venta a cliente,Factura a cliente"';
+        }
         field(51190; "Telecredit New Version"; Boolean)
         {
             DataClassification = ToBeClassified;

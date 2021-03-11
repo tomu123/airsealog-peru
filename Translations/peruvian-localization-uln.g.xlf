@@ -638,6 +638,16 @@
           <note from="Developer" annotates="general" priority="2">ESM="Compra a proveedor,Pago a proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field AB Field reference purch. book - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 3481741791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field reference Sales. book</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Campo ref. libro venta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field AB Field reference Sales. book - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 3481741791 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sell-Customer,Bill-Customer</source>
+          <note from="Developer" annotates="general" priority="2">ESM="venta a cliente,Factura a cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field AB Field reference Sales. book - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 4047494536 - Field 2212038517 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Telecredit New Version</source>
           <note from="Developer" annotates="general" priority="2">ESM="Nueva Versión"</note>
@@ -4167,6 +4177,196 @@
           <source>Cuota con IGV</source>
           <note from="Developer" annotates="general" priority="2">ESM="Cuota con IGV"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cuota con IGV - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 912261439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 1860039839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transaction CUO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Transaction CUO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 205185013 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correlative cuo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Correlative cuo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 3354317798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Due Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Payment Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 3008140192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Legal Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Legal Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 1456240937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Serie Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Serie Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 1887876536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Number Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Number Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 3695908311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field 9 Total Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Field 9 Total Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 544368334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Registration Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field VAT Registration Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 617267791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Registration No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field VAT Registration No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 1171137197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Customer Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 2515987183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount Export invoiced</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Amount Export invoiced - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 3276583259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxed Base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Taxed Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 1445407560 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxed Base Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Taxed Base Discount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 2848642897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxed VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Taxed VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 4265559319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Disc. Municipal Promotion Tax</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Disc. Municipal Promotion Tax - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 1959997051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Amount Exonerated</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Total Amount Exonerated - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 4286204865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Amount Unaffected</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Total Amount Unaffected - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 1573881479 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ISC Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field ISC Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 2325738154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxed Stacked Rice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Taxed Stacked Rice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 2701556047 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Taxed VAT  Stacked Rice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Taxed VAT  Stacked Rice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 2954333963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bag tax</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Bag tax - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 316001277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Others Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Others Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 3692706522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Total Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Currency Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 2720469437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Currency Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 3252926941 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mod. Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Mod. Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 194568952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mod. Legal Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Mod. Legal Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 260597020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mod. Serie</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Mod. Serie - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 1736946441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mod. Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Mod. Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 4114929460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract Identification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Contract Identification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 3737481187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error 1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Error 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 1564916789 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment indicator</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Payment indicator - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 2481613586 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field Free</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Field Free - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Document No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 186425721 - NamedType 4052692861" size-unit="char" translate="yes" xml:space="preserve">
           <source>The length of the document does not meet the required length and format.</source>
@@ -8563,6 +8763,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Record - Control GroupName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 306568866 - Control 3605153064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Date</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Record - Control StartDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 306568866 - Control 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Fin"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Record - Control EndDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 306568866 - Control 2987762613 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Record - Control PeriodDescription - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 306568866 - Control 131842371 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show RH</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Mostrar RH"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Record - Control ShowRH - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 306568866 - Control 2353315269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not Address</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No domiciliado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Record - Control NotAddress - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 306568866 - Control 1038797435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Automatic EBook</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Libro Electrónico"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Record - Control AutomaticEBook - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 306568866 - NamedType 3490785230" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enter Start Date and End Date to continue.</source>
           <note from="Developer" annotates="general" priority="2">ESM="Ingrese fecha de inicio y fin para continuar."</note>
@@ -9237,6 +9467,36 @@
           <source>Data:    #5########################################\</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report GenJournalReturn - NamedType gText008</note>
+        </trans-unit>
+        <trans-unit id="Report 711165391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sles Record</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Registro de Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales Record - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 711165391 - Control 4105281732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales Record - Control GroupName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 711165391 - Control 3605153064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>StartDate</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Inicial"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales Record - Control StartDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 711165391 - Control 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EndDate</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Final"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales Record - Control EndDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 711165391 - Control 2987762613 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PeriodDescription</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales Record - Control PeriodDescription - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 711165391 - NamedType 3490785230" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enter Start Date and End Date to continue.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ingrese fecha de inicio y fin para continuar."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Sales Record - NamedType ShowErrorEmptyDate</note>
         </trans-unit>
         <trans-unit id="XmlPort 4010924015 - XmlPortNode 2426665105 - Method 3093245866 - NamedType 4097247114" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1 minutes : %2 seconds</source>
