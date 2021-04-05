@@ -70,6 +70,7 @@ page 51002 "ST Control File List"
                 Image = ExportFile;
                 Promoted = true;
                 PromotedIsBig = true;
+                Scope = Repeater;
 
                 trigger OnAction();
                 begin
@@ -83,6 +84,7 @@ page 51002 "ST Control File List"
                 Image = DeleteRow;
                 Promoted = true;
                 PromotedIsBig = true;
+                Scope = Repeater;
 
                 trigger OnAction();
                 begin

@@ -208,6 +208,9 @@ codeunit 51029 "LD Correct Posted Documents"
                 SalesLine.Validate(Quantity, SalesCrMemoLine.Quantity);
                 SalesLine.Validate("Unit Price", SalesCrMemoLine."Unit Price");
                 SalesLine.Validate("Gen. Prod. Posting Group", SalesCrMemoLine."Gen. Prod. Posting Group");
+                SalesLine.Validate("Gen. Bus. Posting Group", SalesCrMemoLine."Gen. Bus. Posting Group");
+                SalesLine.Validate("VAT Prod. Posting Group", SalesCrMemoLine."VAT Prod. Posting Group");
+                SalesLine.Validate("VAT Bus. Posting Group", SalesCrMemoLine."VAT Bus. Posting Group");
                 if SalesCrMemoLine.Type = SalesCrMemoLine.Type::Item then begin
                     SalesLine.Validate("Location Code", SalesCrMemoLine."Location Code");
                     SalesLine.Validate("Bin Code", SalesCrMemoLine."Bin Code");
@@ -348,6 +351,148 @@ codeunit 51029 "LD Correct Posted Documents"
                             NewSalesCrMemoHdr.Init();
                             NewSalesCrMemoHdr.TransferFields(SalesCrMemoHdr);
                             NewSalesCrMemoHdr."No." := NewDocumentNo;
+                            NewSalesCrMemoHdr.Insert();
+                            SalesCrMemoLine.Reset();
+                            SalesCrMemoLine.SetCurrentKey("Document No.", "Line No.");
+                            SalesCrMemoLine.SetRange("Document No.", DocumentNo);
+                            if SalesCrMemoLine.FindFirst() then
+                                repeat
+                                    NewSalesCrMemoLine.Init();
+                                    NewSalesCrMemoLine.TransferFields(SalesCrMemoLine, true);
+                                    NewSalesCrMemoLine."Document No." := NewDocumentNo;
+                                    NewSalesCrMemoLine.Insert();
+                                    SalesCrMemoLine.Delete();
+                                until SalesCrMemoLine.Next() = 0;
+                            SalesCrMemoHdr.Delete();
+                        end;
+                    end;
+                end;
+        end;
+
+        CustLedgerEntry.SetRange("Document No.", DocumentNo);
+        if CustLedgerEntry.FindSet() then begin
+            CustLedgerEntry.ModifyAll("Legal Status", LegalStatus);
+            if IsOutFlow then
+                CustLedgerEntry.ModifyAll("Document No.", NewDocumentNo);
+        end;
+
+        GLEntry.SetRange("Document No.", DocumentNo);
+        if GLEntry.FindSet() then begin
+            GLEntry.ModifyAll("Legal Status", LegalStatus);
+            if IsOutFlow then
+                GLEntry.ModifyAll("Document No.", NewDocumentNo);
+        end;
+
+        VatEntry.SetRange("Document No.", DocumentNo);
+        if VatEntry.FindSet() then begin
+            VatEntry.ModifyAll("Legal Status", LegalStatus);
+            if IsOutFlow then
+                VatEntry.ModifyAll("Document No.", NewDocumentNo);
+        end;
+
+        if IsOutFlow then begin
+            ValueEntry.SetRange("Document No.", DocumentNo);
+            if ValueEntry.FindSet() then
+                ValueEntry.ModifyAll("Document No.", NewDocumentNo);
+
+            ItemLedgeEntry.SetRange("Document No.", DocumentNo);
+            if ItemLedgeEntry.FindSet() then
+                ItemLedgeEntry.ModifyAll("Document No.", NewDocumentNo);
+
+            JobLedgerEntry.SetRange("Document No.", DocumentNo);
+            if JobLedgerEntry.FindSet() then
+                JobLedgerEntry.ModifyAll("Document No.", NewDocumentNo);
+
+            BankAccLgEntry.SetRange("Document No.", DocumentNo);
+            if BankAccLgEntry.FindSet() then
+                BankAccLgEntry.ModifyAll("Document No.", NewDocumentNo);
+
+            DtldCustLgEntry.SetRange("Document No.", DocumentNo);
+            if DtldCustLgEntry.FindSet() then
+                DtldCustLgEntry.ModifyAll("Document No.", NewDocumentNo);
+
+            CostEntry.SetRange("Document No.", DocumentNo);
+            if CostEntry.FindSet() then
+                CostEntry.ModifyAll("Document No.", NewDocumentNo);
+        end;
+
+        OnAfterRenameSalesDocument(DocumentNo, NewDocumentNo, IsOutFlow);
+    end;
+
+    procedure RenameSalesDocument(SourceTableID: Integer; DocumentNo: Code[20]; DestinationDocumentNo: Code[20])
+    var
+        SalesInvHeader: Record "Sales Invoice Header";
+        SalesInvLine: Record "Sales Invoice Line";
+        SalesCrMemoHdr: Record "Sales Cr.Memo Header";
+        SalesCrMemoLine: Record "Sales Cr.Memo Line";
+        NewSalesInvHeader: Record "Sales Invoice Header";
+        NewSalesInvLine: Record "Sales Invoice Line";
+        NewSalesCrMemoHdr: Record "Sales Cr.Memo Header";
+        NewSalesCrMemoLine: Record "Sales Cr.Memo Line";
+        VatEntry: Record "VAT Entry";
+        CustLedgerEntry: Record "Cust. Ledger Entry";
+        DtldCustLgEntry: Record "Detailed Cust. Ledg. Entry";
+        GLEntry: Record "G/L Entry";
+        JobLedgerEntry: Record "Job Ledger Entry";
+        ItemLedgeEntry: Record "Item Ledger Entry";
+        BankAccLgEntry: Record "Bank Account Ledger Entry";
+        ValueEntry: Record "Value Entry";
+        CostEntry: Record "Cost Entry";
+        NewDocumentNo: Code[20];
+        IsOutFlow: Boolean;
+        LegalStatus: Option;
+        Prefix: Text;
+        OptionStrMenu: Integer;
+    begin
+        //OptionCaption = 'Success,Anulled,OutFlow', Comment = 'ESM="Normal,Anulado,Extornado"';
+        OptionStrMenu := StrMenu('Normal,Anulado,Extornado', 1, 'Seleccione una opción para el documento:');
+        NewDocumentNo := DestinationDocumentNo;
+        LegalStatus := OptionStrMenu - 1;
+        IsOutFlow := DocumentNo <> DestinationDocumentNo;
+
+        case SourceTableID of
+            112:
+                begin
+                    if SalesInvHeader.Get(DocumentNo) then;
+                    //LegalStatus := SalesInvHeader."Legal Status";
+                    //IsOutFlow := SalesInvHeader."Legal Status" = SalesInvHeader."Legal Status"::OutFlow;
+                    if IsOutFlow then begin
+                        SalesInvHeader.Reset();
+                        SalesInvHeader.SetRange("No.", DocumentNo);
+                        if SalesInvHeader.FindFirst() then begin
+                            NewSalesInvHeader.Init();
+                            NewSalesInvHeader.TransferFields(SalesInvHeader);
+                            NewSalesInvHeader."No." := NewDocumentNo;
+                            NewSalesInvHeader."Legal Status" := LegalStatus;
+                            SalesInvHeader.Delete();
+                            NewSalesInvHeader.Insert();
+                            SalesInvLine.Reset();
+                            SalesInvLine.SetCurrentKey("Document No.", "Line No.");
+                            SalesInvLine.SetRange("Document No.", DocumentNo);
+                            if SalesInvLine.FindFirst() then
+                                repeat
+                                    NewSalesInvLine.Init();
+                                    NewSalesInvLine.TransferFields(SalesInvLine, true);
+                                    NewSalesInvLine."Document No." := NewDocumentNo;
+                                    SalesInvLine.Delete();
+                                    NewSalesInvLine.Insert();
+                                until SalesInvLine.Next() = 0;
+                        end;
+                    end;
+                end;
+            114:
+                begin
+                    if SalesCrMemoHdr.Get(DocumentNo) then;
+                    //LegalStatus := SalesCrMemoHdr."Legal Status";
+                    //IsOutFlow := SalesCrMemoHdr."Legal Status" = SalesCrMemoHdr."Legal Status"::OutFlow;
+                    if IsOutFlow then begin
+                        SalesCrMemoHdr.Reset();
+                        SalesCrMemoHdr.SetRange("No.", DocumentNo);
+                        if SalesCrMemoHdr.FindFirst() then begin
+                            NewSalesCrMemoHdr.Init();
+                            NewSalesCrMemoHdr.TransferFields(SalesCrMemoHdr);
+                            NewSalesCrMemoHdr."No." := NewDocumentNo;
+                            NewSalesCrMemoHdr."Legal Status" := LegalStatus;
                             NewSalesCrMemoHdr.Insert();
                             SalesCrMemoLine.Reset();
                             SalesCrMemoLine.SetCurrentKey("Document No.", "Line No.");

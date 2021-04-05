@@ -365,6 +365,7 @@ codeunit 51001 "Accountant Book Management"
             exit;
         OpenWindows(IsEBook);
         VATEntry.Reset();
+        VATEntry.SetFilter("Document No.", '<>%1', 'NCR0221-0001');
         VATEntry.SetRange("Posting Date", StartDate, EndDate);
         VATEntry.SetFilter("Legal Status", '%1|%2', VATEntry."Legal Status"::Success, VATEntry."Legal Status"::Anulled);
         VATEntry.SetRange(Type, VATEntry.Type::Purchase);
@@ -372,7 +373,7 @@ codeunit 51001 "Accountant Book Management"
             '801':
                 VATEntry.SetFilter("Legal Document", '<>%1&<>%2&<>%3&<>%4', '91', '97', '98', '00');
             '802':
-                VATEntry.SetFilter("Legal Document", '%1|%2|%3|%4', '91', '97', '98');
+                VATEntry.SetFilter("Legal Document", '%1|%2|%3', '91', '97', '98');
         end;
         TotalRecords := VATEntry.Count;
         if VATEntry.FindFirst() then
@@ -390,7 +391,7 @@ codeunit 51001 "Accountant Book Management"
                     PurchRecordBuffer.Init();
                     PurchRecordBuffer."Document No." := VATEntry."Document No.";
                     PurchRecordBuffer."Entry No." := EntryNo;
-                    PurchRecordBuffer.Period := Format(VATEntry."Document Date", 0, '<Year4><Month,2>') + '00';
+                    PurchRecordBuffer.Period := Format(VATEntry."Posting Date", 0, '<Year4><Month,2>') + '00';
                     SetInformationCUO(VATEntry."Entry No.");
                     PurchRecordBuffer."Document Date" := VATEntry."Document Date";
                     PurchRecordBuffer."Legal Document" := VATEntry."Legal Document";
@@ -462,6 +463,21 @@ codeunit 51001 "Accountant Book Management"
                 UpdateWindows(1, CountRecords, TotalRecords);
             until VATEntry.Next() = 0;
 
+        SalesRecordBuffer.Reset();
+        if SalesRecordBuffer.FindFirst() then
+            repeat
+                SalesRecordBuffer."Total Amount" += SalesRecordBuffer."Taxed Base"
+                                + SalesRecordBuffer."Taxed VAT"
+                                + SalesRecordBuffer."Amount Export invoiced"
+                                + SalesRecordBuffer."Taxed Stacked Rice"
+                                + SalesRecordBuffer."Taxed VAT  Stacked Rice"
+                                + SalesRecordBuffer."Total Amount Exonerated"
+                                + SalesRecordBuffer."Total Amount Unaffected"
+                                + SalesRecordBuffer."ISC Amount"
+                                + SalesRecordBuffer."Others Amount";
+                SalesRecordBuffer.Modify();
+            until SalesRecordBuffer.Next() = 0;
+
         if IsEBook then
             CreateFileEBookFromSalesRecord();
         CloseWindows();
@@ -504,9 +520,16 @@ codeunit 51001 "Accountant Book Management"
         PurchInvHeader2: Record "Purch. Inv. Header";
         PurchCrMemoHdr2: Record "Purch. Cr. Memo Hdr.";
         LegalDocMgt: Codeunit "Legal Document Management";
+        Vendor: Record Vendor;
+        CountryRegion: Record "Country/Region";
     begin
-        if VATEntry."Legal Document" = '07' then begin
+        if VATEntry."Legal Document" in ['07', '97'] then begin
             if PurchCrMemoHdr.Get(VATEntry."Document No.") then begin
+                Vendor.Get(PurchCrMemoHdr."Buy-from Vendor No.");
+                if Vendor."Country/Region Code" <> '' then begin
+                    if CountryRegion.Get(Vendor."Country/Region Code") then
+                        PurchRecordBuffer."Country Residence Not Address" := CountryRegion."VAT Scheme";
+                end;
                 PurchRecordBuffer."Payment Due Date" := PurchCrMemoHdr."Due Date";
                 LegalDocMgt.ValidateLegalDocumentFormat(PurchCrMemoHdr."Vendor Cr. Memo No.",
                                                             VATEntry."Legal Document",
@@ -558,7 +581,7 @@ codeunit 51001 "Accountant Book Management"
                     case true of
                         (Date2DMY(VATEntry."Document Date", 2) = Date2DMY(VATEntry."Posting Date", 2)) and
                         (Date2DMY(VATEntry."Document Date", 3) = Date2DMY(VATEntry."Posting Date", 3)):
-                            PurchRecordBuffer.Status := 1;
+                            PurchRecordBuffer.Status := 0;
                         (Date2DMY(VATEntry."Document Date", 2) < Date2DMY(VATEntry."Posting Date", 2)) or
                         (Date2DMY(VATEntry."Document Date", 3) < Date2DMY(VATEntry."Posting Date", 3)):
                             PurchRecordBuffer.Status := 6;
@@ -571,6 +594,11 @@ codeunit 51001 "Accountant Book Management"
             end;
         end else begin
             if PurchInvHeader.Get(VATEntry."Document No.") then begin
+                Vendor.Get(PurchInvHeader."Buy-from Vendor No.");
+                if Vendor."Country/Region Code" <> '' then begin
+                    if CountryRegion.Get(Vendor."Country/Region Code") then
+                        PurchRecordBuffer."Country Residence Not Address" := CountryRegion."VAT Scheme";
+                end;
                 PurchRecordBuffer."Payment Due Date" := PurchInvHeader."Due Date";
                 LegalDocMgt.ValidateLegalDocumentFormat(VATEntry."External Document No.",//ojito
                                                             VATEntry."Legal Document",
@@ -637,7 +665,7 @@ codeunit 51001 "Accountant Book Management"
         if VATEntry."Legal Document" = '07' then begin
             if SalesCrMemoHdr.Get(VATEntry."Document No.") then begin
                 SalesRecordBuffer."Payment Due Date" := SalesCrMemoHdr."Due Date";
-                LegalDocMgt.ValidateLegalDocumentFormat(SalesCrMemoHdr."External Document No.",
+                LegalDocMgt.ValidateLegalDocumentFormat(SalesCrMemoHdr."No.",
                                                             VATEntry."Legal Document",
                                                             SalesRecordBuffer."Serie Document",
                                                             SalesRecordBuffer."Number Document",
@@ -886,36 +914,35 @@ codeunit 51001 "Accountant Book Management"
     local procedure AddSalesTaxedValues(var VATEntry: Record "VAT Entry")
     var
         VATPostingSetup: Record "VAT Posting Setup";
+        Sign: Integer;
     begin
         VATPostingSetup.Get(VATEntry."VAT Bus. Posting Group", VATEntry."VAT Prod. Posting Group");
-
+        Sign := -1;
         with SalesRecordBuffer do begin
             case VATPostingSetup."Sales Record Type" of
                 VATPostingSetup."Sales Record Type"::EXPORTS:
                     begin
-                        "Amount Export invoiced" += VATEntry.Base;
+                        "Amount Export invoiced" += (VATEntry.Base) * Sign;
                     end;
                 VATPostingSetup."Sales Record Type"::TAXES:
                     begin
-                        "Taxed Base" += VATEntry.Base;
-                        "Taxed VAT" += VATEntry.Amount;
+                        "Taxed Base" += (VATEntry.Base) * Sign;
+                        "Taxed VAT" += (VATEntry.Amount) * Sign;
                     end;
                 VATPostingSetup."Sales Record Type"::"STACKED RICE":
                     begin
-                        "Taxed Stacked Rice" += VATEntry.Base;
-                        "Taxed VAT  Stacked Rice" += VATEntry.Base;
+                        "Taxed Stacked Rice" += (VATEntry.Base) * Sign;
+                        "Taxed VAT  Stacked Rice" += (VATEntry.Base) * Sign;
                     end;
                 VATPostingSetup."Sales Record Type"::EXONERATED:
-                    "Total Amount Exonerated" += VATEntry.Base;
+                    "Total Amount Exonerated" += (VATEntry.Base) * Sign;
                 VATPostingSetup."Sales Record Type"::INAFFECTS:
-                    "Total Amount Unaffected" += VATEntry.Base;
+                    "Total Amount Unaffected" += (VATEntry.Base) * Sign;
                 VATPostingSetup."Sales Record Type"::ISC:
-                    "ISC Amount" += VATEntry.Base;
+                    "ISC Amount" += (VATEntry.Base) * Sign;
                 VATPostingSetup."Sales Record Type"::"OTHER TAXES AND CHARGES":
-                    "Others Amount" += VATEntry.Base;
+                    "Others Amount" += (VATEntry.Base) * Sign;
             end;
-            "Total Amount" += "Taxed Base" + "Taxed VAT" + "Taxed Base" + "Amount Export invoiced" + "Taxed Stacked Rice" + "Taxed VAT  Stacked Rice"
-             + "Total Amount Exonerated" + "Total Amount Unaffected" + "ISC Amount" + "Others Amount";
         end;
 
     end;
@@ -995,6 +1022,8 @@ codeunit 51001 "Accountant Book Management"
                         TotalRecords := Count;
                         if FindFirst() then
                             repeat
+                                if "Currency Code" = '' then
+                                    "Currency Code" := 'PEN';
                                 MyLineText := '';
                                 CountRecords += 1;
                                 IsExistsFile := true;
@@ -1023,6 +1052,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("NOT Taxed VAT", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 20
                                 MyLineText += Format("ISC Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 21
                                 MyLineText += Format("Others Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 22
+                                MyLineText += '0' + MySeparator;//Add field for ICBPER
                                 MyLineText += Format("Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23
                                 MyLineText += "Currency Code" + MySeparator;//Field 24
                                 MyLineText += Format("Currency Amount", 0, '<Precision,3:2><Standard Format,2>') + MySeparator;//Field 25
@@ -1036,7 +1066,10 @@ codeunit 51001 "Accountant Book Management"
                                 if "Retention Mark" then
                                     MyLineText += '1' + MySeparator//Field 33
                                 else
-                                    MyLineText += '0' + MySeparator;//Field 33
+                                    MyLineText += '' + MySeparator;//Field 33
+                                                                   //if "Clas. Property and Services" = '0' then
+                                                                   //    MyLineText += '' + MyLineText //Field 34
+                                                                   //else
                                 MyLineText += "Clas. Property and Services" + MySeparator;//Field 34
                                 MyLineText += MySeparator;//Field 35
                                 MyLineText += MySeparator;//Field 36
@@ -1044,7 +1077,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += MySeparator;//Field 38
                                 MyLineText += MySeparator;//Field 39
                                 MyLineText += MySeparator;//Field 40
-                                MyLineText += Format(Status);//Field 41
+                                MyLineText += Format(Status) + MySeparator;//Field 41
                                 InsertLineToTempFile(MyLineText);
                                 UpdateWindows(2, CountRecords, TotalRecords);
                             until Next() = 0;
@@ -1059,6 +1092,8 @@ codeunit 51001 "Accountant Book Management"
                         TotalRecords := Count;
                         if FindFirst() then
                             repeat
+                                if "Currency Code" = '' then
+                                    "Currency Code" := 'PEN';
                                 MyLineText := '';
                                 CountRecords += 1;
                                 IsExistsFile := true;
@@ -1097,12 +1132,12 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += '' + MySeparator;//Field 33
                                 MyLineText += '' + MySeparator;//Field 34
                                 MyLineText += '' + MySeparator;//Field 35
-                                MyLineText += Format(Status);//Field 36
+                                MyLineText += Format(0) + MySeparator;//Field 36
                                 InsertLineToTempFile(MyLineText);
                                 UpdateWindows(2, CountRecords, TotalRecords);
                             until Next() = 0;
-                        if IsExistsFile then
-                            PostFileToControlFileRecord();
+                        //if IsExistsFile then
+                        PostFileToControlFileRecord();
                     end;
                 end;
         end;
@@ -1134,14 +1169,14 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("Transaction CUO") + MySeparator;//Field 02
                                 MyLineText += "Correlative cuo" + MySeparator;//Field 03
                                 MyLineText += Format("Document Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 04
-                                MyLineText += Format("Payment Due Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 05
+                                MyLineText += '' + MySeparator; //Format("Payment Due Date", 0, '<Day,2>/<Month,2>/<Year4>') + MySeparator;//Field 05
                                 MyLineText += "Legal Document" + MySeparator;//Field 06
                                 MyLineText += "Serie Document" + MySeparator;//Field 07
                                 MyLineText += format("Number Document") + MySeparator;//Field 08
-                                IF "Legal Document" IN ['01'] then
-                                    MyLineText += MySeparator //Field 09
-                                ELSE
-                                    MyLineText += Format("Field 9 Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 09
+                                                                                      //IF "Legal Document" IN ['01'] then
+                                MyLineText += MySeparator;//Field 09
+                                //ELSE
+                                //    MyLineText += Format("Field 9 Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 09
                                 MyLineText += "VAT Registration Type" + MySeparator;//Field 10
                                 MyLineText += "VAT Registration No." + MySeparator;//Field 11
                                 MyLineText += "Customer Name" + MySeparator;//Field 12
@@ -1155,6 +1190,7 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("ISC Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 20
                                 MyLineText += Format("Taxed Stacked Rice", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 21
                                 MyLineText += Format("Taxed VAT  Stacked Rice", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 22
+                                //MyLineText += '0' + MySeparator;//Field Add ICBPER
                                 MyLineText += Format("Bag tax", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23                            
                                 MyLineText += Format("Others Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 24
                                 MyLineText += Format("Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 25
@@ -1227,12 +1263,20 @@ codeunit 51001 "Accountant Book Management"
         NewFileInStream: InStream;
         FileName: Text;
         FileExt: Text;
+        FinalExtension: Text;
         EntryNo: Integer;
         ConfirmDownload: Label 'Do you want to download the following file?', Comment = 'ESM="¿Quieres descargar el siguiente archivo?"';
     begin
         CompInf.Get();
         TempFileBlob.CreateInStream(NewFileInStream);
-        FileName := 'LE' + CompInf."VAT Registration No." + Format(EndDate, 0, '<Year4><Month,2>000') + BookCode + '00001111';
+        if TempFileBlob.HasValue() then
+            FinalExtension := '00001111'
+        else
+            FinalExtension := '00001011';
+        if BookCode = '1401' then
+            FileName := 'LE' + CompInf."VAT Registration No." + Format(EndDate, 0, '<Year4><Month,2>00') + BookCode + FinalExtension
+        else
+            FileName := 'LE' + CompInf."VAT Registration No." + Format(EndDate, 0, '<Year4><Month,2>000') + BookCode + FinalExtension;
         FileExt := 'txt';
         EntryNo := ControlFile.CreateControlFileRecord(BookCode, FileName, FileExt, StartDate, EndDate, NewFileInStream);
         if EntryNo <> 0 then

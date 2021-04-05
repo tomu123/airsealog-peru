@@ -460,6 +460,26 @@ table 51003 "Setup Localization"
 
             end;
         }
+        field(51193; "Delete Document"; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(51194; "Document No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Document No.', Comment = 'ESM="N° Documento"';
+        }
+        field(51195; "New Document No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'New Document No.', Comment = 'ESM="N° Documento Nuevo"';
+        }
+        field(51196; "Option action Document"; Option)
+        {
+            Caption = 'Option action Document', Comment = 'ESM="Tipo de acción para documento"';
+            OptionMembers = " ","Delete Document","Rename Sales Invoice","Rename Credit Memo";
+            OptionCaption = ' ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta';
+        }
     }
 
     keys

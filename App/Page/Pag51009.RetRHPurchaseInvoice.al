@@ -236,13 +236,13 @@ page 51009 "Ret. RH Purchase Invoice"
                 }
                 field("Retention RH Fourth Amount"; Rec."Retention RH Fourth Amount")
                 {
-                    Caption = 'Fourth Amount', Comment = 'ESM="Importe bruto"';
+                    Caption = 'Fourth Amount', Comment = 'ESM="Importe de 4ta"';
                     ApplicationArea = Basic, Suite;
                     Editable = false;
                 }
                 field("Retention RH Gross amount"; Rec."Retention RH Gross amount")
                 {
-                    Caption = 'Gross Fourth Amount', Comment = 'ESM="Importe de cuarta"';
+                    Caption = 'Gross Fourth Amount', Comment = 'ESM="Importe Bruto"';
                     ApplicationArea = Basic, Suite;
                     Editable = false;
                 }

@@ -274,12 +274,19 @@ report 51000 "Purchase Record"
         if NotAddress then begin
             TitlePurchaseRecors := 'Formato 8.2: REGISTROS DE COMPRAS NO DOMICILIADOS';
             AccBookMgt.PurchaserRecord('802', AutomaticEBook);
+            AccBookMgt.GetPuchRecordBuffer(PurchaseRecord);
         end else begin
             TitlePurchaseRecors := 'Formato 8.1: REGISTROS DE COMPRAS';
             AccBookMgt.PurchaserRecord('801', AutomaticEBook);
             AccBookMgt.GetPuchRecordBuffer(PurchaseRecord);
-            PurchaseRecord.Reset();
         end;
+        PurchaseRecord.Reset();
+        if PurchaseRecord.Count = 0 then begin
+            PurchaseRecord.Init();
+            PurchaseRecord."Entry No." := 1;
+            PurchaseRecord.Insert();
+        end;
+        PurchaseRecord.Reset();
         CompInf.Get();
     end;
 
