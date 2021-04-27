@@ -5,7 +5,7 @@ page 51003 "Setup Localization"
     Caption = 'Setup Localization', Comment = 'ESM="Configuración Localizado"';
     UsageCategory = Administration;
     SourceTable = "Setup Localization";
-    Permissions = tabledata "Sales Cr.Memo Line" = rimd, tabledata "Sales Cr.Memo Header" = rimd;
+    Permissions = tabledata "Sales Cr.Memo Line" = rimd, tabledata "Sales Cr.Memo Header" = rimd, tabledata "Purch. Inv. Header" = rimd, tabledata "Purch. Inv. Line" = rimd;
 
     layout
     {
@@ -681,11 +681,12 @@ page 51003 "Setup Localization"
             //         GLEntryLink.DeleteAll();
             //     until VATEntry.Next() = 0;
             SalesCrMemoHdr.Delete();
-            // end else
-            //     if PurchInvHeader.Get("Document No.") then begin
-            //         PurchInvLine.Reset();
-            //         PurchInvLine.SetRange("Document No.", PurchInvHeader."No.");
-            //         PurchInvLine.DeleteAll();
+        end;
+        // end else
+        if PurchInvHeader.Get("Document No.") then begin
+            PurchInvLine.Reset();
+            PurchInvLine.SetRange("Document No.", PurchInvHeader."No.");
+            PurchInvLine.DeleteAll();
 
             //         VendLedgEntry.Reset();
             //         VendLedgEntry.SetRange("Document No.", PurchInvHeader."No.");
@@ -717,7 +718,7 @@ page 51003 "Setup Localization"
             //                 GLEntryLink.SetRange("VAT Entry No.", VATEntry."Entry No.");
             //                 GLEntryLink.DeleteAll();
             //             until VATEntry.Next() = 0;
-            //         PurchInvHeader.Delete();
+            PurchInvHeader.Delete();
             //     end else
             //         if PurchCrMemoHdr.Get("Document No.") then begin
             //             PurchCrMemoLine.Reset();
