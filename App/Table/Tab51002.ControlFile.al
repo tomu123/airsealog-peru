@@ -135,10 +135,10 @@ table 51002 "ST Control File"
         DialogTitle: Label 'Download File', Comment = 'ESM="Descargar archivo."';
     begin
         ControlFile.CalcFields("File Blob");
-        If NOT ControlFile."File Blob".HasValue then begin
-            Message(FileIsNotExist);
-            exit;
-        end;
+        //If NOT ControlFile."File Blob".HasValue then begin
+        //    Message(FileIsNotExist);
+        //    exit;
+        //end;
         ControlFile."File Blob".CreateInStream(NewFileInStream);
         ToFileName := ControlFile."File Name" + '.' + ControlFile."File Extension";
         DownloadFromStream(NewFileInStream, DialogTitle, '', 'All Files (*.*)|*.*', ToFileName);

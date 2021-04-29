@@ -663,6 +663,31 @@
           <note from="Developer" annotates="general" priority="2">ESM="Cta. redondeo pos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Realized Gains Acc. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 4233662066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Delete Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 3772581096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Documento Nuevo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field New Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 35768486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Option action Document</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo de acción para documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4047494536 - Field 35768486 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4047494536 - Method 91816459 - NamedType 3809372348" size-unit="char" translate="yes" xml:space="preserve">
           <source>The exchange rate does not exist.</source>
           <note from="Developer" annotates="general" priority="2">ESM="El tipo de cambio no existe."</note>
@@ -828,6 +853,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Anticipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Control Advanced - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4047494536 - Control 207065589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Funcionalida ULN</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Control Funcionalidad - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4047494536 - Action 1572708512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Master Data</source>
           <note from="Developer" annotates="general" priority="2">ESM="Maestro Datos"</note>
@@ -837,6 +867,16 @@
           <source>Manual Analityc</source>
           <note from="Developer" annotates="general" priority="2">ESM="Analítica Manual"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action Analityc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 4145840562 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete Document</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Borrar Document"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action DeleteDocument - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 2088106585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rename Document</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Renombrar Documento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action RenameDocument - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4047494536 - NamedType 3955426682" size-unit="char" translate="yes" xml:space="preserve">
           <source>This setup %1 %2.</source>
@@ -6090,12 +6130,12 @@
         </trans-unit>
         <trans-unit id="Page 834264647 - Control 600253220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fourth Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Importe bruto"</note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe de 4ta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Ret. RH Purchase Invoice - Control Retention RH Fourth Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 834264647 - Control 3279367636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Gross Fourth Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Importe de cuarta"</note>
+          <note from="Developer" annotates="general" priority="2">ESM="Importe Bruto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Ret. RH Purchase Invoice - Control Retention RH Gross amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 834264647 - Control 2057180808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -9393,6 +9433,21 @@
           <note from="Developer" annotates="general" priority="2">ESM="Mov. Analíticos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report LU Daily Voucher - Control reqShowAnalyticEntries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 4053556356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Checking Balance</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Balance de comprobación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Checking Balance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4053556356 - Control 3605153064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Date</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Inicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Checking Balance - Control StartDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4053556356 - Control 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha Fin"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Checking Balance - Control EndDate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 602334234 - NamedType 2170014339" size-unit="char" translate="yes" xml:space="preserve">
           <source>El Documento debe estar lanzado para su impresión</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9660,7 +9715,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 595570189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Correct Ext.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Extornar Documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CorrectLegalDocAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 595570189 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
@@ -9670,7 +9725,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 701109401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
           <source>Cancell L.D.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Anular Documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CancellLegalDocAction - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1974781378 - Action 701109401 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">

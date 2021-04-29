@@ -5,6 +5,7 @@ page 51003 "Setup Localization"
     Caption = 'Setup Localization', Comment = 'ESM="Configuración Localizado"';
     UsageCategory = Administration;
     SourceTable = "Setup Localization";
+    Permissions = tabledata "Sales Cr.Memo Line" = rimd, tabledata "Sales Cr.Memo Header" = rimd;
 
     layout
     {
@@ -426,6 +427,22 @@ page 51003 "Setup Localization"
                 }
 
             }
+            group(Funcionalidad)
+            {
+                Caption = 'Funcionalida ULN';
+                field("Option action Document"; "Option action Document")
+                {
+                    ApplicationArea = All;
+                }
+                field("Document No."; "Document No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("New Document No."; "New Document No.")
+                {
+                    ApplicationArea = All;
+                }
+            }
         }
     }
 
@@ -454,6 +471,48 @@ page 51003 "Setup Localization"
                     AnalitycMgt: Codeunit "Analitycs Management";
                 begin
                     AnalitycMgt.ReassignAnalitycsAccounts();
+                end;
+            }
+
+            action(DeleteDocument)
+            {
+                Caption = 'Delete Document', Comment = 'ESM="Borrar Document"';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = Delete;
+                Visible = true;
+
+                trigger OnAction()
+                begin
+                    TestField("Option action Document", "Option action Document"::"Delete Document");
+                    TestField("Document No.");
+                    DeleteDocumentProcess();
+                end;
+            }
+
+            action(RenameDocument)
+            {
+                Caption = 'Rename Document', Comment = 'ESM="Renombrar Documento"';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = RefreshVATExemption;
+                //Visible = false;
+
+                trigger OnAction()
+                var
+                    LDCorrectPostedDocMgt: Codeunit "LD Correct Posted Documents";
+                begin
+                    //TestField("Delete Document");
+                    if not ("Option action Document" in ["Option action Document"::"Rename Sales Invoice", "Option action Document"::"Rename Credit Memo"]) then
+                        Error('Solo puede seleccionar las opciones %1 o %2');
+                    TestField("Document No.");
+                    TestField("New Document No.");
+                    if "Option action Document" = "Option action Document"::"Rename Sales Invoice" then
+                        LDCorrectPostedDocMgt.RenameSalesDocument(112, "Document No.", "New Document No.");
+                    if "Option action Document" = "Option action Document"::"Rename Credit Memo" then
+                        LDCorrectPostedDocMgt.RenameSalesDocument(114, "Document No.", "New Document No.");
                 end;
             }
 
@@ -525,5 +584,177 @@ page 51003 "Setup Localization"
             Rec."ST Adj. Exch. Dflt. Dim. Bank" := StrSubstNo(DimDescription, QtyDim, 'dimensión')
         else
             Rec."ST Adj. Exch. Dflt. Dim. Bank" := StrSubstNo(DimDescription, QtyDim, 'dimensines');
+    end;
+
+
+
+    procedure DeleteDocumentProcess()
+    var
+        SalesInvHeader: Record "Sales Invoice Header";
+        SalesInvLine: Record "Sales Invoice Line";
+        SalesCrMemoHdr: Record "Sales Cr.Memo Header";
+        SalesCrMemoLine: Record "Sales Cr.Memo Line";
+        CustLedgEntry: Record "Cust. Ledger Entry";
+        DtldCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
+        PurchInvHeader: Record "Purch. Inv. Header";
+        PurchInvLine: Record "Purch. Inv. Line";
+        PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.";
+        PurchCrMemoLine: Record "Purch. Cr. Memo Line";
+        VendLedgEntry: Record "Vendor Ledger Entry";
+        DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry";
+        VATEntry: Record "VAT Entry";
+        BankAccLedgeEntry: Record "Bank Account Ledger Entry";
+        GLEntry: Record "G/L Entry";
+        GLEntryLink: Record "G/L Entry - VAT Entry Link";
+    begin
+        TestField("Document No.");
+        // if SalesInvHeader.Get("Document No.") then begin
+        //     SalesInvLine.Reset();
+        //     SalesInvLine.SetRange("Document No.", SalesInvHeader."No.");
+        //     SalesInvLine.DeleteAll();
+
+        //     CustLedgEntry.Reset();
+        //     CustLedgEntry.SetRange("Document No.", SalesInvHeader."No.");
+        //     CustLedgEntry.DeleteAll();
+
+        //     DtldCustLedgEntry.Reset();
+        //     DtldCustLedgEntry.SetRange("Document No.", SalesInvHeader."No.");
+        //     DtldCustLedgEntry.DeleteAll();
+
+        //     BankAccLedgeEntry.Reset();
+        //     BankAccLedgeEntry.SetRange("Document No.", SalesInvHeader."No.");
+        //     BankAccLedgeEntry.DeleteAll();
+
+        //     GLEntry.Reset();
+        //     GLEntry.SetRange("Document No.", SalesInvHeader."No.");
+        //     if GLEntry.FindFirst() then
+        //         repeat
+        //             GLEntryLink.Reset();
+        //             GLEntryLink.SetRange("G/L Entry No.", GLEntry."Entry No.");
+        //             GLEntryLink.DeleteAll();
+        //             GLEntry.Delete();
+        //         until GLEntry.Next() = 0;
+
+        //     VATEntry.Reset();
+        //     VATEntry.SetRange("Document No.", SalesInvHeader."No.");
+        //     if VATEntry.FindFirst() then
+        //         repeat
+        //             GLEntryLink.Reset();
+        //             GLEntryLink.SetRange("VAT Entry No.", VATEntry."Entry No.");
+        //             GLEntryLink.DeleteAll();
+        //         until VATEntry.Next() = 0;
+        //     SalesInvHeader.Delete();
+        // end else
+        if SalesCrMemoHdr.Get("Document No.") then begin
+            SalesCrMemoLine.Reset();
+            SalesCrMemoLine.SetRange("Document No.", SalesCrMemoHdr."No.");
+            SalesCrMemoLine.DeleteAll();
+
+            // CustLedgEntry.Reset();
+            // CustLedgEntry.SetRange("Document No.", SalesCrMemoHdr."No.");
+            // CustLedgEntry.DeleteAll();
+
+            // DtldCustLedgEntry.Reset();
+            // DtldCustLedgEntry.SetRange("Document No.", SalesCrMemoHdr."No.");
+            // DtldCustLedgEntry.DeleteAll();
+
+            // BankAccLedgeEntry.Reset();
+            // BankAccLedgeEntry.SetRange("Document No.", SalesCrMemoHdr."No.");
+            // BankAccLedgeEntry.DeleteAll();
+
+            // GLEntry.Reset();
+            // GLEntry.SetRange("Document No.", SalesCrMemoHdr."No.");
+            // if GLEntry.FindFirst() then
+            //     repeat
+            //         GLEntryLink.Reset();
+            //         GLEntryLink.SetRange("G/L Entry No.", GLEntry."Entry No.");
+            //         GLEntryLink.DeleteAll();
+            //         GLEntry.Delete();
+            //     until GLEntry.Next() = 0;
+
+            // VATEntry.Reset();
+            // VATEntry.SetRange("Document No.", SalesCrMemoHdr."No.");
+            // if VATEntry.FindFirst() then
+            //     repeat
+            //         GLEntryLink.Reset();
+            //         GLEntryLink.SetRange("VAT Entry No.", VATEntry."Entry No.");
+            //         GLEntryLink.DeleteAll();
+            //     until VATEntry.Next() = 0;
+            SalesCrMemoHdr.Delete();
+            // end else
+            //     if PurchInvHeader.Get("Document No.") then begin
+            //         PurchInvLine.Reset();
+            //         PurchInvLine.SetRange("Document No.", PurchInvHeader."No.");
+            //         PurchInvLine.DeleteAll();
+
+            //         VendLedgEntry.Reset();
+            //         VendLedgEntry.SetRange("Document No.", PurchInvHeader."No.");
+            //         VendLedgEntry.DeleteAll();
+
+            //         DtldVendLedgEntry.Reset();
+            //         DtldVendLedgEntry.SetRange("Document No.", PurchInvHeader."No.");
+            //         DtldVendLedgEntry.DeleteAll();
+
+            //         BankAccLedgeEntry.Reset();
+            //         BankAccLedgeEntry.SetRange("Document No.", PurchInvHeader."No.");
+            //         BankAccLedgeEntry.DeleteAll();
+
+            //         GLEntry.Reset();
+            //         GLEntry.SetRange("Document No.", PurchInvHeader."No.");
+            //         if GLEntry.FindFirst() then
+            //             repeat
+            //                 GLEntryLink.Reset();
+            //                 GLEntryLink.SetRange("G/L Entry No.", GLEntry."Entry No.");
+            //                 GLEntryLink.DeleteAll();
+            //                 GLEntry.Delete();
+            //             until GLEntry.Next() = 0;
+
+            //         VATEntry.Reset();
+            //         VATEntry.SetRange("Document No.", PurchInvHeader."No.");
+            //         if VATEntry.FindFirst() then
+            //             repeat
+            //                 GLEntryLink.Reset();
+            //                 GLEntryLink.SetRange("VAT Entry No.", VATEntry."Entry No.");
+            //                 GLEntryLink.DeleteAll();
+            //             until VATEntry.Next() = 0;
+            //         PurchInvHeader.Delete();
+            //     end else
+            //         if PurchCrMemoHdr.Get("Document No.") then begin
+            //             PurchCrMemoLine.Reset();
+            //             PurchCrMemoLine.SetRange("Document No.", PurchCrMemoHdr."No.");
+            //             PurchCrMemoLine.DeleteAll();
+
+            //             VendLedgEntry.Reset();
+            //             VendLedgEntry.SetRange("Document No.", PurchCrMemoHdr."No.");
+            //             VendLedgEntry.DeleteAll();
+
+            //             DtldVendLedgEntry.Reset();
+            //             DtldVendLedgEntry.SetRange("Document No.", PurchCrMemoHdr."No.");
+            //             DtldVendLedgEntry.DeleteAll();
+
+            //             BankAccLedgeEntry.Reset();
+            //             BankAccLedgeEntry.SetRange("Document No.", PurchCrMemoHdr."No.");
+            //             BankAccLedgeEntry.DeleteAll();
+
+            //             GLEntry.Reset();
+            //             GLEntry.SetRange("Document No.", PurchCrMemoHdr."No.");
+            //             if GLEntry.FindFirst() then
+            //                 repeat
+            //                     GLEntryLink.Reset();
+            //                     GLEntryLink.SetRange("G/L Entry No.", GLEntry."Entry No.");
+            //                     GLEntryLink.DeleteAll();
+            //                     GLEntry.Delete();
+            //                 until GLEntry.Next() = 0;
+
+            //             VATEntry.Reset();
+            //             VATEntry.SetRange("Document No.", PurchCrMemoHdr."No.");
+            //             if VATEntry.FindFirst() then
+            //                 repeat
+            //                     GLEntryLink.Reset();
+            //                     GLEntryLink.SetRange("VAT Entry No.", VATEntry."Entry No.");
+            //                     GLEntryLink.DeleteAll();
+            //                 until VATEntry.Next() = 0;
+            //             PurchCrMemoHdr.Delete();
+        end;
     end;
 }
