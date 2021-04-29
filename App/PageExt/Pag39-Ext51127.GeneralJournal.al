@@ -73,7 +73,7 @@ pageextension 51127 "ST General Journal" extends "General Journal"
         }
         modify("Document Type")
         {
-            Visible = false;
+            Visible = true;
         }
         modify("Gen. Bus. Posting Group")
         {

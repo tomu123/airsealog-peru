@@ -26,6 +26,11 @@ pageextension 51037 "Setup Cash Receipt Journal" extends "Cash Receipt Journal"
                 end;
             }
         }
+
+        modify("Currency Code")
+        {
+            Visible = true;
+        }
     }
 
     var
