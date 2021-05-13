@@ -1,6 +1,6 @@
 codeunit 51007 "Analitycs Management"
 {
-    Permissions = TableData "Cust. Ledger Entry" = rimd, TableData "Vendor Ledger Entry" = rimd, 
+    Permissions = TableData "Cust. Ledger Entry" = rimd, TableData "Vendor Ledger Entry" = rimd,
                 TableData "Sales Cr.Memo Header" = rimd, TableData "Job Ledger Entry" = rimd, TableData "VAT Entry" = rimd,
                 tabledata "G/L Entry" = rimd;
     trigger OnRun()

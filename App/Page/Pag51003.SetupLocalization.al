@@ -568,8 +568,8 @@ page 51003 "Setup Localization"
     var
         MasterData: Record "Master Data";
         MDPage: Page "Master Data";
-        Record81: Record 81;
-        DimDescription: Label 'This setup %1 %2.', Comment = 'ESM="Se configuró %1 %2"';
+                    Record81: Record 81;
+                    DimDescription: Label 'This setup %1 %2.', Comment = 'ESM="Se configuró %1 %2"';
         gAdjExchRateLocEditable: Boolean;
         gFTFreeTitleEditable: Boolean;
 
@@ -612,10 +612,16 @@ page 51003 "Setup Localization"
         GLEntryLink: Record "G/L Entry - VAT Entry Link";
     begin
         TestField("Document No.");
-        // if SalesInvHeader.Get("Document No.") then begin
-        //     SalesInvLine.Reset();
-        //     SalesInvLine.SetRange("Document No.", SalesInvHeader."No.");
-        //     SalesInvLine.DeleteAll();
+
+        GLEntry.Reset;
+        GLEntry.SETRANGE("Document No.","Document No.");
+        IF GLEntry.FINDSET THEN
+            ERROR('El documento tiene mov. contables, no se puede borrar.'); 
+
+         if SalesInvHeader.Get("Document No.") then begin
+             SalesInvLine.Reset();
+             SalesInvLine.SetRange("Document No.", SalesInvHeader."No.");
+             SalesInvLine.DeleteAll();
 
         //     CustLedgEntry.Reset();
         //     CustLedgEntry.SetRange("Document No.", SalesInvHeader."No.");
@@ -647,8 +653,8 @@ page 51003 "Setup Localization"
         //             GLEntryLink.SetRange("VAT Entry No.", VATEntry."Entry No.");
         //             GLEntryLink.DeleteAll();
         //         until VATEntry.Next() = 0;
-        //     SalesInvHeader.Delete();
-        // end else
+             SalesInvHeader.Delete();
+         end else
         if SalesCrMemoHdr.Get("Document No.") then begin
             SalesCrMemoLine.Reset();
             SalesCrMemoLine.SetRange("Document No.", SalesCrMemoHdr."No.");
@@ -685,20 +691,12 @@ page 51003 "Setup Localization"
             //         GLEntryLink.DeleteAll();
             //     until VATEntry.Next() = 0;
             SalesCrMemoHdr.Delete();
-<<<<<<< HEAD
-            // end else
-            //     if PurchInvHeader.Get("Document No.") then begin
-            //         PurchInvLine.Reset();
-            //         PurchInvLine.SetRange("Document No.", PurchInvHeader."No.");
-            //         PurchInvLine.DeleteAll();
-=======
         end;
         // end else
         if PurchInvHeader.Get("Document No.") then begin
             PurchInvLine.Reset();
             PurchInvLine.SetRange("Document No.", PurchInvHeader."No.");
             PurchInvLine.DeleteAll();
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
 
             //         VendLedgEntry.Reset();
             //         VendLedgEntry.SetRange("Document No.", PurchInvHeader."No.");
@@ -730,16 +728,12 @@ page 51003 "Setup Localization"
             //                 GLEntryLink.SetRange("VAT Entry No.", VATEntry."Entry No.");
             //                 GLEntryLink.DeleteAll();
             //             until VATEntry.Next() = 0;
-<<<<<<< HEAD
-            //         PurchInvHeader.Delete();
-=======
-            PurchInvHeader.Delete();
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
-            //     end else
-            //         if PurchCrMemoHdr.Get("Document No.") then begin
-            //             PurchCrMemoLine.Reset();
-            //             PurchCrMemoLine.SetRange("Document No.", PurchCrMemoHdr."No.");
-            //             PurchCrMemoLine.DeleteAll();
+                     PurchInvHeader.Delete();
+     end else
+                     if PurchCrMemoHdr.Get("Document No.") then begin
+                         PurchCrMemoLine.Reset();
+                         PurchCrMemoLine.SetRange("Document No.", PurchCrMemoHdr."No.");
+                         PurchCrMemoLine.DeleteAll();
 
             //             VendLedgEntry.Reset();
             //             VendLedgEntry.SetRange("Document No.", PurchCrMemoHdr."No.");
@@ -771,7 +765,7 @@ page 51003 "Setup Localization"
             //                     GLEntryLink.SetRange("VAT Entry No.", VATEntry."Entry No.");
             //                     GLEntryLink.DeleteAll();
             //                 until VATEntry.Next() = 0;
-            //             PurchCrMemoHdr.Delete();
+                         PurchCrMemoHdr.Delete();
         end;
     end;
 }
