@@ -683,42 +683,10 @@
           <note from="Developer" annotates="general" priority="2">ESM="Cantidad de cotizaciones solicitadas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Cantidad de cot. solicitadas - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
-        <trans-unit id="Table 4047494536 - Field 4233662066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete Document</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Delete Document - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 4047494536 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document No.</source>
-          <note from="Developer" annotates="general" priority="2">ESM="N° Documento"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Document No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 4047494536 - Field 3772581096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New Document No.</source>
-          <note from="Developer" annotates="general" priority="2">ESM="N° Documento Nuevo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field New Document No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 4047494536 - Field 35768486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Option action Document</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Tipo de acción para documento"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 4047494536 - Field 35768486 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property OptionCaption</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 4047494536 - Method 91816459 - NamedType 3809372348" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The exchange rate does not exist.</source>
-          <note from="Developer" annotates="general" priority="2">ESM="El tipo de cambio no existe."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Setup Localization - Method SetOnBeforePostPurchaseDoc - NamedType CurrExchangeEmpty</note>
-=======
         <trans-unit id="Table 4006921589 - Field 3680059174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Capital</source>
           <note from="Developer" annotates="general" priority="2">ESM="Capital"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Capital - Property Caption</note>
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
         </trans-unit>
         <trans-unit id="Table 4006921589 - Field 1558681476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargo</source>
@@ -880,49 +848,20 @@
           <note from="Developer" annotates="general" priority="2">ESM="Días"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Días - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
-        <trans-unit id="Page 4047494536 - Control 207065589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Funcionalida ULN</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Control Funcionalidad - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4047494536 - Action 1572708512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Master Data</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Maestro Datos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action MasterData - Property Caption</note>
-=======
         <trans-unit id="Table 4006921589 - Field 1898073144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ejec. negocios financieros 1</source>
           <note from="Developer" annotates="general" priority="2">ESM="Ejecutivo negocios financieros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Ejec. negocios financieros 1 - Property Caption</note>
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
         </trans-unit>
         <trans-unit id="Table 4006921589 - Field 2535769761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ejec. negocios financieros 2</source>
           <note from="Developer" annotates="general" priority="2">ESM="Ejecutivo negocios financieros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Ejec. negocios financieros 2 - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
-        <trans-unit id="Page 4047494536 - Action 4145840562 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete Document</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Borrar Document"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action DeleteDocument - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4047494536 - Action 2088106585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Rename Document</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Renombrar Documento"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action RenameDocument - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4047494536 - NamedType 3955426682" size-unit="char" translate="yes" xml:space="preserve">
-          <source>This setup %1 %2.</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Se configuró %1 %2"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - NamedType DimDescription</note>
-=======
         <trans-unit id="Table 4006921589 - Field 3173466378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ejec. negocios financieros 3</source>
           <note from="Developer" annotates="general" priority="2">ESM="Ejecutivo negocios financieros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Ejec. negocios financieros 3 - Property Caption</note>
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
         </trans-unit>
         <trans-unit id="Table 4006921589 - Field 884619006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ejec. negocios financieros G</source>
@@ -6249,17 +6188,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page PR ConsultBudget - Control Net Budget Balance - Property ToolTip</note>
         </trans-unit>
-<<<<<<< HEAD
-        <trans-unit id="Page 834264647 - Control 600253220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fourth Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Importe de 4ta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Ret. RH Purchase Invoice - Control Retention RH Fourth Amount - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 834264647 - Control 3279367636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Gross Fourth Amount</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Importe Bruto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Ret. RH Purchase Invoice - Control Retention RH Gross amount - Property Caption</note>
-=======
         <trans-unit id="Page 2745851517 - Control 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2">ESM="N°"</note>
@@ -6269,7 +6197,6 @@
           <source>Quantity</source>
           <note from="Developer" annotates="general" priority="2">ESM="Cantidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page PR ConsultBudget - Control Quantity - Property Caption</note>
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
         </trans-unit>
         <trans-unit id="Page 2745851517 - Control 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
@@ -9271,6 +9198,71 @@
           <note from="Developer" annotates="general" priority="2">ESM="Fecha Inicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Purchase Record - Control StartDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 667432715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proveedores - Cuentas por Pagar</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proveedores - Cuentas por Pagar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - NamedType 1987762555" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pág.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - NamedType CurrReport_PAGENOCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - NamedType 381053364" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Documento</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - NamedType Cust_Ledger_Entry_Document_Date_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - NamedType 500909485" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Vencimiento</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - NamedType Cust_Ledger_Entry_Due_Date_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - NamedType 3034938817" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha Registro</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - NamedType Cust_Ledger_Entry_Posting_Date_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - NamedType 1443864879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - NamedType OverDueMonthsCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - NamedType 3490785230" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enter Date to continue.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ingrese fecha para continuar."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - NamedType ShowErrorEmptyDate</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hasta el %1</source>
+          <note from="Developer" annotates="general" priority="2">%1 is the as of date</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - NamedType 1583171122" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - NamedType TotalCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - NamedType 2305432762" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proveedores - Cuentas por Pagar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - NamedType Vendor_Detailed_AgingCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Opciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - Control 539546824 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica el final del período cubierto por el informe (por ejemplo, 31/12/17).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - Control DateFilter - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 667432715 - Control 539546824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtrar Fecha</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Remaining Purchase Report - Control DateFilter - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1893767083 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retentions Records</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9691,28 +9683,8 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort Import Rgtr. Retention Agent - Control Last SUNAT Update Date - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
-        <trans-unit id="Report 4053556356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Checking Balance</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Balance de comprobación"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Checking Balance - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 4053556356 - Control 3605153064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Start Date</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Fecha Inicio"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Checking Balance - Control StartDate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 4053556356 - Control 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>End Date</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Fecha Fin"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Checking Balance - Control EndDate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 602334234 - NamedType 2170014339" size-unit="char" translate="yes" xml:space="preserve">
-          <source>El Documento debe estar lanzado para su impresión</source>
-=======
         <trans-unit id="XmlPort 4010924015 - Control 1853754606 - Method 2126772001 - NamedType 2848075806" size-unit="char" translate="yes" xml:space="preserve">
           <source>Please enter the last SUNAT update date</source>
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort Import Rgtr. Retention Agent - Control Last SUNAT Update Date - Method OnValidate - NamedType LastUpdateDateErr</note>
         </trans-unit>
@@ -10051,34 +10023,20 @@
           <note from="Developer" annotates="general" priority="2">ESM="Conf. Localizado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup Business Mgt. RC - Action PeruvianLocalization - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
-        <trans-unit id="PageExtension 1974781378 - Action 595570189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
-          <source>Correct Ext.</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Extornar Documento"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CorrectLegalDocAction - Property Caption</note>
-=======
         <trans-unit id="PageExtension 1584602212 - Action 2371969060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Accountant BooK</source>
           <note from="Developer" annotates="general" priority="2">ESM="Libros Contables"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup Business Mgt. RC - Action AccountantBooks - Property Caption</note>
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
         </trans-unit>
         <trans-unit id="PageExtension 1584602212 - Action 4204941840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Legal Documents</source>
           <note from="Developer" annotates="general" priority="2">ESM="Documentos legales"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup Business Mgt. RC - Action LegalDocument - Property Caption</note>
         </trans-unit>
-<<<<<<< HEAD
-        <trans-unit id="PageExtension 1974781378 - Action 701109401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
-          <source>Cancell L.D.</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Anular Documento"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Legal Doc. Pstd Sales CrMemos - Action CancellLegalDocAction - Property Caption</note>
-=======
         <trans-unit id="PageExtension 1584602212 - Action 2998326744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Setup</source>
           <note from="Developer" annotates="general" priority="2">ESM="Configuración"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Setup Business Mgt. RC - Action SetupLocalization - Property Caption</note>
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
         </trans-unit>
         <trans-unit id="PageExtension 1584602212 - Action 1313994972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Retention Entries</source>

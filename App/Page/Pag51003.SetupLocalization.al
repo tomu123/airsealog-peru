@@ -5,11 +5,7 @@ page 51003 "Setup Localization"
     Caption = 'Setup Localization', Comment = 'ESM="Configuración Localizado"';
     UsageCategory = Administration;
     SourceTable = "Setup Localization";
-<<<<<<< HEAD
-    Permissions = tabledata "Sales Cr.Memo Line" = rimd, tabledata "Sales Cr.Memo Header" = rimd;
-=======
     Permissions = tabledata "Sales Cr.Memo Line" = rimd, tabledata "Sales Cr.Memo Header" = rimd, tabledata "Purch. Inv. Header" = rimd, tabledata "Purch. Inv. Line" = rimd;
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
 
     layout
     {
@@ -685,20 +681,11 @@ page 51003 "Setup Localization"
             //         GLEntryLink.DeleteAll();
             //     until VATEntry.Next() = 0;
             SalesCrMemoHdr.Delete();
-<<<<<<< HEAD
             // end else
             //     if PurchInvHeader.Get("Document No.") then begin
             //         PurchInvLine.Reset();
             //         PurchInvLine.SetRange("Document No.", PurchInvHeader."No.");
             //         PurchInvLine.DeleteAll();
-=======
-        end;
-        // end else
-        if PurchInvHeader.Get("Document No.") then begin
-            PurchInvLine.Reset();
-            PurchInvLine.SetRange("Document No.", PurchInvHeader."No.");
-            PurchInvLine.DeleteAll();
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
 
             //         VendLedgEntry.Reset();
             //         VendLedgEntry.SetRange("Document No.", PurchInvHeader."No.");
@@ -730,11 +717,7 @@ page 51003 "Setup Localization"
             //                 GLEntryLink.SetRange("VAT Entry No.", VATEntry."Entry No.");
             //                 GLEntryLink.DeleteAll();
             //             until VATEntry.Next() = 0;
-<<<<<<< HEAD
             //         PurchInvHeader.Delete();
-=======
-            PurchInvHeader.Delete();
->>>>>>> 18540e8f4f481f4ca40b23bb24bb36c0e74df5da
             //     end else
             //         if PurchCrMemoHdr.Get("Document No.") then begin
             //             PurchCrMemoLine.Reset();
