@@ -1513,6 +1513,36 @@
           <note from="Developer" annotates="general" priority="2">ESM="Valor Index Potencia - PP"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Valor Index Potencia - PP - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1884706281 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inv. Bal. Book Buffer</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Libros Inventarios y Balances"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1884706281 - Field 205185013 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correlative cuo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field Correlative cuo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1884706281 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1884706281 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="N° Cuenta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field G/L Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1884706281 - Field 912261439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1884706281 - Field 1860039839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transaction CUO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field Transaction CUO - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3008140192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Legal Document</source>
           <note from="Developer" annotates="general" priority="2">ESM="Documento Legal"</note>
