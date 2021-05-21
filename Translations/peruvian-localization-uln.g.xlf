@@ -473,6 +473,46 @@
           <note from="Developer" annotates="general" priority="2">ESM="Tipo Doc. Identidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field VAT Registration Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 810543277 - Field 1991915875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fecha</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Hist. Divisas - Field Fecha - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 810543277 - Field 2547322000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FechaCompleta</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Hist. Divisas - Field FechaCompleta - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 810543277 - Field 2976331643 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modif. Usuario</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Hist. Divisas - Field Modif. Usuario - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 810543277 - Field 949215307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Hist. Divisas - Field No - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 810543277 - Field 3808416210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Registrado</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Hist. Divisas - Field Registrado - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 810543277 - Field 1893036961 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>T.C Activo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Hist. Divisas - Field T.C Activo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 810543277 - Field 805861029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>T.C Pasivo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Hist. Divisas - Field T.C Pasivo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 810543277 - Field 4178750463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ult. Fecha Modif.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Hist. Divisas - Field Ult. Fecha Modif. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2989431684 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Importation</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1512,36 +1552,6 @@
           <source>Valor Index Potencia - PP</source>
           <note from="Developer" annotates="general" priority="2">ESM="Valor Index Potencia - PP"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Integration CRM Buffer 1 - Field Valor Index Potencia - PP - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1884706281 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Inv. Bal. Book Buffer</source>
-          <note from="Developer" annotates="general" priority="2">ESM="Libros Inventarios y Balances"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1884706281 - Field 205185013 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Correlative cuo</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field Correlative cuo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1884706281 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Entry No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field Entry No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1884706281 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>G/L Account No.</source>
-          <note from="Developer" annotates="general" priority="2">ESM="N° Cuenta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field G/L Account No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1884706281 - Field 912261439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Period</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field Period - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1884706281 - Field 1860039839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transaction CUO</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Inv. Bal. Book Buffer - Field Transaction CUO - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3008140192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Legal Document</source>
@@ -9633,6 +9643,291 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control STAdjustExchRatePassive - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3180510772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Diferencia Cambio Perú</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 2963778462" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There is nothing to adjust.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType NothingToAdjustMsg</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 1278011672" size-unit="char" translate="yes" xml:space="preserve">
+          <source>One or more currency exchange rates have been adjusted.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType RatesAdjustedMsg</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 must be entered.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to adjust general ledger entries for currency fluctuations without adjusting customer, vendor and bank ledger entries? This may result in incorrect currency adjustments to payables, receivables and bank accounts.\\ </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you wish to continue?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text004</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The adjustment of exchange rates has been canceled.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text005</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjusting exchange rates...\\</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text006</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Account    @1@@@@@@@@@@@@@\\</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text007</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 3283546407" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer        @2@@@@@@@@@@@@@\</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text008</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor          @3@@@@@@@@@@@@@\</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text009</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjustment      #4#############</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text010</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 1026443335" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No currencies have been found.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text011</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 2939533186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjusting VAT Entries...\\</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text012</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 2301836569" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Entry    @1@@@@@@@@@@@@@</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text013</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 4214926420" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjusting general ledger...\\</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text014</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 3577229803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account    @1@@@@@@@@@@@@@</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text015</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 1195352358" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjmt. of %1 %2, Ex.Rate Adjust.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = Currency Code, %2= Adjust Amount</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text016</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 557655741" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 on %2 %3 must be %4. When this %2 is used in %5, the exchange rate adjustment is defined in the %6 field in the %7. %2 %3 is used in the %8 field in the %5. </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text017</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 857534312" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This posting date cannot be entered because it does not occur within the adjustment period. Reenter the posting date.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType Text018</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 803441194" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Falta colocar el tipo de cambio Activo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType ULN001</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 3185318639" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Falta colocar el tipo de cambio Pasivo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType ULN002</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - NamedType 3823015256" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Falta filtrar por una moneda</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - NamedType ULN003</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 3280251715 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want to adjust customer, vendor, and bank accounts for currency fluctuations.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control AdjCustVendBank - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 3280251715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjust Customer, Vendor and Bank Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control AdjCustVendBank - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 741122023 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want to post in an additional reporting currency and adjust general ledger accounts for currency fluctuations between LCY and the additional reporting currency.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control AdjGLAcc - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 741122023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjust G/L Accounts for Add.-Reporting Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control AdjGLAcc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 1361548158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjustment Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control Adjustment Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 3592094765 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the last date for which entries are adjusted. This date is usually the same as the posting date in the Posting Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control EndingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 3592094765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control EndingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 543275552 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the beginning of the period for which entries are adjusted. This field is usually left blank, but you can enter a date.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control StartingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 543275552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control StartingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 3117834186 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the document number that will appear on the general ledger entries that are created by the batch job.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control DocumentNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 3117834186 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control DocumentNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 1014610129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>T.C. Activo</source>
+          <note from="Developer" annotates="general" priority="2">ESM="T.C. Activo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control gActiveADJTTC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 93039445 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>T.C. Pasivo</source>
+          <note from="Developer" annotates="general" priority="2">ESM="T.C. Activo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control gPasiveADJTTC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 3037438984 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date on which the general ledger entries are posted. This date is usually the same as the ending date in the Ending Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control PostingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 3037438984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control PostingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 1539609042 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies text for the general ledger entries that are created by the batch job. The default text is Exchange Rate Adjmt. of %1 %2, in which %1 is replaced by the currency code and %2 is replaced by the currency amount that is adjusted. For example, Exchange Rate Adjmt. of DEM 38,000.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control PostingDescription - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3180510772 - Control 1539609042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Adjust Exchange Rates - Control PostingDescription - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Asiento de Cierre y Apertura</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 1056625860" size-unit="char" translate="yes" xml:space="preserve">
+          <source>--Union Label-----------------------------------------------------------</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType --------Union Label-------</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 1533996397" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chart of Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType Chart_of_AccountsCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 1987762555" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType CurrReport_PAGENOCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 3914069648" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Totaling</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType G_L_Account__TotalingCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 816869188" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType G_L_Account___Account_Type_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 2268812825" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Consol. Translation Method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType G_L_Account___Consol__Translation_Method_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 2216839944" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct Posting</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType G_L_Account___Direct_Posting_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 549143186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Bus. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType G_L_Account___Gen__Bus__Posting_Group_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 1775944671" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Posting Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType G_L_Account___Gen__Posting_Type_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 2225772325" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Prod. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType G_L_Account___Gen__Prod__Posting_Group_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 3131770232" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Income/Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType G_L_Account___Income_Balance_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 94175705" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType PADSTR_____G_L_Account__Indentation___2___G_L_Account__NameCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 2720410936" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create opening seats.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType Text01</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - NamedType 3358107553" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location Peru, Apertura Process...</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - NamedType Text02</note>
+        </trans-unit>
+        <trans-unit id="Report 496817492 - Control 3510581860 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crear asiento de apertura</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ULN Chart of Accounts - Control Aperture - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3295751972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor AC Balance</source>
           <note from="Developer" annotates="general" priority="2">ESM="Saldo GC Proveedor"</note>
@@ -12827,6 +13122,91 @@
           <source>Vend. Name/Business Name</source>
           <note from="Developer" annotates="general" priority="2">ESM="Razón Social/Nombre"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ST Vendor Bank Account - Field Vend. Name/Business Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1791308659 - Field 1425086985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 695145784">
+          <source>Ref. Document No.</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Document No.";ESM="Nº documento Adjmt"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN Adj Exchange Rate Buffer - Field Ref. Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1791308659 - Field 4060624783 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 695145784">
+          <source>Ref. Source No.</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Source No.";ESM="Cód. procedencia mov. Adjmt"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN Adj Exchange Rate Buffer - Field Ref. Source No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1791308659 - Field 3953869070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 695145784">
+          <source>Ref. Source Type</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Source Type";ESP="Tipo procedencia mov. Adjmt";ESM="Tipo procedencia mov. Adjmt"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN Adj Exchange Rate Buffer - Field Ref. Source Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 3128543658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 10 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 10 Code";ESM="Cód. dim. acceso dir. 10"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dim. 10 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 3341065444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 1 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 1 Code";ESM="Cód. dim. acceso dir. 1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dimension 1 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 645856549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 2 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 2 Code";ESM="Cód. dim. acceso dir. 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dimension 2 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 2640217446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 3 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 3 Code";ESM="Cód. dim. acceso dir. 3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dimension 3 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 297253151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 4 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 4 Code";ESM="Cód. dim. acceso dir. 4"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dimension 4 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 656706016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 5 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 5 Code";ESM="Cód. dim. acceso dir. 5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dimension 5 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 1514133793 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 6 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 6 Code";ESM="Cód. dim. acceso dir. 6"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dimension 6 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 3112119778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 7 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 7 Code";ESM="Cód. dim. acceso dir. 7"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dimension 7 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 3114268075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 8 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 8 Code";ESM="Cód. dim. acceso dir. 8"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dimension 8 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 1000526796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 9 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 9 Code";ESM="Cód. dim. acceso dir. 9"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Dflt.Shortcut Dimension 9 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 3202219690 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Expenses G/L Account</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Expenses G/L Account";ESP="Cuenta Financiera Gastos";ESM="Cuenta Financiera Gastos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Expenses G/L Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 597047090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Income G/L Account</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Income G/L Account";ESP="Cuenta Financiera Ingresos";ESM="Cuenta Financiera Ingresos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Income G/L Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 1016095192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 10 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 10 Code";ESP="Cód. dim. acceso directo 10";ESM="Cód. dim. acceso directo 10"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Shortcut Dimension 10 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3593602125 - Field 2475792064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Shortcut Dimension 9 Code</source>
+          <note from="Developer" annotates="general" priority="2">ENU="Shortcut Dimension 9 Code";ESP="Cód. dim. acceso directo 9";ESM="Cód. dim. acceso directo 9"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ULN General Ledger Setup - Field Shortcut Dimension 9 Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1540417068 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source> </source>

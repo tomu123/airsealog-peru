@@ -3,6 +3,7 @@ report 51028 "Checking Balance"
     UsageCategory = Administration;
     ApplicationArea = All;
     Caption = 'Checking Balance', Comment = 'ESM="Balance de comprobación"';
+
     DefaultLayout = RDLC;
     RDLCLayout = './App/Report/RDLC/CheckingBalance.rdl';
 

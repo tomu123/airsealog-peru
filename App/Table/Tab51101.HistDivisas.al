@@ -1,37 +1,46 @@
-table 59009 "Inv. Bal. Book Buffer"
+table 51101 "Hist. Divisas"
 {
     DataClassification = ToBeClassified;
-    Caption = 'Inv. Bal. Book Buffer', Comment = 'ESM="Libros Inventarios y Balances"';
 
     fields
     {
-        field(59000; "Entry No."; Integer)
+        field(51000; "Fecha"; Date)
         {
             DataClassification = ToBeClassified;
         }
-        field(59001; "Period"; Text[12])
+        field(51001; "T.C Pasivo"; Decimal)
         {
             DataClassification = ToBeClassified;
         }
-        field(59002; "Transaction CUO"; Integer)
+        field(51002; "T.C Activo"; Decimal)
         {
             DataClassification = ToBeClassified;
         }
-        field(59003; "Correlative cuo"; Code[20])
+        field(51003; "Modif. Usuario"; Code[50])
         {
             DataClassification = ToBeClassified;
         }
-        field(59004; "G/L Account No."; Code[20])
+        field(51004; "Ult. Fecha Modif."; Date)
         {
             DataClassification = ToBeClassified;
-            Caption = 'G/L Account No.', Comment = 'ESM="N° Cuenta"';
-            TableRelation = "G/L Account" WHERE("Account Type" = CONST(Posting), Blocked = CONST(false));
+        }
+        field(51005; "FechaCompleta"; DateTime)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(51006; "No"; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(51007; Registrado; Boolean)
+        {
+            DataClassification = ToBeClassified;
         }
     }
 
     keys
     {
-        key(PK; "Entry No.")
+        key(PK; "No")
         {
             Clustered = true;
         }
