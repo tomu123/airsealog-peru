@@ -137,6 +137,7 @@ report 51401 "Remaining Purchase Report"
                             OverDueMonths := CalcFullRemainingAmount("Document No.", "Document Date", "Remaining Amount")
                         else
                             OverDueMonths := "Remaining Amount";
+
                         TempCurrencyTotalBuffer.UpdateTotal(
                           "Currency Code", "Remaining Amount", "Remaining Amt. (LCY)", Counter);
                     end;
