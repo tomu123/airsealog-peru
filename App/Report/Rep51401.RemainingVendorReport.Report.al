@@ -96,11 +96,11 @@ report 51401 "Remaining Purchase Report"
                     {
 
                     }
-                    column(Vendor_Ledger_Entry_Description; Description)
+                    column(Vendor_Ledger_Entry_Description; Vendor_Ledger_Entry_Description)
                     {
 
                     }
-                    column(Vendor_Ledger_Entry_Due_Date; "Due Date")
+                    column(Vendor_Ledger_Entry_Due_Date; Vendor_Ledger_Entry_Due_Date)
                     {
 
                     }
@@ -133,11 +133,14 @@ report 51401 "Remaining Purchase Report"
 
                     trigger OnAfterGetRecord()
                     begin
-                        if ("Currency Code" = '') and ("Vendor Posting Group" = 'DETRAC') then
-                            OverDueMonths := CalcFullRemainingAmount("Document No.", "Document Date", "Remaining Amount")
-                        else
+                        if ("Currency Code" = '') and ("Vendor Posting Group" = 'DETRAC') then begin
+                            OverDueMonths := CalcFullRemainingAmount("Document No.", "Document Date", "Remaining Amount");
+                            Vendor_Ledger_Entry_Due_Date := fnGetDueDate("Document No.");
+                        end else begin
                             OverDueMonths := "Remaining Amount";
-
+                            Vendor_Ledger_Entry_Description := Description;
+                            Vendor_Ledger_Entry_Due_Date := "Due Date";
+                        end;
                         TempCurrencyTotalBuffer.UpdateTotal(
                           "Currency Code", "Remaining Amount", "Remaining Amt. (LCY)", Counter);
                     end;
@@ -266,6 +269,8 @@ report 51401 "Remaining Purchase Report"
         Vendor_Detailed_AgingCaptionLbl: Label 'Proveedores - Cuentas por Pagar';
         VendorFilter: Text;
         OverDueMonths: Decimal;
+        Vendor_Ledger_Entry_Due_Date: Date;
+        Vendor_Ledger_Entry_Description: Text[100];
         OverDueMonthsCaptionLbl: Label 'Importe';
         TempCurrencyTotalBuffer: Record "Currency Total Buffer" temporary;
         TempCurrencyTotalBuffer2: Record "Currency Total Buffer" temporary;
@@ -289,6 +294,25 @@ report 51401 "Remaining Purchase Report"
             if CurrExchRate.FindFirst() then
                 exit(RemainAmount / CurrExchRate."Relational Exch. Rate Amount");
             exit(RemainAmount);
+        end;
+    end;
+
+    local procedure fnGetDueDate(var NoDoc: Code[20]): Date
+    var
+        VendLedgEntry: Record "Vendor Ledger Entry";
+    begin
+        VendLedgEntry.Reset();
+        VendLedgEntry.SetRange("Document No.", NoDoc);
+        VendLedgEntry.SetFilter("Document Type", '%1', VendLedgEntry."Document Type"::Invoice);
+        if VendLedgEntry.FindLast() then begin
+            Vendor_Ledger_Entry_Description := VendLedgEntry.Description;
+            exit(VendLedgEntry."Due Date");
+            //end else begin
+            //    VendLedgEntry.Reset();
+            //    VendLedgEntry.SetRange("Document No.", NoDoc);
+            //    if VendLedgEntry.FindFirst() then begin
+            //        exit("Vendor Ledger Entry"."Due Date");
+            //    end;
         end;
     end;
 }
