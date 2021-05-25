@@ -94,8 +94,12 @@ page 51001 "Accountant Book"
                 var
                     AccBookMgt: Codeunit "Accountant Book Management";
                     Page6520: page 6520;
+                    InvBalEBooks: Codeunit "Inv. Bal. EBooks";
                 begin
                     case Rec."EBook Code" of
+                        '317':
+                            ;
+                        //InvBalEBooks.GenInvBalBooks(Rec."EBook Code", true);
                         '501', '503', '601':
                             AccBookMgt.GenJournalBooks(Rec."EBook Code", true);
                         '801', '802':
