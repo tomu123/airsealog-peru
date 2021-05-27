@@ -1,4 +1,4 @@
-tableextension 51051 "ULN General Ledger Setup" extends "General Ledger Setup"
+tableextension 51061 "ULN General Ledger Setup" extends "General Ledger Setup"
 {
     fields
     {

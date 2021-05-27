@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PermissionSets>
-  <PermissionSet RoleID="PERUVIAN-LOCALIZATION-ULN" RoleName="Peruvian-Localization-ULN">
+  <PermissionSet RoleID="PERUVIAN-LOCAL-ULN" RoleName="Peruvian-Localization-ULN">
     <Permission>
       <ObjectID>51000</ObjectID>
       <ObjectType>0</ObjectType>
