@@ -31,6 +31,6 @@
     }],
     "features": ["TranslationFile"],
     "contextSensitiveHelpUrl": "https://Peruvian-Localization-ULN.com/help/",
-    "showMyCode": false,
+    "showMyCode": true,
     "runtime": "5.0"
 }
