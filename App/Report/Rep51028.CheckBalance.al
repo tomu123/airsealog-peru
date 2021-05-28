@@ -111,7 +111,7 @@ report 51028 "Checking Balance"
                 end;
 
 
-                if CopyStr("No.", 1, 2) IN ['67', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '88', '90', '91', '92', '93', '94', '95', '97'] then begin//se agrego la cuenta '88'
+                if CopyStr("No.", 1, 2) IN ['69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '88', '90', '91', '92', '93', '94', '95', '97'] then begin//se agrego la cuenta '88'
                     if gimporte > 0 then
                         DecimalValues[9] := gimporte
                     else
