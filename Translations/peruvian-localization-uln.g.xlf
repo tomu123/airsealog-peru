@@ -8884,8 +8884,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer AC Balance - Control StartDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer Detailed Aging Report</source>
-          <note from="Developer" annotates="general" priority="2">Cliente - Cuentas por cobrar</note>
+          <source>Cliente - Cuentas por cobrar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">

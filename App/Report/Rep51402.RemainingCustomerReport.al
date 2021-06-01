@@ -127,9 +127,7 @@ report 51402 "Customer Detailed Aging Report"
                     begin
                         if OnlyOpen then begin
                             SetRange(Open, true);
-                            //SetRange("Due Date", 0D, EndDate);
-                        end else
-                            //SetRange("Due Date", 0D, EndDate);
+                        end;
                         Counter := 0;
                         SetRange("Date Filter", 0D, EndDate);
                         SetAutoCalcFields("Remaining Amount", "Remaining Amt. (LCY)");
@@ -239,14 +237,14 @@ report 51402 "Customer Detailed Aging Report"
                     field("Ending Date"; EndDate)
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'Ending Date';
-                        ToolTip = 'Specifies the end of the period covered by the report (for example, 12/31/17).';
+                        Caption = 'Fecha Final';
+                        ToolTip = 'Especifica la fecha final del periodo al que corresponde el informe, (por ejemplo, 31/12/17).';
                     }
                     field(ShowOpenEntriesOnly; OnlyOpen)
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'Show Open Entries Only';
-                        ToolTip = 'Specifies that you want to only show open entries relating to the list of the customers'' balances that are due.';
+                        Caption = 'Mostrar solo pendientes';
+                        ToolTip = 'Especifica que sólo desea mostrar movimientos abiertos relacionados con la lista de saldos vencidos de los clientes.';
                     }
                 }
             }
@@ -265,7 +263,7 @@ report 51402 "Customer Detailed Aging Report"
 
     labels
     {
-        CustomerContactCaption = 'Contact';
+        CustomerContactCaption = 'Contacto';
     }
 
     trigger OnPreReport()
@@ -276,7 +274,7 @@ report 51402 "Customer Detailed Aging Report"
     end;
 
     var
-        Text000Lbl: Label 'As of %1', Comment = '%1 is the as of date';
+        Text000Lbl: Label 'Hasta el %1';
         TempCurrencyTotalBuffer: Record "Currency Total Buffer" temporary;
         TempCurrencyTotalBuffer2: Record "Currency Total Buffer" temporary;
         NumCustLedgEntriesperCust: Query "Num CustLedgEntries per Cust";
@@ -288,11 +286,11 @@ report 51402 "Customer Detailed Aging Report"
         Counter: Integer;
         Counter1: Integer;
         OnlyOpen: Boolean;
-        Customer_Detailed_AgingCaptionLbl: Label 'Customer Detailed Aging';
-        CurrReport_PAGENOCaptionLbl: Label 'Page';
-        Cust_Ledger_Entry_Posting_Date_CaptionLbl: Label 'Posting Date';
-        Cust_Ledger_Entry_Due_Date_CaptionLbl: Label 'Due Date';
-        OverDueMonthsCaptionLbl: Label 'Months Due';
+        Customer_Detailed_AgingCaptionLbl: Label 'Clientes - Cuentas por Cobrar';
+        CurrReport_PAGENOCaptionLbl: Label 'Pag.';
+        Cust_Ledger_Entry_Posting_Date_CaptionLbl: Label 'Fecha Registro';
+        Cust_Ledger_Entry_Due_Date_CaptionLbl: Label 'Fecha Vencimiento';
+        OverDueMonthsCaptionLbl: Label 'Meses Vencidos';
         TotalCaptionLbl: Label 'Total';
 
     procedure InitializeRequest(SetEndDate: Date; SetOnlyOpen: Boolean)
