@@ -8883,6 +8883,81 @@
           <note from="Developer" annotates="general" priority="2">ESM="Fecha Inicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer AC Balance - Control StartDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 2815553456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Detailed Aging Report</source>
+          <note from="Developer" annotates="general" priority="2">Cliente - Cuentas por cobrar</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - Property 3863440606" size-unit="char" translate="yes" xml:space="preserve">
+          <source>customer balance,payment due</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Property AdditionalSearchTerms</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 1987762555" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType CurrReport_PAGENOCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 457935714" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Detailed Aging</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType Customer_Detailed_AgingCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 500909485" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType Cust_Ledger_Entry_Due_Date_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 3034938817" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType Cust_Ledger_Entry_Posting_Date_CaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 1443864879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Months Due</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType OverDueMonthsCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
+          <source>As of %1</source>
+          <note from="Developer" annotates="general" priority="2">%1 is the as of date</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType Text000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 1583171122" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType TotalCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - ReportLabel 1440762110" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - ReportLabel CustomerContactCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - Control 458406397 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the end of the period covered by the report (for example, 12/31/17).</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control Ending Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - Control 458406397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control Ending Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - Control 3179755115 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that you want to only show open entries relating to the list of the customers' balances that are due.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control ShowOpenEntriesOnly - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - Control 3179755115 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Open Entries Only</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control ShowOpenEntriesOnly - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 536403118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Load Detraction File</source>
           <note from="Developer" annotates="general" priority="2">ESM="Cargar archivo detracción"</note>
