@@ -314,6 +314,9 @@ report 51402 "Customer Detailed Aging Report"
         if Date2DMY(FromDate, 1) - LeftOverDays <= 1 then
             FullMonths += 1;
 
+        if FullMonths <= 0 then
+            FullMonths := 0;
+
         exit(FullMonths);
     end;
 }

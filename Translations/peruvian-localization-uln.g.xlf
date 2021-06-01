@@ -8894,33 +8894,33 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Property AdditionalSearchTerms</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - NamedType 1987762555" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Page</source>
+          <source>Pag.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType CurrReport_PAGENOCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - NamedType 457935714" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer Detailed Aging</source>
+          <source>Clientes - Cuentas por Cobrar</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType Customer_Detailed_AgingCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - NamedType 500909485" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Due Date</source>
+          <source>Fecha Vencimiento</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType Cust_Ledger_Entry_Due_Date_CaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - NamedType 3034938817" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Posting Date</source>
+          <source>Fecha Registro</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType Cust_Ledger_Entry_Posting_Date_CaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - NamedType 1443864879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Months Due</source>
+          <source>Meses Vencidos</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType OverDueMonthsCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
-          <source>As of %1</source>
-          <note from="Developer" annotates="general" priority="2">%1 is the as of date</note>
+          <source>Hasta el %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType Text000Lbl</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - NamedType 1583171122" size-unit="char" translate="yes" xml:space="preserve">
@@ -8929,7 +8929,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType TotalCaptionLbl</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - ReportLabel 1440762110" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contact</source>
+          <source>Contacto</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - ReportLabel CustomerContactCaption</note>
         </trans-unit>
@@ -8939,22 +8939,22 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control Options - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - Control 458406397 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the end of the period covered by the report (for example, 12/31/17).</source>
+          <source>Especifica la fecha final del periodo al que corresponde el informe, (por ejemplo, 31/12/17).</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control Ending Date - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - Control 458406397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ending Date</source>
+          <source>Fecha Final</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control Ending Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - Control 3179755115 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies that you want to only show open entries relating to the list of the customers' balances that are due.</source>
+          <source>Especifica que sólo desea mostrar movimientos abiertos relacionados con la lista de saldos vencidos de los clientes.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control ShowOpenEntriesOnly - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 2815553456 - Control 3179755115 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show Open Entries Only</source>
+          <source>Mostrar solo pendientes</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - Control ShowOpenEntriesOnly - Property Caption</note>
         </trans-unit>
