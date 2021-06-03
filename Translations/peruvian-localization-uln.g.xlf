@@ -8918,6 +8918,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType OverDueMonthsCaptionLbl</note>
         </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 3709171660" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Orden Compra</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType PurchaseOrderNoCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 2104260843" size-unit="char" translate="yes" xml:space="preserve">
+          <source>N° Routing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType RoutingNoCaptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2815553456 - NamedType 205388343" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Guía Remisión</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Customer Detailed Aging Report - NamedType SalesShipmentNoCaptionLbl</note>
+        </trans-unit>
         <trans-unit id="Report 2815553456 - NamedType 1327832897" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hasta el %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
