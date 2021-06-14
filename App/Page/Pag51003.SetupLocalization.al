@@ -518,6 +518,65 @@ page 51003 "Setup Localization"
                         LDCorrectPostedDocMgt.RenameSalesDocument(114, "Document No.", "New Document No.");
                 end;
             }
+            action(Update)
+            {
+                Caption = 'Actualizar NC Serie Compra', Comment = 'ESM="Actualizar NC Serie Compra"';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = UpdateDescription;
+
+                trigger OnAction()
+                var
+                    PurchCrMemoHdrL: Record "Purch. Cr. Memo Hdr.";
+                    VATEntryL: Record "VAT Entry";
+                    VendorLedgerEntryL: Record "Vendor Ledger Entry";
+                    GLEntryL: Record "G/L Entry";
+                    IntPosL: Integer;
+                begin
+                    //'ENCR0521-0002';
+                    if "Document No." = '' then
+                        Error('Ingresar No. Documento!');
+
+                    if "New Document No." = '' then
+                        Error('Ingresar el No. Serie para la NC Compra!');
+
+                    PurchCrMemoHdrL.Reset();
+                    PurchCrMemoHdrL.SetRange("No.", "Document No.");
+                    if not PurchCrMemoHdrL.FindSet() then
+                        Error('No existe la NC');
+
+                    PurchCrMemoHdrL."Vendor Cr. Memo No." := "New Document No.";
+                    PurchCrMemoHdrL.Modify();
+
+                    VATEntryL.Reset();
+                    VATEntryL.SetRange("Document No.", PurchCrMemoHdrL."No.");
+                    if VATEntryL.FindSet() then begin
+                        repeat
+                            VATEntryL."External Document No." := "New Document No.";
+                            VATEntryL.Modify();
+                        until VATEntryL.Next() = 0;
+                    end;
+
+                    VendorLedgerEntryL.Reset();
+                    VendorLedgerEntryL.SetRange("Document No.", PurchCrMemoHdrL."No.");
+                    if VendorLedgerEntryL.FindSet() then begin
+                        repeat
+                            VendorLedgerEntryL."External Document No." := "New Document No.";
+                            VendorLedgerEntryL.Modify();
+                        until VendorLedgerEntryL.Next() = 0;
+                    end;
+
+                    GLEntryL.Reset();
+                    GLEntryL.SetRange("Document No.", PurchCrMemoHdrL."No.");
+                    if GLEntryL.FindSet() then begin
+                        repeat
+                            GLEntryL."External Document No." := "New Document No.";
+                            GLEntryL.Modify()
+                        until GLEntryL.Next() = 0;
+                    end;
+                end;
+            }
 
             // action(Test0001)
             // {
