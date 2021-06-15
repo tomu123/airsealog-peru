@@ -935,12 +935,13 @@ codeunit 51004 "DetrAction Calculation"
     begin
         if VATEntry.Type <> VATEntry.Type::Purchase then
             exit;
-        if VATEntry."Legal Document" = '07' then begin
+        if VATEntry."Legal Document" in ['07', '97'] then begin
             //PurchCrMemoHdr.Get(VATEntry."Document No.");
         end else begin
-            PurchInvHeader.Get(VATEntry."Document No.");
-            PurchRecordBuffer."Detraction Emision Date" := PurchInvHeader."Purch Date Detraction";
-            PurchRecordBuffer."Detraction Operation No." := PurchInvHeader."Purch. Detraction Operation";
+            if PurchInvHeader.Get(VATEntry."Document No.") then begin
+                PurchRecordBuffer."Detraction Emision Date" := PurchInvHeader."Purch Date Detraction";
+                PurchRecordBuffer."Detraction Operation No." := PurchInvHeader."Purch. Detraction Operation";
+            end;
         end;
     end;
 }
