@@ -931,7 +931,7 @@ codeunit 51029 "LD Correct Posted Documents"
                     IsOutFlow := PurchCrMemoHdr."Legal Status" = PurchCrMemoHdr."Legal Status"::OutFlow;
                     if IsOutFlow then begin
                         NewVendorCrMemoNo := PurchCrMemoHdr."Vendor Cr. Memo No.";
-                        NewExternalDocumentNo := NewVendorCrMemoNo;
+                        NewExternalDocumentNo := 'E' + NewVendorCrMemoNo;
                         PurchCrMemoHdr.Reset();
                         PurchCrMemoHdr.SetRange("No.", DocumentNo);
                         if PurchCrMemoHdr.FindFirst() then begin
