@@ -297,7 +297,7 @@ report 51000 "Purchase Record"
         TotalAmountIGV: Decimal;
         PeriodDescription: text[100];
         TitlePurchaseRecors: Text[100];
-        LegalDocumentDescription: Text[100];
+        LegalDocumentDescription: Text[250];
         ShowRH: Boolean;
         NotAddress: Boolean;
         AutomaticEBook: Boolean;

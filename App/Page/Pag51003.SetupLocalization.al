@@ -493,7 +493,22 @@ page 51003 "Setup Localization"
                     DeleteDocumentProcess();
                 end;
             }
-
+            action(CorrectSunat)
+            {
+                Caption = 'Correct Sunat Status', Comment = 'ESM="Corregir Estado Sunat"';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = RefreshVATExemption;
+                trigger OnAction()
+                var
+                    LDCorrectPostedDocMgt: Codeunit "LD Correct Posted Documents";
+                begin
+                    if "Option action Document" = "Option action Document"::"Rename Sales Invoice" then begin
+                        LDCorrectPostedDocMgt.CorrectLegalStatus("Document No.");
+                    end;
+                end;
+            }
             action(RenameDocument)
             {
                 Caption = 'Rename Document', Comment = 'ESM="Renombrar Documento"';
@@ -508,7 +523,7 @@ page 51003 "Setup Localization"
                     LDCorrectPostedDocMgt: Codeunit "LD Correct Posted Documents";
                 begin
                     //TestField("Delete Document");
-                    if not ("Option action Document" in ["Option action Document"::"Rename Sales Invoice", "Option action Document"::"Rename Credit Memo"]) then
+                    if not ("Option action Document" in ["Option action Document"::"Rename Sales Invoice", "Option action Document"::"Rename Credit Memo", "Option action Document"::"Rename Purch. Credit Memo Ext. Doc. "]) then
                         Error('Solo puede seleccionar las opciones %1 o %2');
                     TestField("Document No.");
                     TestField("New Document No.");
@@ -516,6 +531,8 @@ page 51003 "Setup Localization"
                         LDCorrectPostedDocMgt.RenameSalesDocument(112, "Document No.", "New Document No.");
                     if "Option action Document" = "Option action Document"::"Rename Credit Memo" then
                         LDCorrectPostedDocMgt.RenameSalesDocument(114, "Document No.", "New Document No.");
+                    if "Option action Document" = "Option action Document"::"Rename Purch. Credit Memo Ext. Doc. " then
+                        LDCorrectPostedDocMgt.RenamePurchDocument(124, "Document No.");
                 end;
             }
             action(Update)

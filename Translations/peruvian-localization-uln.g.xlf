@@ -3254,7 +3254,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4047494536 - Field 35768486 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta</source>
+          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property OptionCaption</note>
         </trans-unit>
@@ -8522,6 +8522,11 @@
           <source>Manual Analityc</source>
           <note from="Developer" annotates="general" priority="2">ESM="Analítica Manual"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action Analityc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 1596143629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correct Sunat Status</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Corregir Estado Sunat"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action CorrectSunat - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4047494536 - Action 4145840562 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delete Document</source>

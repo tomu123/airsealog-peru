@@ -419,6 +419,33 @@ codeunit 51029 "LD Correct Posted Documents"
         OnAfterRenameSalesDocument(DocumentNo, NewDocumentNo, IsOutFlow);
     end;
 
+    procedure CorrectLegalStatus(DocumentNo: Code[20])
+    var
+        SalesInvHeader: Record "Sales Invoice Header";
+        VatEntry: Record "VAT Entry";
+        CustLedgerEntry: Record "Cust. Ledger Entry";
+    begin
+        SalesInvHeader.Reset();
+        SalesInvHeader.SetRange("No.", DocumentNo);
+        if SalesInvHeader.FindFirst() then begin
+            SalesInvHeader."Legal Status" := SalesInvHeader."Legal Status"::Success;
+            SalesInvHeader.Modify();
+        end;
+        VatEntry.Reset();
+        VatEntry.SetRange("Document No.", DocumentNo);
+        if VatEntry.FindFirst() then begin
+            VatEntry."Legal Status" := VatEntry."Legal Status"::Success;
+            VatEntry.Modify();
+        end;
+        CustLedgerEntry.Reset();
+        CustLedgerEntry.SetRange("Document No.", DocumentNo);
+        if CustLedgerEntry.FindFirst() then begin
+            CustLedgerEntry."Legal Status" := CustLedgerEntry."Legal Status"::Success;
+            CustLedgerEntry.Modify();
+        end;
+
+    end;
+
     procedure RenameSalesDocument(SourceTableID: Integer; DocumentNo: Code[20]; DestinationDocumentNo: Code[20])
     var
         SalesInvHeader: Record "Sales Invoice Header";
@@ -931,13 +958,13 @@ codeunit 51029 "LD Correct Posted Documents"
                     IsOutFlow := PurchCrMemoHdr."Legal Status" = PurchCrMemoHdr."Legal Status"::OutFlow;
                     if IsOutFlow then begin
                         NewVendorCrMemoNo := PurchCrMemoHdr."Vendor Cr. Memo No.";
-                        NewExternalDocumentNo := NewVendorCrMemoNo;
+                        NewExternalDocumentNo := 'E' + NewVendorCrMemoNo;
                         PurchCrMemoHdr.Reset();
                         PurchCrMemoHdr.SetRange("No.", DocumentNo);
                         if PurchCrMemoHdr.FindFirst() then begin
                             NewPurchCrMemoHdr.Init();
                             NewPurchCrMemoHdr.TransferFields(PurchCrMemoHdr);
-                            NewPurchCrMemoHdr."Vendor Cr. Memo No." := NewVendorCrMemoNo;
+                            NewPurchCrMemoHdr."Vendor Cr. Memo No." := NewExternalDocumentNo;
                             NewPurchCrMemoHdr."No." := NewDocumentNo;
                             NewPurchCrMemoHdr.Insert();
                             PurchCrMemoLine.Reset();
