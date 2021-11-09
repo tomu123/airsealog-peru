@@ -2,6 +2,11 @@ pageextension 51131 "ST Vendor Ledger Entries" extends "Vendor Ledger Entries"
 {
     layout
     {
+        addafter("Posting Date"){
+            field("Document Date"; "Document Date"){
+                ApplicationArea = All;
+            }
+        }
         // Add changes to page layout here
         addbefore("Document Type")
         {
