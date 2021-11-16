@@ -3,6 +3,20 @@ pageextension 51067 "Setup General Ledger Entries" extends "General Ledger Entri
     layout
     {
         // Add changes to page layout here
+        addafter("Amount"){
+            field("System-Created Entry"; "System-Created Entry"){
+                ApplicationArea = All;
+            }
+            field("Journal Batch Name"; "Journal Batch Name"){
+                ApplicationArea = All;
+            }
+            field("No. Series"; "No. Series"){
+                ApplicationArea = All;
+            }
+        }
+        modify("G/L Account Name"){
+            Visible = true;
+        }
         addafter("Posting Date")
         {
             field("Transaction No."; "Transaction No.")

@@ -2,7 +2,16 @@ pageextension 51197 "LU Bank Acc. Ledger Entries" extends "Bank Account Ledger E
 {
     layout
     {
+        addafter("Posting Date"){
+            field("Document Date";"Document Date"){
+                ApplicationArea = All;
+                Editable = false;
+            }
+        }
         // Add changes to page layout here
+        modify("Amount (LCY)"){
+            Visible = true;
+        }
     }
 
     actions
