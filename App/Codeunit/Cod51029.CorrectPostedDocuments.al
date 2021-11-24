@@ -133,7 +133,7 @@ codeunit 51029 "LD Correct Posted Documents"
     begin
         NumToApply := 0;
         CustLedgerEntry.Reset();
-        CustLedgerEntry.SetRange("Document Type", CustLedgerEntry."Document Type"::Invoice);
+        CustLedgerEntry.SetRange("Document Type", CustLedgerEntry."Document Type"::"Credit Memo");
         CustLedgerEntry.SetRange(CustLedgerEntry."Customer No.", pSalesCrMemoHdr."Sell-to Customer No.");
         CustLedgerEntry.SetRange(CustLedgerEntry."Posting Date", pSalesCrMemoHdr."Posting Date");
         CustLedgerEntry.SetRange(CustLedgerEntry."Document No.", pSalesCrMemoHdr."No.");
@@ -143,10 +143,12 @@ codeunit 51029 "LD Correct Posted Documents"
             DtldCustLdgEntry.SetCurrentKey("Cust. Ledger Entry No.", "Entry Type");
             DtldCustLdgEntry.SetRange("Cust. Ledger Entry No.", CustLedgerEntry."Entry No.");
             DtldCustLdgEntry.SetRange("Entry Type", DtldCustLdgEntry."Entry Type"::Application);
+            DtldCustLdgEntry.SetRange(Unapplied,false);
             if DtldCustLdgEntry.FindSet() then
                 repeat
-                    if not DtldCustLdgEntry.Unapplied then
-                        NumToApply += 1;
+                    NumToApply +=1;
+                    // if not DtldCustLdgEntry.Unapplied then
+                    //     NumToApply += 1;
                 /*else begin
                     CustLedgerEntry2.Reset();
                     CustLedgerEntry2.SetRange("Entry No.", DtldCustLdgEntry."Applied Cust. Ledger Entry No.");
@@ -155,12 +157,13 @@ codeunit 51029 "LD Correct Posted Documents"
                         Error('Existe un pago desliquidado por revertir!');
                 end;*/
                 until DtldCustLdgEntry.Next() = 0;
-            if NumToApply <> 0 then
+            if NumToApply <> 0 then begin
                 Error('Hay %1 documentos por desliquidar', NumToApply);
+            end;
         end;
     end;
 
-    local procedure CreateSalesInvoiceFromPostedSalesCrMemo(var SalesHeader: Record "Sales Header"; pSalesCrMemoHdr: Record "Sales Cr.Memo Header"; LegalStatus: Option Succes,Anulled,OutFlow)
+    local procedure CreateSalesInvoiceFromPostedSalesCrMemo(var SalesHeader: Record "Sales Header"; pSalesCrMemoHdr: Record "Sales Cr.Memo Header"; LegalStatus: Option Success,Anulled,OutFlow)
     var
         SalesSetup: Record "Sales & Receivables Setup";
         SalesCrMemoLine: Record "Sales Cr.Memo Line";
@@ -185,6 +188,7 @@ codeunit 51029 "LD Correct Posted Documents"
         SalesHeader.Status := SalesHeader.Status::Open;
         SalesHeader."Posting No. Series" := pSalesCrMemoHdr."No. Series";
         SalesHeader.Validate("Legal Status", LegalStatus);
+        // SalesHeader."EB Electronic Bill" := false;
         SalesHeader."Legal Document" := '01';
         SalesHeader."Responsibility Center" := pSalesCrMemoHdr."Responsibility Center";
         SalesHeader.Validate("Legal Document", '01');
@@ -193,6 +197,8 @@ codeunit 51029 "LD Correct Posted Documents"
         SalesHeader."Posting Description" := 'Nota de Credito a Factura :' + SalesHeader."No.";
         SalesHeader.Validate("Shipping No. Series", SalesSetup."Posted Shipment Nos.");
         SalesHeader.Insert();
+
+        pSalesCrMemoHdr.Validate("Legal Status",LegalStatus);
 
         SalesCrMemoLine.Reset();
         SalesCrMemoLine.SetRange("Document No.", pSalesCrMemoHdr."No.");
@@ -1165,7 +1171,7 @@ codeunit 51029 "LD Correct Posted Documents"
 
 
     //90 OnAfterPostPurchLines
-    //90 
+    //90
 
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterPostGLandCustomer', '', false, false)]

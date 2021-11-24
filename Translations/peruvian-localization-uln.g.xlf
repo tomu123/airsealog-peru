@@ -448,6 +448,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Serie Document - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3949449054 - Field 781257514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shortcut Dimension 3 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Shortcut Dimension 3 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3949449054 - Field 1860039839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transaction CUO</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -369,7 +369,7 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
         NoSeries.SetRange("Operation Type", NoSeries."Operation Type"::Sales);
         NoSeries.SetRange("Legal Document", "Legal Document");
         //NoSeries.SetRange("Legal Status", "Legal Status");
-        NoSeries.SetRange("Internal Operation", "Legal Status" = "Legal Status"::OutFlow);
+        NoSeries.SetRange("Internal Operation", ("Legal Status" = "Legal Status"::Anulled) or ("Legal Status" = "Legal Status"::OutFlow));
         if "Legal Document Ref." <> '' then
             NoSeries.SetRange("Legal Document Ref.", "Legal Document Ref.");
         OnBeforeFilterNoSeries(NoSeries, Rec);

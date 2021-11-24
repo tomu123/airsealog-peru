@@ -130,6 +130,10 @@ table 59001 "Gen. Journal Book Buffer"
         {
             DataClassification = ToBeClassified;
         }
+        field(59029; "Shortcut Dimension 3 Code"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys

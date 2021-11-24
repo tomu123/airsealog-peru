@@ -29,6 +29,14 @@ report 51004 "General Ledger Report"
             {
                 IncludeCaption = true;
             }
+            column(Posting_Date; "Posting Date")
+            {
+                IncludeCaption = true;
+            }
+            column(Job_Codigo; "Shortcut Dimension 3 Code")
+            {
+                IncludeCaption = true;
+            }
             column(Gloss_and_description; "Gloss and description")
             {
                 IncludeCaption = true;

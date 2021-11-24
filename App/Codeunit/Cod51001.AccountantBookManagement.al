@@ -117,6 +117,8 @@ codeunit 51001 "Accountant Book Management"
         Vend: Record Vendor;
         Empl: Record Employee;
     begin
+        GenJnlBookBuffer."Posting Date" := GLEntry."Posting Date";
+        GenJnlBookBuffer."Shortcut Dimension 3 Code" := GLEntry."Shortcut Dimension 3 Code";
         case GLEntry."Source Type" of
             GLEntry."Source Type"::Vendor:
                 begin
@@ -1191,11 +1193,11 @@ codeunit 51001 "Accountant Book Management"
                                 MyLineText += Format("Taxed Stacked Rice", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 21
                                 MyLineText += Format("Taxed VAT  Stacked Rice", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 22
                                 //MyLineText += '0' + MySeparator;//Field Add ICBPER
-                                MyLineText += Format("Bag tax", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23                            
+                                MyLineText += Format("Bag tax", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 23
                                 MyLineText += Format("Others Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 24
                                 MyLineText += Format("Total Amount", 0, '<Precision,2:2><Standard Format,2>') + MySeparator;//Field 25
                                 if "Currency Code" = '' then
-                                    MyLineText += 'PEN' + MySeparator//Field 26 
+                                    MyLineText += 'PEN' + MySeparator//Field 26
                                 else
                                     MyLineText += "Currency Code" + MySeparator;//Field 26
                                 MyLineText += Format("Currency Amount", 0, '<Precision,3:2><Standard Format,2>') + MySeparator;//Field 27
