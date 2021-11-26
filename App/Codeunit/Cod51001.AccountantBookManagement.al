@@ -118,7 +118,7 @@ codeunit 51001 "Accountant Book Management"
         Empl: Record Employee;
     begin
         GenJnlBookBuffer."Posting Date" := GLEntry."Posting Date";
-        GenJnlBookBuffer."Shortcut Dimension 3 Code" := GLEntry."Shortcut Dimension 3 Code";
+        GenJnlBookBuffer."Shortcut Dimension 3 Code" := GLEntry."Global Dimension 3 Code";
         case GLEntry."Source Type" of
             GLEntry."Source Type"::Vendor:
                 begin
