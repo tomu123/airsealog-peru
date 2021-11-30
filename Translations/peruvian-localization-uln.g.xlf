@@ -2673,6 +2673,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Record Buffer - Field Serie Document - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3876948818 - Field 781257514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shortcut Dimension 3 Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Record Buffer - Field Shortcut Dimension 3 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3876948818 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -177,6 +177,10 @@ report 51000 "Purchase Record"
             {
 
             }
+            column(Job_Codigo; "Shortcut Dimension 3 Code")
+            {
+                IncludeCaption = true;
+            }
             trigger OnAfterGetRecord()
             var
                 LegalDocumentRec: Record "Legal Document";

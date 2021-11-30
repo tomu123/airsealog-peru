@@ -199,6 +199,10 @@ table 59000 "Purchase Record Buffer"
         {
             DataClassification = ToBeClassified;
         }
+        field(59048; "Shortcut Dimension 3 Code"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys

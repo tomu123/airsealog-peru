@@ -352,6 +352,7 @@ codeunit 51001 "Accountant Book Management"
     procedure PurchaserRecord(pBookCode: Code[10]; IsEBook: Boolean)
     var
         VATEntry: Record "VAT Entry";
+        GLEntry: Record "G/L Entry";
         EntryNo: Integer;
         TotalRecords: Integer;
         CountRecords: Integer;
@@ -401,6 +402,12 @@ codeunit 51001 "Accountant Book Management"
                     if VATEntry."Legal Status" = VATEntry."Legal Status"::Success then
                         AddPurchTaxedValues(VATEntry);
                     PurchRecordBuffer.Cancelled := VATEntry."Legal Status" = VATEntry."Legal Status"::Anulled;
+                    GLEntry.Reset();
+                    GLEntry.SetFilter("Document No.",'=%1',VATEntry."Document No.");
+                    if GLEntry.FindSet() then
+                        repeat
+                        until ((GLEntry.Next() = 0) or (GLEntry."Global Dimension 3 Code" <> ''));
+                    PurchRecordBuffer."Shortcut Dimension 3 Code" := GLEntry."Global Dimension 3 Code";
                     PurchRecordBuffer.Insert();
                 end;
                 UpdateWindows(1, CountRecords, TotalRecords);
