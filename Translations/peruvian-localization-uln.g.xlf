@@ -10725,7 +10725,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 471836165 - Control 3802390336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
           <source>Legal Property Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo bien"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Credit Memo - Control LegalPropertyType - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1509445583 - Method 3621900726 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1509445583">

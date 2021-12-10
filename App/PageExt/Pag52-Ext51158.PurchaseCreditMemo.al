@@ -3,6 +3,17 @@ pageextension 51158 "ST Purchase Credit Memo" extends "Purchase Credit Memo"
     layout
     {
         // Add changes to page layout here
+        modify("Posting Date"){
+            QuickEntry = true;
+            Importance = Promoted;
+        }
+        addafter("Posting Date")
+        {
+            field("Accountant receipt date"; "Accountant receipt date")
+            {
+                ApplicationArea = All;
+            }
+        }
         addafter("Due Date")
         {
             field("Vendor Posting Group"; "Vendor Posting Group")
@@ -136,7 +147,7 @@ pageextension 51158 "ST Purchase Credit Memo" extends "Purchase Credit Memo"
                 }
                 group(LegalPropertyType)
                 {
-                    Caption = 'Legal Property Type';
+                    Caption = 'Legal Property Type', Comment = 'ESM="Tipo bien"';
                     grid(LegalPropertyTypeGrid)
                     {
                         GridLayout = Columns;

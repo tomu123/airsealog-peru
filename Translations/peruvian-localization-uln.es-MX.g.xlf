@@ -463,6 +463,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Serie Document - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3949449054 - Field 781257514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shortcut Dimension 3 Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Shortcut Dimension 3 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3949449054 - Field 1860039839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transaction CUO</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -3019,6 +3024,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Record Buffer - Field Serie Document - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3876948818 - Field 781257514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shortcut Dimension 3 Code</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Purchase Record Buffer - Field Shortcut Dimension 3 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3876948818 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -3645,7 +3655,7 @@
           <target>Tipo de acción para documento</target>
         </trans-unit>
         <trans-unit id="Table 4047494536 - Field 35768486 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta</source>
+          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property OptionCaption</note>
         </trans-unit>
@@ -9187,6 +9197,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action Analityc - Property Caption</note>
           <target>Analítica Manual</target>
         </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 1596143629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correct Sunat Status</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Corregir Estado Sunat"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action CorrectSunat - Property Caption</note>
+          <target>Corregir Estado Sunat</target>
+        </trans-unit>
         <trans-unit id="Page 4047494536 - Action 4145840562 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delete Document</source>
           <note from="Developer" annotates="general" priority="2">ESM="Borrar Document"</note>
@@ -11510,8 +11526,9 @@
         </trans-unit>
         <trans-unit id="PageExtension 471836165 - Control 3802390336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
           <source>Legal Property Type</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Tipo bien"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ST Purchase Credit Memo - Control LegalPropertyType - Property Caption</note>
+          <target>Tipo bien</target>
         </trans-unit>
         <trans-unit id="PageExtension 1509445583 - Method 3621900726 - NamedType 2286012155" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1509445583">
           <source>The first character must start with E, F for electronic.</source>
