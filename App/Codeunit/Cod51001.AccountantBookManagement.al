@@ -374,7 +374,7 @@ codeunit 51001 "Accountant Book Management"
         VATEntry.SetRange(Type, VATEntry.Type::Purchase);
         case BookCode of
             '801':
-                VATEntry.SetFilter("Legal Document", '<>%1&<>%2&<>%3&<>%4', '91', '97', '98', '00');
+                VATEntry.SetFilter("Legal Document", '<>%1&<>%2&<>%3&<>%4&<>%5', '91', '97', '98', '00', '');
             '802':
                 VATEntry.SetFilter("Legal Document", '%1|%2|%3', '91', '97', '98');
         end;

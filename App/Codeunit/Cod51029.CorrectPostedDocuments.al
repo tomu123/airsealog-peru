@@ -1055,7 +1055,7 @@ codeunit 51029 "LD Correct Posted Documents"
         OnAfterRenamePurchDocument(DocumentNo, NewDocumentNo, IsOutFlow);
     end;
 
-    local procedure CheckNumberVendorMemoNop(No: Code[20]; VendorCode: Code[20])
+    local procedure CheckNumberVendorMemoNop(No: Code[35]; VendorCode: Code[20])
     var
         VendorLedgerEntry: Record "Vendor Ledger Entry";
     begin
