@@ -168,6 +168,9 @@ report 51730 "Sales Record"
             {
 
             }
+            column(Airsealog_Cargowise_Inv_No; "Airsealog-Cargowise Inv No."){
+
+            }
             trigger OnAfterGetRecord()
             var
                 LegalDocumentRec: Record "Legal Document";

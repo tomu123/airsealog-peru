@@ -509,6 +509,22 @@ page 51003 "Setup Localization"
                     end;
                 end;
             }
+            action(CorrectReturnPurchaseInvoice)
+            {
+                Caption = 'Correct Return of Purchase Invoice', Comment = 'ESM="Corregir Extorno de Factura de Compra"';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = RefreshVATExemption;
+                trigger OnAction()
+                var
+                    LDCorrectPostedDocMgt: Codeunit "LD Correct Posted Documents";
+                begin
+                    if "Option action Document" = "Option action Document"::"Rename Purchase Invoice" then begin
+                        LDCorrectPostedDocMgt.CorrectReturnPurchaseInvoice("Document No.");
+                    end;
+                end;
+            }
             action(RenameDocument)
             {
                 Caption = 'Rename Document', Comment = 'ESM="Renombrar Documento"';

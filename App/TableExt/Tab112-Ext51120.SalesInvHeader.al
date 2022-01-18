@@ -132,6 +132,11 @@ tableextension 51120 "Setup Sales Inv. Header" extends "Sales Invoice Header"
             Caption = 'Payment Method Code Detrac', Comment = 'ESM="Cód. Forma Pago Detracción"';
             TableRelation = "Payment Method";
         }
+        field(59001; "Airsealog-Cargowise Inv No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Cargowise Invoice No.', comment = 'ESM="No. Factura Cargowise"';
+        }
         //Detracc END
 
         //Free title

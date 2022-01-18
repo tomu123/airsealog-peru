@@ -163,6 +163,11 @@ table 59008 "Sales Record Buffer"
         {
             DataClassification = ToBeClassified;
         }
+        field(59038; "Airsealog-Cargowise Inv No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Cargowise Invoice No.', comment = 'ESM="No. Factura Cargowise"';
+        }
     }
 
     keys
@@ -175,6 +180,7 @@ table 59008 "Sales Record Buffer"
 
     var
         myInt: Integer;
+        cargoWiseDoc: Code[20];
 
     trigger OnInsert()
     begin

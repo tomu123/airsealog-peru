@@ -106,7 +106,7 @@ table 59001 "Gen. Journal Book Buffer"
         {
             DataClassification = ToBeClassified;
         }
-        field(59023; "Document No."; Code[20])
+        field(59023; "Document No."; Code[35])
         {
             DataClassification = ToBeClassified;
         }
@@ -131,6 +131,18 @@ table 59001 "Gen. Journal Book Buffer"
             DataClassification = ToBeClassified;
         }
         field(59029; "Shortcut Dimension 3 Code"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(59030; "Source Type"; Enum "Gen. Journal Source Type")
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(59031; "Source No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(59032; "Razon Social"; Text[250])
         {
             DataClassification = ToBeClassified;
         }

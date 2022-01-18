@@ -55,6 +55,8 @@ codeunit 51001 "Accountant Book Management"
     var
         GLEntry: Record "G/L Entry";
         GLAccount: Record "G/L Account";
+        Vend: Record Vendor;
+        Cust: Record Customer;
         EntryNo: Integer;
         TotalRecords: Integer;
         CountRecords: Integer;
@@ -81,6 +83,18 @@ codeunit 51001 "Accountant Book Management"
                             GenJnlBookBuffer."Correlative cuo" := GLEntry."Correlative CUO";
                             GenJnlBookBuffer."G/L Account No." := GLEntry."G/L Account No.";
                             GenJnlBookBuffer."G/L Account Name" := GLEntry."G/L Account Name";
+                            GenJnlBookBuffer."Source Type" := GLEntry."Source Type";
+                            GenJnlBookBuffer."Source No." := GLEntry."Source No.";
+                            IF (GLEntry."Source Type" = "Gen. Journal Source Type"::Customer) then begin
+                                Cust.Reset();
+                                Cust.Get(GLEntry."Source No.");
+                                GenJnlBookBuffer."Razon Social" := Cust.Name;
+                            end;
+                            IF (GLEntry."Source Type" = "Gen. Journal Source Type"::Vendor) then begin
+                                Vend.Reset();
+                                Vend.Get(GLEntry."Source No.");
+                                GenJnlBookBuffer."Razon Social" := Vend.Name;
+                            end;
                             SetInformationFromEntry(GLEntry);
                             GenJnlBookBuffer.Insert();
                             UpdateWindows(1, CountRecords, TotalRecords);
@@ -421,6 +435,8 @@ codeunit 51001 "Accountant Book Management"
     procedure SalesRecord(pBookCode: Code[10]; IsEBook: Boolean)
     var
         VATEntry: Record "VAT Entry";
+        SalesInvH: Record "Sales Invoice Header";
+        SalesCrMemoH: Record "Sales Cr.Memo Header";
         EntryNo: Integer;
         TotalRecords: Integer;
         CountRecords: Integer;
@@ -467,6 +483,16 @@ codeunit 51001 "Accountant Book Management"
                     if VATEntry."Legal Status" = VATEntry."Legal Status"::Success then
                         AddSalesTaxedValues(VATEntry);
                     //SalesRecordBuffer.Cancelled := VATEntry."Legal Status" = VATEntry."Legal Status"::Anulled;
+                    if VATEntry."Document Type" = "Gen. Journal Document Type"::Invoice then begin
+                        SalesInvH.Reset();
+                        SalesInvH.Get(VATEntry."Document No.");
+                        SalesRecordBuffer."Airsealog-Cargowise Inv No." := SalesInvH."Airsealog-Cargowise Inv No.";
+                    end;
+                    if VATEntry."Document Type" = "Gen. Journal Document Type"::"Credit Memo" then begin
+                        SalesCrMemoH.Reset();
+                        SalesCrMemoH.Get(VATEntry."Document No.");
+                        SalesRecordBuffer."Airsealog-Cargowise Inv No." := SalesCrMemoH."Airsealog-Cargowise Inv No.";
+                    end;
                     SalesRecordBuffer.Insert();
                 end;
                 UpdateWindows(1, CountRecords, TotalRecords);

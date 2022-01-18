@@ -3655,7 +3655,7 @@
           <target>Tipo de acción para documento</target>
         </trans-unit>
         <trans-unit id="Table 4047494536 - Field 35768486 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo</source>
+          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo,Renombrar Factura de Compra</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property OptionCaption</note>
         </trans-unit>
@@ -9196,6 +9196,12 @@
           <note from="Developer" annotates="general" priority="2">ESM="Analítica Manual"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action Analityc - Property Caption</note>
           <target>Analítica Manual</target>
+        </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 2830625754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correct Return of Purchase Invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Corregir Extorno de Factura de Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action CorrectReturnPurchaseInvoice - Property Caption</note>
+          <target>Corregir Extorno de Factura de Compra</target>
         </trans-unit>
         <trans-unit id="Page 4047494536 - Action 1596143629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Correct Sunat Status</source>

@@ -443,6 +443,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Posting Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3949449054 - Field 1058325429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Razon Social</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Razon Social - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3949449054 - Field 1456240937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serie Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -452,6 +457,16 @@
           <source>Shortcut Dimension 3 Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Shortcut Dimension 3 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3949449054 - Field 1882905478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Source No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3949449054 - Field 1753214751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Source Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3949449054 - Field 1860039839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transaction CUO</source>
@@ -2858,6 +2873,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Vendor No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 2117676518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargowise Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Factura Cargowise"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Airsealog-Cargowise Inv No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2838345543 - Field 2515987183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Export invoiced</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3264,7 +3284,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4047494536 - Field 35768486 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo</source>
+          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo,Renombrar Factura de Compra</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property OptionCaption</note>
         </trans-unit>
@@ -8533,6 +8553,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Analítica Manual"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action Analityc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 2830625754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correct Return of Purchase Invoice</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Corregir Extorno de Factura de Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action CorrectReturnPurchaseInvoice - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4047494536 - Action 1596143629 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Correct Sunat Status</source>
           <note from="Developer" annotates="general" priority="2">ESM="Corregir Estado Sunat"</note>
@@ -12398,6 +12423,11 @@
           <note from="Developer" annotates="general" priority="2">ESM="Vía transporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Purchase Header - Field Via transport - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3213192120 - Field 2117676518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Cargowise Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Factura Cargowise"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales CrMemo Hdr. - Field Airsealog-Cargowise Inv No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3213192120 - Field 3819672342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Applies-to Doc. No. Ref.</source>
           <note from="Developer" annotates="general" priority="2">ESM="Liq. por N° Documento Ref."</note>
@@ -12487,6 +12517,11 @@
           <source>The detraction cannot exceed the Invoice</source>
           <note from="Developer" annotates="general" priority="2">ESM="La detracción no debe exceder la factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - NamedType ErrorOverflowAmt</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1524349356 - Field 2117676518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Cargowise Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Factura Cargowise"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - Field Airsealog-Cargowise Inv No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1524349356 - Field 3819672342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Applies-to Doc. No. Ref.</source>
@@ -12607,6 +12642,11 @@
           <source>VAT Registration Type</source>
           <note from="Developer" annotates="general" priority="2">ESM="Tipo Doc. Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - Field VAT Registration Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3256269433 - Field 2117676518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Cargowise Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Factura Cargowise"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Inv. Header - Field Airsealog-Cargowise Inv No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3256269433 - Field 3819672342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Applies-to Doc. No. Ref.</source>

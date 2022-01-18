@@ -98,5 +98,10 @@ tableextension 51121 "Setup Sales CrMemo Hdr." extends "Sales Cr.Memo Header"
             Caption = 'Free Title', Comment = 'ESM="Título gratuito"';
             Editable = false;
         }
+        field(59001; "Airsealog-Cargowise Inv No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Cargowise Invoice No.', comment = 'ESM="No. Factura Cargowise"';
+        }
     }
 }

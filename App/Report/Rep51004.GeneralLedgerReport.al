@@ -82,6 +82,10 @@ report 51004 "General Ledger Report"
             {
                 IncludeCaption = true;
             }
+            column(Razon_Social; "Razon Social")
+            {
+                IncludeCaption = true;
+            }
         }
     }
 

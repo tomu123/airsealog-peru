@@ -276,6 +276,11 @@ tableextension 51122 "Setup Sales Header" extends "Sales Header"
             Caption = 'Payment Method Code Detrac', Comment = 'ESM="Cód. Forma de pago (Detrac.)"';
             TableRelation = "Payment Method";
         }
+        field(59001; "Airsealog-Cargowise Inv No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Cargowise Invoice No.', comment = 'ESM="No. Factura Cargowise"';
+        }
         //Detracc End
 
         //Ubigeo Begin

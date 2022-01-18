@@ -452,6 +452,59 @@ codeunit 51029 "LD Correct Posted Documents"
 
     end;
 
+    procedure CorrectReturnPurchaseInvoice(No: Code[20])
+    var
+        PurchInvHeader: Record "Purch. Inv. Header";
+        VendorLedgerEntry: Record "Vendor Ledger Entry";
+        VatEntry: Record "VAT Entry";
+        GLEntry: Record "G/L Entry";
+        DetailedVendorLedgerEntry: Record "Detailed Vendor Ledg. Entry";
+
+    begin
+        PurchInvHeader.RESET;
+        PurchInvHeader.SETFILTER(PurchInvHeader."No.", '=%1', No);
+        IF PurchInvHeader.FindFirst() THEN
+            PurchInvHeader."Vendor Invoice No." := 'E' + PurchInvHeader."Vendor Invoice No.";
+            PurchInvHeader."Legal Status" := PurchInvHeader."Legal Status"::OutFlow;
+            PurchInvHeader.Modify();
+            PurchInvHeader.Rename('E' + PurchInvHeader."No.");
+        VendorLedgerEntry.RESET;
+        VendorLedgerEntry.SETFILTER(VendorLedgerEntry."Document No.", '=%1', No);
+        IF VendorLedgerEntry.FindFirst() THEN
+        IF VendorLedgerEntry.FINDSET THEN
+            REPEAT
+                VendorLedgerEntry."Document No." := 'E' + No;
+                VendorLedgerEntry."Legal Status" := VendorLedgerEntry."Legal Status"::OutFlow;
+                VendorLedgerEntry.Modify();
+            UNTIL VendorLedgerEntry.NEXT = 0;
+        VatEntry.RESET;
+        VatEntry.SETFILTER(VatEntry."Document No.", '=%1', No);
+        IF VatEntry.FindFirst() THEN
+        IF VatEntry.FINDSET THEN
+            REPEAT
+                VatEntry."Document No." := 'E' + No;
+                VatEntry."Legal Status" := VatEntry."Legal Status"::OutFlow;
+                VatEntry.Modify();
+            UNTIL VatEntry.NEXT = 0;
+        GLEntry.RESET;
+        GLEntry.SETFILTER(GLEntry."Document No.", '=%1', No);
+        IF GLEntry.FindFirst() THEN
+        IF GLEntry.FINDSET THEN
+            REPEAT
+                GLEntry."Document No." := 'E' + No;
+                GLEntry."Legal Status" := GLEntry."Legal Status"::OutFlow;
+                GLEntry.Modify();
+            UNTIL GLEntry.NEXT = 0;
+        DetailedVendorLedgerEntry.RESET;
+        DetailedVendorLedgerEntry.SETFILTER(DetailedVendorLedgerEntry."Document No.", '=%1', No);
+        IF DetailedVendorLedgerEntry.FindFirst() THEN
+        IF DetailedVendorLedgerEntry.FINDSET THEN
+            REPEAT
+                DetailedVendorLedgerEntry."Document No." := 'E' + No;
+                DetailedVendorLedgerEntry.Modify();
+            UNTIL DetailedVendorLedgerEntry.NEXT = 0;
+    end;
+
     procedure RenameSalesDocument(SourceTableID: Integer; DocumentNo: Code[20]; DestinationDocumentNo: Code[20])
     var
         SalesInvHeader: Record "Sales Invoice Header";
@@ -913,9 +966,9 @@ codeunit 51029 "LD Correct Posted Documents"
         BankAccLgEntry: Record "Bank Account Ledger Entry";
         ValueEntry: Record "Value Entry";
         CostEntry: Record "Cost Entry";
-        NewVendorInvoiceNo: Code[20];
+        NewVendorInvoiceNo: Code[35];
         NewVendorCrMemoNo: Code[20];
-        NewExternalDocumentNo: Code[20];
+        NewExternalDocumentNo: Code[35];
         NewDocumentNo: Code[20];
         IsOutFlow: Boolean;
         LegalStatus: Option;
