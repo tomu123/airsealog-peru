@@ -525,6 +525,51 @@ page 51003 "Setup Localization"
                     end;
                 end;
             }
+            action(CorrectAnulledSalesCreditMemo)
+            {
+                Caption = 'Modify Sales Credit Memo to Anulled', Comment = 'ESM="Modificar Estado Nota de Credito de Venta a Anulado"';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                Image = RefreshVATExemption;
+                trigger OnAction()
+                var
+                    SalesCrMemoH: Record "Sales Cr.Memo Header";
+                    CustLedgerE: Record "Cust. Ledger Entry";
+                    VatE: Record "VAT Entry";
+                    GLE: Record "G/L Entry";
+                begin
+                    if "Option action Document" = "Option action Document"::"Modify Sales Credit Memo to Anulled" then begin
+                        SalesCrMemoH.Get("Document No.");
+                        SalesCrMemoH.Validate("Legal Status",SalesCrMemoH."Legal Status"::Anulled);
+                        SalesCrMemoH.Modify();
+                        CustLedgerE.Reset();
+                        CustLedgerE.SetFilter("Document No.","Document No.");
+                        if CustLedgerE.FindSet() then begin
+                            repeat
+                                CustLedgerE.Validate("Legal Status",CustLedgerE."Legal Status"::Anulled);
+                                CustLedgerE.Modify();
+                            until CustLedgerE.Next() = 0;
+                        end;
+                        VatE.Reset();
+                        VatE.SetFilter("Document No.","Document No.");
+                        if VatE.FindSet() then begin
+                            repeat
+                                VatE.Validate("Legal Status",VatE."Legal Status"::Anulled);
+                                VatE.Modify();
+                            until VatE.Next() = 0;
+                        end;
+                        GLE.Reset();
+                        GLE.SetFilter("Document No.","Document No.");
+                        if GLE.FindSet() then begin
+                            repeat
+                                GLE.Validate("Legal Status",GLE."Legal Status"::Anulled);
+                                GLE.Modify();
+                            until GLE.Next() = 0;
+                        end;
+                    end;
+                end;
+            }
             action(RenameDocument)
             {
                 Caption = 'Rename Document', Comment = 'ESM="Renombrar Documento"';

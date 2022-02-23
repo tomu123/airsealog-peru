@@ -163,7 +163,7 @@ codeunit 51029 "LD Correct Posted Documents"
         end;
     end;
 
-    local procedure CreateSalesInvoiceFromPostedSalesCrMemo(var SalesHeader: Record "Sales Header"; pSalesCrMemoHdr: Record "Sales Cr.Memo Header"; LegalStatus: Option Success,Anulled,OutFlow)
+    local procedure CreateSalesInvoiceFromPostedSalesCrMemo(var SalesHeader: Record "Sales Header";var pSalesCrMemoHdr: Record "Sales Cr.Memo Header"; LegalStatus: Option Success,Anulled,OutFlow)
     var
         SalesSetup: Record "Sales & Receivables Setup";
         SalesCrMemoLine: Record "Sales Cr.Memo Line";
@@ -199,6 +199,7 @@ codeunit 51029 "LD Correct Posted Documents"
         SalesHeader.Insert();
 
         pSalesCrMemoHdr.Validate("Legal Status",LegalStatus);
+        pSalesCrMemoHdr.Modify();
 
         SalesCrMemoLine.Reset();
         SalesCrMemoLine.SetRange("Document No.", pSalesCrMemoHdr."No.");

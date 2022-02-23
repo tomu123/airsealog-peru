@@ -3284,7 +3284,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4047494536 - Field 35768486 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo,Renombrar Factura de Compra</source>
+          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo,Renombrar Factura de Compra,Modificar Estado Nota de Credito de Venta a Anulado</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property OptionCaption</note>
         </trans-unit>
@@ -8552,6 +8552,11 @@
           <source>Manual Analityc</source>
           <note from="Developer" annotates="general" priority="2">ESM="Analítica Manual"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action Analityc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 1033954414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modify Sales Credit Memo to Anulled</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Modificar Estado Nota de Credito de Venta a Anulado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action CorrectAnulledSalesCreditMemo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4047494536 - Action 2830625754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Correct Return of Purchase Invoice</source>

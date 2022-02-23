@@ -477,8 +477,8 @@ table 51003 "Setup Localization"
         field(51196; "Option action Document"; Option)
         {
             Caption = 'Option action Document', Comment = 'ESM="Tipo de acción para documento"';
-            OptionMembers = " ","Delete Document","Rename Sales Invoice","Rename Credit Memo","Rename Purch. Credit Memo Ext. Doc. ","Rename Purchase Invoice";
-            OptionCaption = ' ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo,Renombrar Factura de Compra';
+            OptionMembers = " ","Delete Document","Rename Sales Invoice","Rename Credit Memo","Rename Purch. Credit Memo Ext. Doc. ","Rename Purchase Invoice","Modify Sales Credit Memo to Anulled";
+            OptionCaption = ' ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo,Renombrar Factura de Compra,Modificar Estado Nota de Credito de Venta a Anulado';
         }
     }
 
