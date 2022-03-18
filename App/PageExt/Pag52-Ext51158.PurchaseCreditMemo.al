@@ -84,6 +84,10 @@ pageextension 51158 "ST Purchase Credit Memo" extends "Purchase Credit Memo"
                     Validate("Vendor Cr. Memo No.");
                 end;
             }
+            field("Purch. Detraction";"Purch. Detraction")
+            {
+                ApplicationArea = All;
+            }
         }
         addafter("Vendor Cr. Memo No.")
         {
