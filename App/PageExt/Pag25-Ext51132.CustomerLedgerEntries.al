@@ -10,6 +10,13 @@ pageextension 51132 "ST Customer Ledger Entries" extends "Customer Ledger Entrie
                 ApplicationArea = All;
             }
         }
+        addafter("Customer No.")
+        {
+            field("Customer Posting Group";"Customer Posting Group")
+            {
+                ApplicationArea = All;
+            }
+        }
         addbefore("Exported to Payment File")
         {
             field("Posting Text"; "Posting Text")
