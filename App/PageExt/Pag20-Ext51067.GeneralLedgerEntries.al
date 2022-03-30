@@ -3,6 +3,12 @@ pageextension 51067 "Setup General Ledger Entries" extends "General Ledger Entri
     layout
     {
         // Add changes to page layout here
+        modify("Debit Amount"){
+            Visible = true;
+        }
+        modify("Credit Amount"){
+            Visible = true;
+        }
         addafter("Amount"){
             field("System-Created Entry"; "System-Created Entry"){
                 ApplicationArea = All;
