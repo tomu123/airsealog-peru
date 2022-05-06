@@ -458,6 +458,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Posting Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3949449054 - Field 1058325429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Razon Social</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Razon Social - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3949449054 - Field 1456240937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serie Document</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -467,6 +472,16 @@
           <source>Shortcut Dimension 3 Code</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Shortcut Dimension 3 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3949449054 - Field 1882905478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source No.</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Source No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3949449054 - Field 1753214751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Gen. Journal Book Buffer - Field Source Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3949449054 - Field 1860039839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transaction CUO</source>
@@ -3209,6 +3224,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Retention Ledger Entry - Field Vendor No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2838345543 - Field 2117676518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargowise Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Factura Cargowise"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sales Record Buffer - Field Airsealog-Cargowise Inv No. - Property Caption</note>
+          <target>No. Factura Cargowise</target>
+        </trans-unit>
         <trans-unit id="Table 2838345543 - Field 2515987183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount Export invoiced</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -3655,7 +3676,7 @@
           <target>Tipo de acción para documento</target>
         </trans-unit>
         <trans-unit id="Table 4047494536 - Field 35768486 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo,Renombrar Factura de Compra</source>
+          <source> ,Eliminar Documento,Renombrar Factura de Venta,Renombrar Nota de Crédito de Venta,Renombrar Nota de Crédito Documento Externo,Renombrar Factura de Compra,Modificar Estado Nota de Credito de Venta a Anulado</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Setup Localization - Field Option action Document - Property OptionCaption</note>
         </trans-unit>
@@ -9197,6 +9218,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action Analityc - Property Caption</note>
           <target>Analítica Manual</target>
         </trans-unit>
+        <trans-unit id="Page 4047494536 - Action 1033954414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modify Sales Credit Memo to Anulled</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Modificar Estado Nota de Credito de Venta a Anulado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Setup Localization - Action CorrectAnulledSalesCreditMemo - Property Caption</note>
+          <target>Modificar Estado Nota de Credito de Venta a Anulado</target>
+        </trans-unit>
         <trans-unit id="Page 4047494536 - Action 2830625754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Correct Return of Purchase Invoice</source>
           <note from="Developer" annotates="general" priority="2">ESM="Corregir Extorno de Factura de Compra"</note>
@@ -10198,113 +10225,147 @@
         </trans-unit>
         <trans-unit id="Report 1380622932 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Adjust Exchange Rates</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Airsealog Ajustar tipos de cambio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Property Caption</note>
+          <target>Airsealog Ajustar tipos de cambio</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 2963778462" size-unit="char" translate="yes" xml:space="preserve">
           <source>There is nothing to adjust.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No hay nada que ajustar."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType NothingToAdjustMsg</note>
+          <target>No hay nada que ajustar.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 1278011672" size-unit="char" translate="yes" xml:space="preserve">
           <source>One or more currency exchange rates have been adjusted.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Uno o más tipos de cambio se han ajustado."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType RatesAdjustedMsg</note>
+          <target>Uno o más tipos de cambio se han ajustado.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 1487510925" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must enter a active exchange rate.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Falta colocar el tipo de cambio Activo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType STMsgAdjustExchRateActive</note>
+          <target>Falta colocar el tipo de cambio Activo</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 2665170376" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must enter a passive exchange rate.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Falta colocar el tipo de cambio Pasivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType STMsgAdjustExchRatepassive</note>
+          <target>Falta colocar el tipo de cambio Pasivo</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 4202727816" size-unit="char" translate="yes" xml:space="preserve">
           <source>You must enter a currency code filter</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Falta filtrar por una moneda"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType STMsgCurrencyCodeFilter</note>
+          <target>Falta filtrar por una moneda</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1 must be entered.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Se debe indicar %1."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text000</note>
+          <target>Se debe indicar %1.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to adjust general ledger entries for currency fluctuations without adjusting customer, vendor and bank ledger entries? This may result in incorrect currency adjustments to payables, receivables and bank accounts.\\ </source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="¿Desea ajustar los movs. contabilidad para las fluctuaciones de divisa sin ajustar lo movs. de cliente, proveedor y bancos? Esto puede provocar ajustes incorrectos de divisa en pagos, cobros y cuentas bancos.\\ "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text001</note>
+          <target>¿Desea ajustar los movs. contabilidad para las fluctuaciones de divisa sin ajustar lo movs. de cliente, proveedor y bancos? Esto puede provocar ajustes incorrectos de divisa en pagos, cobros y cuentas bancos.\\ </target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you wish to continue?</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="¿Confirma que desea continuar?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text004</note>
+          <target>¿Confirma que desea continuar?</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
           <source>The adjustment of exchange rates has been canceled.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Se ha cancelado el proceso de ajuste de divisas."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text005</note>
+          <target>Se ha cancelado el proceso de ajuste de divisas.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
           <source>Adjusting exchange rates...\\</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Ajustando divisas...\\"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text006</note>
+          <target>Ajustando divisas...\\</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bank Account    @1@@@@@@@@@@@@@\\</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Banco           @1@@@@@@@@@@@@@\\"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text007</note>
+          <target>Banco           @1@@@@@@@@@@@@@\\</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 3283546407" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer        @2@@@@@@@@@@@@@\</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Cliente         @2@@@@@@@@@@@@@\"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text008</note>
+          <target>Cliente         @2@@@@@@@@@@@@@\</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor          @3@@@@@@@@@@@@@\</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Proveedor       @3@@@@@@@@@@@@@\"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text009</note>
+          <target>Proveedor       @3@@@@@@@@@@@@@\</target>
+        </trans-unit>
+        <trans-unit id="Report 1380622932 - NamedType 332095846" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Empleado          @4@@@@@@@@@@@@@\</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Empleado       @4@@@@@@@@@@@@@\"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text009_1</note>
+          <target>Empleado       @4@@@@@@@@@@@@@\</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 1664139952" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Adjustment      #4#############</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>Adjustment      #5#############</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ajuste          #5#############"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text010</note>
+          <target>Ajuste          #5#############</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 1026443335" size-unit="char" translate="yes" xml:space="preserve">
           <source>No currencies have been found.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="No se han encontrado divisas."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text011</note>
+          <target>No se han encontrado divisas.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 2939533186" size-unit="char" translate="yes" xml:space="preserve">
           <source>Adjusting VAT Entries...\\</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Ajustando movs. IVA...\\"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text012</note>
+          <target>Ajustando movs. IVA...\\</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 2301836569" size-unit="char" translate="yes" xml:space="preserve">
           <source>VAT Entry    @1@@@@@@@@@@@@@</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Mov. IVA        @1@@@@@@@@@@@@@"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text013</note>
+          <target>Mov. IVA        @1@@@@@@@@@@@@@</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 4214926420" size-unit="char" translate="yes" xml:space="preserve">
           <source>Adjusting general ledger...\\</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Ajustando contabilidad...\\"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text014</note>
+          <target>Ajustando contabilidad...\\</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 3577229803" size-unit="char" translate="yes" xml:space="preserve">
           <source>G/L Account    @1@@@@@@@@@@@@@</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Cuenta          @1@@@@@@@@@@@@@"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text015</note>
+          <target>Cuenta          @1@@@@@@@@@@@@@</target>
+        </trans-unit>
+        <trans-unit id="Report 1380622932 - NamedType 1195352358" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjmt. of %1 %2, Ex.Rate Adjust.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ajuste de %1 %2, ajuste tipo cambio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text016</note>
+          <target>Ajuste de %1 %2, ajuste tipo cambio</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 557655741" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1 on %2 %3 must be %4. When this %2 is used in %5, the exchange rate adjustment is defined in the %6 field in the %7. %2 %3 is used in the %8 field in the %5. </source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="%1 en %2 %3 debe ser %4. Cuando este %2 se utiliza en %5, el ajuste tipo cambio se define en el campo %6 en el %7. %2 %3 se utiliza en el campo %8 en el %5. "</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text017</note>
+          <target>%1 en %2 %3 debe ser %4. Cuando este %2 se utiliza en %5, el ajuste tipo cambio se define en el campo %6 en el %7. %2 %3 se utiliza en el campo %8 en el %5. </target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - NamedType 857534312" size-unit="char" translate="yes" xml:space="preserve">
           <source>This posting date cannot be entered because it does not occur within the adjustment period. Reenter the posting date.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Esta fecha de registro no es válida porque no tiene lugar dentro del periodo de ajuste. Vuelva a introducir la fecha de registro."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - NamedType Text018</note>
+          <target>Esta fecha de registro no es válida porque no tiene lugar dentro del periodo de ajuste. Vuelva a introducir la fecha de registro.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Options</source>
@@ -10313,88 +10374,117 @@
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 3280251715 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want to adjust customer, vendor, and bank accounts for currency fluctuations.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Especifica si desea ajustar las fluctuaciones de divisa de clientes, proveedores y cuentas bancarias."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control AdjCustVendBank - Property ToolTip</note>
+          <target>Especifica si desea ajustar las fluctuaciones de divisa de clientes, proveedores y cuentas bancarias.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 3280251715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Adjust Customer, Vendor and Bank Accounts</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <source>Adjust Customer,Employee,Vendor and Bank Accounts</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ajuste cliente, proveedor, Empleado y banco"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control AdjCustVendBank - Property Caption</note>
+          <target>Ajuste cliente, proveedor, Empleado y banco</target>
+        </trans-unit>
+        <trans-unit id="Report 1380622932 - Control 403464799 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want to adjust Employee Entries for currency fluctuations.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Especifica si desea ajustar las fluctuaciones de divisa de Mov.Empleados ."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control AdjEmployee - Property ToolTip</note>
+          <target>Especifica si desea ajustar las fluctuaciones de divisa de Mov.Empleados .</target>
+        </trans-unit>
+        <trans-unit id="Report 1380622932 - Control 403464799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Adjust Employee</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Ajustar Mov. Empleados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control AdjEmployee - Property Caption</note>
+          <target>Ajustar Mov. Empleados</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 741122023 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if you want to post in an additional reporting currency and adjust general ledger accounts for currency fluctuations between LCY and the additional reporting currency.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Especifica si desea registrar en una divisa adicional de informe y ajustar las cuentas de contabilidad general para las fluctuaciones de divisa entre la divisa local y la adicional."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control AdjGLAcc - Property ToolTip</note>
+          <target>Especifica si desea registrar en una divisa adicional de informe y ajustar las cuentas de contabilidad general para las fluctuaciones de divisa entre la divisa local y la adicional.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 741122023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Adjust G/L Accounts for Add.-Reporting Currency</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Ajuste Divisa.-Adic."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control AdjGLAcc - Property Caption</note>
+          <target>Ajuste Divisa.-Adic.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 1361548158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Adjustment Period</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Período de ajuste"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control Adjustment Period - Property Caption</note>
+          <target>Período de ajuste</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 3592094765 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the last date for which entries are adjusted. This date is usually the same as the posting date in the Posting Date field.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Especifica la fecha final en la que se ajustan los movimientos. Esta fecha normalmente coincide con la fecha de registro del campo Fecha registro."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control EndingDate - Property ToolTip</note>
+          <target>Especifica la fecha final en la que se ajustan los movimientos. Esta fecha normalmente coincide con la fecha de registro del campo Fecha registro.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 3592094765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ending Date</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha final"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control EndingDate - Property Caption</note>
+          <target>Fecha final</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 543275552 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the beginning of the period for which entries are adjusted. This field is usually left blank, but you can enter a date.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Especifica el comienzo del periodo para el que se ajustan los movimientos. Normalmente, este campo se deja en blanco, pero puede escribir una fecha."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control StartingDate - Property ToolTip</note>
+          <target>Especifica el comienzo del periodo para el que se ajustan los movimientos. Normalmente, este campo se deja en blanco, pero puede escribir una fecha.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 543275552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Starting Date</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha inicial"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control StartingDate - Property Caption</note>
+          <target>Fecha inicial</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 3117834186 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the document number that will appear on the general ledger entries that are created by the batch job.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Especifica el número de documento que aparecerá en los movimientos de contabilidad general creados por el trabajo por lotes."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control DocumentNo - Property ToolTip</note>
+          <target>Especifica el número de documento que aparecerá en los movimientos de contabilidad general creados por el trabajo por lotes.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 3117834186 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Nº documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control DocumentNo - Property Caption</note>
+          <target>Nº documento</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 3037438984 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the date on which the general ledger entries are posted. This date is usually the same as the ending date in the Ending Date field.</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Especifica la fecha en la que se registran los movimientos de contabilidad general. Esta fecha normalmente coincide con la fecha final del campo Fecha final."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control PostingDate - Property ToolTip</note>
+          <target>Especifica la fecha en la que se registran los movimientos de contabilidad general. Esta fecha normalmente coincide con la fecha final del campo Fecha final.</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 3037438984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Fecha registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control PostingDate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 1380622932 - Control 1539609042 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies text for the general ledger entries that are created by the batch job. The default text is Exchange Rate Adjmt. of %1 %2, in which %1 is replaced by the currency code and %2 is replaced by the currency amount that is adjusted. For example, Exchange Rate Adjmt. of DEM 38,000.</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control PostingDescription - Property ToolTip</note>
+          <target>Fecha registro</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 1539609042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Description</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control PostingDescription - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Report 1380622932 - Control 675768743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Description</source>
+          <note from="Developer" annotates="general" priority="2">ESM="Glosa Principal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control PostingText - Property Caption</note>
+          <target>Glosa Principal</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 3542159190 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Adjust Exch. Rate Active</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="T.C. Activo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control STAdjustExchRateActive - Property Caption</note>
+          <target>T.C. Activo</target>
         </trans-unit>
         <trans-unit id="Report 1380622932 - Control 1334867431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Adjust Exch. Rate Passive</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Developer" annotates="general" priority="2">ESM="T.C. Pasivo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ST Adjust Exchange Rates - Control STAdjustExchRatePassive - Property Caption</note>
+          <target>T.C. Pasivo</target>
         </trans-unit>
         <trans-unit id="Report 3180510772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Diferencia Cambio Perú</source>
@@ -13457,6 +13547,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Purchase Header - Field Via transport - Property Caption</note>
           <target>Vía transporte</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3213192120 - Field 2117676518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
+          <source>Cargowise Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Factura Cargowise"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales CrMemo Hdr. - Field Airsealog-Cargowise Inv No. - Property Caption</note>
+          <target>No. Factura Cargowise</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3213192120 - Field 3819672342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Applies-to Doc. No. Ref.</source>
           <note from="Developer" annotates="general" priority="2">ESM="Liq. por N° Documento Ref."</note>
@@ -13564,6 +13660,12 @@
           <note from="Developer" annotates="general" priority="2">ESM="La detracción no debe exceder la factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - NamedType ErrorOverflowAmt</note>
           <target>La detracción no debe exceder la factura</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1524349356 - Field 2117676518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Cargowise Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Factura Cargowise"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - Field Airsealog-Cargowise Inv No. - Property Caption</note>
+          <target>No. Factura Cargowise</target>
         </trans-unit>
         <trans-unit id="TableExtension 1524349356 - Field 3819672342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Applies-to Doc. No. Ref.</source>
@@ -13696,6 +13798,12 @@
           <note from="Developer" annotates="general" priority="2">ESM="Tipo Doc. Cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Header - Field VAT Registration Type - Property Caption</note>
           <target>Tipo Doc. Cliente</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3256269433 - Field 2117676518 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Cargowise Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESM="No. Factura Cargowise"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Setup Sales Inv. Header - Field Airsealog-Cargowise Inv No. - Property Caption</note>
+          <target>No. Factura Cargowise</target>
         </trans-unit>
         <trans-unit id="TableExtension 3256269433 - Field 3819672342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Applies-to Doc. No. Ref.</source>

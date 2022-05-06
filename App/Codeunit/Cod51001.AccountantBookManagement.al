@@ -69,6 +69,7 @@ codeunit 51001 "Accountant Book Management"
                     GLEntry.Reset();
                     GLEntry.SetRange("Posting Date", StartDate, ClosingDate(EndDate));
                     GLEntry.SetFilter("Source Code", '<>%1&<>%2', 'DESLVENTA', 'DESLCOMPR');
+                    GLEntry.SetFilter(Reversed,'<>%1',true);
                     TotalRecords := GLEntry.Count;
                     if GLEntry.FindFirst() then
                         repeat
@@ -257,14 +258,16 @@ codeunit 51001 "Accountant Book Management"
             GenJnlBookBuffer."Operation Date" := GLEntry."Posting Date";
         GenJnlBookBuffer."Account Date" := GLEntry."Posting Date";
         GenJnlBookBuffer."Gloss and description" := GLEntry.Description;
-        if GLEntry."Debit Amount" < 0 then
-            GenJnlBookBuffer."Credit Amount" := Abs(GLEntry."Debit Amount")
-        else
-            GenJnlBookBuffer."Debit Amount" := GLEntry."Debit Amount";
-        if GLEntry."Credit Amount" < 0 then
-            GenJnlBookBuffer."Debit Amount" := Abs(GLEntry."Credit Amount")
-        else
-            GenJnlBookBuffer."Credit Amount" := GLEntry."Credit Amount";
+        GenJnlBookBuffer."Debit Amount" := GLEntry."Debit Amount";
+        GenJnlBookBuffer."Credit Amount" := GLEntry."Credit Amount";
+        // if GLEntry."Debit Amount" < 0 then
+        //     GenJnlBookBuffer."Credit Amount" := Abs(GLEntry."Debit Amount")
+        // else
+        //     GenJnlBookBuffer."Debit Amount" := GLEntry."Debit Amount";
+        // if GLEntry."Credit Amount" < 0 then
+        //     GenJnlBookBuffer."Debit Amount" := Abs(GLEntry."Credit Amount")
+        // else
+        //     GenJnlBookBuffer."Credit Amount" := GLEntry."Credit Amount";
         GenJnlBookBuffer."Operation Status" := 1;
         if GLEntry."Legal Status" = GLEntry."Legal Status"::OutFlow then
             GenJnlBookBuffer."Legal Document No." := '00';
